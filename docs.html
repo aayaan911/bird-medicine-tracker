@@ -84,26 +84,41 @@ h2{font-size:clamp(22px,3.4vw,32px);font-weight:700;letter-spacing:-.032em;line-
 .sub{color:var(--ink2);font-size:14.5px;margin-top:10px;max-width:58ch;margin-left:auto;margin-right:auto;line-height:1.6}
 .sec-deep .sub{color:rgba(255,255,255,.72)}
 
-/* ---------- factor cards, colored top bar ---------- */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+/* ---------- printables style cards ---------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:900px){.grid3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.grid3{grid-template-columns:1fr}}
-.fcard{background:var(--card);border:1px solid var(--line);border-radius:var(--rxl);padding:20px;position:relative;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
-.fcard:hover{transform:translateY(-3px);box-shadow:var(--shadow2);border-color:color-mix(in srgb,var(--green) 38%,transparent)}
-.fcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px}
-.t1::before{background:var(--green)} .t2::before{background:var(--blue)} .t3::before{background:#f0a02e}
-.t4::before{background:var(--purple)} .t5::before{background:var(--danger)} .t6::before{background:var(--gmid)}
-.ico{width:38px;height:38px;border-radius:11px;background:var(--mint);display:grid;place-items:center;margin-bottom:12px;animation:idleFloat 5s ease-in-out infinite}
-.fcard:nth-child(2) .ico{animation-delay:.45s} .fcard:nth-child(3) .ico{animation-delay:.9s}
-.fcard:nth-child(4) .ico{animation-delay:1.35s} .fcard:nth-child(5) .ico{animation-delay:1.8s} .fcard:nth-child(6) .ico{animation-delay:2.25s}
-.fcard:hover .ico{animation:wiggle .5s ease-in-out}
-@keyframes idleFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(-3deg)}}
-@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
-.ico svg{width:19px;height:19px;fill:var(--gdeep)}
-.rank{position:absolute;top:16px;right:16px;font-size:11px;font-weight:700;color:var(--ink3);font-variant-numeric:tabular-nums}
-.fcard h3{font-size:15.5px;font-weight:700;letter-spacing:-.25px;margin-bottom:7px}
-.fcard p{font-size:13.2px;color:var(--ink2)}
-.fcard b{color:var(--ink)}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--rxl);overflow:hidden;box-shadow:var(--shadow);transition:.2s;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-3px);box-shadow:var(--shadow2);border-color:color-mix(in srgb,var(--green) 34%,transparent)}
+.ptop{position:relative;padding:30px 22px;display:grid;place-items:center;min-height:172px}
+.pa{background:linear-gradient(155deg,#cfeee0,#eaf8f1)}
+.pb{background:linear-gradient(155deg,#d3e4f8,#ecf3fc)}
+.pc{background:linear-gradient(155deg,#f7e3c6,#fdf3e5)}
+.pd{background:linear-gradient(155deg,#e6ddf8,#f3eefd)}
+.pe{background:linear-gradient(155deg,#f9dfe2,#fdeff0)}
+.pf{background:linear-gradient(155deg,#d6efe4,#eef9f3)}
+[data-theme="dark"] .pa{background:linear-gradient(155deg,#0f2f26,#12251f)}
+[data-theme="dark"] .pb{background:linear-gradient(155deg,#132535,#111d27)}
+[data-theme="dark"] .pc{background:linear-gradient(155deg,#2c2416,#211c13)}
+[data-theme="dark"] .pd{background:linear-gradient(155deg,#231b38,#1b1729)}
+[data-theme="dark"] .pe{background:linear-gradient(155deg,#2a1720,#211419)}
+[data-theme="dark"] .pf{background:linear-gradient(155deg,#0f2f26,#12251f)}
+.pnum{position:absolute;top:13px;left:13px;width:25px;height:25px;border-radius:50%;background:rgba(255,255,255,.72);color:#111315;display:grid;place-items:center;font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
+[data-theme="dark"] .pnum{background:rgba(255,255,255,.14);color:#eef2f4}
+.pmock{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;width:100%;max-width:215px;text-align:left;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+.pmock .ml{font-size:8.5px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--ink3);margin-bottom:7px}
+.pmock .mv{font-size:17px;font-weight:700;letter-spacing:-.03em;line-height:1.15;color:var(--gdeep)}
+.pmock .mu{font-size:11px;color:var(--ink3);margin-top:5px;line-height:1.45}
+.pmock .mrow{display:flex;align-items:center;gap:7px;margin-top:8px}
+.pmock .dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
+.pmock .dot.b{background:var(--blue)} .pmock .dot.o{background:#f0a02e} .pmock .dot.r{background:var(--danger)}
+.pmock .ms{font-size:10.5px;color:var(--ink2)}
+.pmock .bar{height:5px;border-radius:99px;background:var(--line2);margin-top:9px;overflow:hidden}
+.pmock .bar i{display:block;height:100%;background:var(--green);border-radius:99px}
+.pbody{padding:18px 20px 20px}
+.pbody h3{font-size:16px;font-weight:700;letter-spacing:-.25px;margin-bottom:7px}
+.pbody p{font-size:13.2px;color:var(--ink2)}
+.pbody b{color:var(--ink)}
 
 /* ---------- trust strip ---------- */
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:16px}
@@ -240,12 +255,12 @@ footer a:hover{text-decoration:underline}
   </div>
 
   <div class="grid3">
-    <div class="fcard t1"><span class="rank">01</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div><h3>Biosecurity</h3><p><b>The single biggest factor.</b> Four week quarantine for every new bird, separate room, handled last every day. Wash hands between rooms. No contact with pigeons or wild birds. Most outbreaks walk in on a new bird or on your own hands.</p></div>
-    <div class="fcard t2"><span class="rank">02</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8z"/></svg></div><h3>Dry hygiene</h3><p>Change tray paper daily and wipe trays dry. Remove uneaten soft food within two hours. Dry every drinker daily. <b>Trichomonas dies when dry.</b> Most bacterial load comes from wet droppings, not from air.</p></div>
-    <div class="fcard t3"><span class="rank">03</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div><h3>Nutritional adequacy</h3><p>Vitamin A, E, C, zinc and selenium are the immune nutrients. <b>The goal is no deficiency, not maximum dose.</b> A complete daily multivitamin plus a proper seed and soft food base covers all of them.</p></div>
-    <div class="fcard t4"><span class="rank">04</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 118-8 8 8 0 01-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg></div><h3>Gut flora</h3><p>A probiotic five days at the start of every month, and five days after any antibiotic course. Good bacteria physically occupy the gut so pathogens cannot colonise. <b>The one routine monthly course that is genuinely supported.</b></p></div>
-    <div class="fcard t5"><span class="rank">05</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M15 13V5a3 3 0 00-6 0v8a5 5 0 106 0zm-4-8a1 1 0 012 0v3h-2V5z"/></svg></div><h3>Low stress</h3><p>Heat above 32°C, crowding, constant disturbance and sudden noise all raise stress hormones, and stress hormones suppress immune function directly. <b>A calm, ventilated, cool room does more than any bottle.</b></p></div>
-    <div class="fcard t6"><span class="rank">06</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 00-2-2h-4V3.5a2.5 2.5 0 00-5 0V5H4a2 2 0 00-2 2v3.8h1.5a2.7 2.7 0 010 5.4H2V20a2 2 0 002 2h3.8v-1.5a2.7 2.7 0 015.4 0V22H17a2 2 0 002-2v-4h1.5a2.5 2.5 0 000-5z"/></svg></div><h3>Vaccination</h3><p>Where a vaccine exists for a disease in your region, such as pox, <b>it is the only item on this list that creates real antibodies.</b> Ask an avian vet what is available locally.</p></div>
+    <div class="pcard"><div class="ptop pa"><span class="pnum">01</span><div class="pmock"><div class="ml">QUARANTINE</div><div class="mv">4 weeks</div><div class="mu">Separate room · handled last · wash hands between rooms</div><div class="mrow"><span class="dot "></span><span class="ms">New bird in</span></div><div class="mrow"><span class="dot b"></span><span class="ms">Week 1 to 4 isolated</span></div><div class="mrow"><span class="dot o"></span><span class="ms">Then join the flock</span></div></div></div><div class="pbody"><h3>Biosecurity</h3><p><b>The single biggest factor.</b> Four week quarantine for every new bird, separate room, handled last every day. No contact with pigeons or wild birds. Most outbreaks walk in on a new bird or on your own hands.</p></div></div>
+    <div class="pcard"><div class="ptop pb"><span class="pnum">02</span><div class="pmock"><div class="ml">DAILY ROUTINE</div><div class="mv">15 minutes</div><div class="mu">Tray paper · wipe dry · soft food out in 2 hours</div><div class="bar"><i style="width:88%"></i></div></div></div><div class="pbody"><h3>Dry hygiene</h3><p>Change tray paper daily and wipe trays dry. Remove uneaten soft food within two hours. Dry every drinker daily. <b>Trichomonas dies when dry.</b> Most bacterial load comes from wet droppings, not from air.</p></div></div>
+    <div class="pcard"><div class="ptop pc"><span class="pnum">03</span><div class="pmock"><div class="ml">IMMUNE NUTRIENTS</div><div class="mv">A · E · C</div><div class="mu">plus zinc and selenium</div><div class="mrow"><span class="dot "></span><span class="ms">Vitamin A, E, C</span></div><div class="mrow"><span class="dot o"></span><span class="ms">Zinc</span></div><div class="mrow"><span class="dot r"></span><span class="ms">Selenium</span></div></div></div><div class="pbody"><h3>Nutritional adequacy</h3><p><b>The goal is no deficiency, not maximum dose.</b> A complete daily multivitamin plus a proper seed and soft food base covers all of them. More does not mean stronger.</p></div></div>
+    <div class="pcard"><div class="ptop pd"><span class="pnum">04</span><div class="pmock"><div class="ml">PROBIOTIC</div><div class="mv">Days 1 to 5</div><div class="mu">every month, all birds</div><div class="bar"><i style="width:100%"></i></div></div></div><div class="pbody"><h3>Gut flora</h3><p>Good bacteria physically occupy the gut so pathogens cannot colonise. Five days at the start of every month, and five days after any antibiotic course. <b>The one routine monthly course that is genuinely supported.</b></p></div></div>
+    <div class="pcard"><div class="ptop pe"><span class="pnum">05</span><div class="pmock"><div class="ml">KEEP BELOW</div><div class="mv">32°C</div><div class="mu">calm room · steady light · no sudden noise</div></div></div><div class="pbody"><h3>Low stress</h3><p>Heat above 32°C, crowding, constant disturbance and sudden noise all raise stress hormones, and stress hormones suppress immune function directly. <b>A calm, ventilated, cool room does more than any bottle.</b></p></div></div>
+    <div class="pcard"><div class="ptop pf"><span class="pnum">06</span><div class="pmock"><div class="ml">REAL ANTIBODIES</div><div class="mv">The only one</div><div class="mu">on this entire list</div></div></div><div class="pbody"><h3>Vaccination</h3><p>Where a vaccine exists for a disease in your region, such as pox, <b>it is the only item on this list that creates real antibodies.</b> Ask an avian vet what is available locally.</p></div></div>
   </div>
 
   <div class="dangerbox" style="margin-top:26px">
