@@ -42,6 +42,8 @@ a{color:inherit}
 .topbar{position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .topbar .wrap{display:flex;align-items:center;gap:14px;height:56px}
 .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15.5px;letter-spacing:-.35px;text-decoration:none;flex-shrink:0}
+.bname{display:block;line-height:1.15}
+.bname small{display:block;font-size:10px;font-weight:500;color:var(--ink3);letter-spacing:0;margin-top:1px}
 .mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(150deg,var(--green),var(--gmid));display:grid;place-items:center;flex-shrink:0}
 .mark svg{width:16px;height:16px;fill:#fff}
 .tbtn{display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--line);color:var(--ink2);width:32px;height:32px;border-radius:8px;cursor:pointer;font-family:inherit;transition:.16s;flex-shrink:0}
@@ -120,7 +122,38 @@ h1 em{font-style:normal;color:var(--green)}
 .cpy:hover{border-color:var(--green);color:var(--green);background:var(--card)}
 .cpy.ok{background:var(--mint);border-color:var(--green);color:var(--gdeep)}
 .cpy svg{width:10px;height:10px;fill:currentColor}
-.gcpy{width:100%;justify-content:center;margin-top:11px;padding:7px 10px;font-size:10px}
+.gcpy{width:100%;justify-content:center;margin-top:0;padding:7px 8px;font-size:9.5px}
+/* ---------- compare modal ---------- */
+.cmod{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(10,16,20,.55);backdrop-filter:blur(4px)}
+.cmod.open{display:flex}
+.cbox{background:var(--bg);border:1px solid var(--line);border-radius:var(--rxl);max-width:1080px;width:100%;max-height:88vh;display:flex;flex-direction:column;box-shadow:var(--shadow2);overflow:hidden}
+.chd{display:flex;align-items:flex-start;gap:14px;padding:20px 22px;border-bottom:1px solid var(--line);background:var(--mint2)}
+.chd h3{font-size:18px;font-weight:700;letter-spacing:-.3px}
+.chd p{font-size:12.8px;color:var(--ink2);margin-top:3px}
+.cx{margin-left:auto;background:var(--card);border:1px solid var(--line);width:32px;height:32px;border-radius:9px;cursor:pointer;font-size:18px;color:var(--ink2);line-height:1;flex-shrink:0;font-family:inherit}
+.cx:hover{border-color:var(--danger);color:var(--danger)}
+.cbd{overflow:auto;padding:20px 22px}
+.cwrap{border:1px solid var(--line);border-radius:var(--rl);overflow:hidden;min-width:520px}
+.crow{display:grid;grid-template-columns:130px repeat(var(--cn),1fr);border-bottom:1px solid var(--line2)}
+.crow:last-child{border-bottom:0}
+.crow>div{padding:11px 13px;font-size:12.8px;font-variant-numeric:tabular-nums}
+.ck{font-weight:600;color:var(--ink2);background:var(--bg2)}
+.chead{background:var(--gdeep);color:#fff}
+.chead .ck{background:transparent;color:rgba(255,255,255,.7);font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+.chead .cv{font-weight:700;font-size:13px}
+.cbasis>div{font-size:11px;color:var(--ink3);background:var(--bg2)}
+.cv b{color:var(--ink);font-weight:700}
+.cv.win{background:color-mix(in srgb,var(--mint) 60%,var(--card))}
+.cv.win b{color:var(--gdeep)}
+.zero{color:var(--ink3)}
+.crown{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:var(--green);color:#fff;padding:1px 6px;border-radius:99px;margin-left:6px;vertical-align:1px}
+.chead .crown{background:rgba(255,255,255,.22)}
+.ctot{background:var(--bg2);font-size:14px}
+.ctot .cv b{font-size:17px}
+.cverdict{background:var(--mint);border:1px solid color-mix(in srgb,var(--green) 26%,transparent);border-radius:var(--rl);padding:15px 18px;margin-top:14px;font-size:13.5px;color:var(--ink2);line-height:1.6}
+.cverdict b{color:var(--gdeep)}
+.cnote{font-size:11.5px;color:var(--ink3);margin-top:12px;line-height:1.6}
+@media(max-width:700px){.cbd{padding:14px}.cwrap{min-width:440px}.crow{grid-template-columns:96px repeat(var(--cn),1fr)}.crow>div{padding:9px 10px;font-size:11.5px}}
 .malt{margin-top:9px;padding-top:8px;border-top:1px dashed var(--line2);font-size:11.8px;color:var(--ink3);line-height:1.5}
 .malt b{display:block;font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink3);margin-bottom:3px}
 
@@ -167,17 +200,24 @@ h2{font-size:clamp(22px,3.5vw,34px);font-weight:700;letter-spacing:-.032em;line-
 .mhead>div{padding:11px 16px}
 .mrow>div{padding:15px 16px}
 .mrow.emerg{background:color-mix(in srgb,var(--dangerbg) 42%,var(--card))}
-.mname{border-left:3px solid transparent}
+.mname{border-left:3px solid transparent;position:relative;padding-left:40px!important}
+.rnum{position:absolute;left:13px;top:15px;width:22px;height:22px;border-radius:50%;background:var(--bg2);border:1px solid var(--line);color:var(--ink3);display:grid;place-items:center;font-size:10.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.btn2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:11px}
+.cmpb:hover{border-color:var(--blue);color:var(--blue)}
 .mrow[data-brand="aviform"] .mname{border-left-color:#1d9e75}
 .mrow[data-brand="nekton"] .mname{border-left-color:#8b5cf6}
 .mrow[data-brand="vetafarm"] .mname{border-left-color:#3b82f6}
 .mrow[data-brand="other"] .mname{border-left-color:#f0a02e}
+.mrow[data-brand="versele"] .mname{border-left-color:#e0518a}
 .mn{font-weight:700;font-size:14.5px;letter-spacing:-.2px}
 .bpill{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:99px;margin:6px 5px 0 0;text-transform:uppercase}
 .b-aviform{background:var(--mint);color:var(--gdeep)}
 .b-nekton{background:var(--rose);color:var(--purple)}
 .b-vetafarm{background:var(--sky);color:#1e5fa8}
 .b-other{background:var(--sand);color:#8a5a08}
+.b-versele{background:#fbe6ef;color:#b2245c}
+[data-theme="dark"] .b-versele{background:#2e1622;color:#f0a7c5}
 [data-theme="dark"] .b-nekton{color:#c4a5fd}
 [data-theme="dark"] .b-vetafarm{color:#8dc0f5}
 [data-theme="dark"] .b-other{color:#e0b872}
@@ -199,6 +239,7 @@ h2{font-size:clamp(22px,3.5vw,34px);font-weight:700;letter-spacing:-.032em;line-
   .mrow[data-brand="nekton"] .mname{border-top-color:#8b5cf6}
   .mrow[data-brand="vetafarm"] .mname{border-top-color:#3b82f6}
   .mrow[data-brand="other"] .mname{border-top-color:#f0a02e}
+  .mrow[data-brand="versele"] .mname{border-top-color:#e0518a}
   .mwhen::before{content:"WHEN · ";font-size:9.5px;font-weight:700;color:var(--ink3);letter-spacing:.5px}
   .mwhy::before{content:"WHY · ";font-size:9.5px;font-weight:700;color:var(--ink3);letter-spacing:.5px}
 }
@@ -215,10 +256,12 @@ h2{font-size:clamp(22px,3.5vw,34px);font-weight:700;letter-spacing:-.032em;line-
 .gtop.t-nekton{background:linear-gradient(150deg,#e5ddfa,#f3eefd)}
 .gtop.t-vetafarm{background:linear-gradient(150deg,#d7e8fa,#eef4fc)}
 .gtop.t-other{background:linear-gradient(150deg,#fae7cf,#fdf4e8)}
+.gtop.t-versele{background:linear-gradient(150deg,#fbdae8,#fdeef4)}
 [data-theme="dark"] .gtop.t-aviform{background:linear-gradient(150deg,#0f2f26,#12251f)}
 [data-theme="dark"] .gtop.t-nekton{background:linear-gradient(150deg,#231b38,#1b1729)}
 [data-theme="dark"] .gtop.t-vetafarm{background:linear-gradient(150deg,#132535,#111d27)}
 [data-theme="dark"] .gtop.t-other{background:linear-gradient(150deg,#2c2416,#211c13)}
+[data-theme="dark"] .gtop.t-versele{background:linear-gradient(150deg,#2e1622,#24141c)}
 .gnum{position:absolute;top:11px;left:11px;width:23px;height:23px;border-radius:50%;background:rgba(255,255,255,.72);color:#111315;display:grid;place-items:center;font-size:10.5px;font-weight:700;font-variant-numeric:tabular-nums}
 [data-theme="dark"] .gnum{background:rgba(255,255,255,.14);color:#eef2f4}
 .gflag{position:absolute;top:11px;right:11px}
@@ -307,10 +350,12 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 .t-nekton.mthumb{background:linear-gradient(150deg,#e5ddfa,#f3eefd)}
 .t-vetafarm.mthumb{background:linear-gradient(150deg,#d7e8fa,#eef4fc)}
 .t-other.mthumb{background:linear-gradient(150deg,#fae7cf,#fdf4e8)}
+.t-versele.mthumb{background:linear-gradient(150deg,#fbdae8,#fdeef4)}
 [data-theme="dark"] .t-aviform.mthumb{background:linear-gradient(150deg,#0f2f26,#12251f)}
 [data-theme="dark"] .t-nekton.mthumb{background:linear-gradient(150deg,#231b38,#1b1729)}
 [data-theme="dark"] .t-vetafarm.mthumb{background:linear-gradient(150deg,#132535,#111d27)}
 [data-theme="dark"] .t-other.mthumb{background:linear-gradient(150deg,#2c2416,#211c13)}
+[data-theme="dark"] .t-versele.mthumb{background:linear-gradient(150deg,#2e1622,#24141c)}
 .mnwrap{overflow:hidden}
 </style>
 </head>
@@ -319,7 +364,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 <div class="topbar"><div class="wrap">
   <a class="brand" href="#top">
     <span class="mark"><svg viewBox="0 0 24 24"><path d="M12 2c-1.1 0-2 .9-2 2 0 .37.1.71.28 1.01C8.93 5.6 8 6.94 8 8.5c0 .83.25 1.6.69 2.24L4 15.43V19c0 1.1.9 2 2 2h4.5c3.04 0 5.5-2.46 5.5-5.5V8.5c0-1.56-.93-2.9-2.28-3.49.18-.3.28-.64.28-1.01 0-1.1-.9-2-2-2zm2.5 5.5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/></svg></span>
-    <span>Bird Medicine Tracker</span>
+    <span class="bname">Medicine Tracker<small>by KinBird Aviary</small></span>
   </a>
   <div class="sbox">
     <svg class="mag" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
@@ -334,7 +379,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 </div></div>
 
 <div class="hero" id="top"><div class="wrap">
-  <span class="eyebrow"><svg viewBox="0 0 24 24"><path d="M12 2c-1.1 0-2 .9-2 2 0 .37.1.71.28 1.01C8.93 5.6 8 6.94 8 8.5c0 .83.25 1.6.69 2.24L4 15.43V19c0 1.1.9 2 2 2h4.5c3.04 0 5.5-2.46 5.5-5.5V8.5c0-1.56-.93-2.9-2.28-3.49.18-.3.28-.64.28-1.01 0-1.1-.9-2-2-2z"/></svg>Built by breeders, for breeders · 17 of 19 label verified</span>
+  <span class="eyebrow"><svg viewBox="0 0 24 24"><path d="M12 2c-1.1 0-2 .9-2 2 0 .37.1.71.28 1.01C8.93 5.6 8 6.94 8 8.5c0 .83.25 1.6.69 2.24L4 15.43V19c0 1.1.9 2 2 2h4.5c3.04 0 5.5-2.46 5.5-5.5V8.5c0-1.56-.93-2.9-2.28-3.49.18-.3.28-.64.28-1.01 0-1.1-.9-2-2-2z"/></svg>Built by breeders, for breeders · 25 of 27 label verified</span>
   <h1>The Bird <em>Medicine Tracker</em>.<br>Every dose, every route.</h1>
   <p class="lead">Every avian supplement dose in one place: how much, in what, how often, and what must never share a drinker.</p>
   <div class="ctarow">
@@ -344,12 +389,12 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <div class="sgrid">
     <div class="scard sc-a">
       <div class="slabel"><svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-8 17l-4-4 1.41-1.41L11 17.17l5.59-5.59L18 13l-7 7z"/></svg>Products</div>
-      <div class="snum">19</div>
+      <div class="snum">27</div>
       <div class="ssub">Every route and schedule listed</div>
     </div>
     <div class="scard sc-b">
       <div class="slabel"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Label verified</div>
-      <div class="snum">17</div>
+      <div class="snum">25</div>
       <div class="ssub">Traced to the manufacturer page</div>
     </div>
     <div class="scard sc-c">
@@ -375,6 +420,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <button class="fchip" data-f="aviform">Aviform</button>
     <button class="fchip" data-f="nekton">Nekton</button>
     <button class="fchip" data-f="vetafarm">Vetafarm</button>
+    <button class="fchip" data-f="versele">Versele-Laga</button>
     <button class="fchip" data-f="other">Other</button>
     </div>
     <div class="vtog" id="vtog" role="group" aria-label="Choose a view">
@@ -537,6 +583,16 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <p class="disclaim">This page is a reference tool, not veterinary advice. Rows marked Verified were read from the manufacturer's own page, linked on the row. Rows marked Check label had no public manufacturer figure and must be dosed from your own pack. Formulations change, so the bottle in your hand always overrules this page. Consult an avian veterinarian for a sick bird, and never medicate a healthy flock without a diagnosis.</p>
   </div>
 </div></footer>
+
+<div class="cmod" id="cmpModal" role="dialog" aria-modal="true" aria-labelledby="cmpTitle">
+  <div class="cbox">
+    <div class="chd">
+      <div><h3 id="cmpTitle">Compare</h3><p id="cmpSub"></p></div>
+      <button class="cx" id="cmpClose" aria-label="Close comparison">&times;</button>
+    </div>
+    <div class="cbd" id="cmpBody"></div>
+  </div>
+</div>
 <script src="app.js"></script>
 </body>
 </html>
