@@ -811,7 +811,7 @@ var P = [
   "bl": "Renata, Bangladesh",
   "size": "10 g sachet / 100 g",
   "cats": [
-   "other",
+   "local",
    "emerg"
   ],
   "e": 1,
@@ -1312,7 +1312,7 @@ var P = [
   "bl": "ACME, Bangladesh",
   "size": "100 ml / 500 ml / 1 L",
   "cats": [
-   "other"
+   "local"
   ],
   "k": "zisvet zis vet acme bangladesh zinc sulphate poultry syrup bolus immunity skin feather local",
   "doses": [
@@ -1371,7 +1371,7 @@ var P = [
   "bl": "ACME, Bangladesh",
   "size": "10 g sachet",
   "cats": [
-   "other",
+   "local",
    "emerg"
   ],
   "e": 1,
@@ -1408,7 +1408,7 @@ var P = [
   "bl": "ACME, Bangladesh",
   "size": "10 g sachet",
   "cats": [
-   "other",
+   "local",
    "emerg"
   ],
   "e": 1,
@@ -1449,7 +1449,7 @@ var P = [
   "bl": "Square, Bangladesh",
   "size": "100 ml / 500 ml / 1 L",
   "cats": [
-   "other"
+   "local"
   ],
   "k": "two plus square bangladesh local antifungal aspergillus fusarium penicillium mycotoxicosis aflatoxin mould damp seed monsoon",
   "doses": [
@@ -1484,7 +1484,7 @@ var P = [
   "bl": "Eskayef, Bangladesh",
   "size": "100 ml / 500 ml",
   "cats": [
-   "other"
+   "local"
   ],
   "k": "six plus eskayef skf bangladesh local toxin binder acidifier mos beta glucan yeast saccharomyces organic acid copper thymol water ph gut",
   "doses": [

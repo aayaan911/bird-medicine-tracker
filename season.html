@@ -152,6 +152,23 @@ details.adv summary:hover{color:var(--green)}
 .field input:focus{background:var(--card);border-color:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 12%,transparent)}
 .field .unit{font-size:12.5px;color:var(--ink3);font-weight:600;flex-shrink:0}
 .field small{display:block;font-size:11px;color:var(--ink3);margin-top:6px}
+.field.res{background:linear-gradient(155deg,var(--mint),color-mix(in srgb,var(--mint) 35%,var(--card)));border-left:3px solid var(--green)}
+[data-theme="dark"] .field.res{background:linear-gradient(155deg,#123027,#0f2620);border-left-color:var(--green)}
+.field.res label{color:var(--gdeep)}
+[data-theme="dark"] .field.res label{color:#8fe3c4}
+.field.res input{background:var(--card);border-color:color-mix(in srgb,var(--green) 45%,transparent);color:var(--green);font-size:21px;font-weight:800;letter-spacing:-.02em}
+.field.res .unit{color:var(--green);font-weight:700;font-size:15px}
+.field.res small{color:var(--ink2)}
+[data-theme="dark"] .field.res small{color:#a9c6bb}
+.adv summary{display:flex;align-items:center;justify-content:center;gap:11px;text-align:center;flex-wrap:wrap}
+.adv summary::-webkit-details-marker{display:none}
+.adv summary::marker{content:""}
+.adv summary b{font-size:15px;font-weight:700;color:var(--ink)}
+.adv summary i{font-style:normal;font-size:12.5px;color:var(--ink3);flex-basis:100%}
+.sgear{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mint);color:var(--gdeep);flex-shrink:0}
+[data-theme="dark"] .sgear{background:#123027;color:#8fe3c4}
+.schev{display:grid;place-items:center;color:var(--ink3);transition:transform .2s}
+.adv[open] .schev{transform:rotate(180deg)}
 .chain{padding:14px 20px;background:var(--bg2);font-size:12.5px;color:var(--ink2);text-align:center;border-top:1px solid var(--line)}
 .chain b{color:var(--ink)}
 
@@ -171,11 +188,12 @@ details.adv summary:hover{color:var(--green)}
 
 /* ---------- ladder table ---------- */
 .ladder{background:var(--card);border:1px solid var(--line);border-radius:var(--rxl);overflow:hidden;box-shadow:var(--shadow);max-width:980px;margin:0 auto}
-.lrow{display:grid;grid-template-columns:1.15fr .8fr 1.15fr .8fr .8fr .8fr;border-bottom:1px solid var(--line2);font-variant-numeric:tabular-nums}
+.lrow{display:grid;grid-template-columns:1.1fr .9fr 1.1fr .75fr .75fr .8fr;border-bottom:1px solid var(--line2);font-variant-numeric:tabular-nums}
 .lrow:last-child{border-bottom:0}
-.lrow>div{padding:13px 16px;font-size:14px}
-.lhead{background:var(--bg2);font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink3)}
-.lhead>div{padding:11px 16px}
+.lrow>div{padding:13px 13px;font-size:14px}
+.lhead{background:var(--bg2);font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--ink3)}
+.lhead>div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lhead>div{padding:11px 13px}
 .lrow.me{background:color-mix(in srgb,var(--mint) 60%,var(--card))}
 .lrow.me>div:first-child{font-weight:700;color:var(--gdeep)}
 .lrow>div:first-child{font-weight:600}
@@ -245,12 +263,12 @@ footer a:hover{text-decoration:underline}
   <div class="two">
     <div class="bigf">
       <label>Revenue target</label>
-      <div class="in"><input id="target" type="number" inputmode="numeric" value="5000000" min="0" step="100000"><span class="unit">BDT</span></div>
+      <div class="in"><input id="target" type="text" inputmode="numeric" data-grp="1" value="5,000,000"><span class="unit">BDT</span></div>
       <small id="targetL">50 lakh</small>
     </div>
     <div class="bigf">
       <label>Average price per baby</label>
-      <div class="in"><input id="price" type="number" inputmode="numeric" value="75000" min="1000" step="5000"><span class="unit">BDT</span></div>
+      <div class="in"><input id="price" type="text" inputmode="numeric" data-grp="1" value="75,000"><span class="unit">BDT</span></div>
       <small>Use your realised average, not your best sale</small>
     </div>
   </div>
@@ -263,14 +281,14 @@ footer a:hover{text-decoration:underline}
   </div>
 
   <details class="adv">
-    <summary>Use my own rates instead of the defaults</summary>
+    <summary><span class="sgear"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.07-.94l2.03-1.58a.5.5 0 00.12-.61l-1.92-3.32a.5.5 0 00-.59-.22l-2.39.96a7.03 7.03 0 00-1.62-.94l-.36-2.54A.5.5 0 0013.9 2h-3.8a.5.5 0 00-.5.42l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.5.5 0 00-.59.22L2.72 8.48a.5.5 0 00.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.5.5 0 00-.12.61l1.92 3.32c.12.22.38.3.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.04.24.25.42.5.42h3.8c.25 0 .46-.18.5-.42l.36-2.54c.59-.24 1.12-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.5.5 0 00-.12-.61l-2.03-1.58zM12 15.5A3.5 3.5 0 1112 8.5a3.5 3.5 0 010 7z"/></svg></span><b>Tune the numbers to your own aviary</b><i>Change eggs per clutch, fertility, hatch rate, survival and sell-through</i><span class="schev"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span></summary>
     <div class="cgrid">
-      <div class="field"><label>Eggs per clutch</label><div class="in"><input id="eggs" type="number" inputmode="decimal" value="5" min="1" max="8" step="0.5"><span class="unit">eggs</span></div><small>Fischer's typically lay 4 to 6</small></div>
+      <div class="field"><label>Eggs per clutch</label><div class="in"><input id="eggs" type="number" inputmode="decimal" value="4.9" min="1" max="8" step="0.1"><span class="unit">eggs</span></div><small>KinBird flock: 40% lay 4 &middot; 40% lay 5 &middot; 10% lay 6 &middot; 10% lay 7+. Weighted average <b>4.9</b></small></div>
       <div class="field"><label>Fertility</label><div class="in"><input id="fert" type="number" inputmode="decimal" value="90" min="1" max="100" step="1"><span class="unit">%</span></div><small>Fertile eggs divided by eggs laid</small></div>
       <div class="field"><label>Hatch of fertile</label><div class="in"><input id="hatch" type="number" inputmode="decimal" value="85" min="1" max="100" step="1"><span class="unit">%</span></div><small>Dead in shell lives here</small></div>
       <div class="field"><label>Chick survival</label><div class="in"><input id="surv" type="number" inputmode="decimal" value="92" min="1" max="100" step="1"><span class="unit">%</span></div><small>Weaned and sellable</small></div>
       <div class="field"><label>Sell-through</label><div class="in"><input id="sell" type="number" inputmode="decimal" value="92" min="1" max="100" step="1"><span class="unit">%</span></div><small>Sold divided by produced</small></div>
-      <div class="field"><label>Egg to sale</label><div class="in"><input id="e2s" type="text" readonly value=""><span class="unit">%</span></div><small>Your true conversion rate</small></div>
+      <div class="field res"><label>Egg to sale</label><div class="in"><input id="e2s" type="text" readonly value=""><span class="unit">%</span></div><small>Your true conversion rate. This is the number everything else hangs on</small></div>
     </div>
     <div class="chain">Sold divided by sell-through = <b>produced</b> &nbsp;·&nbsp; produced divided by (fertility × hatch × survival) = <b>eggs</b> &nbsp;·&nbsp; eggs divided by eggs per clutch = <b>clutches</b></div>
   </details>
@@ -301,15 +319,15 @@ footer a:hover{text-decoration:underline}
     <div class="lane">
       <h3>Volume lane</h3>
       <div class="row2">
-        <div><label>Babies</label><input id="vN" type="number" inputmode="numeric" value="100" min="0"></div>
-        <div><label>Price each</label><input id="vP" type="number" inputmode="numeric" value="55000" min="0" step="1000"></div>
+        <div><label>Babies</label><input id="vN" type="text" inputmode="numeric" data-grp="1" value="100"></div>
+        <div><label>Price each</label><input id="vP" type="text" inputmode="numeric" data-grp="1" value="55,000"></div>
       </div>
     </div>
     <div class="lane">
       <h3>Premium lane</h3>
       <div class="row2">
-        <div><label>Babies</label><input id="pN" type="number" inputmode="numeric" value="20" min="0"></div>
-        <div><label>Price each</label><input id="pP" type="number" inputmode="numeric" value="120000" min="0" step="1000"></div>
+        <div><label>Babies</label><input id="pN" type="text" inputmode="numeric" data-grp="1" value="20"></div>
+        <div><label>Price each</label><input id="pP" type="text" inputmode="numeric" data-grp="1" value="120,000"></div>
       </div>
     </div>
   </div>
@@ -339,7 +357,28 @@ var $=function(id){return document.getElementById(id);};
 var F=['target','price','eggs','fert','hatch','surv','sell','vN','vP','pN','pP'];
 var LADDER=[50000,75000,100000,150000,200000,300000];
 
-function n(id){var v=parseFloat($(id).value);return isFinite(v)?v:0;}
+function n(id){var v=parseFloat(String($(id).value).replace(/,/g,''));return isFinite(v)?v:0;}
+function grp(v){
+  var neg=v.indexOf('-')===0;
+  var d=v.replace(/[^0-9]/g,'');
+  if(!d) return neg?'-':'';
+  return (neg?'-':'')+Number(d).toLocaleString('en-IN');
+}
+function wireGroup(el){
+  el.addEventListener('input',function(){
+    var old=el.value, pos=el.selectionStart;
+    var digitsBefore=(old.slice(0,pos).match(/[0-9]/g)||[]).length;
+    var next=grp(old);
+    if(next!==old){
+      el.value=next;
+      var c=0,seen=0;
+      while(c<next.length&&seen<digitsBefore){ if(/[0-9]/.test(next[c])) seen++; c++; }
+      try{ el.setSelectionRange(c,c); }catch(e){}
+    }
+  });
+  el.addEventListener('blur',function(){ el.value=grp(el.value); });
+}
+Array.prototype.slice.call(document.querySelectorAll('input[data-grp]')).forEach(wireGroup);
 function fmt(x){return Math.round(x).toLocaleString('en-IN');}
 function lakh(x){
   if(x>=10000000) return (x/10000000).toFixed(2).replace(/\.?0+$/,'')+' crore';
@@ -365,7 +404,7 @@ function calc(){
   $('oProd').textContent=fmt(r.prod);
   $('oEggs').textContent=fmt(r.eggs);
   $('oClut').textContent=fmt(r.clut);
-  $('oClutSub').textContent='at '+e+' eggs each';
+  $('oClutSub').textContent='at '+e+' eggs per clutch';
 
   var rows=LADDER.slice();
   var html='<div class="band">Same target, same rates, different price</div>';
