@@ -778,13 +778,15 @@ function copyText(p){
   p.doses.forEach(function(d){ L.push(d[0] + ' = ' + d[1].replace(/<[^>]+>/g,'')); });
   L.push('');
   L.push('WHEN = ' + p.when);
+  L.push('');
   L.push('WHAT IT DOES = ' + p.why);
+  L.push('');
   L.push('ALTERNATIVES = ' + p.alt);
   L.push('');
   L.push(p.v ? 'Verified from the manufacturer label' : 'NO PUBLIC DOSE - read your own pack');
   if (p.src) L.push('Source: ' + p.src);
   L.push('');
-  L.push('via bird-medicine-tracker (KinBird Aviary)');
+  L.push('Prepared by KinBird Aviary');
   return L.join(String.fromCharCode(10));
 }
 
