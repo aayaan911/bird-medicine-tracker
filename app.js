@@ -785,8 +785,7 @@ function copyText(p){
   if (p.src) L.push('Source: ' + p.src);
   L.push('');
   L.push('via bird-medicine-tracker (KinBird Aviary)');
-  return L.join('
-');
+  return L.join(String.fromCharCode(10));
 }
 
 function bindCopy(root){
