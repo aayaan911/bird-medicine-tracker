@@ -432,19 +432,23 @@ var P = [
   "doses": [
    [
     "WATER",
-    "Read the dose from your own bottle"
+    "<b>5 ml</b> per 250 ml, so <b>20 ml</b> per 1 litre"
    ],
    [
-    "NOTE",
-    "Vetafarm publishes the contents but not the mixing rate online"
+    "CROP NEEDLE",
+    "<b>5 ml</b> in 50 ml water, then <b>1 ml</b> per 100 g body weight"
+   ],
+   [
+    "RULE",
+    "Sole water source. Mix fresh every day"
    ]
   ],
   "when": "Three to five days for transport, import recovery, heat, and sick or collapsed birds",
-  "why": "Glucose 135 g, citrate 30.31 g, sodium 13 g and potassium 20 g per litre. The fastest energy and rehydration on the shelf",
-  "v": 0,
+  "why": "Glucose 135 g, citrate 30.31 g, sodium 13 g and potassium 20 g per litre. The fastest energy and rehydration on the shelf and the first response for any weak bird",
+  "v": 1,
   "src": "https://vetafarm.com.au/product/spark-liquid/",
-  "big": "See label",
-  "unit": "rate not published online",
+  "big": "20 ml",
+  "unit": "per 1 litre water",
   "img": "https://vetafarm.com.au/wp-content/uploads/2025/10/00144-1.jpg",
   "shape": "bottle",
   "ab": "SPK",
@@ -563,24 +567,28 @@ var P = [
   "k": "micronid metronidazole canker trichomoniasis quarantine new bird import protozoa crop",
   "doses": [
    [
-    "WATER",
-    "Dose by the metronidazole strength printed on your own pack"
+    "BODY WEIGHT",
+    "<b>25 to 50 mg per kg</b> metronidazole, every 12 to 24 hours"
+   ],
+   [
+    "A 50 g LOVEBIRD",
+    "<b>1.25 to 2.5 mg</b> per dose. Calculate from your pack strength"
    ],
    [
     "RULE",
     "Mix fresh daily. Remove every other water source"
    ]
   ],
-  "when": "Five to seven days, never three. New quarantine birds only",
-  "why": "Metronidazole for canker. Strength differs between manufacturers, so no single number is safe to publish. Dosing a healthy flock breeds resistance and damages gut flora",
-  "v": 0,
-  "src": "",
-  "big": "See label",
-  "unit": "strength differs by brand",
+  "when": "Five to seven days, never three. New quarantine birds only, on diagnosis",
+  "why": "Metronidazole for canker. MSD Veterinary Manual gives 25 to 50 mg/kg orally every 12 to 24 hours for 5 to 7 days in psittacines. Brand strengths differ, so always work from mg per kg, never from a spoon",
+  "v": 1,
+  "src": "https://www.msdvetmanual.com/exotic-and-laboratory-animals/pet-birds/parasitic-diseases-of-pet-birds",
+  "big": "25-50 mg/kg",
+  "unit": "metronidazole, per bird weight",
   "img": "",
   "shape": "sachet",
   "ab": "MET",
-  "alt": "Any metronidazole or ronidazole product. Strength differs by brand, always dose from your own pack"
+  "alt": "Ronidazole 6 to 10 mg/kg for 7 to 14 days · Carnidazole 20 to 30 mg/kg for 1 to 2 days (MSD Vet Manual)"
  },
  {
   "id": "herbs",
@@ -664,20 +672,32 @@ var P = [
   "k": "a21 nutribird hand feed chicks soft food protein d3 fortified rearing formula",
   "doses": [
    [
-    "MIXING",
-    "Follow the ratio on your own pack for hand rearing"
+    "HATCH TO DAY 2",
+    "<b>1 part</b> A21 to <b>6 parts</b> water"
    ],
    [
-    "SOFT FOOD",
-    "Added to soft food as a protein boost"
+    "DAY 2 TO 4",
+    "<b>1 part</b> to <b>5</b>, then <b>1 part</b> to <b>4</b>"
+   ],
+   [
+    "DAY 4 TO 5",
+    "<b>1 part</b> to <b>3 parts</b> water"
+   ],
+   [
+    "DAY 5 TO WEANING",
+    "<b>1 part</b> to <b>2 to 2.5 parts</b> water"
+   ],
+   [
+    "TEMPERATURE",
+    "Mix with boiled water, feed at <b>39°C</b>"
    ]
   ],
   "when": "Mainly when four or five chicks are in a box. Optional otherwise",
-  "why": "Complete hand rearing formula. It is fortified with D3, so it counts as a D3 source under the one per day rule",
-  "v": 0,
-  "src": "https://www.versele-laga.com/",
-  "big": "See label",
-  "unit": "mixing ratio on pack",
+  "why": "Complete hand rearing formula. Mix with hot boiled water, stir hard, rest one minute, cool to 39°C. It is fortified with D3, so it counts as a D3 source under the one per day rule",
+  "v": 1,
+  "src": "https://www.versele-laga.com/en/vl/nutribird/products/nutribird-a21",
+  "big": "1 : 2.5",
+  "unit": "powder to water, day 5 on",
   "img": "",
   "shape": "tub",
   "ab": "A21",
