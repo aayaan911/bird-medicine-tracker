@@ -2718,6 +2718,10 @@ chips.forEach(function(c){
   });
 });
 q.addEventListener('input', filter);
+try{
+  var _qs=new URLSearchParams(location.search).get('q');
+  if(_qs){ q.value=_qs; clrBtn.classList.add('show'); setTimeout(function(){ var d=document.getElementById('doses'); if(d) d.scrollIntoView({behavior:'smooth',block:'start'}); },150); }
+}catch(e){}
 clrBtn.addEventListener('click', function(){ q.value = ''; q.focus(); filter(); });
 
 var btn = document.getElementById('themeBtn');
