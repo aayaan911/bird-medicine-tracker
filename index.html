@@ -163,7 +163,7 @@ h1 em{font-style:normal;color:var(--green)}
 .cverdict{background:var(--mint);border:1px solid color-mix(in srgb,var(--green) 26%,transparent);border-radius:var(--rl);padding:15px 18px;margin-top:14px;font-size:13.5px;color:var(--ink2);line-height:1.6}
 .cverdict b{color:var(--gdeep)}
 .cnote{font-size:11.5px;color:var(--ink3);margin-top:12px;line-height:1.6}
-@media(max-width:700px){.cbd{padding:14px}.cwrap{min-width:440px}.crow{grid-template-columns:96px repeat(var(--cn),1fr)}.crow>div{padding:9px 10px;font-size:11.5px}}
+
 .malt{margin-top:9px;padding-top:8px;border-top:1px dashed var(--line2);font-size:11.8px;color:var(--ink3);line-height:1.5}
 .malt b{display:block;font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink3);margin-bottom:3px}
 
@@ -375,6 +375,46 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 [data-theme="dark"] .t-versele.mthumb{background:linear-gradient(150deg,#2e1622,#24141c)}
 [data-theme="dark"] .t-local.mthumb{background:linear-gradient(150deg,#2f1712,#241310)}
 .mnwrap{overflow:hidden}
+
+/* ---------- compare table: sticky label column + width that scales with columns ---------- */
+.cwrap{--ckw:138px;min-width:calc(var(--ckw) + (var(--cn) * 116px))}
+.crow{grid-template-columns:var(--ckw) repeat(var(--cn),minmax(112px,1fr))}
+.ck{position:sticky;left:0;z-index:2;background:var(--bg2)}
+.chead .ck{background:var(--gdeep)}
+[data-theme="dark"] .chead .ck{background:#0c3a2d}
+.cbasis .ck,.cwin .ck,.ctot .ck{background:var(--bg2)}
+.cbd{-webkit-overflow-scrolling:touch}
+.cscroll{display:none;font-size:11px;color:var(--ink3);margin:0 0 9px;align-items:center;gap:6px}
+@media(max-width:860px){.cscroll{display:flex}}
+@media(max-width:700px){
+  .cbd{padding:14px}
+  .cwrap{--ckw:104px;min-width:calc(var(--ckw) + (var(--cn) * 104px))}
+  .crow{grid-template-columns:var(--ckw) repeat(var(--cn),minmax(100px,1fr))}
+  .crow>div{padding:9px 10px;font-size:11.5px}
+  .chead .cv{font-size:12px}
+  .cbox{max-height:92vh}
+  .chd{padding:15px 16px}
+  .chd h3{font-size:16px}
+}
+@media(max-width:480px){
+  .cwrap{--ckw:92px;min-width:calc(var(--ckw) + (var(--cn) * 96px))}
+  .crow{grid-template-columns:var(--ckw) repeat(var(--cn),minmax(94px,1fr))}
+  .crow>div{padding:8px 8px;font-size:11px}
+  .cmod{padding:8px}
+}
+
+/* ---------- dark mode contrast fixes: --gdeep flips light in dark theme ---------- */
+[data-theme="dark"] .fchip.on{background:var(--gdeep);border-color:var(--gdeep);color:#06231c}
+[data-theme="dark"] .chead{background:#0c3a2d;color:#eaf7f1}
+[data-theme="dark"] .chead .ck{color:rgba(234,247,241,.72)}
+[data-theme="dark"] .chead .cv{color:#eaf7f1}
+[data-theme="dark"] .chead .crown{background:rgba(143,227,196,.26);color:#d8f5e9}
+[data-theme="dark"] .cv.win{background:#123a2e}
+[data-theme="dark"] .cv.win b,[data-theme="dark"] .ctot .cv.win b{color:#8fe3c4}
+[data-theme="dark"] .cverdict{background:#10312a;border-color:rgba(47,190,142,.34);color:#c3d6cd}
+[data-theme="dark"] .cverdict b{color:#8fe3c4}
+[data-theme="dark"] .sec-deep{background:linear-gradient(160deg,#07362a 0%,#0b4a39 70%);color:#eaf7f1}
+[data-theme="dark"] .band{background:#0c3a2d;color:#eaf7f1}
 </style>
 </head>
 <body>

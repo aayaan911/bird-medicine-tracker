@@ -1709,6 +1709,7 @@ function buildCompare(pid){
   var verdict='<div class="cverdict"><b>'+best.name+' wins on '+bs.toFixed(1)+' out of 10.</b> '+esc(best.alt)+'</div>'
     +'<div class="crank">'+esc(rank)+'</div>';
   return '<div class="cjob">'+GJOB[me.g]+'</div>'
+    +'<div class="cscroll"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>Swipe the table sideways to see every product</div>'
     +'<div class="cwrap" style="--cn:'+group.length+'">'+head+basis+rows+wr+tot+'</div>'
     +verdict
     +'<div class="cnote"><b>How the rating works.</b> Each row is scored against the best product in that row, then multiplied by the weight shown next to the row name and totalled out of 10. Every figure is what one label dose actually delivers, converted to a common basis. A blank means the manufacturer does not publish that figure, which is not the same as zero. '+GWARN[me.g]+'</div>';
