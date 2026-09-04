@@ -616,15 +616,15 @@ var P = [
    ]
   ],
   "when": "Every day, all season. Remix a fresh batch every six weeks",
-  "why": "Immunity, gut health, natural antibacterial action, digestion, feather condition and colour. A house formula, so it carries no manufacturer label",
-  "v": 0,
+  "why": "Immunity, gut health, natural antibacterial action, digestion, feather condition and colour. A house formula developed by KinBird Aviary, so no manufacturer label exists to check against",
+  "v": 2,
   "src": "",
   "big": "2 g",
   "unit": "per 200 g soft food",
   "img": "",
   "shape": "leaf",
   "ab": "HRB",
-  "alt": "No substitute. House formula, see the herb list in the notes page"
+  "alt": "No substitute. Dose set by the aviary at 1 percent of soft food weight, hard ceiling 2 percent"
  },
  {
   "id": "acv",
@@ -648,88 +648,15 @@ var P = [
    ]
   ],
   "when": "Once a week, on a fixed day",
-  "why": "Gut pH support, mild antimicrobial action and an appetite stimulant",
-  "v": 0,
+  "why": "Gut pH support, mild antimicrobial action and an appetite stimulant. Long standing aviary practice rather than a labelled veterinary product",
+  "v": 2,
   "src": "",
   "big": "5 ml",
   "unit": "per 1 litre water",
   "img": "",
   "shape": "bottle",
   "ab": "ACV",
-  "alt": "No substitute needed. Any raw unfiltered apple cider vinegar"
- },
- {
-  "id": "a21",
-  "name": "NutriBird A21",
-  "brand": "other",
-  "bl": "Versele-Laga",
-  "size": "800 g",
-  "cats": [
-   "other",
-   "daily",
-   "breeding"
-  ],
-  "k": "a21 nutribird hand feed chicks soft food protein d3 fortified rearing formula",
-  "doses": [
-   [
-    "HATCH TO DAY 2",
-    "<b>1 part</b> A21 to <b>6 parts</b> water"
-   ],
-   [
-    "DAY 2 TO 4",
-    "<b>1 part</b> to <b>5</b>, then <b>1 part</b> to <b>4</b>"
-   ],
-   [
-    "DAY 4 TO 5",
-    "<b>1 part</b> to <b>3 parts</b> water"
-   ],
-   [
-    "DAY 5 TO WEANING",
-    "<b>1 part</b> to <b>2 to 2.5 parts</b> water"
-   ],
-   [
-    "TEMPERATURE",
-    "Mix with boiled water, feed at <b>39°C</b>"
-   ]
-  ],
-  "when": "Mainly when four or five chicks are in a box. Optional otherwise",
-  "why": "Complete hand rearing formula. Mix with hot boiled water, stir hard, rest one minute, cool to 39°C. It is fortified with D3, so it counts as a D3 source under the one per day rule",
-  "v": 1,
-  "src": "https://www.versele-laga.com/en/vl/nutribird/products/nutribird-a21",
-  "big": "1 : 2.5",
-  "unit": "powder to water, day 5 on",
-  "img": "",
-  "shape": "tub",
-  "ab": "A21",
-  "alt": "Any complete hand rearing formula. All are D3 fortified, count them under the one D3 rule"
- },
- {
-  "id": "cuttle",
-  "name": "Cuttlebone",
-  "brand": "other",
-  "bl": "Other",
-  "size": "Per cage",
-  "cats": [
-   "other",
-   "daily"
-  ],
-  "k": "cuttlebone calcium free choice mineral beak trim",
-  "doses": [
-   [
-    "IN CAGE",
-    "Free choice, always available"
-   ]
-  ],
-  "when": "Every cage, all season",
-  "why": "A calcium reserve the bird draws on when she needs it, and it keeps the beak trimmed",
-  "v": 1,
-  "src": "",
-  "big": "Free",
-  "unit": "always in the cage",
-  "img": "",
-  "shape": "block",
-  "ab": "Ca",
-  "alt": "Mineral block · crushed baked eggshell. Free choice, always available"
+  "alt": "Any raw unfiltered apple cider vinegar with the mother. No branded equivalent needed"
  }
 ];
 
@@ -737,6 +664,7 @@ var SUN='M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0
 var MOON='M12.34 2.02C6.59 1.82 2 6.42 2 12c0 5.52 4.48 10 10 10 3.71 0 6.93-2.02 8.66-5.02-7.51-.25-12.09-8.43-8.32-14.96z';
 var TICK='<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
 var WARN='<svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>';
+var HOUSE='<svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>';
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
@@ -803,7 +731,9 @@ function copyText(p){
   L.push('');
   L.push('ALTERNATIVES = ' + p.alt);
   L.push('');
-  L.push(p.v ? 'Verified from the manufacturer label' : 'NO PUBLIC DOSE - read your own pack');
+  L.push(p.v===2 ? 'House formula developed by KinBird Aviary, no manufacturer label exists'
+        : p.v ? 'Verified from the manufacturer label'
+        : 'NO PUBLIC DOSE - read your own pack');
   if (p.src) L.push('Source: ' + p.src);
   L.push('');
   L.push('Prepared by KinBird Aviary');
@@ -839,6 +769,9 @@ function fallback(txt, done){
 }
 
 function badge(p){
+  if(p.v===2){
+    return '<span class="vb house" title="Developed by KinBird Aviary. No manufacturer label exists for this one.">'+HOUSE+'House formula</span>';
+  }
   if(p.v){
     return p.src
       ? '<a class="vb ok" href="'+p.src+'" target="_blank" rel="noopener" title="Open the manufacturer page this dose came from">'+TICK+'Verified</a>'
