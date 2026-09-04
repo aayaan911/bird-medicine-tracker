@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes and Protocols · Immunity, calendar, feeding · Bird Medicine Tracker</title>
+<meta name="description" content="Weekly reference for lovebird and budgerigar breeders. Immunity programme, safety rules, weekly and monthly supplement calendar, feeding times, environment targets and the dead-egg diagnostic table.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%278%27%20fill%3D%27%231d9e75%27%2F%3E%3Cpath%20d%3D%27M16%206c-1.1%200-2%20.9-2%202%200%20.37.1.71.28%201.01C12.93%209.6%2012%2010.94%2012%2012.5c0%20.83.25%201.6.69%202.24L8%2019.43V23c0%201.1.9%202%202%202h4.5c3.04%200%205.5-2.46%205.5-5.5v-7c0-1.56-.93-2.9-2.28-3.49.18-.3.28-.64.28-1.01%200-1.1-.9-2-2-2z%27%20fill%3D%27%23fff%27%2F%3E%3Ccircle%20cx%3D%2718.5%27%20cy%3D%2711.5%27%20r%3D%271%27%20fill%3D%27%231d9e75%27%2F%3E%3C%2Fsvg%3E">
+<meta name="theme-color" content="#1d9e75">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f7f7f5; --mint:#e1f5ee; --mint2:#f3fbf7; --sand:#faeeda; --sky:#e6f1fb;
+  --ink:#111315; --ink2:#5c6367; --ink3:#8f979c;
+  --green:#1d9e75; --gmid:#12855f; --gdeep:#085041; --line:#e7e7e3; --line2:#f0f0ed;
+  --card:#ffffff; --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.05);
+  --shadow2:0 24px 62px rgba(0,0,0,.10);
+  --danger:#c0392b; --dangerbg:#fee2e2; --blue:#3b82f6; --amber:#b8790c; --amberbg:#fdf3e0;
+  --r:9px; --rl:14px; --rxl:18px;
+}
+[data-theme="dark"]{
+  --bg:#0e1418; --bg2:#141b21; --mint:#10312a; --mint2:#0f1c1a; --sand:#2c2416; --sky:#12222f;
+  --ink:#eef2f4; --ink2:#a9b6bf; --ink3:#7b8892;
+  --green:#2fbe8e; --gmid:#24a87a; --gdeep:#8fe3c4; --line:#222c34; --line2:#1a232a;
+  --card:#151d24; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  --shadow2:0 24px 62px rgba(0,0,0,.45);
+  --danger:#ff6b5e; --dangerbg:#2a1512; --amber:#e0b872; --amberbg:#2a2114;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--ink);font-family:'DM Sans','Hind Siliguri',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.narrow{max-width:900px;margin:0 auto}
+a{color:inherit}
+
+.topbar{position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;height:56px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15.5px;letter-spacing:-.35px;text-decoration:none;flex-shrink:0}
+.mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(150deg,var(--green),var(--gmid));display:grid;place-items:center;flex-shrink:0}
+.mark svg{width:16px;height:16px;fill:#fff}
+.spacer{flex:1}
+.navlink{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink2);text-decoration:none;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);white-space:nowrap;transition:.16s;flex-shrink:0}
+.navlink:hover{border-color:var(--green);color:var(--green)}
+.navlink svg{width:13px;height:13px;fill:currentColor}
+.tbtn{display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--line);color:var(--ink2);width:32px;height:32px;border-radius:8px;cursor:pointer;font-family:inherit;transition:.16s;flex-shrink:0}
+.tbtn:hover{border-color:var(--green);color:var(--green)}
+.tbtn svg{width:15px;height:15px;fill:currentColor}
+@media(max-width:640px){.navlink span{display:none}.navlink{padding:7px 9px}}
+@media(max-width:560px){.brand span{display:none}}
+
+.hero{background:linear-gradient(180deg,var(--bg) 0%,var(--mint2) 100%);border-bottom:1px solid var(--line);padding:48px 0 40px;text-align:center}
+@media(max-width:640px){.hero{padding:34px 0 30px}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--mint);border:1px solid color-mix(in srgb,var(--green) 32%,transparent);color:var(--gdeep);padding:6px 15px;border-radius:99px;font-size:12.5px;font-weight:600;margin-bottom:20px}
+.eyebrow svg{width:13px;height:13px;fill:currentColor}
+h1{font-size:clamp(29px,5vw,48px);font-weight:700;letter-spacing:-.038em;line-height:1.08;max-width:19ch;margin:0 auto;text-wrap:balance}
+@media(min-width:700px){h1{max-width:24ch}}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--ink2);font-size:clamp(14.5px,2vw,16.5px);margin:14px auto 0;max-width:58ch;line-height:1.62}
+
+.toc{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+.toc a{background:var(--card);border:1px solid var(--line);color:var(--ink2);padding:7px 14px;border-radius:99px;font-size:12.5px;font-weight:600;text-decoration:none;transition:.16s}
+.toc a:hover{border-color:var(--green);color:var(--green)}
+
+section{padding:46px 0}
+@media(max-width:640px){section{padding:34px 0}}
+.sec-grey{background:var(--bg2)}
+.sec-deep{background:linear-gradient(160deg,#0a5f47 0%,var(--gdeep) 70%);color:#fff}
+[data-theme="dark"] .sec-deep{background:linear-gradient(160deg,#0c2a24 0%,#081c18 70%)}
+.head-blk{text-align:center;margin-bottom:26px}
+.pill-lbl{display:inline-block;background:var(--mint);color:var(--gdeep);padding:5px 13px;border-radius:99px;font-size:10px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;margin-bottom:14px}
+.sec-deep .pill-lbl{background:rgba(255,255,255,.13);color:#fff}
+h2{font-size:clamp(22px,3.4vw,32px);font-weight:700;letter-spacing:-.032em;line-height:1.16;max-width:19ch;margin:0 auto;text-wrap:balance}
+@media(min-width:700px){h2{max-width:24ch}}
+.sub{color:var(--ink2);font-size:14.5px;margin-top:10px;max-width:58ch;margin-left:auto;margin-right:auto;line-height:1.6}
+.sec-deep .sub{color:rgba(255,255,255,.72)}
+h3{font-size:16px;font-weight:700;letter-spacing:-.25px;margin-bottom:9px}
+
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:var(--rxl);overflow:hidden;box-shadow:var(--shadow)}
+.tr{display:grid;border-bottom:1px solid var(--line2)}
+.tr:last-child{border-bottom:0}
+.tr>div{padding:13px 16px;font-size:13.5px}
+.th{background:var(--bg2);font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink3)}
+.th>div{padding:11px 16px}
+.c2{grid-template-columns:1fr 2fr}
+.c3{grid-template-columns:1fr 1.4fr 1.6fr}
+.c4{grid-template-columns:.9fr 1fr 1fr 1.6fr}
+@media(max-width:700px){.c3,.c4{grid-template-columns:1fr}.tr>div{padding:10px 14px}.th{display:none}}
+.tr b{color:var(--green);font-weight:700}
+.tr>div:first-child{font-weight:600}
+.tr.bad{background:color-mix(in srgb,var(--dangerbg) 42%,var(--card))}
+.tr.bad>div:first-child{color:var(--danger)}
+
+.alert{background:var(--dangerbg);border:1px solid color-mix(in srgb,var(--danger) 30%,transparent);border-radius:var(--rl);padding:18px 20px;margin:0 auto 14px}
+.alert h3{color:var(--danger);font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px}
+.alert ul{margin-left:17px;font-size:14px;color:var(--ink)}
+.alert li{margin-bottom:5px}
+.note{background:var(--card);border:1px solid var(--line);border-radius:var(--rl);padding:15px 18px;font-size:13.5px;color:var(--ink2)}
+.note b{color:var(--ink)}
+.note+.note{margin-top:12px}
+.note.warn{background:var(--amberbg);border-color:color-mix(in srgb,var(--amber) 34%,transparent)}
+.note.warn b{color:var(--amber)}
+.note.good{background:var(--mint);border-color:color-mix(in srgb,var(--green) 26%,transparent)}
+.note.good b{color:var(--gdeep)}
+.note a{color:var(--green);font-weight:600;text-decoration:none}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rxl);padding:19px;box-shadow:var(--shadow);transition:.18s}
+.card:hover{transform:translateY(-3px);border-color:var(--green);box-shadow:var(--shadow2)}
+.card .n{width:26px;height:26px;border-radius:50%;background:var(--mint);color:var(--gdeep);display:grid;place-items:center;font-size:12px;font-weight:700;margin-bottom:11px}
+.card p{font-size:13.2px;color:var(--ink2)}
+.card b{color:var(--ink)}
+
+.deepbox{max-width:900px;margin:0 auto;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:var(--rxl);padding:6px 22px}
+.drow{display:grid;grid-template-columns:180px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.11)}
+.drow:last-child{border-bottom:0}
+.dk{font-weight:700;font-size:13.5px;color:#fff}
+.dv{font-size:13.5px;color:rgba(255,255,255,.9)}
+.dv b{color:#8fe3c4}
+@media(max-width:640px){.drow{grid-template-columns:1fr;gap:5px}}
+
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:32px 0 26px;text-align:center}
+footer p{font-size:12.8px;color:var(--ink3);max-width:64ch;margin:0 auto 8px}
+footer a{color:var(--green);font-weight:600;text-decoration:none}
+footer a:hover{text-decoration:underline}
+.disclaim{font-size:11.5px;color:var(--ink3);max-width:74ch;margin:14px auto 0;line-height:1.65}
+.src{font-size:11.5px;color:var(--ink3);margin-top:12px;line-height:1.7}
+.src a{color:var(--green);text-decoration:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 24 24"><path d="M12 2c-1.1 0-2 .9-2 2 0 .37.1.71.28 1.01C8.93 5.6 8 6.94 8 8.5c0 .83.25 1.6.69 2.24L4 15.43V19c0 1.1.9 2 2 2h4.5c3.04 0 5.5-2.46 5.5-5.5V8.5c0-1.56-.93-2.9-2.28-3.49.18-.3.28-.64.28-1.01 0-1.1-.9-2-2-2zm2.5 5.5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/></svg></span>
+    <span>Bird Medicine Tracker</span>
+  </a>
+  <div class="spacer"></div>
+  <a class="navlink" href="index.html"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg><span>Medicine doses</span></a>
+  <a class="navlink" href="season.html"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM7 17H5v-6h2v6zm4 0H9V7h2v10zm4 0h-2v-4h2v4zm4 0h-2V9h2v8z"/></svg><span>Season calculator</span></a>
+  <button class="tbtn" id="themeBtn" aria-label="Toggle light and dark mode">
+    <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/></svg>
+  </button>
+</div></div>
+
+<div class="hero"><div class="wrap">
+  <span class="eyebrow"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>Notes and protocols</span>
+  <h1>The reference you check<br><em>every week</em>.</h1>
+  <p class="lead">Immunity, safety rules, the supplement calendar, feeding times, environment targets and the dead-egg diagnostic table. Everything that is not a dose lives here.</p>
+  <div class="toc">
+    <a href="#immunity">Immunity</a>
+    <a href="#rules">Safety rules</a>
+    <a href="#calendar">Calendar</a>
+    <a href="#feeding">Feeding</a>
+    <a href="#environment">Environment</a>
+    <a href="#deadegg">Dead egg</a>
+    <a href="#quarantine">Quarantine</a>
+  </div>
+</div></div>
+
+<section id="immunity">
+<div class="wrap"><div class="narrow">
+  <div class="head-blk">
+    <span class="pill-lbl">The question everyone asks</span>
+    <h2>How to build immunity</h2>
+    <p class="sub">There is no monthly course that makes a bird immune. Here is what the research actually says, and what to do instead.</p>
+  </div>
+
+  <div class="note warn"><b>First, the correction.</b> Antibodies are made by the bird's own immune system when it meets an antigen, through vaccination or real exposure. No supplement creates an antibody. What nutrition does is decide <b>how well the bird can mount that response</b>. Correcting a deficiency raises antibody output sharply. Megadosing a bird that is already adequate does not raise it further, and fat soluble vitamins accumulate.</div>
+
+  <div class="note good" style="margin-top:12px"><b>What the research does support.</b> In poultry trials, vitamin E supplemented birds produced antibodies earlier and in greater quantity after vaccination, and vitamin E deficient birds showed depressed antibody production. Vitamin A deficiency reduces the ability to synthesise specific antibodies. Vitamin C improves antibody mediated response in birds under stress. So the nutrients matter, as insurance against deficiency, not as a booster.</div>
+
+  <div class="head-blk" style="margin-top:34px;margin-bottom:20px"><h3 style="font-size:19px">What actually keeps birds from getting sick, ranked</h3></div>
+  <div class="cards">
+    <div class="card"><div class="n">1</div><h3>Biosecurity</h3><p><b>The single biggest factor.</b> Four week quarantine for every new bird, in a separate room, handled last every day. Wash hands between rooms. No contact with pigeons or wild birds. Most aviary outbreaks walk in through the door on a new bird or on your own hands.</p></div>
+    <div class="card"><div class="n">2</div><h3>Dry hygiene</h3><p>Change tray paper daily and wipe trays dry. Remove uneaten soft food within two hours. Dry every drinker and bowl daily. <b>Trichomonas dies when dry.</b> Most bacterial load in an aviary comes from wet droppings and standing water, not from the air.</p></div>
+    <div class="card"><div class="n">3</div><h3>Nutritional adequacy</h3><p>Vitamin A, E, C, zinc and selenium are the immune nutrients. <b>The goal is no deficiency, not maximum dose.</b> A complete daily multivitamin plus a proper seed and soft food base covers all of them. More does not mean stronger.</p></div>
+    <div class="card"><div class="n">4</div><h3>Gut flora</h3><p>A probiotic five days at the start of every month, and five days after any antibiotic course. Good bacteria physically occupy the gut so pathogens cannot colonise. This is the one routine monthly course that is genuinely supported.</p></div>
+    <div class="card"><div class="n">5</div><h3>Low stress</h3><p>Heat above 32°C, crowding, constant disturbance and sudden noise all raise stress hormones, and stress hormones suppress immune function directly. A calm, ventilated, cool room does more than any bottle.</p></div>
+    <div class="card"><div class="n">6</div><h3>Vaccination</h3><p>Where a vaccine exists for a disease in your region, such as pox, it is the only thing on this list that creates real antibodies. Ask an avian vet what is available locally.</p></div>
+  </div>
+
+  <div class="alert" style="margin-top:26px">
+    <h3>Why a monthly 7 day medicine course is a bad idea</h3>
+    <ul>
+      <li><b>Antibiotics and antiprotozoals given routinely breed resistance.</b> When you actually need the drug for a sick bird, it no longer works</li>
+      <li>They kill gut flora, which removes the protection described in point 4 above</li>
+      <li>They mask early symptoms, so you find disease later and sicker</li>
+      <li>A healthy flock on a monthly antimicrobial is being treated for nothing</li>
+    </ul>
+  </div>
+
+  <div class="note"><b>If someone recommends a product you cannot verify.</b> Ask for the manufacturer's own page, the composition, and the dose per litre. If none of those exist in writing, do not put it in your birds on a monthly schedule. An unverifiable product run 12 times a year is 12 chances to cause harm you cannot diagnose.</div>
+
+  <div class="note good" style="margin-top:12px"><b>The honest summary.</b> If you already run a daily multivitamin, a monthly probiotic, proper quarantine, dry trays and a cool ventilated room, <b>you are already running the best immunity programme available.</b> There is nothing to add. The next gain is not another product, it is doing these six consistently.</div>
+
+  <p class="src">Sources: <a href="https://www.sciencedirect.com/science/article/pii/S0032579120309810" target="_blank" rel="noopener">Centennial Review: Effects of vitamins A, D, E and C on the chicken immune system, Poultry Science</a> · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4589363/" target="_blank" rel="noopener">Vitamin A deficiency impairs mucosal immune function in chicks, PMC</a></p>
+</div></div>
+</section>
+
+<section class="sec-grey" id="rules">
+<div class="wrap"><div class="narrow">
+  <div class="head-blk">
+    <span class="pill-lbl">Read before any dose</span>
+    <h2>Three rules that prevent most harm</h2>
+    <p class="sub">Most supplement damage in an aviary comes from stacking and from timing, not from underdosing.</p>
+  </div>
+
+  <div class="alert">
+    <h3>1. Never combine on the same day</h3>
+    <ul>
+      <li>Two fertility products, such as Fetura 12 with Ferti-Vit, Nekton E or Nekton Breed Star</li>
+      <li>Two vitamin D3 products. Calciform, Calcivet, Avigold Advance, Breed Star and A21 all carry D3</li>
+      <li>Two electrolyte products, such as Spark Liquid with Nekton Elektrolyt or Prolyte-C</li>
+      <li>Any probiotic during a course of medication</li>
+    </ul>
+  </div>
+
+  <div class="note warn"><b>2. Stop at the first egg.</b> Nekton E and Nekton Breed Star are pre breeding products. Nekton's own label says to stop the day the first egg is laid, because continuing drives the male too hard and disrupts incubation. Running them through incubation is a known way to lose a clutch.</div>
+
+  <div class="note"><b>3. The water rule.</b> Medicated water must be the only water source, mixed fresh every day, and left in the cage no longer than six hours, or three hours on a hot afternoon. Never withhold drinking water overnight to force feeding, that risks dehydration and egg binding.</div>
+
+  <div class="note" style="margin-top:16px"><b>Why D3 stacking matters.</b> Vitamin D3 is fat soluble and accumulates. Chronic excess causes calcium deposits in soft tissue including the kidneys. Delivered dose per litre at label rate: a high strength liquid D3 product can carry four times what a calcium product carries, so it is the one that must never be doubled.</div>
+</div></div>
+</section>
+
+<section id="calendar">
+<div class="wrap"><div class="narrow">
+  <div class="head-blk">
+    <span class="pill-lbl">Standing routine</span>
+    <h2>Weekly and monthly calendar</h2>
+    <p class="sub">What runs regardless of whether a pair is breeding. Doses are on the medicine page.</p>
+  </div>
+  <div class="tbl">
+    <div class="tr th c3"><div>When</div><div>What</div><div>Why</div></div>
+    <div class="tr c3"><div>Every day</div><div>Daily multivitamin in water · herbs in soft food · cuttlebone in cage</div><div>Baseline nutrition. Prevents the deficiencies that suppress antibody response</div></div>
+    <div class="tr c3"><div>One fixed day weekly</div><div>Apple cider vinegar, 5 ml per 1 litre</div><div>Gut pH, mild antimicrobial, appetite. Not on a medicated day</div></div>
+    <div class="tr c3"><div>Days 1 to 5, every month</div><div>Probiotic, all birds</div><div>The only routine monthly course with real support. Competitive exclusion in the gut</div></div>
+    <div class="tr c3"><div>Every 6 weeks</div><div>Mix a fresh herb batch, discard the old jar</div><div>Ground seed and powdered herbs lose potency and go rancid. This is why herbs "stop working" for most breeders</div></div>
+    <div class="tr c3"><div>Before boxes go in</div><div>Disinfect all cages, boxes and tools. Trim vent feathers on both birds</div><div>Vent feathers blocking cloacal contact is the most common cause of clear eggs</div></div>
+    <div class="tr c3"><div>After every clutch</div><div>Probiotic electrolyte for the hen, three to five days</div><div>She loses roughly 2 g of skeletal calcium per egg. Rehydrate and reset her gut</div></div>
+    <div class="tr c3"><div>Rest period</div><div>Calcium and D3 twice weekly, hen alone in a flight cage</div><div>Most breeders stop calcium when the eggs stop, which is exactly backwards</div></div>
+    <div class="tr bad c3"><div>Never routine</div><div>Antibiotics, antiprotozoals, dewormers on a fixed monthly schedule</div><div>Breeds resistance, destroys gut flora, masks symptoms. Treat on diagnosis only</div></div>
+  </div>
+</div></div>
+</section>
+
+<section class="sec-grey" id="feeding">
+<div class="wrap"><div class="narrow">
+  <div class="head-blk">
+    <span class="pill-lbl">Timing</span>
+    <h2>The feeding system</h2>
+    <p class="sub">Timing decides whether birds actually eat the supplements you paid for.</p>
+  </div>
+  <div class="tbl">
+    <div class="tr th c2"><div>Time</div><div>Action</div></div>
+    <div class="tr c2"><div>5:00 PM</div><div>Seed pot <b>out</b>. Plain water stays in the cage all night. Never withhold water</div></div>
+    <div class="tr c2"><div>6:00 AM</div><div>Plain water <b>out</b>. Medicated water <b>in</b>. Soft food <b>in</b>. Birds are hungry and thirsty at the same moment, so they take both</div></div>
+    <div class="tr c2"><div>Within 2 hours</div><div>Soft food <b>out</b>, whether finished or not. One hour in hot or wet weather</div></div>
+    <div class="tr c2"><div>Max 6 hours</div><div>Medicated water out and replaced. Three hours on a hot afternoon</div></div>
+    <div class="tr c2"><div>Evening</div><div>Seed pot back in, fresh. Cycle repeats</div></div>
+  </div>
+  <div class="note warn" style="margin-top:14px"><b>Why the two hour rule is not optional.</b> Boiled egg and soft food at 30°C in high humidity is a bacterial culture medium. Leaving it until midday is how loose droppings, crop infections and dead chicks start. Anything not eaten in two hours was never going to be eaten.</div>
+  <div class="note" style="margin-top:12px"><b>Soft food quantities.</b> Non breeding pairs: one boiled egg plus a half spoon of rearing formula plus herbs. Breeding pairs: two eggs, twice daily. Resting hens: two eggs per <b>week</b> only, no rearing formula, or she comes back into condition too early.</div>
+</div></div>
+</section>
+
+<section class="sec-deep" id="environment">
+<div class="wrap">
+  <div class="head-blk">
+    <span class="pill-lbl">The room</span>
+    <h2>Environment targets</h2>
+    <p class="sub">Nutrition decides fertility. Environment decides hatch. These are the numbers that matter.</p>
+  </div>
+  <div class="deepbox">
+    <div class="drow"><div class="dk">Temperature</div><div class="dv">Keep below <b>32°C</b>. Above that, poultry research shows damage to sperm producing cells and falling testosterone. Heat sterility in males is real and reversible</div></div>
+    <div class="drow"><div class="dk">Humidity</div><div class="dv">Target <b>VPD 9 to 15 hPa</b> during incubation, not a raw humidity percentage. VPD accounts for temperature, raw RH does not</div></div>
+    <div class="drow"><div class="dk">Ventilation</div><div class="dv"><b>10 to 15 air changes per hour</b>, CO2 under 3,000 ppm. A fan can only bring indoor humidity down to outdoor humidity, never below it</div></div>
+    <div class="drow"><div class="dk">Ammonia</div><div class="dv">Your nose detects it at about <b>5 ppm</b>. If you smell it at 6 AM the answer is daily dry trays, not a longer fan cycle. Ammonia comes from wet droppings, not from air</div></div>
+    <div class="drow"><div class="dk">Light</div><div class="dv"><b>12 to 14 hours</b>, consistent. Set lights to bracket the natural day so the total stays constant as daylight shortens. Do not extend for more activity, it over drives hens</div></div>
+    <div class="drow"><div class="dk">UVB</div><div class="dv">Glass blocks <b>100%</b> of UVB. Indoor birds make zero natural vitamin D3. Either a UVB lamp or a dietary D3 product, one or the other, not neither</div></div>
+    <div class="drow"><div class="dk">Nest box</div><div class="dv">Box humidity always runs <b>above</b> room humidity because of the hen breathing in a sealed cavity. Six to eight small vent holes near the top. Thin dry nesting. No bath water during incubation</div></div>
+  </div>
+</div>
+</section>
+
+<section id="deadegg">
+<div class="wrap"><div class="narrow">
+  <div class="head-blk">
+    <span class="pill-lbl">Open every failure</span>
+    <h2>The dead egg tells you what went wrong</h2>
+    <p class="sub">The stage at which the embryo died is the diagnosis. Open every failed egg and write down the stage.</p>
+  </div>
+  <div class="tbl">
+    <div class="tr th c2"><div>Died at</div><div>Cause</div></div>
+    <div class="tr c2"><div>Clear, no development</div><div>Not fertile. Male anatomy, vent feathers, perch grip, or heat sterility. Not a nutrition problem</div></div>
+    <div class="tr c2"><div>Day 1 to 3, blood ring</div><div>Fertility marginal, vitamin E or selenium short, or the egg was chilled or shaken</div></div>
+    <div class="tr c2"><div>Day 7 to 14, part formed</div><div>Nutrition gap or overheating</div></div>
+    <div class="tr bad c2"><div>Day 18 to 23, fully formed, never pipped</div><div><b>Humidity too high.</b> The commonest killer. Air cell too small, chick cannot breathe. Also thin shell or CO2</div></div>
+    <div class="tr c2"><div>Pipped then died</div><div>Humidity too low, chick shrink wrapped in the membrane. Or oxygen and CO2</div></div>
+    <div class="tr c2"><div>Malposition, curled toes</div><div>B vitamin shortage, or incubation temperature swings</div></div>
+  </div>
+  <div class="note" style="margin-top:14px"><b>The air cell check, in plain terms.</b> An egg breathes through its shell. As water leaves, the empty space at the fat end grows. That space is the chick's first breath before it pips. Candle in a dark room, pencil a line on the shell where the air cell ends. <b>Day 7 about 1/8 of the egg. Day 14 about 1/4. Day 18 about 1/3.</b> Smaller than 1/3 at day 18 means too humid. Much bigger means too dry. Day 18 is the last candle, never after.</div>
+</div></div>
+</section>
+
+<section class="sec-grey" id="quarantine">
+<div class="wrap"><div class="narrow">
+  <div class="head-blk">
+    <span class="pill-lbl">New birds</span>
+    <h2>Quarantine, four weeks, no shortcuts</h2>
+    <p class="sub">Imported and newly bought birds arrive dehydrated, immune suppressed and often carrying something latent that flares under transport stress.</p>
+  </div>
+  <div class="tbl">
+    <div class="tr th c2"><div>Week</div><div>What to do</div></div>
+    <div class="tr c2"><div>Week 1</div><div>Separate room. Electrolyte and rehydration only. Warmth. Minimal handling. Let the bird eat and drink and settle</div></div>
+    <div class="tr c2"><div>Week 2</div><div>Add a daily multivitamin and light soft food. Watch droppings, breathing and weight daily</div></div>
+    <div class="tr c2"><div>Weeks 3 and 4</div><div>Any treatment course indicated by what you have actually observed. Probiotic five days afterwards</div></div>
+    <div class="tr c2"><div>Every day of all four weeks</div><div>Handle quarantine birds <b>last</b>. Wash hands and change footwear before returning to the main flock</div></div>
+    <div class="tr bad c2"><div>Never</div><div>Move a new bird into breeding before four weeks are complete. Rushing an import is the most common way to lose one</div></div>
+  </div>
+  <div class="note" style="margin-top:14px"><b>If several new birds die across separate purchases from different sellers,</b> the common factor is not the sellers. It is the receiving process. That is a protocol problem with a known fix, not bad luck.</div>
+</div></div>
+</section>
+
+<footer><div class="wrap">
+  <p><b>Notes and Protocols</b> is part of the <a href="index.html">Bird Medicine Tracker</a> by <a href="https://lovebirdgenetics.com" target="_blank" rel="noopener">KinBird Aviary</a>, Dhaka. Free to use and share.</p>
+  <p class="disclaim">This page is a reference tool, not veterinary advice. Nutrition and environment figures are drawn from published poultry and avian research and from manufacturer labels. Formulations and local conditions vary. Consult an avian veterinarian for a sick bird, and never medicate a healthy flock without a diagnosis.</p>
+</div></footer>
+
+<script>
+(function(){
+var SUN='M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z';
+var MOON='M12.34 2.02C6.59 1.82 2 6.42 2 12c0 5.52 4.48 10 10 10 3.71 0 6.93-2.02 8.66-5.02-7.51-.25-12.09-8.43-8.32-14.96z';
+var btn=document.getElementById('themeBtn'),icon=document.getElementById('themeIcon');
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  icon.innerHTML='<path d="'+(t==='dark'?SUN:MOON)+'"/>';
+  btn.setAttribute('aria-label',t==='dark'?'Switch to light mode':'Switch to dark mode');
+  try{localStorage.setItem('bmt-theme',t);}catch(e){}
+}
+var saved=null;
+try{saved=localStorage.getItem('bmt-theme');}catch(e){}
+if(!saved&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches) saved='dark';
+setTheme(saved||'light');
+btn.addEventListener('click',function(){setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');});
+})();
+</script>
+</body>
+</html>

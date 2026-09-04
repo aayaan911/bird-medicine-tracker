@@ -47,6 +47,10 @@ a{color:inherit}
 .tbtn{display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--line);color:var(--ink2);width:32px;height:32px;border-radius:8px;cursor:pointer;font-family:inherit;transition:.16s;flex-shrink:0}
 .tbtn:hover{border-color:var(--green);color:var(--green)}
 .tbtn svg{width:15px;height:15px;fill:currentColor}
+.navlink{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink2);text-decoration:none;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);white-space:nowrap;transition:.16s;flex-shrink:0}
+.navlink:hover{border-color:var(--green);color:var(--green)}
+.navlink svg{width:13px;height:13px;fill:currentColor}
+@media(max-width:640px){.navlink span{display:none}.navlink{padding:7px 9px}}
 @media(max-width:560px){.brand span{display:none}}
 
 /* ---------- hero ---------- */
@@ -112,7 +116,14 @@ h1 em{font-style:normal;color:var(--green)}
 .fchip:hover{border-color:var(--green);color:var(--green)}
 .fchip.on{background:var(--gdeep);border-color:var(--gdeep);color:#fff}
 [data-theme="dark"] .fchip.on{background:var(--green);border-color:var(--green);color:#0e1418}
-.rcount{text-align:center;color:var(--ink3);font-size:12px;margin-top:9px;font-variant-numeric:tabular-nums}
+.rcount{display:none}
+.cpy{display:inline-flex;align-items:center;gap:5px;background:var(--bg2);border:1px solid var(--line);color:var(--ink3);font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:3px 9px;border-radius:99px;cursor:pointer;font-family:inherit;transition:.16s;margin-top:8px;white-space:nowrap}
+.cpy:hover{border-color:var(--green);color:var(--green);background:var(--card)}
+.cpy.ok{background:var(--mint);border-color:var(--green);color:var(--gdeep)}
+.cpy svg{width:10px;height:10px;fill:currentColor}
+.gcpy{width:100%;justify-content:center;margin-top:11px;padding:7px 10px;font-size:10px}
+.malt{margin-top:9px;padding-top:8px;border-top:1px dashed var(--line2);font-size:11.8px;color:var(--ink3);line-height:1.5}
+.malt b{display:block;font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink3);margin-bottom:3px}
 
 /* ---------- sections ---------- */
 section{padding:52px 0}
@@ -150,6 +161,7 @@ h2{font-size:clamp(22px,3.5vw,34px);font-weight:700;letter-spacing:-.032em;line-
 .mrow{display:grid;grid-template-columns:236px 1fr 196px 1fr;gap:0;border-bottom:1px solid var(--line2);transition:background .14s}
 .mrow:last-child{border-bottom:0}
 .mrow:hover{background:var(--bg2)}
+.mhead>div:last-child::after{content:" / alternatives";color:var(--ink3);opacity:.7}
 .mhead{background:var(--bg2);font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink3)}
 .mhead>div{padding:11px 16px}
 .mrow>div{padding:15px 16px}
@@ -313,6 +325,8 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <input id="q" type="search" placeholder="Search a product, a use, or a symptom…" autocomplete="off" aria-label="Search medicines">
     <button class="clr" id="clrBtn" aria-label="Clear search">&times;</button>
   </div>
+  <a class="navlink" href="docs.html" title="Notes and protocols"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span>Notes</span></a>
+  <a class="navlink" href="season.html" title="Season calculator"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM7 17H5v-6h2v6zm4 0H9V7h2v10zm4 0h-2v-4h2v4zm4 0h-2V9h2v8z"/></svg><span>Season calculator</span></a>
   <button class="tbtn" id="themeBtn" aria-label="Toggle light and dark mode">
     <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/></svg>
   </button>
@@ -379,9 +393,16 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <div class="rcount" id="rcount"></div>
 </div></div>
 
-<section id="rules">
+<section id="table">
 <div class="wrap">
+<div id="viewTable"><div class="mtable" id="tbl"></div></div>
+<div id="viewGallery" style="display:none"><div class="gal" id="galgrid"></div></div>
+<div class="empty" id="empty" style="display:none">Nothing matches that search. Try a symptom instead, like paralysis or droppings.</div>
+</div>
+</section>
 
+<section class="sec-grey" id="rules">
+<div class="wrap">
 <div class="head-blk">
   <span class="pill-lbl">Read this first</span>
   <h2>Three rules before any dose</h2>
@@ -402,13 +423,11 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 
 <div class="note"><b>Water rule.</b> Medicated water must be the only water source, mixed fresh every day, and left in the cage no longer than six hours, or three hours on a hot afternoon. <b>Doses below are the manufacturer figures</b>, converted to a 1 litre basis where the label used 250 ml or 500 ml.</div>
 
-<div id="viewTable"><div class="mtable" id="tbl"></div></div>
-<div id="viewGallery" style="display:none"><div class="gal" id="galgrid"></div></div>
-<div class="empty" id="empty" style="display:none">Nothing matches that search. Try a symptom instead, like paralysis or droppings.</div>
+<div class="note"><b>More protocols.</b> The full weekly and monthly calendar, the immunity programme, the herb formula, feeding times and the dead-egg diagnostic table live on the <a href="docs.html" style="color:var(--green);font-weight:600">notes page</a>.</div>
 </div>
 </section>
 
-<section class="sec-grey" id="emergency">
+<section id="emergency">
 <div class="wrap">
   <div class="head-blk">
     <span class="pill-lbl">Act within the hour</span>
@@ -503,6 +522,8 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
       <a href="#rules">Safety rules</a>
       <a href="#emergency">Emergency actions</a>
       <a href="#course">Breeding course</a>
+      <a href="docs.html">Notes and protocols</a>
+      <a href="season.html">Season calculator</a>
     </div>
     <div class="fcol">
       <h4>Sources</h4>
