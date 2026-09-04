@@ -251,7 +251,8 @@ var P = [
   "img": "",
   "shape": "bottle",
   "ab": "MYC",
-  "alt": "No direct substitute in this list. Respiratory support only"
+  "alt": "No direct substitute in this list. Respiratory support only",
+  "ncmp": "The only respiratory product on this list. Aviform files it under respiratory rather than gut, so it has no direct peer here."
  },
  {
   "id": "avimite",
@@ -282,7 +283,8 @@ var P = [
   "img": "https://www.aviform.co.uk/cdn/shop/files/250ml_6.png?format=webp&width=500",
   "shape": "bottle",
   "ab": "MITE",
-  "alt": "Avimite-X powder for the cage. Avi-Mite liquid works from inside the bird, powder works on the surface"
+  "alt": "Avimite-X powder for the cage. Avi-Mite liquid works from inside the bird, powder works on the surface",
+  "ncmp": "The only in-water mite treatment on this list, so there is no second product to score it against."
  },
  {
   "id": "nektons",
@@ -433,7 +435,7 @@ var P = [
   "img": "",
   "shape": "tub",
   "ab": "B",
-  "alt": "No direct substitute. Nekton says use only when necessary, otherwise Nekton S",
+  "alt": "It is a B group product only, no vitamin A, D3, E or C, so it scores near the bottom of a multivitamin table. That is the point of it. Use it as a short appetite and stress course, then go back to a complete multivitamin.",
   "n": {
    "basis": "per 1 L water at 4 g/L (Nekton states per daily ration)",
    "vitA": 0,
@@ -452,8 +454,14 @@ var P = [
    "potassium": 0,
    "chloride": 0,
    "glucose": 0,
-   "probiotic": 0
-  }
+   "probiotic": 0,
+   "strains": 0,
+   "enzymes": 0,
+   "binder": 0,
+   "acids": 0,
+   "copper": 0
+  },
+  "g": "multi"
  },
  {
   "id": "nektonel",
@@ -775,7 +783,8 @@ var P = [
   "img": "",
   "shape": "tub",
   "ab": "VIR",
-  "alt": "F10 disinfectant · 10 percent bleach for decontamination. Surfaces only, never on a bird"
+  "alt": "F10 disinfectant · 10 percent bleach for decontamination. Surfaces only, never on a bird",
+  "ncmp": "A surface disinfectant has no peer on a supplement list. It never goes near a live bird, so there is nothing to score it against."
  },
  {
   "id": "fertivit",
@@ -865,7 +874,8 @@ var P = [
   "img": "",
   "shape": "sachet",
   "ab": "MIC",
-  "alt": "Moxilin-CV Vet (amoxicillin + clavulanic acid, different class) · Dirovet for canker, which is a protozoan not a bacterium. None of these replaces a vet culture"
+  "alt": "Moxilin-CV Vet (amoxicillin + clavulanic acid, different class) · Dirovet for canker, which is a protozoan not a bacterium. None of these replaces a vet culture",
+  "ncmp": "Antibiotics are not scored on this site. You do not choose one by a number, you choose it on a vet diagnosis and ideally a culture. Scoring them would push you toward the strongest option, which is exactly how resistance gets bred. What this one covers is on its card."
  },
  {
   "id": "herbs",
@@ -901,7 +911,8 @@ var P = [
   "img": "",
   "shape": "leaf",
   "ab": "HRB",
-  "alt": "No substitute. Dose set by the aviary at 1 percent of soft food weight, hard ceiling 2 percent"
+  "alt": "No substitute. Dose set by the aviary at 1 percent of soft food weight, hard ceiling 2 percent",
+  "ncmp": "A KinBird house formula with no manufacturer label, so there is no declared analysis to put in a table."
  },
  {
   "id": "acv",
@@ -1249,7 +1260,8 @@ var P = [
    "chloride": 0,
    "glucose": 0,
    "probiotic": 0
-  }
+  },
+  "ncmp": "The only seed oil on this list. It is dosed per kilo of seed rather than per litre of water, so putting it in a water table would compare two different things."
  },
  {
   "id": "omnivit",
@@ -1414,7 +1426,8 @@ var P = [
    "chloride": 0,
    "glucose": 0,
    "probiotic": 0
-  }
+  },
+  "ncmp": "A single mineral product rather than a blend. Its zinc is already compared against the multivitamins on its own card."
  },
  {
   "id": "moxilincv",
@@ -1451,7 +1464,8 @@ var P = [
   "img": "",
   "shape": "sachet",
   "ab": "MOX",
-  "alt": "Micronid (erythromycin + sulfadiazine + trimethoprim, different class). Neither replaces a culture and sensitivity test"
+  "alt": "Micronid (erythromycin + sulfadiazine + trimethoprim, different class). Neither replaces a culture and sensitivity test",
+  "ncmp": "Antibiotics are not scored on this site. You do not choose one by a number, you choose it on a vet diagnosis and ideally a culture. Scoring them would push you toward the strongest option, which is exactly how resistance gets bred. What this one covers is on its card."
  },
  {
   "id": "dirovet",
@@ -1492,7 +1506,8 @@ var P = [
   "img": "",
   "shape": "sachet",
   "ab": "MET",
-  "alt": "MSD Vet Manual gives 25 to 50 mg/kg every 12 to 24 h for parrots, higher than this pigeon label. Ronidazole 6 to 10 mg/kg for 7 to 14 days is the other option"
+  "alt": "MSD Vet Manual gives 25 to 50 mg/kg every 12 to 24 h for parrots, higher than this pigeon label. Ronidazole 6 to 10 mg/kg for 7 to 14 days is the other option",
+  "ncmp": "Antiprotozoals are not scored on this site. Canker is diagnosed, not guessed, and the dose runs on body weight rather than on a rating. What this one covers is on its card."
  },
  {
   "id": "twoplus",
@@ -1778,7 +1793,8 @@ function buildCompare(pid){
   var rowsDef = me.g ? GROWS[me.g] : null;
   var group = me.g ? P.filter(function(x){return x.g===me.g && x.n;}) : [me];
   if(!rowsDef || group.length<2){
-    return '<div class="cverdict">This product has no direct alternative in the list, so there is nothing to score it against.</div>';
+    return '<div class="cverdict"><b>No scored table for '+esc(me.name)+'.</b> '
+      +(me.ncmp || 'This product has no direct alternative in the list, so there is nothing to score it against.')+'</div>';
   }
   var score={}, wins={};
   group.forEach(function(g){score[g.id]=0;wins[g.id]=0;});
