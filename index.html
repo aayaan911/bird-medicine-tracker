@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="bingbot" content="noindex,nofollow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bird Medicine Tracker · Doses, routes and schedules for lovebird breeders</title>
@@ -148,6 +151,13 @@ h1 em{font-style:normal;color:var(--green)}
 .zero{color:var(--ink3)}
 .crown{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:var(--green);color:#fff;padding:1px 6px;border-radius:99px;margin-left:6px;vertical-align:1px}
 .chead .crown{background:rgba(255,255,255,.22)}
+.cjob{font-size:12.5px;color:var(--ink3);margin:0 0 12px;line-height:1.55}
+.cw{display:inline-block;font-size:9px;font-weight:700;color:var(--ink3);background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:0 4px;margin-left:6px;vertical-align:1px}
+.chead .cw,.ctot .cw{border-color:transparent}
+.cwin{background:var(--bg2);font-size:13px}
+.cwin .cv{font-weight:700}
+.cof{font-size:11px;color:var(--ink3);margin-left:2px;font-weight:600}
+.crank{font-size:12px;color:var(--ink3);margin-top:9px;text-align:center;font-variant-numeric:tabular-nums}
 .ctot{background:var(--bg2);font-size:14px}
 .ctot .cv b{font-size:17px}
 .cverdict{background:var(--mint);border:1px solid color-mix(in srgb,var(--green) 26%,transparent);border-radius:var(--rl);padding:15px 18px;margin-top:14px;font-size:13.5px;color:var(--ink2);line-height:1.6}
@@ -210,6 +220,7 @@ h2{font-size:clamp(22px,3.5vw,34px);font-weight:700;letter-spacing:-.032em;line-
 .mrow[data-brand="vetafarm"] .mname{border-left-color:#3b82f6}
 .mrow[data-brand="other"] .mname{border-left-color:#f0a02e}
 .mrow[data-brand="versele"] .mname{border-left-color:#e0518a}
+.mrow[data-brand="local"] .mname{border-left-color:#c8412f}
 .mn{font-weight:700;font-size:14.5px;letter-spacing:-.2px}
 .bpill{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:99px;margin:6px 5px 0 0;text-transform:uppercase}
 .b-aviform{background:var(--mint);color:var(--gdeep)}
@@ -218,6 +229,8 @@ h2{font-size:clamp(22px,3.5vw,34px);font-weight:700;letter-spacing:-.032em;line-
 .b-other{background:var(--sand);color:#8a5a08}
 .b-versele{background:#fbe6ef;color:#b2245c}
 [data-theme="dark"] .b-versele{background:#2e1622;color:#f0a7c5}
+.b-local{background:#fdeae6;color:#9c2d1f}
+[data-theme="dark"] .b-local{background:#2f1712;color:#f0ab9c}
 [data-theme="dark"] .b-nekton{color:#c4a5fd}
 [data-theme="dark"] .b-vetafarm{color:#8dc0f5}
 [data-theme="dark"] .b-other{color:#e0b872}
@@ -240,6 +253,7 @@ h2{font-size:clamp(22px,3.5vw,34px);font-weight:700;letter-spacing:-.032em;line-
   .mrow[data-brand="vetafarm"] .mname{border-top-color:#3b82f6}
   .mrow[data-brand="other"] .mname{border-top-color:#f0a02e}
   .mrow[data-brand="versele"] .mname{border-top-color:#e0518a}
+  .mrow[data-brand="local"] .mname{border-top-color:#c8412f}
   .mwhen::before{content:"WHEN · ";font-size:9.5px;font-weight:700;color:var(--ink3);letter-spacing:.5px}
   .mwhy::before{content:"WHY · ";font-size:9.5px;font-weight:700;color:var(--ink3);letter-spacing:.5px}
 }
@@ -257,11 +271,13 @@ h2{font-size:clamp(22px,3.5vw,34px);font-weight:700;letter-spacing:-.032em;line-
 .gtop.t-vetafarm{background:linear-gradient(150deg,#d7e8fa,#eef4fc)}
 .gtop.t-other{background:linear-gradient(150deg,#fae7cf,#fdf4e8)}
 .gtop.t-versele{background:linear-gradient(150deg,#fbdae8,#fdeef4)}
+.gtop.t-local{background:linear-gradient(150deg,#fbdcd4,#fdefeb)}
 [data-theme="dark"] .gtop.t-aviform{background:linear-gradient(150deg,#0f2f26,#12251f)}
 [data-theme="dark"] .gtop.t-nekton{background:linear-gradient(150deg,#231b38,#1b1729)}
 [data-theme="dark"] .gtop.t-vetafarm{background:linear-gradient(150deg,#132535,#111d27)}
 [data-theme="dark"] .gtop.t-other{background:linear-gradient(150deg,#2c2416,#211c13)}
 [data-theme="dark"] .gtop.t-versele{background:linear-gradient(150deg,#2e1622,#24141c)}
+[data-theme="dark"] .gtop.t-local{background:linear-gradient(150deg,#2f1712,#241310)}
 .gnum{position:absolute;top:11px;left:11px;width:23px;height:23px;border-radius:50%;background:rgba(255,255,255,.72);color:#111315;display:grid;place-items:center;font-size:10.5px;font-weight:700;font-variant-numeric:tabular-nums}
 [data-theme="dark"] .gnum{background:rgba(255,255,255,.14);color:#eef2f4}
 .gflag{position:absolute;top:11px;right:11px}
@@ -351,11 +367,13 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 .t-vetafarm.mthumb{background:linear-gradient(150deg,#d7e8fa,#eef4fc)}
 .t-other.mthumb{background:linear-gradient(150deg,#fae7cf,#fdf4e8)}
 .t-versele.mthumb{background:linear-gradient(150deg,#fbdae8,#fdeef4)}
+.t-local.mthumb{background:linear-gradient(150deg,#fbdcd4,#fdefeb)}
 [data-theme="dark"] .t-aviform.mthumb{background:linear-gradient(150deg,#0f2f26,#12251f)}
 [data-theme="dark"] .t-nekton.mthumb{background:linear-gradient(150deg,#231b38,#1b1729)}
 [data-theme="dark"] .t-vetafarm.mthumb{background:linear-gradient(150deg,#132535,#111d27)}
 [data-theme="dark"] .t-other.mthumb{background:linear-gradient(150deg,#2c2416,#211c13)}
 [data-theme="dark"] .t-versele.mthumb{background:linear-gradient(150deg,#2e1622,#24141c)}
+[data-theme="dark"] .t-local.mthumb{background:linear-gradient(150deg,#2f1712,#241310)}
 .mnwrap{overflow:hidden}
 </style>
 </head>
@@ -421,6 +439,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <button class="fchip" data-f="nekton">Nekton</button>
     <button class="fchip" data-f="vetafarm">Vetafarm</button>
     <button class="fchip" data-f="versele">Versele-Laga</button>
+    <button class="fchip" data-f="local">Bangladesh</button>
     <button class="fchip" data-f="other">Other</button>
     </div>
     <div class="vtog" id="vtog" role="group" aria-label="Choose a view">
