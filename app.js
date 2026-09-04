@@ -1506,7 +1506,7 @@ var P = [
   "k": "two plus square bangladesh local antifungal aspergillus fusarium penicillium mycotoxicosis aflatoxin mould damp seed monsoon",
   "doses": [
    [
-    "POULTRY LABEL",
+    "LABEL",
     "<b>1 ml per 2 to 4 litres</b> of drinking water, 3 to 5 days"
    ],
    [
@@ -1514,20 +1514,50 @@ var P = [
     "<b>1 ml into 3 litres</b>, then fill the pots from that jug"
    ],
    [
+    "PER LITRE OF PRODUCT",
+    "Saccharomyces cerevisiae <b>20 g</b> + yeast extract <b>0.3 g</b> · copper penta-sulphate <b>10 g</b> · citric, phosphoric, malic and tartaric acid"
+   ],
+   [
     "WARNING",
-    "Poultry label. No cage bird dose exists"
+    "Contains copper. Never run it alongside Six Plus, which carries the same 10 g per litre"
    ]
   ],
-  "when": "During a mould or damp feed problem, 3 to 5 days. Not routine",
-  "why": "Antifungal and mycotoxin product aimed at Aspergillus, Fusarium, Penicillium and aflatoxicosis. Relevant in a Dhaka monsoon when seed picks up moisture, but the label is poultry only so treat the rate as a starting point and fix the seed storage first",
+  "when": "Damp seed or a mould problem, 3 to 5 days. Never on the same day as Six Plus",
+  "why": "Copper, four acids and 20 g of Saccharomyces cerevisiae per litre. Square publishes it as a liquid toxin binder for mycotoxicosis, aflatoxicosis, Aspergillus, Fusarium and Penicillium. It is the same product class as Six Plus, not an alternative to it, so running both doubles the copper for no extra benefit",
   "v": 1,
-  "src": "https://www.arogga.com/product/70292/two-plus-liquid-100ml",
+  "src": "https://www.squarepharma.com.bd/downloads/Two-Plus%20Liquid.pdf",
   "big": "1 ml / 2-4 L",
   "unit": "poultry label, water",
   "img": "",
   "shape": "bottle",
   "ab": "2PL",
-  "alt": "Six Plus (binds the toxin and acidifies) · Mycoform-CA (respiratory, not gut). The real fix is dry seed storage, not a bottle"
+  "alt": "Six Plus is the stronger version of the same idea: 2.6 times the yeast binder per litre and seven acids against four. Both carry copper penta-sulphate at 10 g per litre of product, so pick one and never run them together.",
+  "g": "gut",
+  "n": {
+   "basis": "per 1 L water at 1 ml per 3 L",
+   "vitA": 0,
+   "vitD3": 0,
+   "vitE": 0,
+   "vitC": 0,
+   "bcount": 3,
+   "amino": 1,
+   "carnitine": 0,
+   "zinc": 0,
+   "selenium": 0,
+   "iodine": 0,
+   "calcium": 0,
+   "phos": 0,
+   "sodium": 0,
+   "potassium": 0,
+   "chloride": 0,
+   "glucose": 0,
+   "probiotic": 0,
+   "strains": 0,
+   "enzymes": 0,
+   "binder": 6.77,
+   "acids": 4,
+   "copper": 3.33
+  }
  },
  {
   "id": "sixplus",
@@ -1554,7 +1584,7 @@ var P = [
    ],
    [
     "WARNING",
-    "Contains copper. Never on the same day as vinegar or another acidifier"
+    "Contains copper. Never on the same day as vinegar, another acidifier, or Two-Plus"
    ]
   ],
   "when": "Toxin binder and water acidifier in the damp months. Not with apple cider vinegar",
@@ -1566,7 +1596,7 @@ var P = [
   "img": "",
   "shape": "bottle",
   "ab": "6PL",
-  "alt": "Synbiotic scores higher because live bacteria outweigh acid, but these do different jobs. Six Plus is the only one that binds mycotoxins, with 17.5 mg of yeast MOS and beta glucan per litre and seven acids to drop pH. Use it for damp seed, Synbiotic after antibiotics.",
+  "alt": "Two-Plus is the same class from Square but delivers 2.6 times less yeast binder and four acids against seven. Synbiotic scores higher again because live bacteria outweigh acid, but it does a different job. Use Six Plus for damp seed, Synbiotic after antibiotics, and never stack Six Plus with Two-Plus.",
   "g": "gut",
   "n": {
    "basis": "per 1 L water at 1 ml per 4 L",
@@ -1729,7 +1759,7 @@ var GWARN={
  calcfood:'D Nutrical lists vitamins A to E and nine minerals but quantifies only calcium, so every other row shows none rather than a number.',
  multi:'Muta-Vit and Omni-Vit are the same base formula. Muta-Vit adds vitamin E and seven times the biotin, which is why it scores higher, but it is sold as a moult product. Soluvite D and Soluvite D Breeder land on identical water concentrations at their own label rates.',
  electrolyte:'Only Spark quantifies its glucose. Prolyte-C and Nekton Elektrolyt both list sugars in the ingredients without a figure, so their glucose row reads none.',
- gut:'These three do different jobs, so read the rows before the score. Synbiotic adds live bacteria, Six Plus binds toxins and acidifies, vinegar only acidifies. Two-Plus is not scored here because Square publishes no composition for it.'
+ gut:'These do different jobs, so read the rows before the score. Synbiotic adds live bacteria, Six Plus and Two-Plus bind toxins and acidify, vinegar only acidifies. Six Plus and Two-Plus both carry copper penta-sulphate at 10 g per litre of product, so never run the two together.'
 };
 
 function fmtN(v,u){
@@ -1793,7 +1823,7 @@ function buildCompare(pid){
     +'<div class="cscroll"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>Swipe the table sideways to see every product</div>'
     +'<div class="cwrap" style="--cn:'+group.length+'">'+head+basis+rows+wr+tot+'</div>'
     +verdict
-    +'<div class="cnote"><b>How the rating works.</b> Each row is scored against the best product in that row, then multiplied by the weight shown next to the row name and totalled out of 10. Every figure is what one label dose actually delivers, converted to a common basis. A blank means the manufacturer does not publish that figure, which is not the same as zero. '+GWARN[me.g]+'</div>';
+    +'<div class="cnote"><b>A higher rating means denser, not better.</b> These products all sit above the deficiency threshold at label dose, so a bigger number buys you nothing once the requirement is met, and stacking two high scorers can push vitamin D3 or copper into harm. Match the product to the job, then run one. <b>How the rating works.</b> Each row is scored against the best product in that row, then multiplied by the weight shown next to the row name and totalled out of 10. Every figure is what one label dose actually delivers, converted to a common basis. A blank means the manufacturer does not publish that figure, which is not the same as zero. '+GWARN[me.g]+'</div>';
 }
 function openCompare(pid){
   var me=P.filter(function(x){return x.id===pid;})[0];
