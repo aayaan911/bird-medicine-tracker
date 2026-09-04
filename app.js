@@ -718,7 +718,33 @@ var P = [
   "img": "https://vetafarm.com.au/wp-content/uploads/2025/10/00713-1.jpg",
   "shape": "tub",
   "ab": "180",
-  "alt": "Prolyte-C carries a probiotic too. Any 9-strain avian probiotic"
+  "alt": "Six Plus and vinegar acidify the water, this repopulates it. Nine strains at 540 million CFU per litre plus seven enzymes, and the parents pass it to the chicks. It is the only one of the three that puts live bacteria back after antibiotics.",
+  "g": "gut",
+  "n": {
+   "basis": "per 1 L water at 3 g/L",
+   "vitA": 0,
+   "vitD3": 0,
+   "vitE": 0,
+   "vitC": 0,
+   "bcount": 0,
+   "amino": 0,
+   "carnitine": 0,
+   "zinc": 0,
+   "selenium": 0,
+   "iodine": 0,
+   "calcium": 0,
+   "phos": 0,
+   "sodium": 0,
+   "potassium": 0,
+   "chloride": 0,
+   "glucose": 0,
+   "probiotic": 540000000.0,
+   "strains": 9,
+   "enzymes": 7,
+   "binder": 0,
+   "acids": 0,
+   "copper": 0
+  }
  },
  {
   "id": "virkon",
@@ -907,7 +933,33 @@ var P = [
   "img": "",
   "shape": "bottle",
   "ab": "ACV",
-  "alt": "Any raw unfiltered apple cider vinegar with the mother. No branded equivalent needed"
+  "alt": "It scores near zero against the others because it is one acid and nothing else. No live bacteria, no enzymes, no toxin binder. Fine as a cheap weekly pH nudge, but it is not a substitute for Synbiotic or Six Plus.",
+  "g": "gut",
+  "n": {
+   "basis": "per 1 L water at 5 ml/L",
+   "vitA": 0,
+   "vitD3": 0,
+   "vitE": 0,
+   "vitC": 0,
+   "bcount": 0,
+   "amino": 0,
+   "carnitine": 0,
+   "zinc": 0,
+   "selenium": 0,
+   "iodine": 0,
+   "calcium": 0,
+   "phos": 0,
+   "sodium": 0,
+   "potassium": 0,
+   "chloride": 0,
+   "glucose": 0,
+   "probiotic": 0,
+   "strains": 0,
+   "enzymes": 0,
+   "binder": 0,
+   "acids": 1,
+   "copper": 0
+  }
  },
  {
   "id": "nektonmsa",
@@ -1514,7 +1566,33 @@ var P = [
   "img": "",
   "shape": "bottle",
   "ab": "6PL",
-  "alt": "Two-Plus (kills the mould, does not bind the toxin) · Apple cider vinegar (acidifies only, no binder, no copper) · Synbiotic 180-S (live bacteria instead of acid)"
+  "alt": "Synbiotic scores higher because live bacteria outweigh acid, but these do different jobs. Six Plus is the only one that binds mycotoxins, with 17.5 mg of yeast MOS and beta glucan per litre and seven acids to drop pH. Use it for damp seed, Synbiotic after antibiotics.",
+  "g": "gut",
+  "n": {
+   "basis": "per 1 L water at 1 ml per 4 L",
+   "vitA": 0,
+   "vitD3": 0,
+   "vitE": 0,
+   "vitC": 0,
+   "bcount": 0,
+   "amino": 0,
+   "carnitine": 0,
+   "zinc": 0,
+   "selenium": 0,
+   "iodine": 0,
+   "calcium": 0,
+   "phos": 0,
+   "sodium": 0,
+   "potassium": 0,
+   "chloride": 0,
+   "glucose": 0,
+   "probiotic": 0,
+   "strains": 0,
+   "enzymes": 0,
+   "binder": 17.5,
+   "acids": 7,
+   "copper": 2.5
+  }
  }
 ];
 
@@ -1633,22 +1711,25 @@ var GROWS={
  d3:[['calcium','Calcium','g',4],['vitD3','Vitamin D3','IU',3],['phos','Phosphorus','g',1.5],['zinc','Zinc','mg',0.5],['iodine','Iodine','mg',0.5]],
  calcfood:[['calcium','Calcium','g',4],['vitD3','Vitamin D3','IU',3],['phos','Phosphorus','g',1.5],['zinc','Zinc','mg',0.5],['iodine','Iodine','mg',0.5]],
  multi:[['vitA','Vitamin A','IU',2],['vitD3','Vitamin D3','IU',2],['vitE','Vitamin E','mg',2],['bcount','B vitamins','count',2],['vitC','Vitamin C','mg',1.5],['amino','Amino acids listed','count',1.5],['zinc','Zinc','mg',1],['iodine','Iodine','mg',1],['selenium','Selenium','mg',1]],
- electrolyte:[['sodium','Sodium','mg',3],['potassium','Potassium','mg',3],['glucose','Glucose','g',2.5],['chloride','Chloride','mg',2],['vitC','Vitamin C','mg',1],['bcount','B vitamins','count',1],['probiotic','Live bacteria','cfu',1]]
+ electrolyte:[['sodium','Sodium','mg',3],['potassium','Potassium','mg',3],['glucose','Glucose','g',2.5],['chloride','Chloride','mg',2],['vitC','Vitamin C','mg',1],['bcount','B vitamins','count',1],['probiotic','Live bacteria','cfu',1]],
+ gut:[['probiotic','Live bacteria','cfu',3],['binder','Toxin binder','mg',3],['acids','Acids that drop pH','count',2],['strains','Bacterial strains','count',2],['enzymes','Digestive enzymes','count',1.5],['copper','Copper salt','mg',0.5]]
 };
-var GNAME={fertility:'Fertility products',d3:'Calcium and vitamin D3 in water',calcfood:'Calcium in soft food',multi:'Daily multivitamins',electrolyte:'Electrolyte and recovery products'};
+var GNAME={fertility:'Fertility products',d3:'Calcium and vitamin D3 in water',calcfood:'Calcium in soft food',multi:'Daily multivitamins',electrolyte:'Electrolyte and recovery products',gut:'Gut and water treatments'};
 var GJOB={
  fertility:'Scored on what actually drives a fertile egg: vitamin E and L-carnitine first, then selenium, amino acids and vitamin A.',
  d3:'Scored on calcium delivered first, then the vitamin D3 that lets the hen absorb it.',
  calcfood:'Scored on calcium delivered per kilo of soft food, then vitamin D3 and the phosphorus balance.',
  multi:'Scored on covering the whole deficiency list: A, D3, E and the B group carry the most weight.',
- electrolyte:'Scored on rehydrating a sick or heat stressed bird: sodium, potassium and glucose carry the most weight.'
+ electrolyte:'Scored on rehydrating a sick or heat stressed bird: sodium, potassium and glucose carry the most weight.',
+ gut:'Scored on gut and water control: live bacteria and toxin binding carry the most weight, then acids that drop water pH.'
 };
 var GWARN={
  fertility:'Selenium is declared only by Ferti-Vit. Nekton does not publish a selenium figure, which is not the same as it containing none. Nekton claims 18 amino acids in Breed Star but only quantifies 5.',
  d3:'Calciform HiD3 delivers 1.25 mg of calcium per litre against Calcivet 660 mg. Calciform is a vitamin D3 driver, not a calcium source.',
  calcfood:'D Nutrical lists vitamins A to E and nine minerals but quantifies only calcium, so every other row shows none rather than a number.',
  multi:'Muta-Vit and Omni-Vit are the same base formula. Muta-Vit adds vitamin E and seven times the biotin, which is why it scores higher, but it is sold as a moult product. Soluvite D and Soluvite D Breeder land on identical water concentrations at their own label rates.',
- electrolyte:'Only Spark quantifies its glucose. Prolyte-C and Nekton Elektrolyt both list sugars in the ingredients without a figure, so their glucose row reads none.'
+ electrolyte:'Only Spark quantifies its glucose. Prolyte-C and Nekton Elektrolyt both list sugars in the ingredients without a figure, so their glucose row reads none.',
+ gut:'These three do different jobs, so read the rows before the score. Synbiotic adds live bacteria, Six Plus binds toxins and acidifies, vinegar only acidifies. Two-Plus is not scored here because Square publishes no composition for it.'
 };
 
 function fmtN(v,u){
