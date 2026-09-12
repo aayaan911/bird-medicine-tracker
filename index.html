@@ -465,8 +465,8 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 .neverstrip b{font-weight:800;text-transform:uppercase;letter-spacing:.5px;font-size:11.5px;display:block;margin-bottom:2px}
 
 /* ===== table view: a real grid, legible in both themes ===== */
-:root{ --grid:#dedeD8; --stripe:#fafaf8; }
-[data-theme="dark"]{ --grid:#2e3a42; --stripe:#161f25; }
+:root{ --grid:#dedeD8; --stripe:#f2f2ed; }
+[data-theme="dark"]{ --grid:#2e3a42; --stripe:#1c262e; }
 .mtable{border-color:var(--grid)}
 .mrow{border-bottom:1px solid var(--grid)}
 .mrow>div{border-left:1px solid var(--grid)}
@@ -481,6 +481,11 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   .mrow>div:not(:last-child){border-bottom:1px solid var(--grid)}
   .mrow:nth-of-type(even):not(.mhead):not(.emerg){background:transparent}
 }
+
+/* view toggle sits on the left, before the filter chips */
+.srow .vtog{order:-1;margin-right:2px}
+.srow .fchips{justify-content:flex-start}
+@media(max-width:640px){.srow{flex-wrap:wrap}.srow .vtog{order:-1}}
 </style>
 </head>
 <body>
