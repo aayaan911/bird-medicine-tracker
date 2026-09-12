@@ -3042,4 +3042,11 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeCompa
 
 if (location.hash === '#doses-gallery') savedV = 'gallery';
 setView(savedV === 'gallery' ? 'gallery' : 'table');
+
+/* live counts in the hero eyebrow, read straight off the data so they cannot go stale */
+(function(){
+  var c=document.getElementById('pcount'), v=document.getElementById('pver');
+  if(c) c.textContent = P.length;
+  if(v) v.textContent = P.filter(function(p){ return p.v === 1; }).length;
+})();
 })();
