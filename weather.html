@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="bingbot" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weather &amp; VPD · KinBird Aviary OS</title>
+<meta name="description" content="Live Dhaka forecast, Bangla calendar, dew point gap and today's fan and light settings for KinBird Aviary.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%278%27%20fill%3D%27%231d9e75%27%2F%3E%3Cpath%20d%3D%27M16%206c-1.1%200-2%20.9-2%202%200%20.37.1.71.28%201.01C12.93%209.6%2012%2010.94%2012%2012.5c0%20.83.25%201.6.69%202.24L8%2019.43V23c0%201.1.9%202%202%202h4.5c3.04%200%205.5-2.46%205.5-5.5v-7c0-1.56-.93-2.9-2.28-3.49.18-.3.28-.64.28-1.01%200-1.1-.9-2-2-2z%27%20fill%3D%27%23fff%27%2F%3E%3Ccircle%20cx%3D%2718.5%27%20cy%3D%2711.5%27%20r%3D%271%27%20fill%3D%27%231d9e75%27%2F%3E%3C%2Fsvg%3E">
+<meta name="theme-color" content="#1d9e75">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f7f7f5; --mint:#e1f5ee; --mint2:#f3fbf7; --sand:#faeeda; --sky:#e6f1fb; --rose:#f4eefe;
+  --ink:#111315; --ink2:#5c6367; --ink3:#8f979c;
+  --green:#1d9e75; --gmid:#12855f; --gdeep:#085041; --line:#e7e7e3; --line2:#f0f0ed;
+  --card:#ffffff; --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.05);
+  --ok:#1d9e75; --warn:#c9821a; --bad:#c8412f; --cool:#3b7fc4;
+}
+[data-theme="dark"]{
+  --bg:#0e1418; --bg2:#151d22; --mint:#11302a; --mint2:#0f2621; --sand:#2c2416; --sky:#132535; --rose:#241a33;
+  --ink:#eef2f1; --ink2:#a8b3b2; --ink3:#77837f;
+  --green:#2fbe8e; --gmid:#25a87c; --gdeep:#8fe3c4; --line:#232d33; --line2:#1b242a;
+  --card:#131b20; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  --ok:#2fbe8e; --warn:#e0a955; --bad:#e8776a; --cool:#6fa9e0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
+.bn{font-family:'Hind Siliguri','DM Sans',sans-serif}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+a{color:inherit}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:12px;height:56px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15.5px;letter-spacing:-.35px;text-decoration:none;flex-shrink:0}
+.mark{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--green);flex-shrink:0}
+.mark svg{width:17px;height:17px;fill:#fff}
+.bname{display:block;line-height:1.15}
+.bname small{display:block;font-size:10px;font-weight:500;color:var(--ink3);letter-spacing:0;margin-top:1px}
+.nav{display:flex;align-items:center;gap:7px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.navlink{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink2);text-decoration:none;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);white-space:nowrap;transition:.16s;flex-shrink:0}
+.navlink:hover{border-color:var(--green);color:var(--green)}
+.navlink.on{background:var(--green);border-color:var(--green);color:#fff}
+[data-theme="dark"] .navlink.on{color:#0e1418}
+.navlink svg{width:13px;height:13px;fill:currentColor}
+.tbtn{display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--line);color:var(--ink2);width:32px;height:32px;border-radius:8px;cursor:pointer;font-family:inherit;transition:.16s;flex-shrink:0}
+.tbtn:hover{border-color:var(--green);color:var(--green)}
+.tbtn svg{width:15px;height:15px;fill:currentColor}
+@media(max-width:760px){.navlink span{display:none}.navlink{padding:7px 9px}}
+@media(max-width:560px){.brand .bname{display:none}}
+
+/* hero */
+.hero{background:linear-gradient(165deg,var(--mint) 0%,var(--mint2) 55%,var(--bg) 100%);border-bottom:1px solid var(--line);padding:30px 0 26px}
+[data-theme="dark"] .hero{background:linear-gradient(165deg,#11302a 0%,#0f2621 55%,var(--bg) 100%)}
+.bdate{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 26px}
+.bdate .big{font-size:clamp(26px,4.6vw,40px);font-weight:700;letter-spacing:-1px;line-height:1.08}
+.bdate .bnbig{font-size:clamp(20px,3.4vw,29px);font-weight:600;color:var(--gmid);line-height:1.25}
+.bmeta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:99px;background:var(--card);border:1px solid var(--line);color:var(--ink2)}
+.pill b{color:var(--ink)}
+.pill.gr{background:var(--green);border-color:var(--green);color:#fff}
+[data-theme="dark"] .pill.gr{color:#0e1418}
+
+/* layout */
+section{padding:30px 0}
+h2{font-size:clamp(19px,2.4vw,25px);font-weight:700;letter-spacing:-.6px;margin-bottom:5px}
+.sub{font-size:14px;color:var(--ink2);margin-bottom:18px;max-width:760px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+
+/* gap engine */
+.gapwrap{display:grid;grid-template-columns:minmax(230px,300px) 1fr;gap:18px}
+@media(max-width:860px){.gapwrap{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.fld label{display:block;font-size:12px;font-weight:600;color:var(--ink2);margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.fld input{width:100%;font-family:inherit;font-size:16px;font-weight:600;padding:9px 11px;border-radius:9px;border:1px solid var(--line);background:var(--bg2);color:var(--ink)}
+.fld input:focus{outline:2px solid var(--green);outline-offset:-1px;border-color:var(--green)}
+.hint{font-size:11.5px;color:var(--ink3);margin-top:4px;line-height:1.45}
+.verdict{border-radius:13px;padding:17px 18px;border:1px solid var(--line);background:var(--bg2)}
+.verdict.ok{background:var(--mint);border-color:color-mix(in srgb,var(--green) 40%,transparent)}
+.verdict.warn{background:var(--sand);border-color:color-mix(in srgb,var(--warn) 40%,transparent)}
+.verdict.bad{background:#fdecea;border-color:color-mix(in srgb,var(--bad) 40%,transparent)}
+[data-theme="dark"] .verdict.bad{background:#2b1512}
+.vnum{font-size:40px;font-weight:700;letter-spacing:-1.6px;line-height:1}
+.vlab{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink2);margin-bottom:6px}
+.vtext{font-size:14.2px;margin-top:10px;line-height:1.6}
+.vtext b{font-weight:700}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(126px,1fr));gap:10px;margin-top:14px}
+.ro{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.ro .k{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)}
+.ro .v{font-size:19px;font-weight:700;letter-spacing:-.5px;margin-top:2px}
+
+/* action cards */
+.act{border-left:3px solid var(--green);padding:13px 15px;background:var(--bg2);border-radius:0 11px 11px 0;margin-bottom:10px}
+.act.w{border-left-color:var(--warn)}
+.act.b{border-left-color:var(--bad)}
+.act .t{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink3);margin-bottom:3px}
+.act .m{font-size:15px;font-weight:700;letter-spacing:-.3px}
+.act .d{font-size:13px;color:var(--ink2);margin-top:4px;line-height:1.55}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:13px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:13.4px;min-width:660px}
+th{background:var(--bg2);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line2);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.n{font-variant-numeric:tabular-nums;font-weight:600}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.3px}
+.t-ok{background:var(--mint);color:var(--gmid)}
+.t-warn{background:var(--sand);color:var(--warn)}
+.t-bad{background:#fdecea;color:var(--bad)}
+[data-theme="dark"] .t-bad{background:#2b1512;color:var(--bad)}
+.t-cool{background:var(--sky);color:var(--cool)}
+tr.today td{background:var(--mint2);font-weight:700}
+[data-theme="dark"] tr.today td{background:#0f2621}
+
+.note{font-size:12.6px;color:var(--ink3);margin-top:11px;line-height:1.6;max-width:820px}
+.note b{color:var(--ink2)}
+.err{background:#fdecea;border:1px solid color-mix(in srgb,var(--bad) 40%,transparent);color:var(--bad);padding:12px 14px;border-radius:11px;font-size:13.5px;font-weight:600}
+[data-theme="dark"] .err{background:#2b1512}
+footer{border-top:1px solid var(--line);padding:26px 0;margin-top:20px;font-size:13px;color:var(--ink3)}
+footer a{color:var(--green);font-weight:600}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-left:auto}
+.seg button{font-family:inherit;font-size:12.5px;font-weight:600;padding:6px 12px;background:var(--card);color:var(--ink2);border:0;cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--green);color:#fff}
+[data-theme="dark"] .seg button.on{color:#0e1418}
+.hd{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.hd>div{flex:1;min-width:240px}
+.hd .sub{margin-bottom:0}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 24 24"><path d="M12 2c-1.1 0-2 .9-2 2 0 .37.1.71.28 1.01C8.93 5.6 8 6.94 8 8.5c0 .83.25 1.6.69 2.24L4 15.43V19c0 1.1.9 2 2 2h4.5c3.04 0 5.5-2.46 5.5-5.5V8.5c0-1.56-.93-2.9-2.28-3.49.18-.3.28-.64.28-1.01 0-1.1-.9-2-2-2zm2.5 5.5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/></svg></span>
+    <span class="bname">KinBird Aviary OS<small>Weather &amp; VPD</small></span>
+  </a>
+  <div class="nav">
+    <a class="navlink on" href="weather.html"><svg viewBox="0 0 24 24"><path d="M6.5 20q-2.28 0-3.89-1.57T1 14.58q0-1.95 1.31-3.48T5.65 9.2q.6-2.3 2.5-3.75T12.5 4q2.65 0 4.5 1.87T18.85 10.4q1.75.2 2.95 1.5T23 15q0 2.08-1.46 3.54T18 20z"/></svg><span>Weather</span></a>
+    <a class="navlink" href="index.html"><svg viewBox="0 0 24 24"><path d="M12 2c-1.1 0-2 .9-2 2 0 .37.1.71.28 1.01C8.93 5.6 8 6.94 8 8.5c0 .83.25 1.6.69 2.24L4 15.43V19c0 1.1.9 2 2 2h4.5c3.04 0 5.5-2.46 5.5-5.5V8.5c0-1.56-.93-2.9-2.28-3.49.18-.3.28-.64.28-1.01 0-1.1-.9-2-2-2z"/></svg><span>Medicines</span></a>
+    <a class="navlink" href="docs.html"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span>Notes</span></a>
+    <a class="navlink" href="season.html"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM7 17H5v-6h2v6zm4 0H9V7h2v10zm4 0h-2v-4h2v4zm4 0h-2V9h2v8z"/></svg><span>Season</span></a>
+    <a class="navlink" href="shopping.html"><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42a.25.25 0 01-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0020 4H5.21l-.94-2H1z"/></svg><span>Shopping</span></a>
+    <button class="tbtn" id="themeBtn" aria-label="Toggle light and dark mode">
+      <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/></svg>
+    </button>
+  </div>
+</div></div>
+
+<div class="hero"><div class="wrap">
+  <div class="bdate">
+    <div>
+      <div class="big" id="bDateEn">…</div>
+      <div class="bnbig bn" id="bDateBn">…</div>
+    </div>
+  </div>
+  <div class="bmeta" id="bMeta"></div>
+</div></div>
+
+<section><div class="wrap">
+  <div class="hd">
+    <div>
+      <h2>The dew point gap</h2>
+      <p class="sub">One number. Room dew point minus outdoor dew point. It tells you whether your ventilation is the bottleneck or the weather is. Relative humidity cannot answer this, because RH changes with temperature and dew point does not.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="gapwrap">
+      <div>
+        <div class="fld">
+          <label for="rt">Room temperature °C</label>
+          <input id="rt" type="number" step="0.1" value="30.8">
+          <div class="hint">Read the Sonoff THS01 in eWeLink. The app number is the true number (−1.5 °C offset already applied).</div>
+        </div>
+        <div class="fld">
+          <label for="rh">Room humidity %</label>
+          <input id="rh" type="number" step="0.5" value="81.5">
+          <div class="hint">Same screen. Humidity offset is 0.0, locked.</div>
+        </div>
+        <div class="fld">
+          <label for="tgt">Target room temp for the forecast table °C</label>
+          <input id="tgt" type="number" step="0.1" value="30.8">
+          <div class="hint">Used to compute the achievable VPD floor for each forecast day.</div>
+        </div>
+      </div>
+      <div>
+        <div class="verdict" id="verdict">
+          <div class="vlab">Dew point gap</div>
+          <div class="vnum" id="gapNum">…</div>
+          <div class="vtext" id="gapText">Loading the live Dhaka forecast…</div>
+        </div>
+        <div class="readout" id="readout"></div>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>How to read it.</b> Outdoor dew point is the hard floor on how dry your room air can ever be. Ventilation moves the room towards it and can never go past it. A gap above 1.5 °C means your birds, drinkers and trapped air are adding moisture faster than the exhaust removes it, so the fix is airflow. A gap near zero means the exhaust has already done everything it can and the only remaining levers are room temperature and the calendar.</p>
+</div></section>
+
+<section style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <h2>What to do today</h2>
+  <p class="sub">Generated from the live forecast, your room reading and the Bangla month. Not a suggestion list, a setting list.</p>
+  <div class="grid2">
+    <div><div id="actionsA"></div></div>
+    <div><div id="actionsB"></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="hd">
+    <div>
+      <h2>Next 16 days, Dhaka</h2>
+      <p class="sub">Live from Open-Meteo. <b>VPD floor</b> is the best room VPD you could reach that day with perfect air exchange at your target room temperature. Target band is 9 to 15 hPa during incubation.</p>
+    </div>
+  </div>
+  <div id="fcErr"></div>
+  <div class="tw"><table id="fcTable">
+    <thead><tr><th>Date</th><th>Bangla</th><th>Max °C</th><th>Min °C</th><th>Dew pt °C</th><th>Rain mm</th><th>VPD floor</th><th>Verdict</th></tr></thead>
+    <tbody id="fcBody"><tr><td colspan="8" style="color:var(--ink3)">Loading…</td></tr></tbody>
+  </table></div>
+  <p class="note"><b>Sixteen days is the honest horizon.</b> Beyond that no weather model has skill at this scale, so the table below switches to 1990–2020 climate normals. Normals are not a forecast. Under a very strong El Niño the real values will run drier and warmer than the normal, which is exactly the risk this page exists to catch.</p>
+</div></section>
+
+<section style="background:var(--bg2);border-top:1px solid var(--line)"><div class="wrap">
+  <h2>The Bangla month outlook</h2>
+  <p class="sub">Climate normals, not forecast. The Bangladesh civil calendar is solar and locked to the Gregorian since the Bangla Academy 2019 revision, so every month below always falls on the same English dates. <b>Room temp for band</b> is the room temperature that lands VPD at 12 hPa, the middle of the incubation band.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Bangla month</th><th>English</th><th>Season</th><th>Mean °C</th><th>Dew pt °C</th><th>VPD if room 30.5 °C</th><th>Room temp for band</th><th>Phase</th><th>Light</th></tr></thead>
+    <tbody id="bmBody"></tbody>
+  </table></div>
+  <p class="note"><b>Read the fourth column carefully.</b> Holding the room at 30.5 °C is correct in Bhadro and Ashwin and becomes the thing that kills your hatch from Kartik onward. Heating dry Hemonto and Sheet air to 30.5 °C drives VPD past 20 hPa, well beyond the 15 ceiling, which shrink-wraps chicks at pipping. From Kartik you let the room fall, you do not chase a number.</p>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>KinBird Aviary OS</b> · Weather and VPD · Dhaka 23.81 N, 90.41 E. Forecast from <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>, refreshed on every page load. Bangla calendar follows the Bangla Academy 2019 revision. Climate normals from the Dhaka 1990–2020 record. VPD by the Magnus equation.</p>
+  <p style="margin-top:8px">Private reference for KinBird Aviary. Not indexed.</p>
+</div></footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var saved=null; try{saved=localStorage.getItem('bmt-theme')}catch(e){}
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+  var b=document.getElementById('themeBtn');
+  function icon(){
+    var d=document.documentElement.getAttribute('data-theme')==='dark';
+    document.getElementById('themeIcon').innerHTML = d
+      ? '<path d="M9.37 5.51A7.35 7.35 0 009.1 7.5c0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27A7.014 7.014 0 0112 19c-3.86 0-7-3.14-7-7 0-2.93 1.81-5.45 4.37-6.49z"/>'
+      : '<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5l2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42L12 2zM3.34 7l4.16-.35A7.2 7.2 0 005.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7zm.02 10l1.76-3.77a7.131 7.131 0 002.35 4.15L3.36 17zM20.65 7l-1.77 3.79a7.023 7.023 0 00-2.35-4.15l4.12.36zm-.01 10l-4.14.36c.68-.53 1.27-1.2 1.71-1.96.44-.75.7-1.51.84-2.3L20.64 17zM12 22l-2.39-3.42c.74.27 1.55.42 2.39.42s1.65-.15 2.39-.42L12 22z"/>';
+  }
+  icon();
+  b.onclick=function(){
+    var d=document.documentElement.getAttribute('data-theme')==='dark';
+    document.documentElement.setAttribute('data-theme', d?'light':'dark');
+    try{localStorage.setItem('bmt-theme', d?'light':'dark')}catch(e){}
+    icon();
+  };
+})();
+
+/* ---------- physics ---------- */
+function es(T){ return 6.112*Math.exp(17.67*T/(T+243.5)); }          /* saturation vapour pressure, hPa */
+function dewFromE(e){ var l=Math.log(e/6.112); return 243.5*l/(17.67-l); }
+function dewFrom(T,RH){ return dewFromE(es(T)*RH/100); }
+function vpd(T,RH){ return es(T)*(1-RH/100); }
+function vpdFloor(Troom,Td){ return es(Troom)-es(Td); }              /* best case with perfect air exchange */
+function roomTempForVPD(Td,target){                                   /* solve es(T)-es(Td)=target */
+  var lo=10,hi=45,e=es(Td);
+  for(var i=0;i<60;i++){ var m=(lo+hi)/2; if(es(m)-e<target) lo=m; else hi=m; }
+  return lo;
+}
+
+/* ---------- Bangla calendar (Bangla Academy 2019 revision) ---------- */
+/* Month start dates are FIXED in the Gregorian year, which is why leap years need no special case:
+   Falgun always starts 14 Feb and Chaitro always 15 Mar, so Falgun is 29 days, or 30 when Feb has 29. */
+var BM=[
+ {en:'Boishakh', bn:'বৈশাখ',            sm:4,  sd:14, se:'Grishmo', sbn:'গ্রীষ্ম', seEn:'Summer'},
+ {en:'Joishtho', bn:'জ্যৈষ্ঠ', sm:5,  sd:15, se:'Grishmo', sbn:'গ্রীষ্ম', seEn:'Summer'},
+ {en:'Ashar',    bn:'আষাঢ়',            sm:6,  sd:15, se:'Borsha',  sbn:'বর্ষা',            seEn:'Monsoon'},
+ {en:'Srabon',   bn:'শ্রাবণ',      sm:7,  sd:16, se:'Borsha',  sbn:'বর্ষা',            seEn:'Monsoon'},
+ {en:'Bhadro',   bn:'ভাদ্র',            sm:8,  sd:16, se:'Shorot',  sbn:'শরৎ',                        seEn:'Autumn'},
+ {en:'Ashwin',   bn:'আশ্বিন',      sm:9,  sd:16, se:'Shorot',  sbn:'শরৎ',                        seEn:'Autumn'},
+ {en:'Kartik',   bn:'কার্তিক',sm:10, sd:17, se:'Hemonto', sbn:'হেমন্ত',      seEn:'Late autumn'},
+ {en:'Ogrohayon',bn:'অগ্রহায়ণ', sm:11, sd:16, se:'Hemonto', sbn:'হেমন্ত', seEn:'Late autumn'},
+ {en:'Poush',    bn:'পৌষ',                        sm:12, sd:16, se:'Sheet',   sbn:'শীত',                        seEn:'Winter'},
+ {en:'Magh',     bn:'মাঘ',                        sm:1,  sd:15, se:'Sheet',   sbn:'শীত',                        seEn:'Winter'},
+ {en:'Falgun',   bn:'ফাল্গুন',sm:2,  sd:14, se:'Boshonto',sbn:'বসন্ত',            seEn:'Spring'},
+ {en:'Chaitro',  bn:'চৈত্র',            sm:3,  sd:15, se:'Boshonto',sbn:'বসন্ত',            seEn:'Spring'}
+];
+var BND=['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+function bnNum(n){ return String(n).split('').map(function(c){ return /[0-9]/.test(c)?BND[+c]:c; }).join(''); }
+function ord(n){ if(n===1)return'1st'; if(n===2)return'2nd'; if(n===3)return'3rd'; return n+'th'; }
+
+/* index of the Bangla month containing date d, plus the Gregorian start of that month */
+function banglaOf(d){
+  var y=d.getFullYear();
+  /* build candidate starts across this and last Gregorian year, pick the latest start <= d */
+  var best=null;
+  for(var yy=y-1; yy<=y; yy++){
+    for(var i=0;i<BM.length;i++){
+      var s=new Date(yy, BM[i].sm-1, BM[i].sd);
+      if(s<=d && (best===null || s>best.start)) best={idx:i,start:s};
+    }
+  }
+  var day=Math.round((d-best.start)/86400000)+1;
+  /* length of this Bangla month = next month start minus this start */
+  var ni=(best.idx+1)%12, sy=best.start.getFullYear();
+  var ns=new Date(sy, BM[ni].sm-1, BM[ni].sd);
+  if(ns<=best.start) ns=new Date(sy+1, BM[ni].sm-1, BM[ni].sd);
+  var len=Math.round((ns-best.start)/86400000);
+  /* Bangla year: rolls over on 14 April */
+  var by=d.getFullYear()-593;
+  if(d < new Date(d.getFullYear(),3,14)) by=d.getFullYear()-594;
+  return {m:BM[best.idx], idx:best.idx, day:day, len:len, year:by};
+}
+
+/* ---------- season doctrine keyed to the Bangla month ---------- */
+var PHASE={
+ Boishakh:{ph:'REST',        light:'10-11 h',      note:'Nest boxes out. Moult and recover.'},
+ Joishtho:{ph:'REST',        light:'10-11 h',      note:'Lowest activity. Maintenance dosing only.'},
+ Ashar:   {ph:'CONDITION',   light:'12 h',         note:'Build body condition. No boxes.'},
+ Srabon:  {ph:'CONDITION',   light:'12 h',         note:'Build body condition. No boxes.'},
+ Bhadro:  {ph:'IGNITION',    light:'ramp 12 to 13 h', note:'Pre-breeding course. Boxes go in 10 to 17 September.'},
+ Ashwin:  {ph:'STRIKE',      light:'14 h',         note:'First clutches. Wave 2 fosters boxed around 12 October.'},
+ Kartik:  {ph:'PEAK',        light:'14 h',         note:'The air turns dry here. Stop chasing room temperature.'},
+ Ogrohayon:{ph:'PEAK',       light:'14 h',         note:'Highest production window. Watch egg weight loss daily.'},
+ Poush:   {ph:'PEAK',        light:'14 h',         note:'Driest air of the season. Ventilation is now the risk, not the fix.'},
+ Magh:    {ph:'PEAK',        light:'14 h',         note:'Still dry. Keep inching low.'},
+ Falgun:  {ph:'PUSH',        light:'14 h',         note:'Last full production month.'},
+ Chaitro: {ph:'WIND DOWN',   light:'taper 14 to 11 h', note:'Pull nest boxes. A baby sold now fights a tired market.'}
+};
+/* Dhaka 1990-2020 normals: mean max, mean min, mean RH */
+var NORM={
+ Boishakh:[34,24,67], Joishtho:[33,25,75], Ashar:[32,26,83], Srabon:[32,26,83],
+ Bhadro:[32,26,80],   Ashwin:[33,24,76],   Kartik:[30,19,74], Ogrohayon:[27,15,73],
+ Poush:[26,13,72],    Magh:[29,16,65],     Falgun:[32,20,61], Chaitro:[34,24,67]
+};
+
+/* ---------- build the Bangla month outlook table ---------- */
+(function(){
+  var tb=document.getElementById('bmBody'), now=new Date(), cur=banglaOf(now).m.en;
+  var order=[4,5,6,7,8,9,10,11,0,1,2,3]; /* start at Bhadro so the breeding season reads top to bottom */
+  order.forEach(function(i){
+    var m=BM[i], n=NORM[m.en], p=PHASE[m.en];
+    var tmean=(n[0]+n[1])/2, e=es(tmean)*n[2]/100, td=dewFromE(e);
+    var v305=es(30.5)-e, rt=roomTempForVPD(td,12);
+    var cls = v305<9 ? 't-bad' : (v305<=15 ? 't-ok' : 't-bad');
+    var lab = v305<9 ? 'too wet' : (v305<=15 ? 'in band' : 'too dry');
+    var ns=new Date(2026, m.sm-1, m.sd), ni=(i+1)%12, ne=new Date(2026, BM[ni].sm-1, BM[ni].sd-1);
+    if(ne<=ns) ne=new Date(2027, BM[ni].sm-1, BM[ni].sd-1);
+    var MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var span=MS[ns.getMonth()]+' '+ns.getDate()+' – '+MS[ne.getMonth()]+' '+ne.getDate();
+    var tr=document.createElement('tr');
+    if(m.en===cur) tr.className='today';
+    tr.innerHTML='<td><b>'+m.en+'</b> <span class="bn" style="color:var(--ink3)">'+m.bn+'</span></td>'+
+      '<td style="color:var(--ink2)">'+span+'</td>'+
+      '<td>'+m.seEn+' <span class="bn" style="color:var(--ink3)">'+m.sbn+'</span></td>'+
+      '<td class="n">'+tmean.toFixed(1)+'</td>'+
+      '<td class="n">'+td.toFixed(1)+'</td>'+
+      '<td class="n">'+v305.toFixed(1)+' <span class="tag '+cls+'">'+lab+'</span></td>'+
+      '<td class="n">'+rt.toFixed(1)+' °C</td>'+
+      '<td>'+p.ph+'</td>'+
+      '<td style="color:var(--ink2)">'+p.light+'</td>';
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- hero date ---------- */
+(function(){
+  var d=new Date(), b=banglaOf(d);
+  var DW=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var DWB=['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
+  var MS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('bDateEn').textContent = DW[d.getDay()]+' '+ord(b.day)+' '+b.m.en+' '+b.year;
+  document.getElementById('bDateBn').textContent = DWB[d.getDay()]+', '+bnNum(b.day)+'শে '+b.m.bn+' '+bnNum(b.year)+' বঙ্গাব্দ';
+  var p=PHASE[b.m.en], left=b.len-b.day;
+  document.getElementById('bMeta').innerHTML=
+    '<span class="pill">'+MS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()+'</span>'+
+    '<span class="pill">Season <b>'+b.m.seEn+'</b> <span class="bn">'+b.m.sbn+'</span></span>'+
+    '<span class="pill gr">Phase <b>'+p.ph+'</b></span>'+
+    '<span class="pill">Light <b>'+p.light+'</b></span>'+
+    '<span class="pill">'+left+' day'+(left===1?'':'s')+' left in '+b.m.en+'</span>';
+})();
+
+/* ---------- live forecast + engine ---------- */
+var FC=null;
+function fmtDate(iso){
+  var p=iso.split('-'), MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return MS[+p[1]-1]+' '+(+p[2]);
+}
+function band(v){
+  if(v<9) return ['t-bad','too wet'];
+  if(v<=15) return ['t-ok','in band'];
+  if(v<=18) return ['t-warn','drying fast'];
+  return ['t-bad','too dry'];
+}
+function renderForecast(){
+  if(!FC) return;
+  var tgt=parseFloat(document.getElementById('tgt').value)||30.5;
+  var tb=document.getElementById('fcBody'); tb.innerHTML='';
+  var todayIso=new Date().toISOString().slice(0,10);
+  for(var i=0;i<FC.time.length;i++){
+    var td=FC.dew[i]; if(td===null||td===undefined) continue;
+    var v=vpdFloor(tgt,td), bb=band(v);
+    var parts=FC.time[i].split('-');
+    var bl=banglaOf(new Date(+parts[0],+parts[1]-1,+parts[2]));
+    var tr=document.createElement('tr');
+    if(FC.time[i]===todayIso) tr.className='today';
+    tr.innerHTML='<td>'+fmtDate(FC.time[i])+'</td>'+
+      '<td style="color:var(--ink2)">'+bl.m.en+' '+bl.day+'</td>'+
+      '<td class="n">'+(FC.tmax[i]!=null?FC.tmax[i].toFixed(1):'–')+'</td>'+
+      '<td class="n">'+(FC.tmin[i]!=null?FC.tmin[i].toFixed(1):'–')+'</td>'+
+      '<td class="n">'+td.toFixed(1)+'</td>'+
+      '<td class="n">'+(FC.rain[i]!=null?FC.rain[i].toFixed(1):'–')+'</td>'+
+      '<td class="n">'+v.toFixed(1)+'</td>'+
+      '<td><span class="tag '+bb[0]+'">'+bb[1]+'</span></td>';
+    tb.appendChild(tr);
+  }
+}
+function renderEngine(){
+  if(!FC) return;
+  var T=parseFloat(document.getElementById('rt').value);
+  var RH=parseFloat(document.getElementById('rh').value);
+  var tdOut=FC.dew[0];
+  var ok=isFinite(T)&&isFinite(RH)&&RH>0&&RH<=100;
+  var roomTd = ok ? dewFrom(T,RH) : null;
+  var roomV  = ok ? vpd(T,RH) : null;
+  var floor  = ok ? vpdFloor(T,tdOut) : null;
+  var gap    = ok ? roomTd-tdOut : null;
+
+  var vEl=document.getElementById('verdict');
+  document.getElementById('gapNum').textContent = ok ? (gap>0?'+':'')+gap.toFixed(1)+' °C' : '–';
+  var txt, cls;
+  if(!ok){ txt='Enter a valid room temperature and humidity.'; cls=''; }
+  else if(gap>2.0){ cls='bad'; txt='<b>Ventilation is your bottleneck, not the weather.</b> Your room is holding '+gap.toFixed(1)+' °C more moisture than the outside air. Fully exchanging that air at '+T.toFixed(1)+' °C would give you VPD '+floor.toFixed(1)+' instead of '+roomV.toFixed(1)+'. Check the window short-circuit panel, the Auto pill on both exhausts, and cover the open drinkers before you spend on anything.'; }
+  else if(gap>1.0){ cls='warn'; txt='<b>Moderate excess.</b> Airflow is working but not winning. '+gap.toFixed(1)+' °C of bird-added moisture is still trapped. A longer inching duration or the window panel would close most of it. Ceiling with perfect exchange today is VPD '+floor.toFixed(1)+'.'; }
+  else { cls='ok'; txt='<b>Air exchange is doing its job.</b> Your room is within '+Math.abs(gap).toFixed(1)+' °C of the outdoor dew point, which is the physical floor. More ventilation cannot help today. The only levers left are room temperature and the calendar.'; }
+  vEl.className='verdict '+cls;
+  document.getElementById('gapText').innerHTML=txt;
+
+  document.getElementById('readout').innerHTML = ok ? (
+    '<div class="ro"><div class="k">Room dew point</div><div class="v">'+roomTd.toFixed(1)+' °C</div></div>'+
+    '<div class="ro"><div class="k">Outdoor dew point</div><div class="v">'+tdOut.toFixed(1)+' °C</div></div>'+
+    '<div class="ro"><div class="k">Room VPD now</div><div class="v" style="color:'+(roomV<9||roomV>15?'var(--bad)':'var(--ok)')+'">'+roomV.toFixed(1)+'</div></div>'+
+    '<div class="ro"><div class="k">VPD ceiling today</div><div class="v">'+floor.toFixed(1)+'</div></div>'
+  ) : '';
+
+  /* ---- actions ---- */
+  var d=new Date(), b=banglaOf(d), p=PHASE[b.m.en];
+  var A=[], B=[];
+  function card(list,t,m,dd,k){ list.push('<div class="act'+(k?' '+k:'')+'"><div class="t">'+t+'</div><div class="m">'+m+'</div><div class="d">'+dd+'</div></div>'); }
+
+  /* fan / inching */
+  if(!ok){ card(A,'Exhaust inching','Enter your room reading','The fan setting depends on where your room actually sits.','w'); }
+  else if(roomV>15){
+    card(A,'Exhaust inching','Cut to 10 minutes per hour','Room VPD is '+roomV.toFixed(1)+', above the 15 ceiling. Eggs are losing weight too fast. If egg weight loss is running over 0.8 % per day, cut to 5 minutes and add a covered water tray.','b');
+  } else if(roomV<9 && floor>roomV+0.5){
+    card(A,'Exhaust inching','Raise to 25 minutes per hour','Room VPD is '+roomV.toFixed(1)+', below the 9 floor, and outdoor air today would give you '+floor.toFixed(1)+'. Ventilation is a net dehumidifier right now. More air is the fix.');
+  } else if(roomV<9){
+    card(A,'Exhaust inching','Hold 20 minutes. Do not add more','Room VPD is '+roomV.toFixed(1)+' and outdoor air can only deliver '+floor.toFixed(1)+' today. The fan cannot solve this. Raise room temperature instead, or accept the day.','w');
+  } else {
+    card(A,'Exhaust inching','Hold 20 minutes per hour','Room VPD '+roomV.toFixed(1)+' is inside the 9 to 15 band. Change nothing.');
+  }
+
+  /* room temperature */
+  if(ok){
+    var want=roomTempForVPD(tdOut,12), diff=want-T;
+    if(b.idx>=6 && b.idx<=9){ /* Kartik, Ogrohayon, Poush, Magh */
+      card(A,'Room temperature','Let it fall. Do not heat','In '+b.m.en+' the outdoor dew point drops to around '+tdOut.toFixed(1)+' °C. Heating that air to 30.5 °C would push VPD to '+vpdFloor(30.5,tdOut).toFixed(1)+', far past the 15 ceiling. Mid-band today sits at a room of '+want.toFixed(1)+' °C.','w');
+    } else if(Math.abs(diff)<0.4){
+      card(A,'Room temperature','Hold '+T.toFixed(1)+' °C','That is within half a degree of the mid-band target for today ('+want.toFixed(1)+' °C).');
+    } else if(diff>0){
+      card(A,'Room temperature','Run warmer, target '+want.toFixed(1)+' °C','A warm room is the free dehumidifier: roughly +2.3 hPa of VPD per degree. Never go past 32 °C, which damages sperm for 10 to 14 days.');
+    } else {
+      card(A,'Room temperature','Run cooler, target '+want.toFixed(1)+' °C','You are '+Math.abs(diff).toFixed(1)+' °C above the mid-band point. Jali fans cool the bird without cooling the room, so use shade and airflow rather than chilling the space.','w');
+    }
+  }
+
+  /* light */
+  card(B,'Light timer · '+b.m.en,p.light,'Phase '+p.ph+'. '+p.note+' Ramp changes by 15 minutes per week, never in one jump.');
+
+  /* rain / humidity warning from the next 3 days */
+  var rain3=0, wet=0;
+  for(var i=0;i<3 && i<FC.rain.length;i++){ if(FC.rain[i]!=null) rain3+=FC.rain[i]; if(FC.dew[i]!=null && vpdFloor(30.5,FC.dew[i])<9) wet++; }
+  if(wet>0){
+    card(B,'Humidity warning',wet+' of the next 3 days cannot reach the band','Even with perfect ventilation at 30.5 °C the outdoor air is too moist on those days. Remove wet food after 1 hour, dry-clean droppings, keep drinkers covered. Do not wet-mop.','b');
+  } else if(rain3>25){
+    card(B,'Humidity warning',rain3.toFixed(0)+' mm of rain in 3 days','Heavy rain days push the room wetter than the forecast dew point suggests. Shorten wet food to 1 hour and check nest box vent holes.','w');
+  } else {
+    card(B,'Humidity warning','Clear for the next 3 days','Outdoor air can carry you into the band at 30.5 °C on every one of the next three days. '+rain3.toFixed(0)+' mm of rain expected.');
+  }
+
+  /* driest window */
+  var driest=0;
+  for(var j=1;j<FC.dew.length;j++){ if(FC.dew[j]!=null && FC.dew[j]<FC.dew[driest]) driest=j; }
+  card(B,'Pro tip','Driest air lands '+fmtDate(FC.time[driest])+', dew point '+FC.dew[driest].toFixed(1)+' °C','That is your best air-exchange day in the window, VPD ceiling '+vpdFloor(30.5,FC.dew[driest]).toFixed(1)+' at 30.5 °C. Outdoor air is driest between 12:00 and 17:00 on any day, so an extra burst there beats one at dawn.');
+
+  document.getElementById('actionsA').innerHTML=A.join('');
+  document.getElementById('actionsB').innerHTML=B.join('');
+}
+
+function boot(){
+  var url='https://api.open-meteo.com/v1/forecast?latitude=23.8103&longitude=90.4125'
+    +'&daily=temperature_2m_max,temperature_2m_min,dew_point_2m_mean,relative_humidity_2m_mean,precipitation_sum'
+    +'&timezone=Asia%2FDhaka&forecast_days=16';
+  fetch(url).then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); }).then(function(j){
+    FC={time:j.daily.time, tmax:j.daily.temperature_2m_max, tmin:j.daily.temperature_2m_min,
+        dew:j.daily.dew_point_2m_mean, rh:j.daily.relative_humidity_2m_mean, rain:j.daily.precipitation_sum};
+    renderForecast(); renderEngine();
+  }).catch(function(e){
+    document.getElementById('fcErr').innerHTML='<div class="err">Could not reach Open-Meteo ('+e.message+'). Check your connection and reload. Nothing on this page is cached, so the numbers are either live or absent.</div>';
+    document.getElementById('fcBody').innerHTML='<tr><td colspan="8" style="color:var(--ink3)">No live data.</td></tr>';
+    document.getElementById('gapNum').textContent='–';
+    document.getElementById('gapText').textContent='The forecast did not load, so the dew point gap cannot be computed.';
+  });
+}
+['rt','rh'].forEach(function(id){ document.getElementById(id).addEventListener('input', function(){ saveIn(); renderEngine(); }); });
+document.getElementById('tgt').addEventListener('input', function(){ saveIn(); renderForecast(); });
+function saveIn(){ try{ localStorage.setItem('kb-wx', JSON.stringify({
+  rt:document.getElementById('rt').value, rh:document.getElementById('rh').value, tgt:document.getElementById('tgt').value })); }catch(e){} }
+(function(){ try{ var s=JSON.parse(localStorage.getItem('kb-wx')||'null'); if(s){
+  if(s.rt) document.getElementById('rt').value=s.rt;
+  if(s.rh) document.getElementById('rh').value=s.rh;
+  if(s.tgt) document.getElementById('tgt').value=s.tgt; } }catch(e){} })();
+boot();
+</script>
+</body>
+</html>
