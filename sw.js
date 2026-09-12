@@ -1,4 +1,4 @@
-var C='kb-os-v1';
+var C='kb-os-v2';
 var ASSETS=['index.html','weather.html','docs.html','season.html','shopping.html','app.js','os.js','manifest.json'];
 self.addEventListener('install',function(e){ self.skipWaiting(); e.waitUntil(caches.open(C).then(function(c){ return Promise.allSettled(ASSETS.map(function(a){return c.add(a);})); })); });
 self.addEventListener('activate',function(e){ e.waitUntil(caches.keys().then(function(k){ return Promise.all(k.filter(function(x){return x!==C;}).map(function(x){return caches.delete(x);})); }).then(function(){return self.clients.claim();})); });
