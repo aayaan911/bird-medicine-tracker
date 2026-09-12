@@ -486,6 +486,16 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 .srow .vtog{order:-1;margin-right:2px}
 .srow .fchips{justify-content:flex-start}
 @media(max-width:640px){.srow{flex-wrap:wrap}.srow .vtog{order:-1}}
+
+/* badge: icon only, half the footprint. Hover or tap for the meaning. */
+.vb{font-size:0!important;padding:2px 5px!important;gap:0!important;line-height:0!important;vertical-align:middle}
+.vb svg{width:11px!important;height:11px!important;margin:0!important}
+
+/* header row stays put while the list scrolls, under the 56px topbar */
+@media(min-width:901px){
+  .mtable{overflow:visible}
+  .mrow.mhead{position:sticky;top:56px;z-index:40;background:var(--bg2);box-shadow:0 1px 0 var(--grid)}
+}
 </style>
 </head>
 <body>
@@ -703,7 +713,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <div class="cbd" id="cmpBody"></div>
   </div>
 </div>
-<script src="app.js?v=72d908da"></script>
+<script src="app.js?v=afbce4f7"></script>
 <script src="os.js?v=1"></script>
 </body>
 </html>
