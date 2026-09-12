@@ -512,6 +512,19 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 /* .b-local per Ayaan's spec */
 .b-local{background:#fdeae6;color:#9c2d1f;font-size:9px!important}
 [data-theme="dark"] .b-local{background:#2f1712;color:#f0ab9c;font-size:9px!important}
+
+/* ---- fix: rounded corners survive overflow:visible, and nothing shows through a sticky bar ---- */
+@media(min-width:901px){
+  .mtable{overflow:visible;border-radius:var(--rxl)}
+  .mrow{overflow:hidden}                                   /* each row clips itself instead */
+  .mrow.mhead{border-radius:var(--rxl) var(--rxl) 0 0;z-index:60}
+  .mrow:last-child{border-radius:0 0 var(--rxl) var(--rxl);border-bottom:0}
+}
+/* every sticky surface fully opaque: no blur, nothing readable behind it */
+.topbar{background:var(--bg)!important;backdrop-filter:none!important}
+.searchzone{background:var(--bg)!important;backdrop-filter:none!important}
+.mrow.mhead{background:var(--bg2)!important}
+.mrow.mhead>div{background:var(--bg2)}
 </style>
 </head>
 <body>
