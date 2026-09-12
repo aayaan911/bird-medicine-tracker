@@ -500,7 +500,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 /* header row parks under the sticky filter bar, not behind it */
 @media(min-width:901px){
   .mtable{overflow:visible}
-  .mrow.mhead{position:sticky;top:var(--stickTop,117px);z-index:40;background:var(--bg2);box-shadow:0 1px 0 var(--grid)}
+  .mrow.mhead{position:sticky;top:calc(var(--stickTop,117px) - 2px);z-index:40;background:var(--bg2);box-shadow:0 1px 0 var(--grid)}
 }
 /* Copy and Compare: icon only, so they stop clipping in the 236px product column */
 .mnwrap{overflow:visible}
