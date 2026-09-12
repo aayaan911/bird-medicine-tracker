@@ -2362,6 +2362,300 @@ var P = [
    "linoleic": 0,
    "emuls": 12.5
   }
+ },
+ {
+  "id": "livavit",
+  "name": "Liva-Vit",
+  "brand": "local",
+  "bl": "Square, Bangladesh",
+  "size": "100 ml / 1 L",
+  "cats": [
+   "local",
+   "daily"
+  ],
+  "g": "multi",
+  "k": "liva vit livavit square bangladesh local liver tonic choline chloride inositol methionine b complex nicotinamide folic acid fatty liver hepatic",
+  "doses": [
+   [
+    "POULTRY LABEL",
+    "<b>1 ml per 1 to 2 litres</b> of drinking water, 5 to 7 days"
+   ],
+   [
+    "PRACTICAL",
+    "<b>1 ml into 1.5 litres</b>, then fill the pots from that jug"
+   ],
+   [
+    "PER LITRE OF PRODUCT",
+    "Choline chloride <b>50 g</b> · DL-methionine <b>50 g</b> · nicotinamide <b>60 g</b> · B5 11 g · B1 5 g · B2 2 g · B6 2 g · folic acid 300 mg · K3 650 mg · B12 10 mg · inositol 1 g · liver extract 200 mg"
+   ],
+   [
+    "WHY IT MATTERS",
+    "<b>The only choline source on this list.</b> Nothing else you own declares it"
+   ]
+  ],
+  "when": "Short 5 to 7 day course after a heavy laying run, after any medication, or in a bird carrying too much weight",
+  "why": "A liver product, not a multivitamin. Choline and inositol move fat out of the liver, which is the organ seed fed lovebirds damage first. It also carries the richest nicotinamide and methionine of anything on this list. No vitamin A, D3, E or C, so it never conflicts with a breeding course",
+  "v": 1,
+  "src": "https://www.squarepharma.com.bd/downloads/Liva-Vit%20Liquid.pdf",
+  "big": "1 ml / 1-2 L",
+  "unit": "poultry label, water",
+  "img": "",
+  "shape": "bottle",
+  "ab": "LIV",
+  "alt": "Nothing replaces it for choline. Nekton B-Komplex is the closer product for the B group alone (folate 6 mg per gram), but it carries no choline, no methionine and no inositol. Use B-Komplex for nerve support, Liva-Vit for the liver.",
+  "n": {
+   "basis": "per 1 L water at 1 ml per 1.5 L",
+   "nsrc": "squarepharma.com.bd PDF",
+   "vitA": 0,
+   "vitD3": 0,
+   "vitE": 0,
+   "vitC": 0,
+   "vitK3": 0.43333,
+   "b1": 3.33333,
+   "b2": 1.33333,
+   "b3": 40.0,
+   "b5": 7.33333,
+   "b6": 1.33333,
+   "b9": 0.2,
+   "b12": 0.00667,
+   "biotin": 0,
+   "choline": 33.33333,
+   "bcount": 7,
+   "calcium": 0,
+   "phos": 0,
+   "magnesium": 0,
+   "sodium": 0,
+   "potassium": 0,
+   "chloride": 0,
+   "iron": 0,
+   "zinc": 0,
+   "copper": 0,
+   "manganese": 0,
+   "iodine": 0,
+   "selenium": 0,
+   "carnitine": 0,
+   "betaine": 0,
+   "taurine": 0,
+   "lysine": 0,
+   "methionine": 33.33333,
+   "arginine": 0,
+   "threonine": 0,
+   "tryptophan": 0,
+   "amino": 0,
+   "glucose": 0,
+   "citrate": 0,
+   "probiotic": 0,
+   "strains": 0,
+   "enzymes": 0,
+   "binder": 0,
+   "acids": 0,
+   "linoleic": 0,
+   "emuls": 0
+  }
+ },
+ {
+  "id": "pbade",
+  "name": "PB-ADE",
+  "brand": "local",
+  "bl": "ACI, Bangladesh",
+  "size": "20 ml / 100 ml",
+  "cats": [
+   "local"
+  ],
+  "e": 1,
+  "k": "pb ade pbade aci bangladesh local vitamin a d3 e liquid poultry pigeon shell quality hatching rate high dose overdose",
+  "doses": [
+   [
+    "PER 1 ml",
+    "Vitamin A <b>100,000 IU</b> · Vitamin D3 <b>20,000 IU</b> · Vitamin E <b>20 mg</b>"
+   ],
+   [
+    "LABEL, PIGEON AND OTHER BIRDS",
+    "<b>3 to 5 ml per litre</b> of drinking water, 3 to 5 days"
+   ],
+   [
+    "THAT DELIVERS",
+    "At 3 ml/L: vitamin A <b>300,000 IU</b> and D3 <b>60,000 IU</b> per litre"
+   ],
+   [
+    "DANGER",
+    "D3 is <b>28 times Calciform</b>, 82 times Ferti-Vit, 120 times Calcivet. Never alongside any of them"
+   ]
+  ],
+  "when": "Not on a routine schedule. A vet-confirmed A, D3 or E deficiency only, and then below the label rate",
+  "why": "A flock strength vitamin AD3E concentrate built for poultry sheds. At its own label rate a lovebird drinking 7.5 ml a day takes in about 450 IU of vitamin D3, roughly 280 times the daily requirement. Hypervitaminosis D3 causes kidney calcification and gout, and the damage is cumulative and silent. The bottle is not faulty, it is simply scaled for a different bird",
+  "v": 1,
+  "src": "https://www.arogga.com/product/69947/pb-ade-liquid-100ml",
+  "big": "3-5 ml / 1 L",
+  "unit": "poultry label, far too strong for a lovebird",
+  "img": "",
+  "shape": "bottle",
+  "ab": "ADE",
+  "ncmp": "Deliberately not scored. At its own label rate it would win every vitamin row on this site by a factor of tens and make every safe product look empty, which is exactly the wrong conclusion. A rating would make a flock-dose concentrate look like the best multivitamin you own. Read the dose rows instead.",
+  "alt": "For vitamin A and D3 in a lovebird use Ferti-Vit in the breeding window and Calciform or Calcivet for D3. Every one of them is inside the one-D3-product-per-day rule. PB-ADE is not."
+ },
+ {
+  "id": "pbferti",
+  "name": "PB-Ferti",
+  "brand": "local",
+  "bl": "ACI, Bangladesh",
+  "size": "50 ml / 100 ml",
+  "cats": [
+   "local",
+   "breeding"
+  ],
+  "k": "pb ferti pbferti aci bangladesh local fertility pigeon breeding libido mating drive stamina racing water soluble vitamins minerals amino acids",
+  "doses": [
+   [
+    "LABEL, PIGEON AND OTHER BIRDS",
+    "<b>3 to 5 ml per litre</b> of drinking water, 5 to 7 days"
+   ],
+   [
+    "COMPOSITION",
+    "ACI states only \"a balanced mixture of water soluble vitamins, minerals and amino acids\". <b>No quantity is published for any ingredient</b>"
+   ],
+   [
+    "WHAT THAT MEANS",
+    "It cannot be compared, stacked safely, or checked against the one-D3-per-day rule"
+   ]
+  ],
+  "when": "Pre-breeding, 5 to 7 days, if you choose to use it. It cannot be planned around",
+  "why": "Marketed for pigeon fertility and mating drive. The problem is not the claim, it is that ACI publishes no figure for a single ingredient, so there is no way to know what it adds to a bird already on Breed Star and Ferti-Vit. Used on its own it is probably harmless. Used alongside a full breeding course it is an unknown quantity stacked on a known one",
+  "v": 0,
+  "src": "https://www.arogga.com/product/69962/pb-ferti-100ml",
+  "big": "3-5 ml / 1 L",
+  "unit": "composition not published",
+  "img": "",
+  "shape": "bottle",
+  "ab": "PBF",
+  "ncmp": "Cannot be scored. ACI publishes no quantity for any ingredient, only the words \"vitamins, minerals and amino acids\". This site only scores manufacturer-published figures, so there is nothing to put in a table.",
+  "alt": "Ferti-Vit does the same job with a full published analysis: vitamin E 184 mg, selenium 0.072 mg and zinc 16.3 mg per litre at label dose. Selenium is the one thing Nekton never declares, which is why Ferti-Vit earns its place and PB-Ferti does not."
+ },
+ {
+  "id": "esel",
+  "name": "E-Sel Liquid",
+  "brand": "local",
+  "bl": "Square, Bangladesh",
+  "size": "100 ml / 500 ml / 1 L",
+  "cats": [
+   "local",
+   "breeding"
+  ],
+  "g": "fertility",
+  "k": "e sel esel square bangladesh local alpha tocopherol acetate sodium selenite vitamin e selenium hatchability crazy chick encephalomalacia exudative diathesis muscular dystrophy",
+  "doses": [
+   [
+    "PER 1 ml",
+    "Alpha-tocopherol acetate <b>100 mg</b> + sodium selenite <b>500 mcg</b>"
+   ],
+   [
+    "PREVENTIVE",
+    "<b>1 ml per 4 litres</b> of water, 5 to 10 days. Gives vit E 25 mg and elemental selenium <b>0.057 mg</b> per litre"
+   ],
+   [
+    "TREATMENT",
+    "<b>1 ml per 2 litres</b>, 5 to 10 days. Gives vit E 50 mg and elemental selenium <b>0.114 mg</b> per litre"
+   ],
+   [
+    "NEVER",
+    "Not on the same day as Ferti-Vit. Both carry selenium and it has a narrow safe range"
+   ]
+  ],
+  "when": "Only when Ferti-Vit is NOT running. A cheap local selenium and vitamin E course outside the breeding window, or if Ferti-Vit runs out",
+  "why": "Alpha-tocopherol plus sodium selenite, the classic vitamin E and selenium pairing. Square lists increased hatchability and antibody production on the label. At the preventive rate it delivers 79% of Ferti-Vit's selenium and at the treatment rate 159%, which makes it the only local product that genuinely covers the selenium gap Nekton never declares. Note the selenium here is sodium selenite, the inorganic form, which is less well retained than the organic selenium in Ferti-Vit",
+  "v": 1,
+  "src": "https://www.squarepharma.com.bd/downloads/E-Sel%20liquid.pdf",
+  "big": "1 ml / 4 L",
+  "unit": "preventive rate, water",
+  "img": "",
+  "shape": "bottle",
+  "ab": "ESL",
+  "alt": "Ferti-Vit is the better choice inside the breeding window because it also brings vitamin A 11,000 IU, zinc 16.3 mg and 8 B vitamins per litre. E-Sel is the cheaper, locally stocked way to cover vitamin E and selenium when Ferti-Vit is not running. Never both on the same day.",
+  "n": {
+   "basis": "per 1 L water at 1 ml per 4 L (preventive)",
+   "nsrc": "squarepharma.com.bd PDF",
+   "vitA": 0,
+   "vitD3": 0,
+   "vitE": 25.0,
+   "vitC": 0,
+   "vitK3": 0,
+   "b1": 0,
+   "b2": 0,
+   "b3": 0,
+   "b5": 0,
+   "b6": 0,
+   "b9": 0,
+   "b12": 0,
+   "biotin": 0,
+   "choline": 0,
+   "bcount": 0,
+   "calcium": 0,
+   "phos": 0,
+   "magnesium": 0,
+   "sodium": 0,
+   "potassium": 0,
+   "chloride": 0,
+   "iron": 0,
+   "zinc": 0,
+   "copper": 0,
+   "manganese": 0,
+   "iodine": 0,
+   "selenium": 0.0571,
+   "carnitine": 0,
+   "betaine": 0,
+   "taurine": 0,
+   "lysine": 0,
+   "methionine": 0,
+   "arginine": 0,
+   "threonine": 0,
+   "tryptophan": 0,
+   "amino": 0,
+   "glucose": 0,
+   "citrate": 0,
+   "probiotic": 0,
+   "strains": 0,
+   "enzymes": 0,
+   "binder": 0,
+   "acids": 0,
+   "linoleic": 0,
+   "emuls": 0
+  }
+ },
+ {
+  "id": "livatone",
+  "name": "Liva Tone",
+  "brand": "local",
+  "bl": "Globe Pharma, Bangladesh",
+  "size": "100 ml / 500 ml",
+  "cats": [
+   "local"
+  ],
+  "k": "liva tone livatone globe pharma bangladesh local liver tonic stress high dose medicine overweight dewormer protection",
+  "doses": [
+   [
+    "POULTRY LABEL",
+    "<b>1 ml per 2 litres</b> of drinking water, 5 to 7 days"
+   ],
+   [
+    "COMPOSITION",
+    "Globe Pharma publishes indications and dose but <b>no composition at all</b>. Not one ingredient is named"
+   ],
+   [
+    "WHAT THAT MEANS",
+    "It cannot be compared, scored, or checked for overlap with anything else you run"
+   ]
+  ],
+  "when": "Only if you choose to use it. It cannot be planned around",
+  "why": "Marketed as a liver tonic to protect the liver against stress, high dose medicines, high energy feed, excess weight and dewormers. The indications are reasonable and the price is low, but Globe Pharma names no ingredient whatsoever, so there is no way to know what it adds to a bird already on a full programme",
+  "v": 0,
+  "src": "https://www.arogga.com/product/71265/liva-tone-vet-100ml",
+  "big": "1 ml / 2 L",
+  "unit": "composition not published",
+  "img": "",
+  "shape": "bottle",
+  "ab": "LTN",
+  "ncmp": "Cannot be scored. Globe Pharma publishes no composition for this product, not even an ingredient list. This site only scores manufacturer-published figures, so there is nothing to put in a table.",
+  "alt": "Liva-Vit from Square does the same job with a full published analysis: choline chloride 50 g, DL-methionine 50 g, nicotinamide 60 g and inositol 1 g per litre of product. If you want a liver tonic, use the one that tells you what is in it."
  }
 ];
 
