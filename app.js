@@ -2998,7 +2998,7 @@ function setView(v){
     b.setAttribute('aria-pressed', on ? 'true' : 'false');
   });
   try { localStorage.setItem('bmt-view', v); } catch(e){}
-  if (history.replaceState) history.replaceState(null, '', '#doses-' + v);
+  /* no hash written: the view is remembered in localStorage, so landing on the site never rewrites the URL */
   filter();
 }
 
