@@ -496,6 +496,18 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   .mtable{overflow:visible}
   .mrow.mhead{position:sticky;top:56px;z-index:40;background:var(--bg2);box-shadow:0 1px 0 var(--grid)}
 }
+
+/* header row parks under the sticky filter bar, not behind it */
+@media(min-width:901px){
+  .mtable{overflow:visible}
+  .mrow.mhead{position:sticky;top:var(--stickTop,117px);z-index:40;background:var(--bg2);box-shadow:0 1px 0 var(--grid)}
+}
+/* Copy and Compare: icon only, so they stop clipping in the 236px product column */
+.mnwrap{overflow:visible}
+.btn2{display:flex!important;gap:6px;margin-top:8px}
+.cpy{font-size:0!important;gap:0!important;letter-spacing:0!important;width:30px;height:26px;padding:0!important;justify-content:center;margin-top:0!important;flex:0 0 auto}
+.cpy svg{width:13px!important;height:13px!important}
+.cpy:hover{border-color:var(--green);color:var(--green)}
 </style>
 </head>
 <body>
@@ -714,6 +726,6 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   </div>
 </div>
 <script src="app.js?v=afbce4f7"></script>
-<script src="os.js?v=1"></script>
+<script src="os.js?v=fa0dcac6"></script>
 </body>
 </html>

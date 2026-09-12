@@ -145,5 +145,16 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 /* the medicine list renders async, so re-apply once it lands */
 var tries=0, iv=setInterval(function(){ if(document.querySelector('.dose-line')||++tries>40){ applyBatch(); if(tries>40||document.querySelector('.dose-line')) clearInterval(iv); } },250);
 window.addEventListener('kb:rendered', applyBatch);
+
+/* the filter bar is itself sticky at 56px and 60px tall, so the table header must park BELOW it */
+function kbStick(){
+  var tb=document.querySelector('.topbar'), sz=document.querySelector('.searchzone');
+  if(!tb) return;
+  var h=Math.round(tb.getBoundingClientRect().height + (sz?sz.getBoundingClientRect().height:0));
+  document.documentElement.style.setProperty('--stickTop', h+'px');
+}
+window.addEventListener('resize', kbStick);
+window.addEventListener('load', kbStick);
+kbStick();
 if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function(){});
 })();
