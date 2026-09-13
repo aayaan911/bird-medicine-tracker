@@ -644,6 +644,47 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 .kcpanel{display:none}
 .kcpanel.on{display:block}
 @media(max-width:640px){.kctabs{gap:6px}.kctab{flex:1 1 calc(50% - 3px);padding:10px 10px;font-size:13.5px}}
+
+/* ===== compare popup: sticky header, visible grid, mobile ===== */
+.cbd{overflow:auto;-webkit-overflow-scrolling:touch}
+.cwrap{border-color:var(--grid,#dedeD8)!important;overflow:visible!important;position:relative}
+.crow{border-bottom:1px solid var(--grid,#dedeD8)}
+.crow>div+div{border-left:1px solid var(--grid,#dedeD8)}
+.crow:nth-of-type(even):not(.chead){background:var(--stripe,#f2f2ed)}
+.crow.chead{position:sticky;top:0;z-index:30;box-shadow:0 1px 0 var(--grid,#dedeD8)}
+.crow.chead>div+div{border-left-color:rgba(255,255,255,.18)}
+.ck{position:sticky;left:0;z-index:20;background:var(--bg2)}
+.crow.chead .ck{z-index:40;background:#0c3a2d}
+[data-theme="dark"] .crow.chead .ck{background:#0c3a2d}
+.crow:nth-of-type(even):not(.chead) .ck{background:var(--stripe,#f2f2ed)}
+.cv,.ck{padding:11px 13px}
+@media(max-width:900px){
+  .cbox{max-height:94vh;border-radius:14px}
+  .cwrap{--ckw:112px;min-width:calc(var(--ckw) + (var(--cn) * 120px))}
+  .cv{font-size:14px}
+  .ck{font-size:12.5px!important}
+  .crow.chead .ck{font-size:11px!important}
+  .cverdict{font-size:14px;padding:14px 15px}
+  .cx{width:42px;height:42px;font-size:26px}
+  .chd h3{font-size:18px}
+}
+@media(max-width:560px){ .cwrap{--ckw:98px;min-width:calc(var(--ckw) + (var(--cn) * 112px))} }
+
+/* ===== breeding cycle block: mobile ===== */
+@media(max-width:900px){
+  .kcwrap{padding:22px 0 26px}
+  .kctw td,.kctw th{padding:13px 12px;font-size:14.5px}
+  .kctw th{font-size:12px}
+  .kcsub{font-size:14.5px}
+  .kch2{font-size:20px}
+  .kctag{font-size:12px;padding:4px 9px}
+  .kcnote{font-size:14px}
+  .kcwarn{font-size:14px}
+}
+@media(max-width:560px){
+  .kctw table{min-width:440px}
+  .kctab{flex:1 1 calc(50% - 3px)}
+}
 </style>
 </head>
 <body>
@@ -711,12 +752,9 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <div class="kchead">
     <div>
       <div class="kch2">Breeding cycle</div>
-      <p class="kcsub" id="kcPhase"></p>
+      <p class="kcsub">Reference for the whole season. Day 0 is the day you install the nest box for any pair, in any month.</p>
     </div>
-    <div class="kcdate"><label for="kcBox">Box installed</label><input id="kcBox" type="date" value="2026-09-13"></div>
   </div>
-  <div class="kcpills" id="kcPills"></div>
-
   <div class="kctabs" id="kcTabs" role="tablist">
     <button class="kctab on" data-t="give">Give today</button>
     <button class="kctab" data-t="tl">When it works</button>
@@ -743,7 +781,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <div class="kcpanel" data-p="days">
     <p class="kcsub" style="margin-bottom:12px">Today's row is highlighted, past rows fade. If a stage is more than 3 days late: check perches first, then room temperature, then the male.</p>
     <div class="kctw"><table>
-      <thead><tr><th>Day</th><th>Date</th><th>What to look for</th></tr></thead>
+      <thead><tr><th>Day</th><th>What to look for</th></tr></thead>
       <tbody id="kcDays"></tbody>
     </table></div>
     <p class="kcnote"><b>If day 7-10 passes with no mating:</b> grip-test every perch. A loose or wrong-thickness perch is the number one mechanical cause of clear eggs in lovebirds, because the hen must carry the male's full weight.</p>
@@ -924,54 +962,40 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 
 <script>
 (function(){
-var MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-function f(d){return d.getDate()+' '+MS[d.getMonth()];}
-function ad(d,n){var x=new Date(d.getTime());x.setDate(x.getDate()+n);return x;}
 var GIVE=[
  ['Soft food 100 g, daily','Breed Star 1 g + Nekton MSA 1 g + Herbs V3 1 g','First egg'],
  ['Water 250 ml','Breed Star 1 g <b>2 days</b> &rarr; Ferti-Vit 1 g <b>2 days</b> &rarr; repeat','First egg'],
- ['Always','Cuttlebone · sprouts · boiled egg · expert egg food · nesting','Every day'],
- ['When Fetura arrives','Fetura 12 at 2 ml per litre replaces Ferti-Vit, 15 days','Wave 2 + rescue'],
- ['AT FIRST EGG, switch','Food: <b>Nekton S</b> 1 g + MSA 1 g + Herbs 1 g · Water: Calcivet 20 ml/L Mon-Fri','Hatch']];
+ ['Always','Cuttlebone &middot; sprouts &middot; boiled egg &middot; expert egg food &middot; nesting','Every day'],
+ ['When Fetura 12 is in stock','Fetura 12 at 2 ml per litre replaces Ferti-Vit, 15 days','Wave 2 + rescue'],
+ ['AT FIRST EGG, switch that pair','Food: <b>Nekton S</b> 1 g + MSA 1 g + Herbs 1 g &middot; Water: Calcivet 20 ml/L Mon-Fri','Hatch']];
 var TL=[
- ['Nest box','b','Behaviour, both','Same day',0,'Day 3-7',7],
- ['Herbs V3','b','Gut, appetite','Day 2-3',3,'Day 7',7],
- ['Nekton MSA','f','Female, shell + bone','Day 7-10',10,'Day 14',14],
- ['Ferti-Vit','m','Male, makes vit E work','Day 7',7,'Day 14-21',21],
- ['Breed Star','m','Male, builds NEW sperm','Day 10-14',14,'Day 20-60',60],
- ['Fetura 12','m','Male, existing sperm','Day 3-7',7,'Day 14',14],
- ['Light 13-14 h','b','Hormones, both','Day 3-5',5,'Day 10-14',14]];
+ ['Nest box','b','Behaviour, male and female','Same day','Day 3-7'],
+ ['Herbs V3','b','Gut and appetite, both','Day 2-3','Day 7'],
+ ['Nekton MSA','f','Female: eggshell and bone','Day 7-10','Day 14'],
+ ['Aviform Ferti-Vit','m','Male: selenium makes vitamin E work','Day 7','Day 14-21'],
+ ['Nekton Breed Star','m','Male: vitamin E builds NEW sperm','Day 10-14','Day 20-60'],
+ ['Aviform Fetura 12','m','Male: L-carnitine, sperm that already exists','Day 3-7','Day 14'],
+ ['Light 13-14 hours','b','Hormones, male and female','Day 3-5','Day 10-14']];
 var DAYS=[
- [1,3,'Nothing visible. Vitamins loading into tissue.'],
- [3,7,'<b>Males singing more, feeding the female, both entering the box.</b>'],
- [7,10,'<b>Mating starts.</b> Female shredding nesting, sitting inside.'],
- [10,14,'Vitamin E now in the sperm being made. <b>Matings become productive.</b>'],
- [14,20,'<b>First eggs from your fastest hens.</b> Start weighing on lay day.'],
- [20,25,'Remaining hens lay. Normal window without Fetura.'],
- [25,33,'Incubation. Weigh every 3 days. Target 0.6-0.8 % loss per day.'],
- [33,38,'<b>Day 18-23 is the killing window.</b> Never candle after day 18.'],
- [38,45,'Hatch. Synbiotic 5 days. Watch the new fosters closely.']];
+ ['0','Nest box goes in. Write the date on the cage card.'],
+ ['1-3','Nothing visible. Vitamins loading into body tissue.'],
+ ['3-7','<b>Males singing more, feeding the female, both entering the box.</b>'],
+ ['7-10','<b>Mating starts.</b> Female shredding nesting, sitting inside the box.'],
+ ['10-14','Vitamin E now reaching the sperm being made. <b>Matings become productive.</b>'],
+ ['14-20','<b>First eggs from the fastest hens.</b> Weigh on lay day, 0.001 g scale.'],
+ ['20-25','Remaining hens lay. Normal window without Fetura 12.'],
+ ['25-33','Incubation. Weigh every 3 days. Target 0.6 to 0.8 % weight loss per day.'],
+ ['33-38','<b>Day 18 to 23 is the killing window.</b> Never candle after day 18.'],
+ ['38-45','Hatch. Synbiotic in water 5 days. Watch any first-time foster closely.']];
 function draw(){
- var el=document.getElementById('kcBox'); if(!el) return;
- var v=el.value; if(!v) return;
- var p=v.split('-'), box=new Date(+p[0],+p[1]-1,+p[2]);
- var now=new Date(); now.setHours(0,0,0,0);
- var day=Math.round((now-box)/86400000);
- document.getElementById('kcPills').innerHTML=
-  '<span class="kcpill on">Today is <b>day '+day+'</b></span>'+
-  '<span class="kcpill">Box in <b>'+f(box)+'</b></span>'+
-  '<span class="kcpill">First eggs <b>'+f(ad(box,14))+' to '+f(ad(box,25))+'</b></span>'+
-  '<span class="kcpill">Phase <b>2 · box to first egg</b></span>';
- document.getElementById('kcPhase').innerHTML='Phase 2, box in to first egg. Breed Star continues until a hen lays, not until a date. The day a pair lays, that pair alone switches to Nekton S.';
- document.getElementById('kcGive').innerHTML=GIVE.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';}).join('');
+ var g=document.getElementById('kcGive'); if(!g) return;
+ g.innerHTML=GIVE.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';}).join('');
  document.getElementById('kcTL').innerHTML=TL.map(function(r){
   var c=r[1]==='m'?'kct-m':(r[1]==='f'?'kct-f':'kct-b');
-  return '<tr><td><b>'+r[0]+'</b></td><td><span class="kctag '+c+'">'+r[2]+'</span></td>'+
-   '<td>'+r[3]+'<br><span style="color:var(--ink3)">'+f(ad(box,r[4]))+'</span></td>'+
-   '<td>'+r[5]+'<br><span style="color:var(--ink3)">'+f(ad(box,r[6]))+'</span></td></tr>';}).join('');
+  var who=r[1]==='m'?'Male':(r[1]==='f'?'Female':'Both');
+  return '<tr><td><b>'+r[0]+'</b></td><td><span class="kctag '+c+'">'+who+'</span><br><span style="color:var(--ink2)">'+r[2]+'</span></td><td>'+r[3]+'</td><td>'+r[4]+'</td></tr>';}).join('');
  document.getElementById('kcDays').innerHTML=DAYS.map(function(r){
-  var c=(day>=r[0]&&day<=r[1])?'kcnow':(day>r[1]?'kcpast':'');
-  return '<tr class="'+c+'"><td><b>'+r[0]+'-'+r[1]+'</b></td><td>'+f(ad(box,r[0]))+' – '+f(ad(box,r[1]))+'</td><td>'+r[2]+'</td></tr>';}).join('');
+  return '<tr><td><b>Day '+r[0]+'</b></td><td>'+r[1]+'</td></tr>';}).join('');
 }
 var tabs=document.querySelectorAll('.kctab');
 tabs.forEach(function(t){ t.addEventListener('click',function(){
@@ -982,12 +1006,7 @@ tabs.forEach(function(t){ t.addEventListener('click',function(){
 try{ var st=localStorage.getItem('kb-kctab');
   if(st){ var tb=document.querySelector('.kctab[data-t="'+st+'"]'); if(tb) tb.click(); }
 }catch(e){}
-var b=document.getElementById('kcBox');
-if(b){
- try{var s=localStorage.getItem('kb-boxdate'); if(s) b.value=s;}catch(e){}
- b.addEventListener('input',function(){try{localStorage.setItem('kb-boxdate',this.value)}catch(e){} draw();});
- draw();
-}
+draw();
 })();
 </script>
 </body>
