@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="bingbot" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breeding Cycle · KinBird Aviary OS</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1d9e75">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%278%27%20fill%3D%27%231d9e75%27%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f7f7f5; --mint:#e1f5ee; --mint2:#f3fbf7; --sand:#faeeda; --sky:#e6f1fb;
+  --ink:#111315; --ink2:#5c6367; --ink3:#8f979c;
+  --green:#1d9e75; --gmid:#12855f; --line:#e7e7e3; --line2:#f0f0ed; --card:#ffffff;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.05);
+  --grid:#dedeD8; --stripe:#f2f2ed; --warn:#c9821a; --bad:#c8412f;
+}
+[data-theme="dark"]{
+  --bg:#0e1418; --bg2:#151d22; --mint:#11302a; --mint2:#0f2621; --sand:#2c2416; --sky:#132535;
+  --ink:#eef2f1; --ink2:#a8b3b2; --ink3:#77837f;
+  --green:#2fbe8e; --gmid:#25a87c; --line:#232d33; --line2:#1b242a; --card:#131b20;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  --grid:#2e3a42; --stripe:#1c262e; --warn:#e0a955; --bad:#e8776a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+.bn{font-family:'Hind Siliguri','DM Sans',sans-serif}
+.wrap{max-width:1366px;margin:0 auto;padding:0 22px}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:90;background:var(--bg);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:12px;height:56px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15.5px;letter-spacing:-.35px;text-decoration:none;flex-shrink:0}
+.mark{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--green);flex-shrink:0}
+.mark svg{width:17px;height:17px;fill:#fff}
+.bname{display:block;line-height:1.15}
+.bname small{display:block;font-size:11px;font-weight:500;color:var(--ink3);margin-top:1px}
+.nav{display:flex;align-items:center;gap:7px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.navlink{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink2);text-decoration:none;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);white-space:nowrap;flex-shrink:0}
+.navlink.on{background:var(--green);border-color:var(--green);color:#fff}
+[data-theme="dark"] .navlink.on{color:#0e1418}
+.tbtn{display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--line);color:var(--ink2);width:32px;height:32px;border-radius:8px;cursor:pointer;font-family:inherit;flex-shrink:0}
+.tbtn svg{width:15px;height:15px;fill:currentColor}
+@media(max-width:760px){.navlink{padding:10px 12px;min-height:42px}.tbtn{width:42px;height:42px}.tbtn svg{width:18px;height:18px}}
+@media(max-width:560px){.brand .bname{display:none}}
+
+.hero{background:linear-gradient(165deg,var(--mint) 0%,var(--mint2) 55%,var(--bg) 100%);border-bottom:1px solid var(--line);padding:26px 0 24px}
+[data-theme="dark"] .hero{background:linear-gradient(165deg,#11302a 0%,#0f2621 55%,var(--bg) 100%)}
+h1{font-size:clamp(24px,4vw,36px);font-weight:700;letter-spacing:-1px;line-height:1.1}
+.lead{font-size:15px;color:var(--ink2);margin-top:8px;max-width:720px}
+.pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:6px 12px;border-radius:99px;background:var(--card);border:1px solid var(--line);color:var(--ink2)}
+.pill b{color:var(--ink)}
+.pill.gr{background:var(--green);border-color:var(--green);color:#fff}
+[data-theme="dark"] .pill.gr{color:#0e1418}
+.dateset{display:flex;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+.dateset label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)}
+.dateset input{font-family:inherit;font-size:16px;font-weight:600;padding:9px 12px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+
+section{padding:30px 0}
+section.alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:clamp(19px,2.4vw,25px);font-weight:700;letter-spacing:-.6px;margin-bottom:5px}
+.sub{font-size:14.5px;color:var(--ink2);margin-bottom:18px;max-width:800px}
+.tw{overflow-x:auto;border:1px solid var(--grid);border-radius:14px;background:var(--card);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:620px}
+th{background:var(--bg2);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2);text-align:left;padding:12px 14px;border-bottom:2px solid var(--grid);white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid var(--grid);border-left:1px solid var(--grid);vertical-align:top}
+td:first-child,th:first-child{border-left:0}
+tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even){background:var(--stripe)}
+tr.now td{background:var(--mint)!important;font-weight:700}
+[data-theme="dark"] tr.now td{background:#11302a!important}
+tr.past td{opacity:.5}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap}
+.t-m{background:var(--sky);color:#2c6fae}
+.t-f{background:#fbeaf2;color:#a8437a}
+.t-b{background:var(--mint);color:var(--gmid)}
+[data-theme="dark"] .t-m{background:#132535;color:#8dc0f5}
+[data-theme="dark"] .t-f{background:#2e1622;color:#f0a7c5}
+[data-theme="dark"] .t-b{background:#11302a;color:#8fe3c4}
+.note{font-size:13.5px;color:var(--ink2);margin-top:12px;line-height:1.65;max-width:860px}
+.note b{color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.warnbox{background:#fdecea;border:1px solid color-mix(in srgb,#c8412f 40%,transparent);color:#9c2d1f;border-radius:12px;padding:13px 15px;font-size:14px;font-weight:600;margin-top:14px;line-height:1.6}
+[data-theme="dark"] .warnbox{background:#2b1512;color:#e8776a}
+footer{border-top:1px solid var(--line);padding:26px 0;margin-top:10px;font-size:13.5px;color:var(--ink3)}
+@media(max-width:900px){ .wrap{padding:0 14px} table{font-size:14.5px} td,th{padding:13px 12px} }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 24 24"><path d="M12 2c-1.1 0-2 .9-2 2 0 .37.1.71.28 1.01C8.93 5.6 8 6.94 8 8.5c0 .83.25 1.6.69 2.24L4 15.43V19c0 1.1.9 2 2 2h4.5c3.04 0 5.5-2.46 5.5-5.5V8.5c0-1.56-.93-2.9-2.28-3.49.18-.3.28-.64.28-1.01 0-1.1-.9-2-2-2z"/></svg></span>
+    <span class="bname">KinBird Aviary OS<small>Breeding cycle</small></span>
+  </a>
+  <div class="nav">
+    <a class="navlink on" href="cycle.html">Cycle</a>
+    <a class="navlink" href="weather.html">Weather</a>
+    <a class="navlink" href="index.html">Medicines</a>
+    <a class="navlink" href="docs.html">Notes</a>
+    <a class="navlink" href="season.html">Season</a>
+    <a class="navlink" href="shopping.html">Shopping</a>
+    <button class="tbtn" id="themeBtn" aria-label="Toggle theme"><svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/></svg></button>
+  </div>
+</div></div>
+
+<div class="hero"><div class="wrap">
+  <h1>Breeding cycle</h1>
+  <p class="lead">What every supplement does, who it acts on, and how many days before it works. Dates recalculate from your box date.</p>
+  <div class="dateset">
+    <label for="boxd">Box installed</label>
+    <input id="boxd" type="date" value="2026-09-13">
+  </div>
+  <div class="pillrow" id="pills"></div>
+</div></div>
+
+<section><div class="wrap">
+  <h2>Give today</h2>
+  <p class="sub" id="phaseNote"></p>
+  <div class="tw"><table>
+    <thead><tr><th>Route</th><th>Give</th><th>Until</th></tr></thead>
+    <tbody id="giveBody"></tbody>
+  </table></div>
+  <div class="warnbox">Never Breed Star with Nekton S. Never Ferti-Vit with Fetura. Never two high-dose D3 products the same day (Calciform 2,125 · Ferti-Vit 728 · Calcivet 500 IU/L).</div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>When each thing starts working</h2>
+  <p class="sub">Vitamin E cannot be rushed. It builds <b>new</b> sperm over a 14-day cycle. L-carnitine works on sperm that already exists, so it acts in days. That is why Fetura is the fast lever and Breed Star is the deep one.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Product</th><th>Acts on</th><th>First effect</th><th>Full effect</th></tr></thead>
+    <tbody id="tlBody"></tbody>
+  </table></div>
+  <p class="note"><b>Read the dates, not the day numbers.</b> They move with your box date, so this page stays correct for wave 2 in October if you change the date at the top.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>What to look for, day by day</h2>
+  <p class="sub">Today's row is highlighted. Past rows fade. If a stage is late by more than 3 days, check perches first, then room temperature, then the male.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Day</th><th>Date</th><th>What to look for</th></tr></thead>
+    <tbody id="dayBody"></tbody>
+  </table></div>
+  <p class="note"><b>If day 7-10 passes with no mating:</b> grip-test every perch. A loose or wrong-thickness perch is the number one mechanical cause of clear eggs in lovebirds. The hen must carry the male's full weight.</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Humidity emergency: the wet towel</h2>
+  <p class="sub">Free backup instead of buying a humidifier. Test it once in November so you know it works before you need it.</p>
+  <div class="card">
+    <p class="note" style="margin-top:0"><b>Why it works.</b> Wet clothes on a line dry because the water leaves the cloth and goes into the air. It does not vanish, it becomes invisible vapour. A dehumidifier takes water OUT of air. A wet towel puts water IN. Same idea, opposite direction, and one is free.</p>
+    <p class="note"><b>The setup.</b> Hang a wet towel in front of the air inlet with a bowl underneath to catch drips. The exhaust pulls fresh air past it, that air picks up water on the way in, so it arrives wetter. Wetter air is less thirsty air, so the egg loses water more slowly.</p>
+  </div>
+  <div class="tw" style="margin-top:16px"><table>
+    <thead><tr><th>Room 1, 27 m³</th><th>Number</th></tr></thead>
+    <tbody>
+      <tr><td>To raise dew point 16 → 19 °C, fill the room once</td><td>73 g of water</td></tr>
+      <tr><td>Exhaust replaces the air about 8× a day, so keep adding</td><td><b>0.6 litres per day</b></td></tr>
+      <tr><td>One 1 m² wet towel evaporates</td><td><b>0.5 to 1.5 litres per day</b></td></tr>
+      <tr><td>Towels needed</td><td><b>One. Two is a full emergency.</b></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note"><b>Trigger:</b> only if egg weight loss runs above 0.9 % per day for 3 readings in a row. Re-wet morning and evening. Read the Sonoff before and 3 hours after to confirm the dew point moved 2-3 °C.</p>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>KinBird Aviary OS</b> · Breeding cycle · Private reference, not indexed.</p>
+</div></footer>
+
+<script>
+(function(){
+  var saved=null; try{saved=localStorage.getItem('bmt-theme')}catch(e){}
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+  function icon(){
+    var d=document.documentElement.getAttribute('data-theme')==='dark';
+    document.getElementById('themeIcon').innerHTML = d
+      ? '<path d="M9.37 5.51A7.35 7.35 0 009.1 7.5c0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27A7.014 7.014 0 0112 19c-3.86 0-7-3.14-7-7 0-2.93 1.81-5.45 4.37-6.49z"/>'
+      : '<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5l2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42L12 2z"/>';
+  }
+  icon();
+  document.getElementById('themeBtn').onclick=function(){
+    var d=document.documentElement.getAttribute('data-theme')==='dark';
+    document.documentElement.setAttribute('data-theme', d?'light':'dark');
+    try{localStorage.setItem('bmt-theme', d?'light':'dark')}catch(e){}
+    icon();
+  };
+})();
+
+var MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fmt(d){ return d.getDate()+' '+MS[d.getMonth()]; }
+function addD(d,n){ var x=new Date(d.getTime()); x.setDate(x.getDate()+n); return x; }
+
+/* ---- give today ---- */
+var GIVE=[
+ ['Soft food 100 g, daily','Breed Star 1 g + Nekton MSA 1 g + Herbs V3 1 g','First egg'],
+ ['Water 250 ml','Breed Star 1 g <b>2 days</b> → Ferti-Vit 1 g <b>2 days</b> → repeat','First egg'],
+ ['Always','Cuttlebone · sprouts · boiled egg · expert egg food · nesting material','Every day'],
+ ['When Fetura arrives','Fetura 12 at 2 ml per litre replaces Ferti-Vit for 15 days','Wave 2 + rescue'],
+ ['AT FIRST EGG, switch','Food: <b>Nekton S</b> 1 g + MSA 1 g + Herbs 1 g. Water: Calcivet 20 ml/L Mon-Fri','Hatch']
+];
+
+/* ---- timeline ---- */
+var TL=[
+ ['Nest box','b','Behaviour, both','Same day',0,'Day 3-7',7],
+ ['Herbs V3','b','Gut, appetite','Day 2-3',3,'Day 7',7],
+ ['Nekton MSA','f','Female, shell + bone','Day 7-10',10,'Day 14',14],
+ ['Ferti-Vit (selenium)','m','Male, makes vitamin E work','Day 7',7,'Day 14-21',21],
+ ['Breed Star (vitamin E)','m','Male, builds NEW sperm','Day 10-14',14,'Day 20-60',60],
+ ['Fetura 12 (L-carnitine)','m','Male, sperm that already exists','Day 3-7',7,'Day 14',14],
+ ['Light 13-14 h','b','Hormones, both','Day 3-5',5,'Day 10-14',14]
+];
+
+/* ---- day by day ---- */
+var DAYS=[
+ [1,3,'Nothing visible. Vitamins loading into tissue.'],
+ [3,7,'<b>Males singing more, feeding the female, both entering the box.</b>'],
+ [7,10,'<b>Mating starts.</b> Female shredding nesting material, sitting inside the box.'],
+ [10,14,'Vitamin E is now in the sperm being made. <b>Matings become productive.</b>'],
+ [14,20,'<b>First eggs from your fastest hens.</b> Start weighing on lay day.'],
+ [20,25,'Remaining hens lay. Normal window without Fetura.'],
+ [25,33,'Incubation. Weigh every 3 days. Target 0.6 to 0.8 % loss per day.'],
+ [33,38,'<b>Day 18 to 23: the killing window.</b> Never candle after day 18.'],
+ [38,45,'Hatch. Synbiotic in water for 5 days. Watch new fosters closely.']
+];
+
+function render(){
+  var v=document.getElementById('boxd').value;
+  if(!v) return;
+  var p=v.split('-'), box=new Date(+p[0],+p[1]-1,+p[2]);
+  var now=new Date(); now.setHours(0,0,0,0);
+  var day=Math.round((now-box)/86400000);
+
+  document.getElementById('pills').innerHTML=
+    '<span class="pill gr">Today is <b>day '+day+'</b></span>'+
+    '<span class="pill">Box in <b>'+fmt(box)+'</b></span>'+
+    '<span class="pill">First eggs expected <b>'+fmt(addD(box,14))+' to '+fmt(addD(box,25))+'</b></span>'+
+    '<span class="pill">Phase <b>2 · box to first egg</b></span>';
+
+  document.getElementById('phaseNote').innerHTML =
+    'Phase 2, box in to first egg. Day '+day+'. Breed Star continues until a hen lays, not until a date. '+
+    'The day a pair lays, that pair alone switches to Nekton S.';
+
+  document.getElementById('giveBody').innerHTML = GIVE.map(function(r){
+    return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';
+  }).join('');
+
+  document.getElementById('tlBody').innerHTML = TL.map(function(r){
+    var cls = r[1]==='m'?'t-m':(r[1]==='f'?'t-f':'t-b');
+    return '<tr><td><b>'+r[0]+'</b></td><td><span class="tag '+cls+'">'+r[2]+'</span></td>'+
+      '<td>'+r[3]+'<br><span style="color:var(--ink3)">'+fmt(addD(box,r[4]))+'</span></td>'+
+      '<td>'+r[5]+'<br><span style="color:var(--ink3)">'+fmt(addD(box,r[6]))+'</span></td></tr>';
+  }).join('');
+
+  document.getElementById('dayBody').innerHTML = DAYS.map(function(r){
+    var a=addD(box,r[0]), b=addD(box,r[1]);
+    var cls = (day>=r[0]&&day<=r[1]) ? 'now' : (day>r[1] ? 'past' : '');
+    return '<tr class="'+cls+'"><td><b>'+r[0]+'-'+r[1]+'</b></td><td>'+fmt(a)+' – '+fmt(b)+'</td><td>'+r[2]+'</td></tr>';
+  }).join('');
+}
+document.getElementById('boxd').addEventListener('input',function(){
+  try{localStorage.setItem('kb-boxdate',this.value)}catch(e){}
+  render();
+});
+(function(){ try{var s=localStorage.getItem('kb-boxdate'); if(s) document.getElementById('boxd').value=s;}catch(e){} })();
+render();
+</script>
+<script src="os.js?v=50ed195c"></script>
+</body>
+</html>
