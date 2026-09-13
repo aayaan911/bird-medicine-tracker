@@ -595,6 +595,45 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     border:1px solid var(--line);background:var(--bg2);color:var(--ink)}
   .fsel:focus{outline:2px solid var(--green);outline-offset:-1px}
 }
+
+/* ===== KC: breeding cycle block on the home page (all classes namespaced kc-) ===== */
+.kcwrap{background:var(--bg2);border-bottom:1px solid var(--line);padding:26px 0 30px}
+.kchead{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 18px;margin-bottom:14px}
+.kch2{font-size:clamp(19px,2.4vw,24px);font-weight:700;letter-spacing:-.6px}
+.kcsub{font-size:14px;color:var(--ink2);max-width:820px;margin-top:4px;line-height:1.6}
+.kcdate{display:flex;align-items:center;gap:9px;margin-left:auto}
+.kcdate label{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)}
+.kcdate input{font-family:inherit;font-size:16px;font-weight:600;padding:9px 12px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.kcpills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.kcpill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:6px 12px;border-radius:99px;background:var(--card);border:1px solid var(--line);color:var(--ink2)}
+.kcpill b{color:var(--ink)}
+.kcpill.on{background:var(--green);border-color:var(--green);color:#fff}
+[data-theme="dark"] .kcpill.on{color:#0e1418}
+.kcgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+@media(max-width:1000px){.kcgrid{grid-template-columns:1fr}}
+.kctw{overflow-x:auto;border:1px solid var(--grid,#dedeD8);border-radius:14px;background:var(--card);box-shadow:var(--shadow)}
+.kctw table{width:100%;border-collapse:collapse;font-size:14px;min-width:0}
+.kctw th{background:var(--bg2);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2);text-align:left;padding:11px 13px;border-bottom:2px solid var(--grid,#dedeD8);white-space:nowrap}
+.kctw td{padding:11px 13px;border-bottom:1px solid var(--grid,#dedeD8);border-left:1px solid var(--grid,#dedeD8);vertical-align:top;font-size:14px}
+.kctw td:first-child,.kctw th:first-child{border-left:0}
+.kctw tr:last-child td{border-bottom:0}
+.kctw tbody tr:nth-child(even){background:var(--stripe,#f2f2ed)}
+.kctw tr.kcnow td{background:var(--mint)!important;font-weight:700}
+[data-theme="dark"] .kctw tr.kcnow td{background:#11302a!important}
+.kctw tr.kcpast td{opacity:.45}
+.kctag{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px;white-space:nowrap}
+.kct-m{background:var(--sky);color:#2c6fae}
+.kct-f{background:#fbeaf2;color:#a8437a}
+.kct-b{background:var(--mint);color:var(--gmid)}
+[data-theme="dark"] .kct-m{background:#132535;color:#8dc0f5}
+[data-theme="dark"] .kct-f{background:#2e1622;color:#f0a7c5}
+[data-theme="dark"] .kct-b{background:#11302a;color:#8fe3c4}
+.kcnote{font-size:13.5px;color:var(--ink2);margin-top:11px;line-height:1.65;max-width:900px}
+.kcnote b{color:var(--ink)}
+.kcwarn{background:#fdecea;border:1px solid color-mix(in srgb,#c8412f 40%,transparent);color:#9c2d1f;border-radius:11px;padding:11px 14px;font-size:13.5px;font-weight:600;margin-top:12px;line-height:1.6}
+[data-theme="dark"] .kcwarn{background:#2b1512;color:#e8776a}
+.kcsec{margin-top:26px}
+@media(max-width:900px){.kcdate{margin-left:0;width:100%}.kcdate input{flex:1}.kctw td,.kctw th{padding:12px 11px}}
 </style>
 </head>
 <body>
@@ -609,8 +648,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <input id="q" type="search" placeholder="Search a product, a use, or a symptom…" autocomplete="off" aria-label="Search medicines">
     <button class="clr" id="clrBtn" aria-label="Clear search">&times;</button>
   </div>
-  <a class="navlink" href="cycle.html" title="Breeding cycle and supplement timeline"><svg viewBox="0 0 24 24"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8A5.87 5.87 0 016 12c0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg><span>Cycle</span></a>
-    <a class="navlink" href="weather.html" title="Weather, VPD and today's settings"><svg viewBox="0 0 24 24"><path d="M6.5 20q-2.28 0-3.89-1.57T1 14.58q0-1.95 1.31-3.48T5.65 9.2q.6-2.3 2.5-3.75T12.5 4q2.65 0 4.5 1.87T18.85 10.4q1.75.2 2.95 1.5T23 15q0 2.08-1.46 3.54T18 20z"/></svg><span>Weather</span></a>
+  <a class="navlink" href="weather.html" title="Weather, VPD and today's settings"><svg viewBox="0 0 24 24"><path d="M6.5 20q-2.28 0-3.89-1.57T1 14.58q0-1.95 1.31-3.48T5.65 9.2q.6-2.3 2.5-3.75T12.5 4q2.65 0 4.5 1.87T18.85 10.4q1.75.2 2.95 1.5T23 15q0 2.08-1.46 3.54T18 20z"/></svg><span>Weather</span></a>
   <a class="navlink" href="docs.html" title="Notes and protocols"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span>Notes</span></a>
   <a class="navlink" href="season.html" title="Season calculator"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM7 17H5v-6h2v6zm4 0H9V7h2v10zm4 0h-2v-4h2v4zm4 0h-2V9h2v8z"/></svg><span>Season calculator</span></a>
   <a class="navlink" href="shopping.html"><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42a.25.25 0 01-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0020 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Season shopping</span></a>
@@ -627,6 +665,59 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <a class="btn" href="#doses">Search all doses <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></a>
     <a class="btn sec" href="#emergency">See emergency actions</a>
   </div>
+</div></div>
+
+<div class="kcwrap"><div class="wrap">
+
+  <div class="kchead">
+    <div>
+      <div class="kch2">Give today</div>
+      <p class="kcsub" id="kcPhase"></p>
+    </div>
+    <div class="kcdate"><label for="kcBox">Box installed</label><input id="kcBox" type="date" value="2026-09-13"></div>
+  </div>
+  <div class="kcpills" id="kcPills"></div>
+  <div class="kctw"><table>
+    <thead><tr><th>Route</th><th>Give</th><th>Until</th></tr></thead>
+    <tbody id="kcGive"></tbody>
+  </table></div>
+  <div class="kcwarn">Never Breed Star with Nekton S. Never Ferti-Vit with Fetura. Never two high-dose D3 the same day (Calciform 2,125 · Ferti-Vit 728 · Calcivet 500 IU/L).</div>
+
+  <div class="kcgrid kcsec">
+    <div>
+      <div class="kch2">When each thing starts working</div>
+      <p class="kcsub">Vitamin E builds <b>new</b> sperm over a 14-day cycle. L-carnitine works on sperm that already exists, so it acts in days. Dates move with your box date.</p>
+      <div class="kctw" style="margin-top:12px"><table>
+        <thead><tr><th>Product</th><th>Acts on</th><th>First</th><th>Full</th></tr></thead>
+        <tbody id="kcTL"></tbody>
+      </table></div>
+    </div>
+    <div>
+      <div class="kch2">What to look for, day by day</div>
+      <p class="kcsub">Today's row is highlighted, past rows fade. If a stage is more than 3 days late: check perches first, then room temperature, then the male.</p>
+      <div class="kctw" style="margin-top:12px"><table>
+        <thead><tr><th>Day</th><th>Date</th><th>What to look for</th></tr></thead>
+        <tbody id="kcDays"></tbody>
+      </table></div>
+    </div>
+  </div>
+  <p class="kcnote"><b>If day 7-10 passes with no mating:</b> grip-test every perch. A loose or wrong-thickness perch is the number one mechanical cause of clear eggs in lovebirds, because the hen must carry the male's full weight.</p>
+
+  <div class="kcsec">
+    <div class="kch2">Humidity emergency: the wet towel</div>
+    <p class="kcsub">Free backup instead of buying a humidifier. <b>Why it works:</b> wet clothes on a line dry because the water leaves the cloth and goes into the air. It does not vanish, it becomes invisible vapour. A dehumidifier takes water OUT of air, a wet towel puts water IN. <b>Setup:</b> hang a wet towel in front of the air inlet with a bowl underneath. The exhaust pulls fresh air past it, so the air arrives wetter. Wetter air is less thirsty air, so the egg loses water more slowly.</p>
+    <div class="kctw"><table>
+      <thead><tr><th>Room 1, 27 m³</th><th>Number</th></tr></thead>
+      <tbody>
+        <tr><td>Raise dew point 16 → 19 °C, fill the room once</td><td>73 g of water</td></tr>
+        <tr><td>Exhaust replaces the air ~8× a day, so keep adding</td><td><b>0.6 litres per day</b></td></tr>
+        <tr><td>One 1 m² wet towel evaporates</td><td><b>0.5 to 1.5 litres per day</b></td></tr>
+        <tr><td>Towels needed</td><td><b>One. Two is a full emergency.</b></td></tr>
+      </tbody>
+    </table></div>
+    <p class="kcnote"><b>Trigger:</b> only if egg weight loss runs above 0.9 % per day for 3 readings in a row. Re-wet morning and evening. Read the Sonoff before and 3 hours after to confirm the dew point moved 2-3 °C.</p>
+  </div>
+
 </div></div>
 
 <div class="searchzone" id="doses"><div class="wrap">
@@ -815,5 +906,65 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 </div>
 <script src="app.js?v=f4af7bae"></script>
 <script src="os.js?v=50ed195c"></script>
+
+<script>
+(function(){
+var MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function f(d){return d.getDate()+' '+MS[d.getMonth()];}
+function ad(d,n){var x=new Date(d.getTime());x.setDate(x.getDate()+n);return x;}
+var GIVE=[
+ ['Soft food 100 g, daily','Breed Star 1 g + Nekton MSA 1 g + Herbs V3 1 g','First egg'],
+ ['Water 250 ml','Breed Star 1 g <b>2 days</b> &rarr; Ferti-Vit 1 g <b>2 days</b> &rarr; repeat','First egg'],
+ ['Always','Cuttlebone · sprouts · boiled egg · expert egg food · nesting','Every day'],
+ ['When Fetura arrives','Fetura 12 at 2 ml per litre replaces Ferti-Vit, 15 days','Wave 2 + rescue'],
+ ['AT FIRST EGG, switch','Food: <b>Nekton S</b> 1 g + MSA 1 g + Herbs 1 g · Water: Calcivet 20 ml/L Mon-Fri','Hatch']];
+var TL=[
+ ['Nest box','b','Behaviour, both','Same day',0,'Day 3-7',7],
+ ['Herbs V3','b','Gut, appetite','Day 2-3',3,'Day 7',7],
+ ['Nekton MSA','f','Female, shell + bone','Day 7-10',10,'Day 14',14],
+ ['Ferti-Vit','m','Male, makes vit E work','Day 7',7,'Day 14-21',21],
+ ['Breed Star','m','Male, builds NEW sperm','Day 10-14',14,'Day 20-60',60],
+ ['Fetura 12','m','Male, existing sperm','Day 3-7',7,'Day 14',14],
+ ['Light 13-14 h','b','Hormones, both','Day 3-5',5,'Day 10-14',14]];
+var DAYS=[
+ [1,3,'Nothing visible. Vitamins loading into tissue.'],
+ [3,7,'<b>Males singing more, feeding the female, both entering the box.</b>'],
+ [7,10,'<b>Mating starts.</b> Female shredding nesting, sitting inside.'],
+ [10,14,'Vitamin E now in the sperm being made. <b>Matings become productive.</b>'],
+ [14,20,'<b>First eggs from your fastest hens.</b> Start weighing on lay day.'],
+ [20,25,'Remaining hens lay. Normal window without Fetura.'],
+ [25,33,'Incubation. Weigh every 3 days. Target 0.6-0.8 % loss per day.'],
+ [33,38,'<b>Day 18-23 is the killing window.</b> Never candle after day 18.'],
+ [38,45,'Hatch. Synbiotic 5 days. Watch the new fosters closely.']];
+function draw(){
+ var el=document.getElementById('kcBox'); if(!el) return;
+ var v=el.value; if(!v) return;
+ var p=v.split('-'), box=new Date(+p[0],+p[1]-1,+p[2]);
+ var now=new Date(); now.setHours(0,0,0,0);
+ var day=Math.round((now-box)/86400000);
+ document.getElementById('kcPills').innerHTML=
+  '<span class="kcpill on">Today is <b>day '+day+'</b></span>'+
+  '<span class="kcpill">Box in <b>'+f(box)+'</b></span>'+
+  '<span class="kcpill">First eggs <b>'+f(ad(box,14))+' to '+f(ad(box,25))+'</b></span>'+
+  '<span class="kcpill">Phase <b>2 · box to first egg</b></span>';
+ document.getElementById('kcPhase').innerHTML='Phase 2, box in to first egg. Breed Star continues until a hen lays, not until a date. The day a pair lays, that pair alone switches to Nekton S.';
+ document.getElementById('kcGive').innerHTML=GIVE.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';}).join('');
+ document.getElementById('kcTL').innerHTML=TL.map(function(r){
+  var c=r[1]==='m'?'kct-m':(r[1]==='f'?'kct-f':'kct-b');
+  return '<tr><td><b>'+r[0]+'</b></td><td><span class="kctag '+c+'">'+r[2]+'</span></td>'+
+   '<td>'+r[3]+'<br><span style="color:var(--ink3)">'+f(ad(box,r[4]))+'</span></td>'+
+   '<td>'+r[5]+'<br><span style="color:var(--ink3)">'+f(ad(box,r[6]))+'</span></td></tr>';}).join('');
+ document.getElementById('kcDays').innerHTML=DAYS.map(function(r){
+  var c=(day>=r[0]&&day<=r[1])?'kcnow':(day>r[1]?'kcpast':'');
+  return '<tr class="'+c+'"><td><b>'+r[0]+'-'+r[1]+'</b></td><td>'+f(ad(box,r[0]))+' – '+f(ad(box,r[1]))+'</td><td>'+r[2]+'</td></tr>';}).join('');
+}
+var b=document.getElementById('kcBox');
+if(b){
+ try{var s=localStorage.getItem('kb-boxdate'); if(s) b.value=s;}catch(e){}
+ b.addEventListener('input',function(){try{localStorage.setItem('kb-boxdate',this.value)}catch(e){} draw();});
+ draw();
+}
+})();
+</script>
 </body>
 </html>
