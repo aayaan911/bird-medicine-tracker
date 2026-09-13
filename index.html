@@ -584,6 +584,17 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   .srow .vtog{order:-1;flex:0 0 auto;align-self:flex-start}
   .srow .fchips{flex:1 1 100%;order:1}
 }
+
+/* chips collapse to a native dropdown once they stop fitting in two lines */
+.fsel{display:none}
+@media(max-width:700px){
+  .srow .fchips{display:none!important}
+  .fsel{display:block;flex:1 1 100%;order:1;width:100%;
+    font-family:inherit;font-size:16px;font-weight:600;   /* 16px stops iOS zooming on focus */
+    padding:11px 12px;border-radius:10px;min-height:44px;
+    border:1px solid var(--line);background:var(--bg2);color:var(--ink)}
+  .fsel:focus{outline:2px solid var(--green);outline-offset:-1px}
+}
 </style>
 </head>
 <body>
@@ -802,6 +813,6 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   </div>
 </div>
 <script src="app.js?v=f4af7bae"></script>
-<script src="os.js?v=fa0dcac6"></script>
+<script src="os.js?v=50ed195c"></script>
 </body>
 </html>

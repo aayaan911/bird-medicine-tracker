@@ -156,5 +156,34 @@ function kbStick(){
 window.addEventListener('resize', kbStick);
 window.addEventListener('load', kbStick);
 kbStick();
+
+/* ---------------- small screens: 10 chips become one native dropdown ---------------- */
+function kbFilterSelect(){
+  var row=document.querySelector('.srow');
+  var chipRow=document.querySelector('.fchips');
+  if(!row||!chipRow||document.getElementById('fsel')) return;
+  var chips=[].slice.call(document.querySelectorAll('.fchip'));
+  if(!chips.length) return;
+  var JOBS=['all','daily','breeding','emerg'];
+  var sel=document.createElement('select');
+  sel.id='fsel'; sel.className='fsel'; sel.setAttribute('aria-label','Filter medicines');
+  var g1=document.createElement('optgroup'); g1.label='Show';
+  var g2=document.createElement('optgroup'); g2.label='Brand';
+  chips.forEach(function(c){
+    var o=document.createElement('option');
+    o.value=c.dataset.f; o.textContent=c.textContent.trim();
+    if(c.classList.contains('on')) o.selected=true;
+    (JOBS.indexOf(c.dataset.f)>-1?g1:g2).appendChild(o);
+  });
+  sel.appendChild(g1); sel.appendChild(g2);
+  /* the chip click handler already owns the filtering, so just forward to it */
+  sel.addEventListener('change', function(){
+    var c=document.querySelector('.fchip[data-f="'+sel.value+'"]');
+    if(c) c.click();
+  });
+  chips.forEach(function(c){ c.addEventListener('click', function(){ sel.value=c.dataset.f; }); });
+  row.insertBefore(sel, chipRow);
+}
+kbFilterSelect();
 if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function(){});
 })();
