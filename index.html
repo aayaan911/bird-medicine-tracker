@@ -525,6 +525,48 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 .searchzone{background:var(--bg)!important;backdrop-filter:none!important}
 .mrow.mhead{background:var(--bg2)!important}
 .mrow.mhead>div{background:var(--bg2)}
+
+/* ================= MOBILE: read it at dusk, tap it with wet hands ================= */
+@media(max-width:900px){
+  /* legibility floor. 285 elements were under 11px */
+  .rtag{font-size:12px!important;padding:2px 8px}
+  .rnum{font-size:12px!important}
+  .gnum{font-size:12px!important}
+  .malt b{font-size:11.5px!important}
+  .bpill{font-size:11px}
+  .pill-lbl{font-size:12px!important}
+  .mtable h4,.mcard h4{font-size:12px!important}
+  .bname small{font-size:11px}
+  .dose-line{font-size:15px;line-height:1.6}
+  .mwhen,.mwhy{font-size:14px}
+  .malt{font-size:13px}
+  .kbcalc{font-size:13px}
+
+  /* tap targets: 44px is the guideline, nothing here was over 32 */
+  .navlink{min-height:42px;padding:10px 12px}
+  .tbtn{width:42px;height:42px}
+  .tbtn svg{width:18px;height:18px}
+  .fchip{min-height:42px;font-size:13.5px;padding:8px 14px}
+  .vbtn{min-height:42px}
+  .cpy{width:44px!important;height:38px!important}
+  .cpy svg{width:16px!important;height:16px!important}
+  .vb{padding:4px 8px!important}
+  .vb svg{width:14px!important;height:14px!important}
+
+  /* chips wrap instead of hiding behind a silent side-scroll */
+  .fchips{flex-wrap:wrap;overflow-x:visible;justify-content:flex-start;row-gap:7px}
+  .srow{flex-wrap:wrap;row-gap:9px}
+  .searchzone{padding:10px 0 9px}
+
+  /* the card layout gets room back */
+  .wrap{padding:0 14px}
+  .mrow>div{padding:14px 15px}
+  .mname{padding-left:44px!important}
+}
+@media(max-width:420px){
+  .fchip{font-size:13px;padding:8px 11px}
+  .wrap{padding:0 12px}
+}
 </style>
 </head>
 <body>
