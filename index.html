@@ -758,7 +758,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <div class="kctabs" id="kcTabs" role="tablist">
     <button class="kctab on" data-t="give">Give today</button>
     <button class="kctab" data-t="tl">When it works</button>
-    <button class="kctab" data-t="days">Day by day</button>
+    <button class="kctab" data-t="days">Activities to look</button>
     <button class="kctab" data-t="towel">Wet towel</button>
   </div>
 
@@ -781,10 +781,14 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <div class="kcpanel" data-p="days">
     <p class="kcsub" style="margin-bottom:12px">Today's row is highlighted, past rows fade. If a stage is more than 3 days late: check perches first, then room temperature, then the male.</p>
     <div class="kctw"><table>
-      <thead><tr><th>Day</th><th>What to look for</th></tr></thead>
+      <thead><tr><th>Day</th><th>Activities to look for</th></tr></thead>
       <tbody id="kcDays"></tbody>
     </table></div>
-    <p class="kcnote"><b>If day 7-10 passes with no mating:</b> grip-test every perch. A loose or wrong-thickness perch is the number one mechanical cause of clear eggs in lovebirds, because the hen must carry the male's full weight.</p>
+    <h3 style="font-size:16px;font-weight:700;margin:20px 0 8px">If something looks wrong</h3>
+    <div class="kctw"><table>
+      <thead><tr><th>What you see</th><th>What it means and what to do</th></tr></thead>
+      <tbody id="kcWarn"></tbody>
+    </table></div>
   </div>
 
   <div class="kcpanel" data-p="towel">
@@ -958,7 +962,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   </div>
 </div>
 <script src="app.js?v=f4af7bae"></script>
-<script src="os.js?v=50ed195c"></script>
+<script src="os.js?v=370efd41"></script>
 
 <script>
 (function(){
@@ -972,21 +976,29 @@ var TL=[
  ['Nest box','b','Behaviour, male and female','Same day','Day 3-7'],
  ['Herbs V3','b','Gut and appetite, both','Day 2-3','Day 7'],
  ['Nekton MSA','f','Female: eggshell and bone','Day 7-10','Day 14'],
- ['Aviform Ferti-Vit','m','Male: selenium makes vitamin E work','Day 7','Day 14-21'],
+ ['Ferti-Vit','m','Male: selenium makes vitamin E work','Day 7','Day 14-21'],
  ['Nekton Breed Star','m','Male: vitamin E builds NEW sperm','Day 10-14','Day 20-60'],
- ['Aviform Fetura 12','m','Male: L-carnitine, sperm that already exists','Day 3-7','Day 14'],
+ ['Fetura 12','m','Male: L-carnitine, sperm that already exists','Day 3-7','Day 14'],
  ['Light 13-14 hours','b','Hormones, male and female','Day 3-5','Day 10-14']];
 var DAYS=[
- ['0','Nest box goes in. Write the date on the cage card.'],
- ['1-3','Nothing visible. Vitamins loading into body tissue.'],
- ['3-7','<b>Males singing more, feeding the female, both entering the box.</b>'],
- ['7-10','<b>Mating starts.</b> Female shredding nesting, sitting inside the box.'],
- ['10-14','Vitamin E now reaching the sperm being made. <b>Matings become productive.</b>'],
- ['14-20','<b>First eggs from the fastest hens.</b> Weigh on lay day, 0.001 g scale.'],
- ['20-25','Remaining hens lay. Normal window without Fetura 12.'],
- ['25-33','Incubation. Weigh every 3 days. Target 0.6 to 0.8 % weight loss per day.'],
- ['33-38','<b>Day 18 to 23 is the killing window.</b> Never candle after day 18.'],
- ['38-45','Hatch. Synbiotic in water 5 days. Watch any first-time foster closely.']];
+ ['0','Nest box goes in. Write the cage number and the date on the cage card. Both birds will put their heads in and chew the entrance within hours. That is curiosity, not breeding.'],
+ ['1-3','Nothing from the supplements yet, they are still loading into body tissue. Watch that both birds are <b>eating the soft food</b> and drinking the medicated morning water.'],
+ ['3-7','<b>STRONGEST EARLY SIGN: the male feeds the female</b>, bobbing his head and bringing food up into her beak. A pair that does this is bonded and will breed.<br>Also: male singing and chattering much more, especially at first light &middot; mutual preening around the head and neck &middot; male follows her along the perch everywhere &middot; the two sit pressed tightly together.'],
+ ['7-10','<b>The female starts carrying nesting material in her BEAK</b>, single strips at a time, into the box. Fischer\'s lovebirds carry in the beak. (Peach-faced tuck strips into their rump feathers. If yours tucks in the rump, the pair is not what the label says.)<br>Also: she stays inside the box for longer and longer spells &middot; the entrance hole gets chewed wider &middot; <b>she squats low with her tail raised</b>, which is her inviting him.<br><b>MATING:</b> the male steps onto her back, holds both wings out for balance, twists his tail to one side for a few seconds, then repeats. Expect it many times a day, not once.'],
+ ['10-14','<b>The nest takes shape:</b> a bulky domed roof with a tunnel leading to an inner chamber. That shape means she is serious.<br>Mating frequency peaks &middot; <b>she begins sleeping inside the box at night</b>, a strong late sign &middot; the male stands guard at the entrance and gets noisy when you approach.<br>Vitamin E is now reaching the sperm being made, so matings from here are the productive ones.'],
+ ['14-20','<b>THE RELIABLE PRE-LAY SIGN: her droppings become very large and strongly smelling.</b> She holds them while sitting in the box and releases one big one when she comes out.<br>Also: her abdomen looks fuller and rounder and she sits wider on the perch &middot; she leaves the box only briefly to eat &middot; the male feeds her at the box entrance.<br><b>FIRST EGG.</b> Weigh it the same day on the 0.001 g scale and write it on the cage card.'],
+ ['20-25','Remaining hens lay. Eggs come every other day, 4 to 6 in a clutch. She usually starts sitting properly from the second or third egg.'],
+ ['25-33','Incubation, 21 to 25 days. Weigh every 3 days. Target 0.6 to 0.8 % weight loss per day. Candle at day 7 and day 14 only.'],
+ ['33-38','<b>Day 18 to 23 is the killing window.</b> Never candle after day 18. Do not open the box. This is where a fully formed chick dies if the box was too wet.'],
+ ['38-45','Hatch. Synbiotic in water for 5 days. Watch any first-time foster very closely for the first 5 days: a crop that is never full means she is not feeding.']
+];
+var WARN=[
+ ['No courtship feeding by day 10','The pair is not bonded. Check they are a true male and female, and that they are not fighting over the box.'],
+ ['She carries material but he never feeds her','The male is not in condition. This is the case for Fetura 12 when it arrives, or a Breed Star extension.'],
+ ['Both in the box but no material carried','Often a hen that will sit but not lay. Give more nesting material and check the box is dark enough inside.'],
+ ['Mating seen but eggs come out clear','Mechanical, not nutritional. <b>Grip-test the perch first.</b> The hen must carry his full weight. Then check the vent feathers, then room temperature above 32 &deg;C.'],
+ ['She lays on the cage floor, not in the box','Box is too bright, too small, or mounted too low. Move it higher and darken the inside.']
+];
 function draw(){
  var g=document.getElementById('kcGive'); if(!g) return;
  g.innerHTML=GIVE.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';}).join('');
@@ -996,6 +1008,9 @@ function draw(){
   return '<tr><td><b>'+r[0]+'</b></td><td><span class="kctag '+c+'">'+who+'</span><br><span style="color:var(--ink2)">'+r[2]+'</span></td><td>'+r[3]+'</td><td>'+r[4]+'</td></tr>';}).join('');
  document.getElementById('kcDays').innerHTML=DAYS.map(function(r){
   return '<tr><td><b>Day '+r[0]+'</b></td><td>'+r[1]+'</td></tr>';}).join('');
+ var w=document.getElementById('kcWarn');
+ if(w) w.innerHTML=WARN.map(function(r){
+  return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td></tr>';}).join('');
 }
 var tabs=document.querySelectorAll('.kctab');
 tabs.forEach(function(t){ t.addEventListener('click',function(){

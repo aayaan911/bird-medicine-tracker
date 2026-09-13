@@ -35,7 +35,7 @@ var PHASES=[
   items:[ {k:'bs',  n:'Nekton Breed Star', d:'1 g per 100 g soft food', r:'food', every:1},
           {k:'msa', n:'Nekton MSA',        d:'1 g per 100 g soft food', r:'food', every:1},
           {k:'herb',n:'Herbs V3',          d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'fv',  n:'Aviform Ferti-Vit', d:'1 g per 250 ml water',    r:'water',every:1, d3:true} ]},
+          {k:'fv',  n:'Ferti-Vit', d:'1 g per 250 ml water',    r:'water',every:1, d3:true} ]},
  {id:'p3', name:'Phase 3 · first egg to hatch',
   items:[ {k:'ns',  n:'Nekton S',          d:'1 g per 100 g soft food', r:'food', every:1},
           {k:'msa', n:'Nekton MSA',        d:'1 g per 100 g soft food', r:'food', every:1},
