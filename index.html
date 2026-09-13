@@ -685,6 +685,30 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   .kctw table{min-width:440px}
   .kctab{flex:1 1 calc(50% - 3px)}
 }
+
+/* ===== compare popup: correct sticky position, real corners, full 1366px width ===== */
+/* width matches the global .wrap */
+.cbox{max-width:1366px!important}
+
+/* the scroll container must have NO top padding, or the sticky header parks 20px down
+   and rows scroll visibly through the gap. Spacing moves onto .cwrap instead. */
+.cbd{padding:0 22px 20px!important}
+.cwrap{margin-top:18px}
+.crow.chead{top:0!important}
+
+/* corners: round the corner CELLS, not the wrapper.
+   overflow:hidden on .cwrap or .crow would kill the sticky first column. */
+.cwrap{overflow:visible!important;border-radius:var(--rl)}
+.crow.chead>div:first-child{border-top-left-radius:var(--rl)}
+.crow.chead>div:last-child{border-top-right-radius:var(--rl)}
+.crow:last-child>div:first-child{border-bottom-left-radius:var(--rl)}
+.crow:last-child>div:last-child{border-bottom-right-radius:var(--rl)}
+.crow:last-child{border-bottom:0}
+
+@media(max-width:900px){
+  .cbd{padding:0 14px 14px!important}
+  .cwrap{margin-top:14px}
+}
 </style>
 </head>
 <body>
