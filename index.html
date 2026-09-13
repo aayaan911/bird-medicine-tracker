@@ -577,6 +577,13 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   .gdose span{font-size:13.5px}
   .fcol h4{font-size:12.5px}
 }
+
+/* mobile: toggle gets its own line, chips get the full width below it */
+@media(max-width:900px){
+  .srow{align-items:flex-start}
+  .srow .vtog{order:-1;flex:0 0 auto;align-self:flex-start}
+  .srow .fchips{flex:1 1 100%;order:1}
+}
 </style>
 </head>
 <body>
