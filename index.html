@@ -634,6 +634,16 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 [data-theme="dark"] .kcwarn{background:#2b1512;color:#e8776a}
 .kcsec{margin-top:26px}
 @media(max-width:900px){.kcdate{margin-left:0;width:100%}.kcdate input{flex:1}.kctw td,.kctw th{padding:12px 11px}}
+
+/* KC tabs */
+.kctabs{display:flex;gap:7px;margin:4px 0 14px;flex-wrap:wrap}
+.kctab{font-family:inherit;font-size:14px;font-weight:700;letter-spacing:-.1px;padding:9px 16px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;transition:.15s;min-height:42px}
+.kctab:hover{border-color:var(--green);color:var(--green)}
+.kctab.on{background:var(--green);border-color:var(--green);color:#fff}
+[data-theme="dark"] .kctab.on{color:#0e1418}
+.kcpanel{display:none}
+.kcpanel.on{display:block}
+@media(max-width:640px){.kctabs{gap:6px}.kctab{flex:1 1 calc(50% - 3px);padding:10px 10px;font-size:13.5px}}
 </style>
 </head>
 <body>
@@ -667,59 +677,6 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   </div>
 </div></div>
 
-<div class="kcwrap"><div class="wrap">
-
-  <div class="kchead">
-    <div>
-      <div class="kch2">Give today</div>
-      <p class="kcsub" id="kcPhase"></p>
-    </div>
-    <div class="kcdate"><label for="kcBox">Box installed</label><input id="kcBox" type="date" value="2026-09-13"></div>
-  </div>
-  <div class="kcpills" id="kcPills"></div>
-  <div class="kctw"><table>
-    <thead><tr><th>Route</th><th>Give</th><th>Until</th></tr></thead>
-    <tbody id="kcGive"></tbody>
-  </table></div>
-  <div class="kcwarn">Never Breed Star with Nekton S. Never Ferti-Vit with Fetura. Never two high-dose D3 the same day (Calciform 2,125 · Ferti-Vit 728 · Calcivet 500 IU/L).</div>
-
-  <div class="kcgrid kcsec">
-    <div>
-      <div class="kch2">When each thing starts working</div>
-      <p class="kcsub">Vitamin E builds <b>new</b> sperm over a 14-day cycle. L-carnitine works on sperm that already exists, so it acts in days. Dates move with your box date.</p>
-      <div class="kctw" style="margin-top:12px"><table>
-        <thead><tr><th>Product</th><th>Acts on</th><th>First</th><th>Full</th></tr></thead>
-        <tbody id="kcTL"></tbody>
-      </table></div>
-    </div>
-    <div>
-      <div class="kch2">What to look for, day by day</div>
-      <p class="kcsub">Today's row is highlighted, past rows fade. If a stage is more than 3 days late: check perches first, then room temperature, then the male.</p>
-      <div class="kctw" style="margin-top:12px"><table>
-        <thead><tr><th>Day</th><th>Date</th><th>What to look for</th></tr></thead>
-        <tbody id="kcDays"></tbody>
-      </table></div>
-    </div>
-  </div>
-  <p class="kcnote"><b>If day 7-10 passes with no mating:</b> grip-test every perch. A loose or wrong-thickness perch is the number one mechanical cause of clear eggs in lovebirds, because the hen must carry the male's full weight.</p>
-
-  <div class="kcsec">
-    <div class="kch2">Humidity emergency: the wet towel</div>
-    <p class="kcsub">Free backup instead of buying a humidifier. <b>Why it works:</b> wet clothes on a line dry because the water leaves the cloth and goes into the air. It does not vanish, it becomes invisible vapour. A dehumidifier takes water OUT of air, a wet towel puts water IN. <b>Setup:</b> hang a wet towel in front of the air inlet with a bowl underneath. The exhaust pulls fresh air past it, so the air arrives wetter. Wetter air is less thirsty air, so the egg loses water more slowly.</p>
-    <div class="kctw"><table>
-      <thead><tr><th>Room 1, 27 m³</th><th>Number</th></tr></thead>
-      <tbody>
-        <tr><td>Raise dew point 16 → 19 °C, fill the room once</td><td>73 g of water</td></tr>
-        <tr><td>Exhaust replaces the air ~8× a day, so keep adding</td><td><b>0.6 litres per day</b></td></tr>
-        <tr><td>One 1 m² wet towel evaporates</td><td><b>0.5 to 1.5 litres per day</b></td></tr>
-        <tr><td>Towels needed</td><td><b>One. Two is a full emergency.</b></td></tr>
-      </tbody>
-    </table></div>
-    <p class="kcnote"><b>Trigger:</b> only if egg weight loss runs above 0.9 % per day for 3 readings in a row. Re-wet morning and evening. Read the Sonoff before and 3 hours after to confirm the dew point moved 2-3 °C.</p>
-  </div>
-
-</div></div>
-
 <div class="searchzone" id="doses"><div class="wrap">
   <div class="srow">
     <div class="fchips" id="chips">
@@ -749,6 +706,64 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 <div class="empty" id="empty" style="display:none">Nothing matches that search. Try a symptom instead, like paralysis or droppings.</div>
 </div>
 </section>
+
+<div class="kcwrap"><div class="wrap">
+  <div class="kchead">
+    <div>
+      <div class="kch2">Breeding cycle</div>
+      <p class="kcsub" id="kcPhase"></p>
+    </div>
+    <div class="kcdate"><label for="kcBox">Box installed</label><input id="kcBox" type="date" value="2026-09-13"></div>
+  </div>
+  <div class="kcpills" id="kcPills"></div>
+
+  <div class="kctabs" id="kcTabs" role="tablist">
+    <button class="kctab on" data-t="give">Give today</button>
+    <button class="kctab" data-t="tl">When it works</button>
+    <button class="kctab" data-t="days">Day by day</button>
+    <button class="kctab" data-t="towel">Wet towel</button>
+  </div>
+
+  <div class="kcpanel on" data-p="give">
+    <div class="kctw"><table>
+      <thead><tr><th>Route</th><th>Give</th><th>Until</th></tr></thead>
+      <tbody id="kcGive"></tbody>
+    </table></div>
+    <div class="kcwarn">Never Breed Star with Nekton S. Never Ferti-Vit with Fetura. Never two high-dose D3 the same day (Calciform 2,125 &middot; Ferti-Vit 728 &middot; Calcivet 500 IU/L).</div>
+  </div>
+
+  <div class="kcpanel" data-p="tl">
+    <p class="kcsub" style="margin-bottom:12px">Vitamin E builds <b>new</b> sperm over a 14-day cycle. L-carnitine works on sperm that already exists, so it acts in days. Dates move with your box date.</p>
+    <div class="kctw"><table>
+      <thead><tr><th>Product</th><th>Acts on</th><th>First effect</th><th>Full effect</th></tr></thead>
+      <tbody id="kcTL"></tbody>
+    </table></div>
+  </div>
+
+  <div class="kcpanel" data-p="days">
+    <p class="kcsub" style="margin-bottom:12px">Today's row is highlighted, past rows fade. If a stage is more than 3 days late: check perches first, then room temperature, then the male.</p>
+    <div class="kctw"><table>
+      <thead><tr><th>Day</th><th>Date</th><th>What to look for</th></tr></thead>
+      <tbody id="kcDays"></tbody>
+    </table></div>
+    <p class="kcnote"><b>If day 7-10 passes with no mating:</b> grip-test every perch. A loose or wrong-thickness perch is the number one mechanical cause of clear eggs in lovebirds, because the hen must carry the male's full weight.</p>
+  </div>
+
+  <div class="kcpanel" data-p="towel">
+    <p class="kcsub" style="margin-bottom:12px">Free backup instead of buying a humidifier. <b>Why it works:</b> wet clothes on a line dry because the water leaves the cloth and goes into the air. It does not vanish, it becomes invisible vapour. A dehumidifier takes water OUT of air, a wet towel puts water IN. <b>Setup:</b> hang a wet towel in front of the air inlet with a bowl underneath. The exhaust pulls fresh air past it, so the air arrives wetter, and wetter air is less thirsty air.</p>
+    <div class="kctw"><table>
+      <thead><tr><th>Room 1, 27 m&sup3;</th><th>Number</th></tr></thead>
+      <tbody>
+        <tr><td>Raise dew point 16 &rarr; 19 &deg;C, fill the room once</td><td>73 g of water</td></tr>
+        <tr><td>Exhaust replaces the air ~8&times; a day, so keep adding</td><td><b>0.6 litres per day</b></td></tr>
+        <tr><td>One 1 m&sup2; wet towel evaporates</td><td><b>0.5 to 1.5 litres per day</b></td></tr>
+        <tr><td>Towels needed</td><td><b>One. Two is a full emergency.</b></td></tr>
+      </tbody>
+    </table></div>
+    <p class="kcnote"><b>Trigger:</b> only if egg weight loss runs above 0.9 % per day for 3 readings in a row. Re-wet morning and evening. Read the Sonoff before and 3 hours after to confirm the dew point moved 2-3 &deg;C.</p>
+  </div>
+
+</div></div>
 
 <section class="sec-grey" id="rules">
 <div class="wrap">
@@ -958,6 +973,15 @@ function draw(){
   var c=(day>=r[0]&&day<=r[1])?'kcnow':(day>r[1]?'kcpast':'');
   return '<tr class="'+c+'"><td><b>'+r[0]+'-'+r[1]+'</b></td><td>'+f(ad(box,r[0]))+' – '+f(ad(box,r[1]))+'</td><td>'+r[2]+'</td></tr>';}).join('');
 }
+var tabs=document.querySelectorAll('.kctab');
+tabs.forEach(function(t){ t.addEventListener('click',function(){
+  tabs.forEach(function(x){x.classList.remove('on')}); t.classList.add('on');
+  document.querySelectorAll('.kcpanel').forEach(function(p){ p.classList.toggle('on', p.dataset.p===t.dataset.t); });
+  try{localStorage.setItem('kb-kctab',t.dataset.t)}catch(e){}
+});});
+try{ var st=localStorage.getItem('kb-kctab');
+  if(st){ var tb=document.querySelector('.kctab[data-t="'+st+'"]'); if(tb) tb.click(); }
+}catch(e){}
 var b=document.getElementById('kcBox');
 if(b){
  try{var s=localStorage.getItem('kb-boxdate'); if(s) b.value=s;}catch(e){}
