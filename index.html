@@ -141,6 +141,12 @@ h1 em{font-style:normal;color:var(--green)}
 .cwrap{border:1px solid var(--line);border-radius:var(--rl);overflow:hidden;min-width:520px}
 .crow{display:grid;grid-template-columns:130px repeat(var(--cn),1fr);border-bottom:1px solid var(--line2)}
 .crow:last-child{border-bottom:0}
+
+/* while the header is stuck it sits at the top of the scroll box, not at the top of
+   the rounded table, so a curve there looks wrong. os.js toggles .cstuck on scroll. */
+.crow.chead.cstuck,
+.crow.chead.cstuck>div:first-child,
+.crow.chead.cstuck>div:last-child{border-top-left-radius:0;border-top-right-radius:0}
 .crow>div{padding:11px 13px;font-size:12.8px;font-variant-numeric:tabular-nums}
 .ck{font-weight:600;color:var(--ink2);background:var(--bg2)}
 .chead{background:var(--gdeep);color:#fff}

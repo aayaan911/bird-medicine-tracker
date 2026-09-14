@@ -186,4 +186,17 @@ function kbFilterSelect(){
 }
 kbFilterSelect();
 if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function(){});
+
+/* ---------------- compare popup: square the header corners while stuck ----------------
+   scroll does not bubble, so listen in the capture phase. Works for every popup
+   instance without wiring, because the popup is built after page load. */
+document.addEventListener('scroll', function(e){
+  var bd = e.target;
+  if(!bd || !bd.classList || !bd.classList.contains('cbd')) return;
+  var head = bd.querySelector('.crow.chead');
+  if(!head) return;
+  var stuck = head.getBoundingClientRect().top <= bd.getBoundingClientRect().top + 0.5;
+  head.classList.toggle('cstuck', stuck);
+}, true);
+
 })();
