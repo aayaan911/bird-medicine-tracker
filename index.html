@@ -696,13 +696,20 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 .cwrap{margin-top:18px}
 .crow.chead{top:0!important}
 
-/* corners: round the corner CELLS, not the wrapper.
-   overflow:hidden on .cwrap or .crow would kill the sticky first column. */
+/* corners. overflow:hidden on .cwrap or .crow would kill the sticky first column,
+   so the radius has to be painted by the elements themselves.
+   THE ROW carries the dark green background (.chead{background:var(--gdeep)}), so
+   rounding only the child cells left a square row background showing through the
+   corner. Round the ROW and the corner CELLS. The row sits inside the wrapper's
+   1.5px border, so its radius is 1.5px smaller or the arcs do not nest. */
 .cwrap{overflow:visible!important;border-radius:var(--rl)}
-.crow.chead>div:first-child{border-top-left-radius:var(--rl)}
-.crow.chead>div:last-child{border-top-right-radius:var(--rl)}
-.crow:last-child>div:first-child{border-bottom-left-radius:var(--rl)}
-.crow:last-child>div:last-child{border-bottom-right-radius:var(--rl)}
+:root{--rlin:calc(var(--rl) - 1.5px)}
+.crow.chead{border-top-left-radius:var(--rlin);border-top-right-radius:var(--rlin)}
+.crow.chead>div:first-child{border-top-left-radius:var(--rlin)}
+.crow.chead>div:last-child{border-top-right-radius:var(--rlin)}
+.crow:last-child{border-bottom-left-radius:var(--rlin);border-bottom-right-radius:var(--rlin)}
+.crow:last-child>div:first-child{border-bottom-left-radius:var(--rlin)}
+.crow:last-child>div:last-child{border-bottom-right-radius:var(--rlin)}
 .crow:last-child{border-bottom:0}
 
 @media(max-width:900px){
