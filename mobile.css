@@ -275,3 +275,41 @@ body.navopen .navbd{opacity:1;pointer-events:auto}
   /* body copy everywhere gets a floor that is comfortable at arm's length */
   p,li,td{font-size:14.5px}
 }
+
+/* ============================================================================
+   10. FIXES FOUND BY MEASURING THE REAL PAGE AT 375px
+   ========================================================================== */
+@media(max-width:760px){
+  /* an old rule pinned every table to min-width:440px, which is exactly why a
+     phone had to scroll sideways. A carded table must never have a min width. */
+  .kctw.mcard,
+  .kctw.mcard table,
+  .kctw.mcard tbody,
+  .kctw.mcard tr,
+  .kctw.mcard td{min-width:0!important;max-width:100%;box-sizing:border-box}
+  .kctw.mcard table{width:100%!important}
+  .kctw.mcard td{overflow-wrap:anywhere;word-break:normal}
+
+  /* form fields: 48px tall and 16px text, beating the inline .ttf rules */
+  .ttf input,.ttf select,.ttform input,.ttform select,
+  .sbox input,input[type="date"],input[type="number"],input[type="search"],input[type="text"]{
+    min-height:48px!important;font-size:16px!important}
+  .ttf input[type="date"]{min-width:0}
+
+  /* the row number stays visually small but gets a 44px hit area */
+  .gtbl .gnum{position:relative}
+  .gtbl .gnum::after{content:"";position:absolute;top:50%;left:50%;
+    width:44px;height:44px;transform:translate(-50%,-50%)}
+
+  /* links sitting inside a card heading need a real target */
+  .wkc h3 a,.note a,.kcnote a{display:inline-block;padding:6px 0;min-height:32px}
+
+  /* the absolutely placed title must never collide with a long goal name */
+  .gtbl.mcard tr:not(.gband){padding-top:48px}
+  .gtbl.mcard td.gg{line-height:1.22}
+}
+
+/* a carded table is never a scroll box, at any height */
+@media(max-width:760px){
+  .kctw.mcard{max-height:none!important;overflow:visible!important}
+}
