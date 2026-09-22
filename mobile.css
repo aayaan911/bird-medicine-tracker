@@ -1,0 +1,277 @@
+/* ============================================================================
+   KinBird Aviary OS — mobile layer
+   Loaded LAST on every page, so it wins without !important wherever possible.
+   He uses this from a phone 80% of the time. Treat the phone as the real target
+   and the desktop as the wide case, never the other way round.
+   ========================================================================== */
+
+/* ---------- 1. Universal hygiene, every width ---------- */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+img,svg,video,canvas,table{max-width:100%}
+a,button,input,select,textarea{-webkit-tap-highlight-color:transparent}
+button,a{touch-action:manipulation}
+:focus-visible{outline:2px solid var(--green);outline-offset:2px;border-radius:6px}
+::selection{background:color-mix(in srgb,var(--green) 28%,transparent)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+
+/* every horizontal scroller gets momentum and a hidden bar */
+.kctw,.tblwrap,.cbd,.subnav,.fchips,.nav{-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.kctw::-webkit-scrollbar,.subnav::-webkit-scrollbar,.fchips::-webkit-scrollbar{height:0}
+
+/* ---------- 2. Sticky table head, all widths ---------- */
+.kctw{position:relative;max-height:min(78vh,900px);overflow:auto;overscroll-behavior:contain}
+.kctw thead th{position:sticky;top:0;z-index:5;background:var(--bg2)}
+[data-theme="dark"] .kctw thead th{background:#121a20}
+.kctw thead th::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--grid,#dedeD8)}
+
+/* band rows inside the goal table stay visible under the head */
+.gtbl .gband td{position:sticky;top:38px;z-index:4;background:var(--mint);color:var(--gdeep);
+  font-size:10.5px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;padding:8px 13px}
+[data-theme="dark"] .gtbl .gband td{background:#11302a;color:#8fe3c4}
+
+/* the number column */
+.gtbl td.gn,.gtbl th.gn{width:44px;text-align:center;vertical-align:top}
+.gtbl .gnum{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;
+  border-radius:8px;background:var(--gdeep);color:#fff;font-size:12.5px;font-weight:800;
+  text-decoration:none;font-variant-numeric:tabular-nums}
+[data-theme="dark"] .gtbl .gnum{background:#2fbe8e;color:#0e1418}
+.gtbl .gnum:hover{background:var(--green)}
+.gtbl tr:target td{background:color-mix(in srgb,var(--green) 12%,transparent)!important}
+
+/* ---------- 3. Tablet ---------- */
+@media(max-width:1024px){
+  .wrap{padding:0 18px}
+}
+
+/* ---------- 4. PHONE ---------- */
+@media(max-width:760px){
+
+  .wrap{padding:0 16px}
+
+  /* no text below his own 12px floor */
+  .nmhd{font-size:11px!important;letter-spacing:.9px}
+  .nmt small,.bname small,.ttrow .sub2{font-size:12px!important}
+  .pill-lbl,.ttf label,.tthd,.wkc .n,.corr .ctag{font-size:11px!important}
+  .kctag{font-size:11.5px!important}
+  small{font-size:12px}
+
+  /* stop iOS zooming the whole page when a field is focused: 16px is the threshold */
+  input,select,textarea{font-size:16px!important}
+  .sbox input{font-size:16px!important}
+
+  /* 44px minimum tap target, Apple HIG */
+  .navbtn,.tbtn,.btn,.kctab,.ttadd,.fchip,.vbtn,.seg button{min-height:44px}
+  .tbtn{width:44px;height:44px}
+  .navbtn{padding:0 14px}
+  .brand{min-height:44px}
+  input,select{min-height:48px}
+  .subnav a{min-height:44px;display:inline-flex;align-items:center}
+
+  /* headings stop shouting on a narrow screen */
+  h1{font-size:clamp(26px,7.4vw,34px);line-height:1.15;letter-spacing:-.6px}
+  h2{font-size:clamp(20px,5.6vw,25px);line-height:1.22;letter-spacing:-.4px}
+  .lead{font-size:15px;line-height:1.6}
+  .sub,.kcsub{font-size:14px;line-height:1.6}
+  .head-blk{margin-bottom:20px}
+  section,.kcwrap{padding-top:28px;padding-bottom:28px}
+
+  /* full-width call to action buttons, stacked */
+  .ctarow{display:flex;flex-direction:column;gap:9px}
+  .ctarow .btn{width:100%;justify-content:center}
+
+  /* ===== every wide table becomes stacked cards. No sideways scrolling. ===== */
+  .kctw.mcard{max-height:none;overflow:visible;border:0;background:0;box-shadow:none;border-radius:0}
+  .kctw.mcard table,.kctw.mcard tbody,.kctw.mcard tr,.kctw.mcard td{display:block;width:auto}
+  .kctw.mcard thead{display:none}
+  .kctw.mcard tr{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 15px;margin-bottom:11px;box-shadow:var(--shadow)}
+  .kctw.mcard tbody tr:nth-child(even){background:var(--card)}
+  .kctw.mcard td{border:0;padding:0 0 11px;font-size:14.5px;line-height:1.55}
+  .kctw.mcard td:last-child{padding-bottom:0}
+  .kctw.mcard td:empty{display:none}
+  .kctw.mcard td[data-label]::before{
+    content:attr(data-label);display:block;font-size:10.5px;font-weight:800;letter-spacing:1px;
+    text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+
+  /* the goal table as a numbered card */
+  .gtbl.mcard tr.gband{background:var(--mint);border-color:transparent;border-radius:11px;
+    padding:9px 14px;margin:20px 0 11px;box-shadow:none;position:static}
+  [data-theme="dark"] .gtbl.mcard tr.gband{background:#11302a}
+  .gtbl.mcard tr.gband td{padding:0;position:static;font-size:11.5px;font-weight:800;
+    letter-spacing:1.1px;text-transform:uppercase;color:var(--gdeep)}
+  [data-theme="dark"] .gtbl.mcard tr.gband td{color:#8fe3c4}
+  .gtbl.mcard tr.gband td::before{display:none}
+  .gtbl.mcard tr:not(.gband){padding-top:46px;position:relative}
+  .gtbl.mcard td.gn{position:absolute;top:13px;left:15px;padding:0;width:auto}
+  .gtbl.mcard td.gn::before{display:none}
+  .gtbl.mcard .gnum{min-width:30px;height:30px;font-size:14px;border-radius:9px}
+  .gtbl.mcard td.gg{position:absolute;top:13px;left:56px;right:15px;padding:0;
+    font-size:16.5px;letter-spacing:-.3px;line-height:1.25}
+  .gtbl.mcard td.gg::before{display:none}
+  .gtbl.mcard td.gg b{font-weight:800}
+  .gtbl.mcard td.gp{background:var(--mint2);border:1px solid var(--line);border-radius:11px;padding:11px 12px}
+  [data-theme="dark"] .gtbl.mcard td.gp{background:#0f2621}
+  .gtbl.mcard td.gd{background:var(--bg2);border-radius:11px;padding:11px 12px;font-weight:600}
+
+  /* treatment log: one card per course */
+  .ttform{grid-template-columns:1fr 1fr;gap:10px;padding:15px}
+  .ttform .ttf:nth-child(1),.ttform .ttf:nth-child(2),.ttform .ttf:nth-child(5){grid-column:1/-1}
+  .ttadd{grid-column:1/-1;min-height:50px;font-size:15px}
+  .tthd{display:none}
+  .ttrow{display:block;padding:15px;border-bottom:1px solid var(--line)}
+  .ttrow>div{padding:0}
+  .ttrow>div:nth-child(1){font-size:16px;padding-right:44px}
+  .ttrow>div:nth-child(2){margin-top:3px;font-size:14.5px}
+  .ttrow>div:nth-child(3),.ttrow>div:nth-child(4){display:inline-block;margin-top:7px;
+    font-size:12.5px;color:var(--ink2);background:var(--bg2);padding:4px 9px;border-radius:7px}
+  .ttrow>div:nth-child(4){margin-left:6px}
+  .ttrow>div:nth-child(5){display:block;margin-top:10px}
+  .ttrow>div:nth-child(6){position:absolute;top:12px;right:10px;text-align:right}
+  .ttrow{position:relative}
+  .ttdel{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .ttbar{font-size:13px;gap:12px}
+  .ttbar span:last-child{flex-basis:100%;margin-left:0!important;padding-top:4px}
+
+  /* tabs: two per row, thumb sized */
+  .kctabs{gap:8px}
+  .kctab{flex:1 1 calc(50% - 4px);padding:12px 8px;font-size:14px;min-height:48px}
+
+  /* cards and grids go single column with room to breathe */
+  .egrid,.wkgrid{grid-template-columns:1fr;gap:12px}
+  .ecard,.wkc{padding:17px}
+  .ecard h3,.wkc h3{font-size:16.5px}
+  .ecard p,.wkc p{font-size:14.5px;line-height:1.6}
+  .note,.kcnote,.corr{font-size:14px;line-height:1.65;padding:14px 15px}
+
+  /* topbar: brand shrinks so the controls never crowd */
+  .topbar .wrap{gap:8px;height:56px}
+  .bname{font-size:14.5px;line-height:1.15}
+  .navbtn span{display:inline}
+  footer .fgrid{gap:22px}
+}
+
+/* ---------- 5. Small phones ---------- */
+@media(max-width:400px){
+  .wrap{padding:0 14px}
+  .bname small{display:none}
+  .gtbl.mcard td.gg{font-size:15.5px}
+  .kctab{font-size:13.5px;padding:12px 6px}
+}
+
+/* ---------- 6. The Trackers menu becomes a bottom sheet on a phone ---------- */
+.navbd{position:fixed;inset:0;background:rgba(8,12,14,.45);backdrop-filter:blur(2px);
+  opacity:0;pointer-events:none;transition:opacity .22s ease;z-index:290}
+body.navopen .navbd{opacity:1;pointer-events:auto}
+
+@media(max-width:640px){
+  .navmenu{
+    position:fixed;left:0;right:0;bottom:0;top:auto;width:100%;min-width:0;
+    border-radius:20px 20px 0 0;border:0;border-top:1px solid var(--line);
+    padding:0 10px calc(14px + env(safe-area-inset-bottom));
+    max-height:82vh;overflow-y:auto;overscroll-behavior:contain;
+    box-shadow:0 -12px 40px rgba(0,0,0,.28);
+    transform:translateY(100%);transition:transform .26s cubic-bezier(.32,.72,0,1);
+    display:block!important;visibility:hidden}
+  .navdd.open .navmenu{transform:translateY(0);visibility:visible}
+  /* the grab handle */
+  .navmenu::before{content:"";display:block;width:38px;height:4px;border-radius:99px;
+    background:var(--line);margin:10px auto 4px;position:sticky;top:0}
+  .navmenu a{padding:13px 12px;min-height:56px;border-radius:12px}
+  .nmi{width:38px;height:38px;border-radius:10px}
+  .nmi svg{width:18px;height:18px}
+  .nmt{font-size:15.5px}
+  .nmt small{font-size:12.5px;margin-top:1px}
+  .nmhd{padding:12px 12px 6px}
+  body.navopen{overflow:hidden}
+}
+
+/* ---------- 7. Notch and home bar ---------- */
+@supports(padding:max(0px)){
+  .topbar .wrap{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+  footer{padding-bottom:max(24px,env(safe-area-inset-bottom))}
+}
+
+/* ---------- 8. Compare button keeps its label, Copy stays icon only ---------- */
+.cpy.cmpb{font-size:9.5px!important;letter-spacing:.5px!important;gap:5px!important;
+  width:auto!important;padding:0 10px!important}
+@media(max-width:760px){
+  .cpy{width:44px!important;height:44px!important}
+  .cpy.cmpb{width:auto!important;height:44px!important;font-size:11px!important;padding:0 12px!important}
+}
+
+/* ============================================================================
+   9. READABILITY PASS — defined edges, real hierarchy, generous space.
+   The old borders were --line (#e7e7e3) on --card (#ffffff): a 4% contrast step
+   that disappears on a phone screen in daylight. Cards need an edge you can see.
+   ========================================================================== */
+:root{
+  --edge:#dcdcd6;               /* a border you can actually see */
+  --edge2:#e9e9e4;
+  --lift:0 1px 2px rgba(16,24,40,.05), 0 4px 14px rgba(16,24,40,.07);
+  --lift2:0 2px 6px rgba(16,24,40,.07), 0 14px 34px rgba(16,24,40,.10);
+}
+[data-theme="dark"]{
+  --edge:#2c383f;
+  --edge2:#222d34;
+  --lift:0 1px 2px rgba(0,0,0,.5), 0 4px 14px rgba(0,0,0,.4);
+  --lift2:0 2px 6px rgba(0,0,0,.55), 0 14px 34px rgba(0,0,0,.45);
+}
+
+/* every container gets a visible edge and a softer lift */
+.gcard,.ecard,.wkc,.tt,.kctw,.note,.mrow,.cwrap{border-color:var(--edge)}
+.gcard,.ecard,.wkc,.tt{box-shadow:var(--lift)}
+.gcard:hover,.ecard:hover,.wkc:hover{box-shadow:var(--lift2)}
+
+/* ---- gallery card ---- */
+.gcard{border-width:1px;border-radius:18px}
+.gtop{border-bottom:1px solid var(--edge)}
+.gbody{padding:18px}
+.gbody h3{font-size:16.5px;letter-spacing:-.35px;line-height:1.25;margin-bottom:7px}
+.gbody p{font-size:14px;line-height:1.6;color:var(--ink2)}
+.gmeta{margin-bottom:10px}
+/* the two fact rows become real, separated blocks instead of hairlines */
+.gwhen{font-size:13.2px;line-height:1.55;color:var(--ink2);
+  border-top:1px solid var(--edge2);margin-top:12px;padding-top:11px}
+.gwhen + .gwhen{margin-top:9px;padding-top:9px}
+.gwhen b{display:inline-block;color:var(--ink3);font-weight:800;font-size:10.5px;
+  letter-spacing:1px;text-transform:uppercase;margin-right:2px}
+.g2{margin-top:14px;padding-top:14px;border-top:1px solid var(--edge2)}
+.gnum{background:rgba(255,255,255,.9);box-shadow:0 1px 3px rgba(0,0,0,.14);width:26px;height:26px;font-size:11.5px}
+[data-theme="dark"] .gnum{background:rgba(255,255,255,.16);color:#eef2f4}
+
+/* ---- the main list rows ---- */
+.mrow{border-color:var(--edge)}
+.mrow + .mrow{border-top-color:var(--edge)}
+
+/* ---- tables: visible grid, readable size, comfortable rows ---- */
+.kctw{border-color:var(--edge)}
+.kctw td,.kctw th{border-color:var(--edge2)}
+.kctw th{border-bottom:2px solid var(--edge);color:var(--ink2);font-size:11px;letter-spacing:.9px}
+.kctw td{padding:13px 14px;line-height:1.6}
+.kctw tbody tr:hover td{background:var(--mint2)}
+[data-theme="dark"] .kctw tbody tr:hover td{background:#0f2621}
+
+@media(min-width:761px){
+  .gtbl td{font-size:14px}
+  .gtbl td.gg{font-size:15px;line-height:1.3}
+  .gtbl td.gd{font-weight:600;white-space:normal}
+}
+
+/* ---- phone readability ---- */
+@media(max-width:760px){
+  .ggrid{grid-template-columns:1fr!important;gap:14px}
+  .gcard{border-radius:16px}
+  .gtop{min-height:126px;padding:20px 18px 24px}
+  .gbody{padding:17px}
+  .gbody h3{font-size:17.5px}
+  .gbody p{font-size:14.5px;line-height:1.62}
+  .gwhen{font-size:13.8px}
+  .gwhen b{font-size:11px}
+  .g2{grid-template-columns:1fr 1fr;gap:9px}
+  .mrow{border-radius:16px;margin-bottom:12px}
+  /* body copy everywhere gets a floor that is comfortable at arm's length */
+  p,li,td{font-size:14.5px}
+}

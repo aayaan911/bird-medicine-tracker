@@ -250,3 +250,91 @@ document.addEventListener('scroll', function(e){
 }, true);
 
 })();
+
+/* ================= MOBILE LAYER — runs on every page =================
+   1. Any table with 4+ columns gets per-cell labels so mobile.css can stack it
+      into readable cards instead of forcing a 778px sideways scroll.
+   2. The Trackers menu becomes a real bottom sheet on a phone: backdrop,
+      scroll lock, swipe down to close, Escape, and it restores scroll position.
+   3. A generic tab controller, so no page ever writes its own again. */
+(function(){
+
+  /* ---------- 1. wide tables become labelled cards ---------- */
+  function labelTables(){
+    var wraps=document.querySelectorAll('.kctw');
+    Array.prototype.forEach.call(wraps, function(w){
+      var t=w.querySelector('table'); if(!t) return;
+      var head=t.querySelector('thead tr'); if(!head) return;
+      var hs=[]; Array.prototype.forEach.call(head.children,function(th){ hs.push((th.textContent||'').trim()); });
+      if(hs.length<4){ w.classList.remove('mcard'); return; }
+      w.classList.add('mcard');
+      Array.prototype.forEach.call(t.querySelectorAll('tbody tr'), function(tr){
+        if(tr.classList.contains('gband')) return;
+        var tds=tr.children;
+        for(var i=0;i<tds.length;i++){
+          if(tds[i].hasAttribute('colspan')) continue;
+          if(!tds[i].hasAttribute('data-label') && hs[i]) tds[i].setAttribute('data-label', hs[i]);
+        }
+      });
+    });
+  }
+
+  /* ---------- 2. the Trackers bottom sheet ---------- */
+  function sheet(){
+    var dd=document.getElementById('navdd'), bt=document.getElementById('navbtn'), mn=document.getElementById('navmenu');
+    if(!dd||!bt||!mn) return;
+    var bd=document.querySelector('.navbd');
+    if(!bd){ bd=document.createElement('div'); bd.className='navbd'; document.body.appendChild(bd); }
+    var scrollY=0;
+    function phone(){ return window.matchMedia('(max-width:640px)').matches; }
+    function open(){
+      dd.classList.add('open'); bt.setAttribute('aria-expanded','true');
+      if(phone()){ scrollY=window.scrollY; document.body.classList.add('navopen'); }
+    }
+    function close(){
+      if(!dd.classList.contains('open')) return;
+      dd.classList.remove('open'); bt.setAttribute('aria-expanded','false');
+      if(document.body.classList.contains('navopen')){ document.body.classList.remove('navopen'); window.scrollTo(0,scrollY); }
+      mn.style.transform='';
+    }
+    /* take ownership from the older per page handler */
+    var nb=bt.cloneNode(true); bt.parentNode.replaceChild(nb,bt); bt=nb;
+    bt.addEventListener('click', function(e){ e.stopPropagation(); dd.classList.contains('open')?close():open(); });
+    bd.addEventListener('click', close);
+    document.addEventListener('click', function(e){ if(!dd.contains(e.target)) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+    Array.prototype.forEach.call(mn.querySelectorAll('a'), function(a){ a.addEventListener('click', close); });
+    window.addEventListener('resize', function(){ if(!phone()&&document.body.classList.contains('navopen')){ document.body.classList.remove('navopen'); window.scrollTo(0,scrollY); } });
+
+    /* swipe the sheet down to dismiss, the way a native sheet behaves */
+    var y0=null, dy=0;
+    mn.addEventListener('touchstart', function(e){ if(!phone()||mn.scrollTop>0) return; y0=e.touches[0].clientY; dy=0; mn.style.transition='none'; }, {passive:true});
+    mn.addEventListener('touchmove', function(e){ if(y0===null) return; dy=e.touches[0].clientY-y0; if(dy>0) mn.style.transform='translateY('+dy+'px)'; }, {passive:true});
+    mn.addEventListener('touchend', function(){ if(y0===null) return; mn.style.transition=''; (dy>90)?close():(mn.style.transform=''); y0=null; }, {passive:true});
+  }
+
+  /* ---------- 3. one tab controller for every page ---------- */
+  function tabs(){
+    Array.prototype.forEach.call(document.querySelectorAll('.kctabs'), function(bar){
+      var scope=bar.closest('[data-tabscope]')||bar.parentNode;
+      var btns=bar.querySelectorAll('.kctab');
+      if(!btns.length || bar.dataset.wired) return;
+      bar.dataset.wired='1';
+      Array.prototype.forEach.call(btns, function(b){
+        b.setAttribute('role','tab');
+        b.addEventListener('click', function(){
+          var k=b.dataset.t;
+          Array.prototype.forEach.call(btns,function(x){ x.classList.toggle('on', x===b); x.setAttribute('aria-selected', x===b?'true':'false'); });
+          Array.prototype.forEach.call(scope.querySelectorAll('.kcpanel'), function(p){ p.classList.toggle('on', p.dataset.p===k); });
+          labelTables();
+        });
+      });
+    });
+  }
+
+  function init(){ labelTables(); sheet(); tabs(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+  /* the medicine list re renders on filter, so relabel when the DOM settles */
+  var deb; document.addEventListener('click', function(){ clearTimeout(deb); deb=setTimeout(labelTables,120); });
+})();

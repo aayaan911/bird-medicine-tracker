@@ -141,7 +141,7 @@ h1 em{font-style:normal;color:var(--green)}
 .crow:last-child{border-bottom:0}
 
 /* while the header is stuck it sits at the top of the scroll box, not at the top of
-   the rounded table, so a curve there looks wrong. os.js?v31 toggles .cstuck on scroll. */
+   the rounded table, so a curve there looks wrong. os.js?v32 toggles .cstuck on scroll. */
 .crow.chead.cstuck,
 .crow.chead.cstuck>div:first-child,
 .crow.chead.cstuck>div:last-child{border-top-left-radius:0;border-top-right-radius:0}
@@ -791,6 +791,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 .topbar .navdd{margin-left:auto}
 .topbar .nav .navdd{margin-left:0}
 </style>
+<link rel="stylesheet" href="mobile.css?v32">
 </head>
 <body>
 
@@ -828,41 +829,60 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <p class="lead">What to do inside the first hour, which nutrient actually does the job, and a running record of which bird is on which product today. Nothing here needs the internet after the first load.</p>
   <div class="ctarow">
     <a class="btn" href="#log">Open the live log <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></a>
-    <a class="btn sec" href="#emergency">Emergency actions</a>
+    <a class="btn sec" href="#reference">What means what</a>
   </div>
 </div></div>
 
-<section id="log"><div class="wrap">
+<section class="kcwrap" id="reference" data-tabscope><div class="wrap">
   <div class="head-blk">
-    <span class="pill-lbl">Who is on what, right now</span>
-    <h2>Live treatment log</h2>
-    <p class="sub">The reason courses go wrong is not the dose. It is losing track of which day a bird is on. Add a course once, and this counts the days for you and tells you the day it must stop.</p>
+    <span class="pill-lbl">Start from the job, not the bottle</span>
+    <h2>What means what</h2>
+    <p class="sub">Twenty goals in priority order, the biology behind each one, the nutrient that actually does it, and the product on your shelf that carries the most of it per litre of made-up water. <b>Every row is numbered, so you can tell someone "tab 1, number 7" and they land on the exact line.</b></p>
   </div>
-  <div class="tt">
-    <div class="ttform">
-      <div class="ttf"><label>Cage or bird</label><input id="tBird" placeholder="e.g. Cage 10" autocomplete="off"></div>
-      <div class="ttf"><label>Product</label><input id="tProd" placeholder="e.g. Synbiotic 180-S" autocomplete="off" list="tProdList"></div>
-      <div class="ttf"><label>Dose</label><input id="tDose" placeholder="1.5 g / 250 ml" autocomplete="off"></div>
-      <div class="ttf"><label>Route</label><select id="tRoute"><option>Water</option><option>Soft food</option><option>By beak</option><option>Topical</option></select></div>
-      <div class="ttf"><label>Start date and days</label><div style="display:flex;gap:7px"><input id="tStart" type="date" style="flex:1.4"><input id="tDays" type="number" min="1" max="60" value="5" style="flex:.7" aria-label="Days"></div></div>
-      <button class="ttadd" id="tAdd">Add</button>
-    </div>
-    <datalist id="tProdList"></datalist>
-    <div class="tthd"><div class="ttrow" style="padding:0;border:0;background:0"><div>Cage or bird</div><div>Product</div><div>Dose</div><div>Route</div><div>Day</div><div></div></div></div>
-    <div id="tBody"></div>
-    <div class="ttbar"><span>Running: <b id="tOn">0</b></span><span>Finish today: <b id="tEnd">0</b></span><span>Overdue, stop now: <b id="tOver">0</b></span><span style="margin-left:auto;color:var(--ink3)">Saved on this device only. Nothing is uploaded.</span></div>
-  </div>
-  <p class="note" style="margin-top:16px"><b>The rule this log exists to enforce.</b> Nekton Elektrolyt and Prolyte-C are never given past <b>5 days</b>. Breed Star and Ferti-Vit stop the day <b>that pair</b> lays its first egg, never on a fixed date. Antibiotic and Dirovet courses are finished in full or not started. Everything else on the list is safe to run out its days.</p>
-</div></section>
 
-<section class="sec-grey" id="emergency"><div class="wrap">
-  <div class="head-blk">
-    <span class="pill-lbl">Act within the hour</span>
-    <h2>Emergency actions</h2>
-    <p class="sub">Five situations that decide whether a bird recovers or is lost. Learn these before you need them.</p>
+  <div class="kctabs" id="refTabs" role="tablist">
+    <button class="kctab on" data-t="goal">1 &middot; What means what</button>
+    <button class="kctab" data-t="emerg">2 &middot; Emergency actions</button>
   </div>
-  <div class="corr"><span class="ctag">Corrected</span><b>Two lines in the old heat card were wrong and have been replaced.</b> The old text said to wet the floor above 35&nbsp;&deg;C and to run every fan at once. Wetting the floor raises humidity, and a bird cools itself <b>only</b> by panting, which stops working as the air fills. At 34&nbsp;&deg;C, lifting relative humidity from 72&nbsp;% to 88&nbsp;% collapses vapour pressure deficit from <b>14.9 hPa to 6.4 hPa</b>. And the 6F exhaust between 10:00 and 14:00 pulls in outdoor air measured <b>2.0 to 2.4&nbsp;&deg;C hotter</b> than the room, so running it at midday imports heat. Ceiling fans yes. Exhaust at midday, no.</div>
-  <div class="egrid">
+
+  <div class="kcpanel on" data-p="goal">
+    <p class="kcsub" style="margin-bottom:14px">Ordered by what decides the season, not alphabetically. <b>1 to 6 is where the money is made or lost.</b> Tap a number to link straight to that row.</p>
+<div class="kctw gtbl"><table>
+<thead><tr><th class="gn">#</th><th class="gg">THE GOAL</th><th class="gb">WHAT IS ACTUALLY HAPPENING</th><th class="gu">THE NUTRIENT THAT DOES IT</th><th class="gp">BEST ON YOUR SHELF</th><th class="gd">DOSE</th></tr></thead>
+<tbody>
+<tr class="gband"><td colspan="6">THE SEASON IS DECIDED HERE</td></tr>
+<tr id="g1"><td class="gn"><a class="gnum" href="#g1">1</a></td><td class="gg"><b>Male fertility</b></td><td class="gb">Sperm is rebuilt on a <b>14-day cycle</b>. Vitamin E protects the cell membrane while it forms. Above 32&nbsp;&deg;C the whole batch is damaged for 10 to 14 days</td><td class="gu"><b>Vitamin E</b>, and <b>arginine</b>, the amino acid sperm is built from</td><td class="gp"><b>Nekton Breed Star</b><br><span class='kctag'>vitamin E 220 mg/L</span> <span class='kctag'>arginine 102 mg/L</span><br>the only arginine you own</td><td class="gd">1 g per 250 ml<br>21 days minimum</td></tr>
+<tr id="g2"><td class="gn"><a class="gnum" href="#g2">2</a></td><td class="gg"><b>Fertility cofactor</b></td><td class="gb"><b>Vitamin E cannot work without selenium.</b> Selenium runs the enzyme that regenerates vitamin E after it does its job. One without the other is half wasted</td><td class="gu"><b>Selenium</b></td><td class="gp"><b>Ferti-Vit</b><br><span class='kctag'>selenium 0.072 mg/L</span><br>Breed Star and Nekton E declare <b>zero</b></td><td class="gd">1 g per 250 ml<br>alternate 2 days with Breed Star</td></tr>
+<tr id="g3"><td class="gn"><a class="gnum" href="#g3">3</a></td><td class="gg"><b>Egg shell and egg binding</b></td><td class="gb">A shell is <b>calcium carbonate</b>. The hen strips it from her own skeleton within 14 hours if the diet is short. Vitamin D3 is what lets the gut absorb calcium at all</td><td class="gu"><b>Calcium</b> + <b>vitamin D3 together</b>. Calcium without D3 passes straight through</td><td class="gp"><b>Calcivet</b><br><span class='kctag'>calcium 0.66 g/L</span> <span class='kctag'>D3 500 IU/L</span><br>plus <b>Nekton MSA</b> in food, 26&nbsp;% calcium</td><td class="gd">5 ml per 250 ml<br>Mon to Fri<br><b>Emergency: 0.2 ml per 100 g by syringe</b></td></tr>
+<tr id="g4"><td class="gn"><a class="gnum" href="#g4">4</a></td><td class="gg"><b>Dead in shell</b></td><td class="gb">The egg must lose <b>13 to 16&nbsp;% of its weight by day 21</b> to build the air cell the chick breathes from. Too little loss and a fully formed chick dies without pipping</td><td class="gu"><b>None. This is not a nutrition problem.</b> It is humidity, and only a scale can prove it</td><td class="gp"><b>A 0.001 g scale.</b> Nothing on the shelf fixes this<br><span class='kctag'>0.6 to 0.8&nbsp;% per day</span></td><td class="gd">Weigh on lay day,<br>then every 3 days</td></tr>
+<tr id="g5"><td class="gn"><a class="gnum" href="#g5">5</a></td><td class="gg"><b>Chick survival in the nest</b></td><td class="gb">Hatchlings are born with a sterile gut. The parents seed it with whatever they are carrying. Crop stasis in week one is usually a flora failure, not a feeding failure</td><td class="gu"><b>Live bacteria</b> fed to the <b>parents</b>, who pass it to the chicks</td><td class="gp"><b>Synbiotic 180-S</b><br><span class='kctag'>180 million CFU/g</span> <span class='kctag'>9 strains</span></td><td class="gd">0.75 g per 250 ml<br>5 days from hatch day</td></tr>
+<tr id="g6"><td class="gn"><a class="gnum" href="#g6">6</a></td><td class="gg"><b>Chick growth and bone</b></td><td class="gb">A chick multiplies its hatch weight roughly <b>10&times; in 30 days</b>. Bone lays down faster than at any other point in its life, and is built now or never</td><td class="gu"><b>Calcium and phosphorus in a 2:1 ratio</b>, plus the full B group for energy metabolism</td><td class="gp"><b>Nekton MSA</b> in soft food<br><span class='kctag'>Ca 26.1&nbsp;%</span> <span class='kctag'>P 19.6&nbsp;%</span><br>plus <b>Nekton S</b> for the vitamins</td><td class="gd">1 g per 100 g soft food<br>daily</td></tr>
+<tr class="gband"><td colspan="6">THE BIRD ITSELF</td></tr>
+<tr id="g7"><td class="gn"><a class="gnum" href="#g7">7</a></td><td class="gg"><b>Gut and absorption</b></td><td class="gb">Stress, transport and any antibiotic strip the gut flora. Until it is rebuilt, <b>every supplement you give after it is wasted money</b></td><td class="gu"><b>Live bacteria</b> (CFU) + a prebiotic to feed them</td><td class="gp"><b>Synbiotic 180-S</b><br><span class='kctag'>180 million CFU/g</span> <span class='kctag'>7 enzymes</span></td><td class="gd">0.75 g per 250 ml daily<br><b>1.5 g</b> for stress, 5 days</td></tr>
+<tr id="g8"><td class="gn"><a class="gnum" href="#g8">8</a></td><td class="gg"><b>Heat and stress</b></td><td class="gb">A panting bird loses <b>sodium, potassium and chloride</b> through the airway. Blood volume falls before the bird looks unwell. Panting is the only cooling a bird has</td><td class="gu"><b>Electrolytes</b> + glucose to carry them across the gut wall</td><td class="gp"><b>Nekton Elektrolyt</b><br><span class='kctag'>Na 225 mg/L</span> <span class='kctag'>Cl 337 mg/L</span> <span class='kctag'>taurine 37.5 mg/L</span><br>or <b>Spark Liquid</b>, 20 ml/L</td><td class="gd">1.9 g per 250 ml<br><b>never past 5 days</b></td></tr>
+<tr id="g9"><td class="gn"><a class="gnum" href="#g9">9</a></td><td class="gg"><b>Weight gain</b></td><td class="gb">Weight is <b>calories</b>, nothing else. No bottle contains calories. A bird picking canary and millet is self-selecting the lowest-fat seeds you offer</td><td class="gu"><b>Fat.</b> Hemp 30-35&nbsp;%, sunflower 28&nbsp;%, canary 5-6&nbsp;%, millet 4&nbsp;%</td><td class="gp"><b>Hemp seed, millet spray, mealworms</b><br>Mealworms are ~50&nbsp;% protein and get eaten when nothing else is</td><td class="gd">Small pinch daily<br>spray stays in the cage</td></tr>
+<tr id="g10"><td class="gn"><a class="gnum" href="#g10">10</a></td><td class="gg"><b>Moult and feathers</b></td><td class="gb">A feather is <b>90&nbsp;% keratin</b>, a protein built from sulphur amino acids. A moult is a protein event, not a vitamin event, and it blocks breeding while it runs</td><td class="gu"><b>Methionine</b> + cystine, and <b>biotin</b> to make the keratin good quality</td><td class="gp"><b>Muta-Vit</b><br><span class='kctag'>methionine 114 mg/L</span> <span class='kctag'>biotin 0.92 mg/L</span><br>7&times; the biotin of Ferti-Vit</td><td class="gd">1 g per 250 ml<br>daily while moulting</td></tr>
+<tr id="g11"><td class="gn"><a class="gnum" href="#g11">11</a></td><td class="gg"><b>A new or imported bird</b></td><td class="gb">Transport costs weight, not health. A visible keel after a flight is fuel burned. The real risk is what the bird is carrying into your aviary</td><td class="gu"><b>Energy first, then flora, then vitamins.</b> In that order, never together</td><td class="gp"><b>Spark Liquid</b> days 1-3<br>then <b>Synbiotic</b> days 4-8<br>then <b>Nekton S</b> daily</td><td class="gd">Spark 20 ml/L<br>Synbiotic 1.5 g per 250 ml<br><b>30 days quarantine, never shorter</b></td></tr>
+<tr class="gband"><td colspan="6">DEFENCE</td></tr>
+<tr id="g12"><td class="gn"><a class="gnum" href="#g12">12</a></td><td class="gg"><b>Immunity</b></td><td class="gb">Antibody production runs on vitamin A for the gut and airway lining, and vitamin E for the immune cells themselves</td><td class="gu"><b>Vitamin A</b> + <b>vitamin E</b> + zinc</td><td class="gp"><b>Omni-Vit</b><br><span class='kctag'>vitamin A 12,120 IU/L</span> <span class='kctag'>zinc 17.9 mg/L</span></td><td class="gd">1 g per 250 ml<br>2&times; a week</td></tr>
+<tr id="g13"><td class="gn"><a class="gnum" href="#g13">13</a></td><td class="gg"><b>Canker (trichomoniasis)</b></td><td class="gb">A protozoan in the crop and throat. It kills chicks in the nest faster than anything else on this page, and parents pass it down while feeding</td><td class="gu"><b>Metronidazole.</b> Nothing nutritional touches it</td><td class="gp"><b>Dirovet Vet</b><br><span class='kctag'>metronidazole 300 mg/g</span><br><b>Micronid is NOT metronidazole and does not treat this</b></td><td class="gd">40 mg per kg once daily, 5 days<br>a 50 g bird = <b>6.7 mg powder</b></td></tr>
+<tr id="g14"><td class="gn"><a class="gnum" href="#g14">14</a></td><td class="gg"><b>Mites and external parasites</b></td><td class="gb">Red mite feeds at night and hides in cage joints by day. A hen refusing to sit at night is a mite sign long before you see a mite</td><td class="gu"><b>Direct contact treatment.</b> Nothing in the water works</td><td class="gp"><b>Avi-Mite</b><br>Aviform confirm it is safe during breeding and around chicks</td><td class="gd">Per label, on the bird and the cage<br>repeat after 7 days</td></tr>
+<tr id="g15"><td class="gn"><a class="gnum" href="#g15">15</a></td><td class="gg"><b>Bacterial infection</b></td><td class="gb">Fluffed, quiet, not eating, with a hen still on eggs. This is the one case where waiting to see costs you the clutch and sometimes the hen</td><td class="gu"><b>Antibiotic, on a vet's call.</b> Never routinely, never as prevention</td><td class="gp"><b>Zis-Vet</b> or <b>Moxilin-CV Vet</b><br><b>Stop every probiotic and electrolyte during the course</b></td><td class="gd">Zis-Vet 4 ml/L, 7 days<br>finish the course or do not start it</td></tr>
+<tr id="g16"><td class="gn"><a class="gnum" href="#g16">16</a></td><td class="gg"><b>After any antibiotic</b></td><td class="gb">An antibiotic course empties the gut flora and the water-soluble B vitamins at the same time. The bird looks recovered and absorbs nothing</td><td class="gu"><b>Live bacteria</b> to reseed, <b>B group</b> to refill</td><td class="gp"><b>Synbiotic 180-S</b> + <b>Nekton B-Komplex</b><br><span class='kctag'>B3 120 mg/L</span> <span class='kctag'>B9 24 mg/L</span></td><td class="gd">Start the day the course ends<br>5 days</td></tr>
+<tr class="gband"><td colspan="6">KEEP THE ENGINE CLEAN</td></tr>
+<tr id="g17"><td class="gn"><a class="gnum" href="#g17">17</a></td><td class="gg"><b>Liver</b></td><td class="gb">A fatty liver is the commonest hidden killer in caged seed-eating birds. Choline is what moves fat back out of the liver cell</td><td class="gu"><b>Choline</b> + methionine + inositol</td><td class="gp"><b>Liva-Vit</b><br><span class='kctag'>choline 33.3 mg/L</span><br><b>the only choline source you own</b></td><td class="gd">1 ml per 1.5 L<br>5 to 7 days</td></tr>
+<tr id="g18"><td class="gn"><a class="gnum" href="#g18">18</a></td><td class="gg"><b>Nerve and recovery</b></td><td class="gb">B vitamins are water-soluble, so they are not stored. Stress, illness and heat empty the tank within days</td><td class="gu"><b>The B group</b>, especially B1, B2 and B12</td><td class="gp"><b>Nekton B-Komplex</b><br><span class='kctag'>B3 120 mg/L</span><br>Nekton: use only when needed, not routinely</td><td class="gd">0.5 g per daily ration<br>short course only</td></tr>
+<tr id="g19"><td class="gn"><a class="gnum" href="#g19">19</a></td><td class="gg"><b>Water and equipment hygiene</b></td><td class="gb">A drinker grows a biofilm in 48 hours in Dhaka heat. Medicated water with sugar in it grows one faster. Most gut problems start in the drinker</td><td class="gu"><b>Acidity</b> in the water, <b>disinfectant</b> on the equipment</td><td class="gp"><b>Apple cider vinegar</b> in water<br><b>Virkon S</b> for cages and tools only<br><b>Never Virkon near a live bird</b></td><td class="gd">ACV Friday only<br>dump medicated water by noon</td></tr>
+<tr id="g20"><td class="gn"><a class="gnum" href="#g20">20</a></td><td class="gg"><b>Daily base</b></td><td class="gb">Nothing dramatic. Just the full vitamin and trace panel a seed diet does not contain, every day, so no deficiency ever gets started</td><td class="gu"><b>All 12 vitamins</b> + iron, zinc, manganese, copper, iodine</td><td class="gp"><b>Nekton S</b> in food + <b>Nekton MSA</b><br>Nekton name this pair as the standing daily supply</td><td class="gd">1 g each per 100 g<br>daily. Max 5&nbsp;% of ration</td></tr>
+</tbody></table></div>
+    <p class="kcnote"><b>How to read the fourth column:</b> every figure is per litre of made-up drinking water at the label dose, converted from the manufacturer declaration, so they are directly comparable to each other. <b>Verified 15 September 2026:</b> 243 figures checked against 29 manufacturer pages.</p>
+    <p class="kcwarn"><b>The one that catches people:</b> vitamin E and selenium are a pair, not a sequence. Breed Star carries the vitamin E and no selenium. Ferti-Vit carries both. That is why the breeding rotation is 2 days and 2 days, and why a 7-day block of either one on its own wastes half of it.</p>
+  </div>
+
+  <div class="kcpanel" data-p="emerg">
+    <p class="kcsub" style="margin-bottom:14px"><b>Act within the hour.</b> Five situations that decide whether a bird recovers or is lost. Learn these before you need them.</p>
+<div class="corr"><span class="ctag">Corrected</span><b>Two lines in the old heat card were wrong and have been replaced.</b> The old text said to wet the floor above 35&nbsp;&deg;C and to run every fan at once. Wetting the floor raises humidity, and a bird cools itself <b>only</b> by panting, which stops working as the air fills. At 34&nbsp;&deg;C, lifting relative humidity from 72&nbsp;% to 88&nbsp;% collapses vapour pressure deficit from <b>14.9 hPa to 6.4 hPa</b>. And the 6F exhaust between 10:00 and 14:00 pulls in outdoor air measured <b>2.0 to 2.4&nbsp;&deg;C hotter</b> than the room, so running it at midday imports heat. Ceiling fans yes. Exhaust at midday, no.</div>
+<div class="egrid">
     <div class="ecard">
       <div class="eico"><svg viewBox="0 0 24 24"><path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42A6.92 6.92 0 0119 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.15.97-4.07 2.5-5.36L6.17 5.17A8.93 8.93 0 003 12a9 9 0 0018 0c0-2.74-1.23-5.19-3.17-6.83z"/></svg></div>
       <h3>Leg paralysis</h3>
@@ -894,35 +914,31 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
       <p style="margin-top:9px;font-size:12.4px;color:var(--ink3)"><b>Separate airspace, separate bowls, separate tools, wash hands after.</b> A visible keel after transport is weight loss, not illness. No Breed Star or Ferti-Vit until quarantine ends and weight is normal.</p>
     </div>
   </div>
-</div></section>
-
-<section><div class="wrap">
-  <div class="head-blk">
-    <span class="pill-lbl">Start from the job, not the bottle</span>
-    <h2>What means what</h2>
-    <p class="sub">Twelve goals, the biology behind each one, the nutrient that actually does it, and the product on your shelf that carries the most of it per litre of made-up water.</p>
   </div>
 
-    <p class="kcsub" style="margin-bottom:12px">Start from the job, not the bottle. Column two is the biology, column three is the nutrient that actually does it, column four is the product on your shelf that carries the most of it <b>per litre of made-up water</b>, measured from the manufacturer label.</p>
-    <div class="kctw"><table>
-      <thead><tr><th style="width:15%">THE GOAL</th><th style="width:27%">WHAT IS ACTUALLY HAPPENING</th><th style="width:20%">THE NUTRIENT THAT DOES IT</th><th style="width:22%">BEST ON YOUR SHELF</th><th style="width:16%">DOSE</th></tr></thead>
-      <tbody>
-        <tr><td><b>Moult &amp; feathers</b></td><td>A feather is <b>90&nbsp;% keratin</b>, a protein built from sulphur amino acids. A moult is a protein event, not a vitamin event</td><td><b>Methionine</b> + cystine, and <b>biotin</b> to make the keratin good quality</td><td><b>Muta-Vit</b><br><span class="kctag">methionine 114 mg/L</span> <span class="kctag">biotin 0.92 mg/L</span><br>7&times; the biotin of Ferti-Vit</td><td>1 g per 250 ml<br>3&times; a week</td></tr>
-        <tr><td><b>Male fertility</b></td><td>Sperm is rebuilt on a <b>14-day cycle</b>. Vitamin E protects the cell membrane while it forms. Above 32 &deg;C the whole batch is damaged</td><td><b>Vitamin E</b>, and <b>arginine</b>, the amino acid sperm is built from</td><td><b>Nekton Breed Star</b><br><span class="kctag">vitamin E 220 mg/L</span> <span class="kctag">arginine 102 mg/L</span><br>the only arginine you own</td><td>1 g per 250 ml<br>21 days minimum</td></tr>
-        <tr><td><b>Fertility cofactor</b></td><td><b>Vitamin E cannot work without selenium.</b> Selenium runs the enzyme that regenerates vitamin E after it does its job</td><td><b>Selenium</b></td><td><b>Ferti-Vit</b><br><span class="kctag">selenium 0.072 mg/L</span><br>Breed Star and Nekton E declare <b>zero</b></td><td>1 g per 250 ml<br>alternate 2 days with Breed Star</td></tr>
-        <tr><td><b>Egg shell</b></td><td>A shell is <b>calcium carbonate</b>. The hen strips it from her own skeleton in 14 hours if the diet is short. Vitamin D3 is what lets the gut absorb it at all</td><td><b>Calcium</b> + <b>vitamin D3</b> together. Calcium without D3 passes straight through</td><td><b>Calcivet</b><br><span class="kctag">calcium 0.66 g/L</span> <span class="kctag">D3 500 IU/L</span><br>plus <b>Nekton MSA</b> in food, 26&nbsp;% calcium</td><td>5 ml per 250 ml<br>Mon to Fri</td></tr>
-        <tr><td><b>Weight gain</b></td><td>Weight is <b>calories</b>, nothing else. No bottle contains calories. A bird that picks canary and millet is self-selecting the lowest-fat seeds you offer</td><td><b>Fat.</b> Hemp 30-35&nbsp;%, sunflower 28&nbsp;%, canary 5-6&nbsp;%, millet 4&nbsp;%</td><td><b>Hemp seed, millet spray, mealworms</b><br>Mealworms are ~50&nbsp;% protein and get eaten when nothing else is</td><td>Small pinch daily<br>spray stays in the cage</td></tr>
-        <tr><td><b>Gut &amp; absorption</b></td><td>Stress, transport and antibiotics strip the gut flora. Until it is rebuilt, <b>every supplement after it is wasted</b></td><td><b>Live bacteria</b> (CFU) + a prebiotic to feed them</td><td><b>Synbiotic 180-S</b><br><span class="kctag">180 million CFU/g</span> <span class="kctag">9 strains</span> <span class="kctag">7 enzymes</span></td><td>0.75 g per 250 ml daily<br><b>1.5 g</b> for stress, 5 days</td></tr>
-        <tr><td><b>Immunity</b></td><td>Antibody production runs on vitamin A for the gut and airway lining, and vitamin E for the immune cells themselves</td><td><b>Vitamin A</b> + <b>vitamin E</b> + zinc</td><td><b>Omni-Vit</b><br><span class="kctag">vitamin A 12,120 IU/L</span> <span class="kctag">zinc 17.9 mg/L</span></td><td>1 g per 250 ml<br>2&times; a week</td></tr>
-        <tr><td><b>Heat &amp; stress</b></td><td>A panting bird loses <b>sodium, potassium and chloride</b> through the airway. Blood volume falls before the bird looks unwell</td><td><b>Electrolytes</b> + glucose to carry them across the gut wall</td><td><b>Nekton Elektrolyt</b><br><span class="kctag">Na 225 mg/L</span> <span class="kctag">Cl 337 mg/L</span> <span class="kctag">taurine 37.5 mg/L</span><br>or <b>Spark Liquid</b>, 20 ml/L</td><td>1.9 g per 250 ml<br><b>never past 5 days</b></td></tr>
-        <tr><td><b>Chick growth</b></td><td>A chick multiplies its hatch weight roughly <b>10&times; in 30 days</b>. Bone lays down faster than at any other point in its life</td><td><b>Calcium + phosphorus in a 2:1 ratio</b>, plus the full B group for energy metabolism</td><td><b>Nekton MSA</b> in soft food<br><span class="kctag">Ca 26.1&nbsp;%</span> <span class="kctag">P 19.6&nbsp;%</span><br>plus <b>Nekton S</b> for the vitamins</td><td>1 g per 100 g soft food<br>daily</td></tr>
-        <tr><td><b>Liver</b></td><td>A fatty liver is the commonest hidden killer in caged seed-eating birds. Choline is what moves fat back out of the liver cell</td><td><b>Choline</b> + methionine + inositol</td><td><b>Liva-Vit</b><br><span class="kctag">choline 33.3 mg/L</span><br><b>the only choline source you own</b></td><td>1 ml per 1.5 L<br>5 to 7 days</td></tr>
-        <tr><td><b>Nerve &amp; recovery</b></td><td>B vitamins are water-soluble, so they are not stored. Stress, illness and any antibiotic course empty the tank within days</td><td><b>The B group</b>, especially B1, B2 and B12</td><td><b>Nekton B-Komplex</b><br><span class="kctag">B3 120 mg/L</span> <span class="kctag">B9 24 mg/L</span><br>Nekton: use only when needed, not routinely</td><td>0.5 g per daily ration<br>short course only</td></tr>
-        <tr><td><b>Daily base</b></td><td>Nothing dramatic. Just the full vitamin and trace panel a seed diet does not contain, every day, so no deficiency ever gets started</td><td><b>All 12 vitamins</b> + iron, zinc, manganese, copper, iodine</td><td><b>Nekton S</b> in food + <b>Nekton MSA</b><br>Nekton names this pair as the standing daily supply</td><td>1 g each per 100 g<br>daily. Max 5&nbsp;% of ration</td></tr>
-      </tbody>
-    </table></div>
-    <p class="kcnote"><b>How to read column four:</b> every figure is per litre of made-up drinking water at the label dose, converted from the manufacturer declaration. They are directly comparable to each other. <b>Verified 15 September 2026:</b> 243 figures checked against 29 manufacturer pages.</p>
-    <p class="kcwarn"><b>The one that catches people:</b> vitamin E and selenium are a pair, not a sequence. Breed Star carries the vitamin E and no selenium. Ferti-Vit carries both. That is why the breeding rotation is 2 days and 2 days, and why a 7-day block of either one on its own wastes half of it.</p>
+</div></section>
+
+<section id="log"><div class="wrap">
+  <div class="head-blk">
+    <span class="pill-lbl">Who is on what, right now</span>
+    <h2>Live treatment log</h2>
+    <p class="sub">The reason courses go wrong is not the dose. It is losing track of which day a bird is on. Add a course once, and this counts the days for you and tells you the day it must stop.</p>
+  </div>
+  <div class="tt">
+    <div class="ttform">
+      <div class="ttf"><label>Cage or bird</label><input id="tBird" placeholder="e.g. Cage 10" autocomplete="off"></div>
+      <div class="ttf"><label>Product</label><input id="tProd" placeholder="e.g. Synbiotic 180-S" autocomplete="off" list="tProdList"></div>
+      <div class="ttf"><label>Dose</label><input id="tDose" placeholder="1.5 g / 250 ml" autocomplete="off"></div>
+      <div class="ttf"><label>Route</label><select id="tRoute"><option>Water</option><option>Soft food</option><option>By beak</option><option>Topical</option></select></div>
+      <div class="ttf"><label>Start date and days</label><div style="display:flex;gap:7px"><input id="tStart" type="date" style="flex:1.4"><input id="tDays" type="number" min="1" max="60" value="5" style="flex:.7" aria-label="Days"></div></div>
+      <button class="ttadd" id="tAdd">Add</button>
+    </div>
+    <datalist id="tProdList"></datalist>
+    <div class="tthd"><div class="ttrow" style="padding:0;border:0;background:0"><div>Cage or bird</div><div>Product</div><div>Dose</div><div>Route</div><div>Day</div><div></div></div></div>
+    <div id="tBody"></div>
+    <div class="ttbar"><span>Running: <b id="tOn">0</b></span><span>Finish today: <b id="tEnd">0</b></span><span>Overdue, stop now: <b id="tOver">0</b></span><span style="margin-left:auto;color:var(--ink3)">Saved on this device only. Nothing is uploaded.</span></div>
+  </div>
+  <p class="note" style="margin-top:16px"><b>The rule this log exists to enforce.</b> Nekton Elektrolyt and Prolyte-C are never given past <b>5 days</b>. Breed Star and Ferti-Vit stop the day <b>that pair</b> lays its first egg, never on a fixed date. Antibiotic and Dirovet courses are finished in full or not started. Everything else on the list is safe to run out its days.</p>
 </div></section>
 
 <section class="sec-grey"><div class="wrap">
@@ -970,7 +986,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   </div>
 </div></footer>
 
-<script src="os.js?v31"></script>
+<script src="os.js?v32"></script>
 <script>
 (function(){
   var dd=document.getElementById('navdd'), bt=document.getElementById('navbtn');
