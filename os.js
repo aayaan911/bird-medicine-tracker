@@ -346,3 +346,51 @@ document.addEventListener('scroll', function(e){
   /* the medicine list re renders on filter, so relabel when the DOM settles */
   var deb; document.addEventListener('click', function(){ clearTimeout(deb); deb=setTimeout(labelTables,120); });
 })();
+
+/* ---------- 4. a 40 row table needs a jump bar, a back to top, and copyable rows ---------- */
+(function(){
+  function init(){
+    /* back to top */
+    if(document.querySelector('.gtbl') && !document.querySelector('.totop')){
+      var b=document.createElement('button');
+      b.className='totop'; b.setAttribute('aria-label','Back to top');
+      b.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>';
+      document.body.appendChild(b);
+      b.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+      var onScroll=function(){ b.classList.toggle('show', window.scrollY>700); };
+      window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+    }
+
+    /* tapping a row number copies a shareable link to that exact row */
+    Array.prototype.forEach.call(document.querySelectorAll('a.rnum'), function(a){
+      a.addEventListener('click', function(e){
+        var url=location.origin+location.pathname+a.getAttribute('href');
+        if(navigator.clipboard){ navigator.clipboard.writeText(url).then(function(){
+          var old=a.getAttribute('title'); a.setAttribute('title','Link copied');
+          a.style.transform='scale(1.16)';
+          setTimeout(function(){ a.style.transform=''; if(old) a.setAttribute('title',old); },550);
+        }).catch(function(){}); }
+      });
+    });
+
+    /* the jump bar marks where you actually are */
+    var bar=document.getElementById('jumpbar');
+    if(bar){
+      var links=bar.querySelectorAll('a');
+      var targets=[].map.call(links,function(l){ return document.querySelector(l.getAttribute('href')); });
+      var mark=function(){
+        var best=-1;
+        for(var i=0;i<targets.length;i++){
+          if(targets[i] && targets[i].getBoundingClientRect().top<=170) best=i;
+        }
+        for(var j=0;j<links.length;j++) links[j].classList.toggle('on', j===best);
+        if(best>-1 && bar.scrollWidth>bar.clientWidth){
+          var l=links[best], lr=l.getBoundingClientRect(), br=bar.getBoundingClientRect();
+          if(lr.left<br.left+8 || lr.right>br.right-8) bar.scrollTo({left:l.offsetLeft-16,behavior:'smooth'});
+        }
+      };
+      window.addEventListener('scroll',mark,{passive:true}); mark();
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
