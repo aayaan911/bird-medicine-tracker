@@ -34,11 +34,11 @@ button,a{touch-action:manipulation}
 
 /* the number column */
 .gtbl td.gn,.gtbl th.gn{width:44px;text-align:center;vertical-align:top}
-.gtbl .gnum{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;
+.gtbl .rnum{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;
   border-radius:8px;background:var(--gdeep);color:#fff;font-size:12.5px;font-weight:800;
   text-decoration:none;font-variant-numeric:tabular-nums}
-[data-theme="dark"] .gtbl .gnum{background:#2fbe8e;color:#0e1418}
-.gtbl .gnum:hover{background:var(--green)}
+[data-theme="dark"] .gtbl .rnum{background:#2fbe8e;color:#0e1418}
+.gtbl .rnum:hover{background:var(--green)}
 .gtbl tr:target td{background:color-mix(in srgb,var(--green) 12%,transparent)!important}
 
 /* ---------- 3. Tablet ---------- */
@@ -107,7 +107,7 @@ button,a{touch-action:manipulation}
   .gtbl.mcard tr:not(.gband){padding-top:46px;position:relative}
   .gtbl.mcard td.gn{position:absolute;top:13px;left:15px;padding:0;width:auto}
   .gtbl.mcard td.gn::before{display:none}
-  .gtbl.mcard .gnum{min-width:30px;height:30px;font-size:14px;border-radius:9px}
+  .gtbl.mcard .rnum{min-width:30px;height:30px;font-size:14px;border-radius:9px}
   .gtbl.mcard td.gg{position:absolute;top:13px;left:56px;right:15px;padding:0;
     font-size:16.5px;letter-spacing:-.3px;line-height:1.25}
   .gtbl.mcard td.gg::before{display:none}
@@ -297,8 +297,8 @@ body.navopen .navbd{opacity:1;pointer-events:auto}
   .ttf input[type="date"]{min-width:0}
 
   /* the row number stays visually small but gets a 44px hit area */
-  .gtbl .gnum{position:relative}
-  .gtbl .gnum::after{content:"";position:absolute;top:50%;left:50%;
+  .gtbl .rnum{position:relative}
+  .gtbl .rnum::after{content:"";position:absolute;top:50%;left:50%;
     width:44px;height:44px;transform:translate(-50%,-50%)}
 
   /* links sitting inside a card heading need a real target */
@@ -399,10 +399,10 @@ body.navopen .navbd{opacity:1;pointer-events:auto}
   .gtbl{overflow-x:auto;overflow-y:visible}
 }
 /* the row number reads as #1, #2 so it can be quoted out loud */
-.gtbl .gnum::before{content:"#";opacity:.62;margin-right:.5px;font-weight:700}
-.gtbl .gnum{min-width:38px;padding:0 7px;letter-spacing:-.2px}
+.gtbl .rnum::before{content:"#";opacity:.62;margin-right:.5px;font-weight:700}
+.gtbl .rnum{min-width:38px;padding:0 7px;letter-spacing:-.2px}
 @media(max-width:760px){
-  .gtbl.mcard .gnum{min-width:44px;height:30px;font-size:14px;padding:0 8px}
+  .gtbl.mcard .rnum{min-width:44px;height:30px;font-size:14px;padding:0 8px}
 }
 /* a row you linked to gets a lasting highlight, not a flash */
 .gtbl tr:target td{background:color-mix(in srgb,var(--green) 14%,transparent)!important}
@@ -425,3 +425,29 @@ body.navopen .navbd{opacity:1;pointer-events:auto}
 .gtbl .gband td{z-index:1}
 /* give the first row of each band air so nothing ever hides under the head */
 .gtbl .gband + tr td{padding-top:15px}
+
+
+/* ============================================================================
+   16. CLASS COLLISION FIX
+   The row number badge was called .gnum, which is already the GALLERY CARD's
+   badge on index.html: position:absolute, top:11px, left:11px. Every one of the
+   20 row numbers was therefore absolutely positioned and they all stacked on
+   the same spot, off screen. The table badge is .rnum now and owns its own name.
+   ========================================================================== */
+.gtbl .rnum{
+  position:static!important;top:auto!important;left:auto!important;
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:40px;height:27px;padding:0 8px;border-radius:9px;
+  background:var(--gdeep);color:#fff;font-size:13px;font-weight:800;
+  text-decoration:none;font-variant-numeric:tabular-nums;letter-spacing:-.2px;
+  box-shadow:none}
+[data-theme="dark"] .gtbl .rnum{background:#2fbe8e;color:#0e1418}
+.gtbl .rnum:hover{background:var(--green);color:#fff}
+[data-theme="dark"] .gtbl .rnum:hover{background:#8fe3c4;color:#0e1418}
+.gtbl .rnum::before{content:"#";opacity:.6;font-weight:700;margin-right:.5px}
+.gtbl td.gn,.gtbl th.gn{width:56px;min-width:56px;text-align:center;vertical-align:top}
+@media(max-width:760px){
+  .gtbl.mcard .rnum{min-width:46px;height:31px;font-size:14.5px;padding:0 9px}
+  .gtbl .rnum{position:relative!important}
+  .gtbl .rnum::after{content:"";position:absolute;top:50%;left:50%;width:46px;height:44px;transform:translate(-50%,-50%)}
+}
