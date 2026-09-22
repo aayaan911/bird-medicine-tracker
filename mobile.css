@@ -407,3 +407,21 @@ body.navopen .navbd{opacity:1;pointer-events:auto}
 /* a row you linked to gets a lasting highlight, not a flash */
 .gtbl tr:target td{background:color-mix(in srgb,var(--green) 14%,transparent)!important}
 .gtbl tr:target{scroll-margin-top:110px}
+
+
+/* ============================================================================
+   15. STICKY STACK FIX
+   The head and the section band were both sticky, at 56px and 96px, and the
+   two of them overlapped the first row of every band by 11px. Only one thing
+   sticks now: the column head, parked exactly under the 57px topbar. The band
+   rows are dividers, they scroll away like normal content.
+   ========================================================================== */
+.kctw thead th,.tw thead th{top:57px}
+.gtbl .gband td{position:static!important;top:auto!important}
+.gtbl tbody tr td{scroll-margin-top:118px}
+.gtbl tr{scroll-margin-top:118px}
+/* the head needs to sit above the band, and the band above the body */
+.kctw thead th,.tw thead th{z-index:6}
+.gtbl .gband td{z-index:1}
+/* give the first row of each band air so nothing ever hides under the head */
+.gtbl .gband + tr td{padding-top:15px}
