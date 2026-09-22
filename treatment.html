@@ -141,7 +141,7 @@ h1 em{font-style:normal;color:var(--green)}
 .crow:last-child{border-bottom:0}
 
 /* while the header is stuck it sits at the top of the scroll box, not at the top of
-   the rounded table, so a curve there looks wrong. os.js?v36 toggles .cstuck on scroll. */
+   the rounded table, so a curve there looks wrong. os.js?v37 toggles .cstuck on scroll. */
 .crow.chead.cstuck,
 .crow.chead.cstuck>div:first-child,
 .crow.chead.cstuck>div:last-child{border-top-left-radius:0;border-top-right-radius:0}
@@ -791,7 +791,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 .topbar .navdd{margin-left:auto}
 .topbar .nav .navdd{margin-left:0}
 </style>
-<link rel="stylesheet" href="mobile.css?v36">
+<link rel="stylesheet" href="mobile.css?v37">
 </head>
 <body>
 
@@ -843,6 +843,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <div class="kctabs" id="refTabs" role="tablist">
     <button class="kctab on" data-t="goal">1 &middot; What means what</button>
     <button class="kctab" data-t="emerg">2 &middot; Emergency actions</button>
+    <button class="kctab" data-t="field">3 &middot; What worked for me</button>
   </div>
 
   <div class="kcpanel on" data-p="goal">
@@ -916,6 +917,55 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   </div>
   </div>
 
+  <div class="kcpanel" data-p="field">
+    <p class="kcsub" style="margin-bottom:14px"><b>Your own cases, in your own words.</b> These are not label doses. They are what you actually gave, what happened, and how each one compares to what the manufacturer publishes. Recorded so the next time the same signs appear you are not starting from memory.</p>
+
+    <div class="corr" style="border-left-color:var(--green);background:var(--mint2)">
+      <span class="ctag" style="background:var(--gdeep)">Read this first</span><b>A field protocol is evidence, not a licence.</b> Every case below worked for you, and that matters more than a label written for chickens. But none of these doses appears on any manufacturer label for a cage bird, and three of them are well above the published poultry rate. Keep using what works, and know exactly where you are standing relative to the label.
+    </div>
+
+    <div class="kctw gtbl"><table>
+    <thead><tr><th class="gn">#</th><th class="gg">THE CASE</th><th class="gb">WHAT YOU SAW</th><th class="gu">WHAT YOU GAVE</th><th class="gp">RESULT AND VERDICT</th><th class="gd">VS THE LABEL</th></tr></thead>
+    <tbody>
+      <tr class="gband"><td colspan="6">GUT AND GENERAL DECLINE</td></tr>
+
+      <tr id="f1"><td class="gn"><a class="gnum" href="#f1">1</a></td>
+        <td class="gg"><b>The fluffed corner bird</b></td>
+        <td class="gb">Sitting fluffed away from the seed dish, going to the cage corner and dozing. Eating all day but <b>only a little at a time, every 10 minutes</b>. Not a bird that had stopped eating, a bird that could not eat a full crop</td>
+        <td class="gu"><b>Liva-Vit</b> 1 ml per 1 litre, 5 days, mixed into the hand feeding formula<br><b>Amodis syrup</b> 3 ml per 1 litre, plus 1 drop direct daily, 5 days<br>Both stopped at day 5</td>
+        <td class="gp"><b>Recovered.</b> The combination targets two things at once: Amodis is metronidazole, which covers canker and giardia, and Liva-Vit is choline for the liver. <b>Small frequent feeding is a crop emptying problem</b>, and canker sits in the crop</td>
+        <td class="gd">Amodis is a <b>human</b> syrup, 200 mg per 5 ml. Your 3 ml/L is about <b>120 mg metronidazole per litre</b>. Dirovet at 40 mg/kg would have been the weighable route</td></tr>
+
+      <tr id="f2"><td class="gn"><a class="gnum" href="#f2">2</a></td>
+        <td class="gg"><b>Diarrhoea with leg paralysis</b><br><span style="font-size:12.5px;font-weight:500;color:var(--ink3)">protocol from GK Fuad</span></td>
+        <td class="gb">Loose droppings together with a bird going down on its legs. Two signs at once, which points at one cause rather than two</td>
+        <td class="gu"><b>Micronid</b> 1 g per 500 ml, 5 days<br><b>Prithi WS</b> 1 g per 1 litre, 10 days<br><b>B-Com-Vit</b> 1 drop daily</td>
+        <td class="gp"><b>Recovered.</b> The logic holds: Micronid is an antibacterial for the gut, Prithi is B1, B2 and B6 for the nerve signs. <b>Curled toe and leg weakness are on Prithi's own label as B vitamin deficiency signs</b></td>
+        <td class="gd">Prithi's label says <b>3 to 5 days</b>, you ran 10. Micronid has <b>no published dose at all</b>. Neither figure is wrong, but neither is on a label</td></tr>
+
+      <tr class="gband"><td colspan="6">RESPIRATORY</td></tr>
+
+      <tr id="f3"><td class="gn"><a class="gnum" href="#f3">3</a></td>
+        <td class="gg"><b>Super cold and hapani</b><br><span style="font-size:12.5px;font-weight:500;color:var(--ink3)">protocol from GK Fuad</span></td>
+        <td class="gb">Heavy cold with laboured breathing. Hapani is the wheeze you can hear across the room</td>
+        <td class="gu"><b>Doxy</b> 1 g + <b>Electromin</b> 0.5 g in 250 ml, 5 days<br>Then 5 days of probiotic, vitamin and mineral supplement, and protein</td>
+        <td class="gp"><b>Recovered.</b> Doxycycline is the right molecule: it is the one antibiotic that reaches <b>mycoplasma</b> and the airway, which is what wheezing usually is. Following with probiotic is correct, an antibiotic strips the gut flora</td>
+        <td class="gd"><b style="color:#c8412f">Your rate is 4 g/L. The ACME poultry treatment rate is 1 g per 2 litres, so 0.5 g/L. You gave 8&times; the label.</b> Also: Electromin carries calcium, magnesium and zinc, and <b>all three block doxycycline absorption</b>. Give them in separate waters next time</td></tr>
+
+      <tr class="gband"><td colspan="6">DROPPINGS</td></tr>
+
+      <tr id="f4"><td class="gn"><a class="gnum" href="#f4">4</a></td>
+        <td class="gg"><b>Chuna or green droppings</b></td>
+        <td class="gb">White chalky or green droppings. Green means bile with no food passing. Chalky white means urates without solids</td>
+        <td class="gu"><b>Micronid</b> or <b>Ciprocin</b></td>
+        <td class="gp">Both are antibacterials, so both target a bacterial enteritis. That is a reasonable first guess for green droppings in a bird that is otherwise eating</td>
+        <td class="gd">Micronid has <b>no published dose</b>. Plain Ciprocin is the <b>human</b> tablet with no animal dose; the veterinary form is Ciprocin-Vet at 5 mg/kg. <b>Never give Ciprocin with calcium or Nekton MSA</b>, they block it</td></tr>
+    </tbody>
+    </table></div>
+
+    <p class="kcwarn" style="background:var(--mint2);border-color:var(--green);color:var(--gdeep)"><b>The pattern across all four:</b> every case that recovered was treated for an <b>infection</b>, not a deficiency, and the vitamins were support rather than the cure. That is worth remembering when a bird goes quiet. <b>The one change worth making next season</b> is to stop putting Electromin or any mineral in the same water as doxycycline or ciprofloxacin.</p>
+  </div>
+
 </div></section>
 
 <section id="log"><div class="wrap">
@@ -986,7 +1036,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   </div>
 </div></footer>
 
-<script src="os.js?v36"></script>
+<script src="os.js?v37"></script>
 <script>
 (function(){
   var dd=document.getElementById('navdd'), bt=document.getElementById('navbtn');
