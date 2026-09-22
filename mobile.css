@@ -22,13 +22,13 @@ button,a{touch-action:manipulation}
 .kctw::-webkit-scrollbar,.tw::-webkit-scrollbar,.subnav::-webkit-scrollbar,.fchips::-webkit-scrollbar{height:0}
 
 /* ---------- 2. Sticky table head, all widths ---------- */
-.kctw,.tw{position:relative;max-height:min(78vh,900px);overflow:auto;overscroll-behavior:contain}
-.kctw thead th,.tw thead th{position:sticky;top:0;z-index:5;background:var(--bg2)}
+.kctw,.tw{position:relative;overflow-x:auto;overflow-y:visible}
+.kctw thead th,.tw thead th{position:sticky;top:56px;z-index:5;background:var(--bg2)}
 [data-theme="dark"] .kctw thead th,[data-theme="dark"] .tw thead th{background:#121a20}
 .kctw thead th::after,.tw thead th::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--grid,#dedeD8)}
 
 /* band rows inside the goal table stay visible under the head */
-.gtbl .gband td{position:sticky;top:38px;z-index:4;background:var(--mint);color:var(--gdeep);
+.gtbl .gband td{position:sticky;top:96px;z-index:4;background:var(--mint);color:var(--gdeep);
   font-size:10.5px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;padding:8px 13px}
 [data-theme="dark"] .gtbl .gband td{background:#11302a;color:#8fe3c4}
 
@@ -385,3 +385,25 @@ body.navopen .navbd{opacity:1;pointer-events:auto}
   .mfit{overflow-x:visible}
   .mfit td,.mfit th{padding:12px 13px;overflow-wrap:anywhere}
 }
+
+
+/* ============================================================================
+   14. THE GOAL TABLE PRINTS IN FULL. No inner scroll box, no fixed height.
+   He reads this table end to end and quotes row numbers to his brother, so
+   every row must be on the page at once. The head sticks to the page instead.
+   ========================================================================== */
+.gtbl{max-height:none!important;overflow:visible!important}
+.gtbl table{overflow:visible}
+/* a wide table still needs a horizontal escape on a narrow desktop window */
+@media(min-width:761px){
+  .gtbl{overflow-x:auto;overflow-y:visible}
+}
+/* the row number reads as #1, #2 so it can be quoted out loud */
+.gtbl .gnum::before{content:"#";opacity:.62;margin-right:.5px;font-weight:700}
+.gtbl .gnum{min-width:38px;padding:0 7px;letter-spacing:-.2px}
+@media(max-width:760px){
+  .gtbl.mcard .gnum{min-width:44px;height:30px;font-size:14px;padding:0 8px}
+}
+/* a row you linked to gets a lasting highlight, not a flash */
+.gtbl tr:target td{background:color-mix(in srgb,var(--green) 14%,transparent)!important}
+.gtbl tr:target{scroll-margin-top:110px}
