@@ -595,3 +595,32 @@ body.navopen .searchzone{z-index:60}
   .gtbl td.gg{font-size:14px}
   .gtbl .kctag{font-size:10.5px;padding:2px 6px}
 }
+
+/* ============================================================================
+   22. TWO DIGIT ROW NUMBERS MUST NEVER BREAK
+   The badge rendered "#" as a ::before flex item and the digits as a second
+   item, inside a cell whose content box was 30px while the badge wanted 40px.
+   Two items in an overflowing box is how "#20" ends up on two lines.
+   The hash now lives in the text, so "#20" is one unbreakable run, and the
+   column is wide enough that the badge never has to fight for space.
+   ========================================================================== */
+.gtbl .rnum::before{content:none!important}
+.gtbl .rnum{
+  white-space:nowrap!important;
+  flex-wrap:nowrap!important;
+  flex-shrink:0;
+  word-break:keep-all!important;
+  overflow-wrap:normal!important;
+  font-variant-numeric:tabular-nums;
+  line-height:1;
+  min-width:44px;
+  padding:0 9px;
+  box-sizing:border-box}
+.gtbl th.gn,.gtbl td.gn{
+  width:72px!important;min-width:72px;
+  padding-left:8px!important;padding-right:8px!important;
+  text-align:center;vertical-align:top;white-space:nowrap}
+@media(max-width:760px){
+  .gtbl.mcard .rnum{min-width:50px;height:31px;font-size:14.5px;padding:0 10px}
+  .gtbl.mcard td.gn{width:auto!important;min-width:0;padding:0!important}
+}
