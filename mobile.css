@@ -567,3 +567,31 @@ body.navopen .searchzone{z-index:60}
 /* the reference section now opens straight on its tabs, so it needs its own top air */
 #reference .kctabs{margin-top:0;padding-top:4px}
 @media(max-width:760px){#reference{padding-top:20px}}
+
+/* ============================================================================
+   21. THE TABLE FITS, IT DOES NOT SCROLL
+   Removing the scroll box (so all 37 rows print) also removed the wrapper's
+   horizontal escape, so on a narrow desktop window the 6 column table ran
+   194px past the viewport. The right answer for a reference table is not a
+   scrollbar, it is columns that fit: table-layout fixed, widths in percent.
+   Now it can never exceed its container at any width, and the head stays sticky.
+   ========================================================================== */
+@media(min-width:761px){
+  .gtbl{overflow:visible!important}
+  .gtbl table{table-layout:fixed;width:100%!important;min-width:0!important}
+  .gtbl th.gn,.gtbl td.gn{width:58px}
+  .gtbl th.gg,.gtbl td.gg{width:14%}
+  .gtbl th.gb,.gtbl td.gb{width:26%}
+  .gtbl th.gu,.gtbl td.gu{width:19%}
+  .gtbl th.gp,.gtbl td.gp{width:23%}
+  .gtbl th.gd,.gtbl td.gd{width:18%}
+  .gtbl td,.gtbl th{overflow-wrap:anywhere;word-break:normal;hyphens:auto}
+  .gtbl .kctag{white-space:normal}
+}
+/* below 1100px the columns get tight, so ease the type down rather than clip */
+@media(min-width:761px) and (max-width:1100px){
+  .gtbl td{font-size:13.2px;padding:11px 10px;line-height:1.5}
+  .gtbl th{font-size:10px;padding:9px 10px}
+  .gtbl td.gg{font-size:14px}
+  .gtbl .kctag{font-size:10.5px;padding:2px 6px}
+}
