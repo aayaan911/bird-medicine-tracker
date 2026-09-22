@@ -563,3 +563,7 @@ body.navopen .searchzone{z-index:60}
   .srow .vbtn{padding:0 10px!important;min-width:42px}
   .srow .fsel{padding:0 30px 0 10px}
 }
+
+/* the reference section now opens straight on its tabs, so it needs its own top air */
+#reference .kctabs{margin-top:0;padding-top:4px}
+@media(max-width:760px){#reference{padding-top:20px}}
