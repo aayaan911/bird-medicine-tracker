@@ -261,18 +261,26 @@ document.addEventListener('scroll', function(e){
 
   /* ---------- 1. wide tables become labelled cards ---------- */
   function labelTables(){
-    var wraps=document.querySelectorAll('.kctw');
-    Array.prototype.forEach.call(wraps, function(w){
-      var t=w.querySelector('table'); if(!t) return;
-      var head=t.querySelector('thead tr'); if(!head) return;
-      var hs=[]; Array.prototype.forEach.call(head.children,function(th){ hs.push((th.textContent||'').trim()); });
-      if(hs.length<4){ w.classList.remove('mcard'); return; }
+    /* every table on the page, whatever wrapper it sits in */
+    Array.prototype.forEach.call(document.querySelectorAll('table'), function(t){
+      var w=t.closest('.kctw,.tw,.tblwrap');
+      if(!w){ /* a bare table: give it a wrapper so the card rules have a hook */
+        if(t.parentNode && t.parentNode.classList && t.parentNode.classList.contains('autotw')){ w=t.parentNode; }
+        else { w=document.createElement('div'); w.className='kctw autotw'; t.parentNode.insertBefore(w,t); w.appendChild(t); }
+      }
+      var head=t.querySelector('thead tr');
+      var cells=head?head.children:null;
+      if(!cells||!cells.length){ var fr=t.querySelector('tr'); cells=fr?fr.children:null; }
+      if(!cells||cells.length<4){ w.classList.remove('mcard'); return; }
+      var hs=[]; Array.prototype.forEach.call(cells,function(th){ hs.push((th.textContent||'').trim()); });
       w.classList.add('mcard');
-      Array.prototype.forEach.call(t.querySelectorAll('tbody tr'), function(tr){
+      Array.prototype.forEach.call(t.querySelectorAll('tbody tr, tr'), function(tr){
+        if(tr.parentNode && tr.parentNode.tagName==='THEAD') return;
         if(tr.classList.contains('gband')) return;
         var tds=tr.children;
         for(var i=0;i<tds.length;i++){
           if(tds[i].hasAttribute('colspan')) continue;
+          if(tds[i].tagName==='TH' && tr.rowIndex===0) continue;
           if(!tds[i].hasAttribute('data-label') && hs[i]) tds[i].setAttribute('data-label', hs[i]);
         }
       });
