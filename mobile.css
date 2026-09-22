@@ -378,3 +378,10 @@ body.navopen .navbd{opacity:1;pointer-events:auto}
   .subnav .wrap{padding-right:26px}
   .subnav a{flex:0 0 auto}
 }
+
+/* a 2 column table does not need carding, it just must not keep a min width */
+@media(max-width:760px){
+  .mfit table{min-width:0!important;width:100%!important}
+  .mfit{overflow-x:visible}
+  .mfit td,.mfit th{padding:12px 13px;overflow-wrap:anywhere}
+}

@@ -271,7 +271,7 @@ document.addEventListener('scroll', function(e){
       var head=t.querySelector('thead tr');
       var cells=head?head.children:null;
       if(!cells||!cells.length){ var fr=t.querySelector('tr'); cells=fr?fr.children:null; }
-      if(!cells||cells.length<4){ w.classList.remove('mcard'); return; }
+      if(!cells||cells.length<3){ w.classList.remove('mcard'); w.classList.add('mfit'); return; }
       var hs=[]; Array.prototype.forEach.call(cells,function(th){ hs.push((th.textContent||'').trim()); });
       w.classList.add('mcard');
       Array.prototype.forEach.call(t.querySelectorAll('tbody tr, tr'), function(tr){
