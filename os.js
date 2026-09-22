@@ -1,5 +1,55 @@
 /* KinBird Aviary OS — batch calculator, today view, give log, offline.
    Runs on every page. Pure localStorage, no server, no login. */
+/* ================= THEME — the single source of truth for every page =================
+   Six pages used to carry their own hand-rolled copy of this and treatment.html had
+   none, so it launched stuck in light mode. This module runs LAST on every page and
+   takes ownership: it clones the button, which drops every listener any older inline
+   copy attached, then wires exactly one. Never add a theme handler to a page again. */
+(function(){
+  var SUN='M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z';
+  var MOON='M12.34 2.02C6.59 1.82 2 6.42 2 12c0 5.52 4.48 10 10 10 3.71 0 6.93-2.02 8.66-5.02-7.51-.25-12.09-8.43-8.32-14.96z';
+  var K='bmt-theme';
+
+  function saved(){ try{ return localStorage.getItem(K); }catch(e){ return null; } }
+  function osDark(){ return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches); }
+  function paint(t){
+    document.documentElement.setAttribute('data-theme', t);
+    var ic=document.getElementById('themeIcon');
+    if(ic) ic.innerHTML='<path d="'+(t==='dark'?SUN:MOON)+'"/>';
+    var b=document.getElementById('themeBtn');
+    if(b) b.setAttribute('aria-label', t==='dark'?'Switch to light mode':'Switch to dark mode');
+    var m=document.querySelector('meta[name="theme-color"]');
+    if(m) m.setAttribute('content', t==='dark'?'#0e1418':'#1d9e75');
+  }
+
+  function init(){
+    paint(saved() || (osDark()?'dark':'light'));
+    var old=document.getElementById('themeBtn');
+    if(!old) return;
+    /* cloning strips every listener and every .onclick an older inline copy set */
+    var b=old.cloneNode(true);
+    old.parentNode.replaceChild(b, old);
+    paint(document.documentElement.getAttribute('data-theme'));
+    b.addEventListener('click', function(){
+      var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+      try{ localStorage.setItem(K,t); }catch(e){}
+      paint(t);
+    });
+    /* follow the operating system only while he has never chosen manually */
+    if(window.matchMedia){
+      var mq=window.matchMedia('(prefers-color-scheme: dark)');
+      var onOS=function(e){ if(!saved()) paint(e.matches?'dark':'light'); };
+      if(mq.addEventListener) mq.addEventListener('change', onOS);
+      else if(mq.addListener) mq.addListener(onOS);
+    }
+    /* another tab toggled it */
+    window.addEventListener('storage', function(e){ if(e.key===K && e.newValue) paint(e.newValue); });
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
 (function(){
 'use strict';
 var LS={
