@@ -313,3 +313,50 @@ body.navopen .navbd{opacity:1;pointer-events:auto}
 @media(max-width:760px){
   .kctw.mcard{max-height:none!important;overflow:visible!important}
 }
+
+/* ============================================================================
+   11. TOPBAR — the logo must never disappear
+   An old rule said .brand span{display:none} below 560px. Both the icon and the
+   wordmark are spans, so the phone header lost its identity completely.
+   Apple keeps the mark at every width and drops only the subtitle.
+   ========================================================================== */
+@media(max-width:760px){
+  .topbar .wrap{gap:10px}
+  .brand{min-width:0;flex:0 1 auto;overflow:hidden}
+  .brand .mark{display:grid!important;width:30px;height:30px;flex-shrink:0}
+  .brand .bname{display:block!important;font-size:14px;letter-spacing:-.3px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand .bname small{display:block;font-size:11px}
+}
+@media(max-width:520px){
+  .brand .bname small{display:none}
+}
+@media(max-width:430px){
+  /* only the mark survives, and it is still a real 44px target */
+  .brand .bname{display:none!important}
+  .brand{flex:0 0 auto}
+}
+
+/* ============================================================================
+   12. GOAL CARDS — grid, so a two line title can never collide with the number
+   ========================================================================== */
+@media(max-width:760px){
+  .gtbl.mcard tr:not(.gband){
+    display:grid;grid-template-columns:auto minmax(0,1fr);
+    column-gap:12px;row-gap:0;padding:15px;align-items:start}
+  .gtbl.mcard tr:not(.gband) td.gn{position:static;grid-column:1;grid-row:1;padding:0;width:auto}
+  .gtbl.mcard tr:not(.gband) td.gg{position:static;grid-column:2;grid-row:1;padding:0 0 12px;
+    font-size:17px;font-weight:800;letter-spacing:-.35px;line-height:1.24;align-self:center}
+  .gtbl.mcard tr:not(.gband) td:not(.gn):not(.gg){grid-column:1/-1}
+  .gtbl.mcard tr.gband{display:block}
+
+  /* a clear break between the biology and the shelf answer */
+  .gtbl.mcard td.gu{border-top:1px solid var(--edge2);padding-top:11px}
+  .gtbl.mcard td.gp{margin-top:2px}
+  .gtbl.mcard td.gd{margin-top:8px}
+  .gtbl.mcard td[data-label]::before{color:var(--ink3);margin-bottom:5px}
+  .gtbl.mcard td.gp::before,.gtbl.mcard td.gd::before{color:var(--gdeep)}
+  [data-theme="dark"] .gtbl.mcard td.gp::before,
+  [data-theme="dark"] .gtbl.mcard td.gd::before{color:#8fe3c4}
+  .gtbl.mcard .kctag{display:inline-block;margin:3px 3px 0 0}
+}
