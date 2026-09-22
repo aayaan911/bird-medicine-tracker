@@ -500,3 +500,26 @@ body.navopen .navbd{opacity:1;pointer-events:auto}
 .totop svg{width:19px;height:19px;fill:currentColor}
 .totop.show{opacity:1}
 @media(max-width:760px){.totop{display:grid}}
+
+/* ============================================================================
+   18. LAST MILE
+   The jump bar used a fixed -16px bleed, but below 400px the wrap padding is
+   14px, so it overhung the viewport by 4px. Tie the bleed to the real padding.
+   ========================================================================== */
+@media(max-width:400px){
+  .jumpbar{margin-left:-14px;margin-right:-14px;padding-left:14px;padding-right:14px}
+}
+/* tab label and its count stay on one line */
+.kctab{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center}
+@media(max-width:760px){
+  .kctab{font-size:13px;padding:12px 8px;gap:0}
+  .tcount{margin-left:5px}
+}
+@media(max-width:400px){
+  .kctab{font-size:12.5px;padding:12px 6px}
+  .tcount{min-width:21px;height:19px;font-size:10.5px;padding:0 5px}
+}
+/* every link in body copy is a real target */
+@media(max-width:760px){
+  .kcnote a,.note a,.sub a,.lead a{display:inline-block;min-height:44px;line-height:44px}
+}
