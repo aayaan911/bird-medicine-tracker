@@ -207,7 +207,9 @@ window.addEventListener('resize', kbStick);
 window.addEventListener('load', kbStick);
 kbStick();
 
-/* ---------------- small screens: 10 chips become one native dropdown ---------------- */
+/* ---------------- small screens: 10 chips become one designed filter sheet ----------------
+   The native <select> looked like a 2010 form control. This is a button that reads
+   like the rest of the UI and opens a bottom sheet with icons, counts and a check. */
 function kbFilterSelect(){
   var row=document.querySelector('.srow');
   var chipRow=document.querySelector('.fchips');
@@ -215,24 +217,65 @@ function kbFilterSelect(){
   var chips=[].slice.call(document.querySelectorAll('.fchip'));
   if(!chips.length) return;
   var JOBS=['all','daily','breeding','emerg'];
-  var sel=document.createElement('select');
-  sel.id='fsel'; sel.className='fsel'; sel.setAttribute('aria-label','Filter medicines');
-  var g1=document.createElement('optgroup'); g1.label='Show';
-  var g2=document.createElement('optgroup'); g2.label='Brand';
-  chips.forEach(function(c){
-    var o=document.createElement('option');
-    o.value=c.dataset.f; o.textContent=c.textContent.trim();
-    if(c.classList.contains('on')) o.selected=true;
-    (JOBS.indexOf(c.dataset.f)>-1?g1:g2).appendChild(o);
+  var IC={
+    all:'<svg viewBox="0 0 24 24"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>',
+    daily:'<svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM1 11h3v2H1v-2zm19 0h3v2h-3v-2zM4.2 5.6l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1zm12.1 12.1l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1zM18.4 4.2l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1zM6.3 16.3l1.4 1.4-2.1 2.1-1.4-1.4 2.1-2.1z"/></svg>',
+    breeding:'<svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 8.5 5 13.5 5 18 8.1 22 12 22s7-4 7-8.5C19 8.5 16 2 12 2z"/></svg>',
+    emerg:'<svg viewBox="0 0 24 24"><path d="M19 8h-2V3H7v5H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2v-9a2 2 0 00-2-2zM9 5h6v3H9V5zm5 11h-2v2h-2v-2H8v-2h2v-2h2v2h2v2z"/></svg>'
+  };
+  var AB={aviform:'AV',nekton:'NK',vetafarm:'VF',versele:'VL',local:'BD',other:'+'};
+  var SUB={all:'Every medicine on file',daily:'The standing daily base',breeding:'Before the box to first egg',emerg:'Act within the hour',
+           aviform:'United Kingdom',nekton:'Germany',vetafarm:'Australia',versele:'Belgium',local:'Square, ACME, Renata, ACI, Gaco',other:'House formulas and pantry'};
+  function count(f){ var P=window.KB_P||[]; if(f==='all') return P.length; return P.filter(function(p){return p.cats.indexOf(f)>-1;}).length; }
+  function current(){ var c=document.querySelector('.fchip.on'); return c?c.dataset.f:'all'; }
+  function label(f){ var c=document.querySelector('.fchip[data-f="'+f+'"]'); return c?c.textContent.trim():'All'; }
+
+  var btn=document.createElement('button');
+  btn.id='fsel'; btn.type='button'; btn.className='fsel fpick'; btn.setAttribute('aria-haspopup','dialog');
+  function paintBtn(){
+    var f=current();
+    btn.innerHTML='<span class="fp-ic">'+(IC[f]||'<b class="fp-ab b-'+f+'">'+(AB[f]||'')+'</b>')+'</span>'+
+      '<span class="fp-lb">'+label(f)+'</span><span class="fp-ct">'+count(f)+'</span>'+
+      '<svg class="fp-cv" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>';
+  }
+  row.insertBefore(btn, chipRow);
+
+  var bd=document.createElement('div'); bd.className='fbd';
+  var sh=document.createElement('div'); sh.className='fsheet'; sh.setAttribute('role','dialog'); sh.setAttribute('aria-label','Filter medicines');
+  document.body.appendChild(bd); document.body.appendChild(sh);
+  function item(c){
+    var f=c.dataset.f, on=f===current();
+    var ic=IC[f]?'<span class="fs-ic job">'+IC[f]+'</span>':'<span class="fs-ic b-'+f+'"><b>'+(AB[f]||'')+'</b></span>';
+    return '<button class="fs-row'+(on?' on':'')+'" data-f="'+f+'">'+ic+
+      '<span class="fs-tx"><span class="fs-lb">'+c.textContent.trim()+'</span><span class="fs-sb">'+(SUB[f]||'')+'</span></span>'+
+      '<span class="fs-ct">'+count(f)+'</span>'+
+      '<svg class="fs-ok" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></button>';
+  }
+  function paintSheet(){
+    var jobs=chips.filter(function(c){return JOBS.indexOf(c.dataset.f)>-1;});
+    var brands=chips.filter(function(c){return JOBS.indexOf(c.dataset.f)<0;});
+    sh.innerHTML='<div class="fs-grab"></div><div class="fs-head"><b>Show medicines</b><button class="fs-done">Done</button></div>'+
+      '<div class="fs-scroll"><div class="fs-hd">By job</div>'+jobs.map(item).join('')+
+      '<div class="fs-hd">By brand</div>'+brands.map(item).join('')+'</div>';
+  }
+  var y0=0;
+  function open(){ paintSheet(); y0=window.scrollY; document.body.classList.add('fsopen'); }
+  function close(){ document.body.classList.remove('fsopen'); sh.style.transform=''; }
+  btn.addEventListener('click',open);
+  bd.addEventListener('click',close);
+  sh.addEventListener('click',function(e){
+    if(e.target.closest('.fs-done')){ close(); return; }
+    var r=e.target.closest('.fs-row'); if(!r) return;
+    var c=document.querySelector('.fchip[data-f="'+r.dataset.f+'"]'); if(c) c.click();
+    paintBtn(); setTimeout(close,140);
   });
-  sel.appendChild(g1); sel.appendChild(g2);
-  /* the chip click handler already owns the filtering, so just forward to it */
-  sel.addEventListener('change', function(){
-    var c=document.querySelector('.fchip[data-f="'+sel.value+'"]');
-    if(c) c.click();
-  });
-  chips.forEach(function(c){ c.addEventListener('click', function(){ sel.value=c.dataset.f; }); });
-  row.insertBefore(sel, chipRow);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+  var ty=null,dy=0;
+  sh.addEventListener('touchstart',function(e){ var sc=sh.querySelector('.fs-scroll'); if(sc&&sc.scrollTop>0&&!e.target.closest('.fs-head,.fs-grab')) return; ty=e.touches[0].clientY; dy=0; sh.style.transition='none'; },{passive:true});
+  sh.addEventListener('touchmove',function(e){ if(ty===null) return; dy=e.touches[0].clientY-ty; if(dy>0) sh.style.transform='translateY('+dy+'px)'; },{passive:true});
+  sh.addEventListener('touchend',function(){ if(ty===null) return; sh.style.transition=''; if(dy>80) close(); else sh.style.transform=''; ty=null; },{passive:true});
+  chips.forEach(function(c){ c.addEventListener('click', function(){ setTimeout(paintBtn,0); }); });
+  paintBtn();
 }
 kbFilterSelect();
 if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function(){});
@@ -516,6 +559,7 @@ document.addEventListener('scroll', function(e){
     el.classList.remove('kbhit'); void el.offsetWidth; el.classList.add('kbhit');
     setTimeout(function(){ el.classList.remove('kbhit'); },2600);
   }
+  window.KB_go=function(id){ go(id); };
   function go(id){
     if(onIndex){ close(); setTimeout(function(){ highlight(id); history.replaceState(null,'','#m-'+id); },80); }
     else location.href='index.html#m-'+id;
@@ -536,3 +580,10 @@ document.addEventListener('scroll', function(e){
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
+
+/* alternative chips inside a medicine row jump straight to that medicine */
+document.addEventListener('click',function(e){
+  var a=e.target.closest('[data-alt]'); if(!a) return;
+  e.preventDefault();
+  if(window.KB_go) window.KB_go(a.dataset.alt); else location.hash='m-'+a.dataset.alt;
+});

@@ -20,6 +20,16 @@ var P = [{"id":"avigold","name":"Avigold Advance","brand":"aviform","bl":"Avifor
 {"id": "codliver", "name": "Cod Liver Oil", "brand": "other", "bl": "House use", "size": "capsule or bottle", "cats": ["other", "daily"], "k": "cod liver oil capsule omega 3 epa dha vitamin a d3 seed coating conditioning feather shine", "doses": [["ON SEED", "<b>2 to 3 drops per 100 g of seed</b>, mixed through, once or twice a week. Make only what the birds will eat in a day"], ["WARNING", "<b>Every brand is a different strength.</b> Read the vitamin A and D3 on your own bottle. Cod liver oil is a real vitamin A and D3 source, so it counts under the one D3 source per day rule"], ["NEVER", "Never on seed that will sit for days. Oiled seed goes rancid fast in Dhaka heat and rancid oil destroys the vitamin E you are paying for"]], "when": "Winter conditioning and feather quality. Stop during any high dose vitamin A or D3 course", "v": 0, "src": "", "big": "2 to 3 drops", "unit": "per 100 g seed", "img": "", "shape": "bottle", "ab": "CLO", "alt": "Nekton E and Breed Star deliver vitamin E without the fat soluble vitamin A load. Use cod liver oil as a conditioner, never as the fertility lever.", "n": {"basis": "varies by brand, read your own label", "nsrc": "house", "vitA": 0, "vitD3": 0, "vitE": 0, "vitC": 0, "vitK3": 0, "b1": 0, "b2": 0, "b3": 0, "b5": 0, "b6": 0, "b9": 0, "b12": 0, "biotin": 0, "choline": 0, "bcount": 0, "calcium": 0, "phos": 0, "magnesium": 0, "sodium": 0, "potassium": 0, "chloride": 0, "iron": 0, "zinc": 0, "copper": 0, "manganese": 0, "iodine": 0, "selenium": 0, "carnitine": 0, "betaine": 0, "taurine": 0, "lysine": 0, "methionine": 0, "arginine": 0, "threonine": 0, "tryptophan": 0, "amino": 0, "glucose": 0, "citrate": 0, "probiotic": 0, "strains": 0, "enzymes": 0, "binder": 0, "acids": 0, "linoleic": 0, "emuls": 0}, "g": "multi"},
 {"id": "oliveoil", "name": "Extra Virgin Olive Oil", "brand": "other", "bl": "House use", "size": "bottle", "cats": ["other", "emerg"], "k": "extra virgin olive oil egg bound vent lubrication seed coating soft food binder crop", "doses": [["EGG BOUND, EXTERNAL", "A drop around the vent as a lubricant, with warmth and calcium. <b>Warmth and Calcivet are the treatment</b>, the oil is only lubrication"], ["ON SEED", "A few drops per 100 g to carry a powder that will not stick otherwise"], ["NEVER BY BEAK", "<b>Never give oil down the throat of a bird.</b> A bird's airway opens at the base of the tongue. Oil in the lungs is fatal and there is no treatment"]], "when": "Vent lubrication, and as a carrier to make powder stick to seed", "v": 2, "src": "", "big": "1 drop", "unit": "external only", "img": "", "shape": "bottle", "ab": "OIL", "alt": "For a genuinely egg bound hen the order is warmth first, then Calcivet 0.2 ml per 100 g body weight by syringe, then a vet. Oil alone fixes nothing.", "n": {"basis": "not a nutritional product", "nsrc": "house", "vitA": 0, "vitD3": 0, "vitE": 0, "vitC": 0, "vitK3": 0, "b1": 0, "b2": 0, "b3": 0, "b5": 0, "b6": 0, "b9": 0, "b12": 0, "biotin": 0, "choline": 0, "bcount": 0, "calcium": 0, "phos": 0, "magnesium": 0, "sodium": 0, "potassium": 0, "chloride": 0, "iron": 0, "zinc": 0, "copper": 0, "manganese": 0, "iodine": 0, "selenium": 0, "carnitine": 0, "betaine": 0, "taurine": 0, "lysine": 0, "methionine": 0, "arginine": 0, "threonine": 0, "tryptophan": 0, "amino": 0, "glucose": 0, "citrate": 0, "probiotic": 0, "strains": 0, "enzymes": 0, "binder": 0, "acids": 0, "linoleic": 0, "emuls": 0}, "g": "multi"}];
 window.KB_P=P;
+var ALT={"avigold": ["nektons", "omnivit", "soluvited"], "fetura": ["fertivit", "breedstar", "nektone"], "calciform": ["calcivet", "dnutrical", "nektonmsa"], "prolyte": ["nektonel", "spark", "electromin"], "mycoform": ["doxyavet"], "avimite": [], "nektons": ["avigold", "omnivit", "soluvited"], "nektone": ["fertivit", "breedstar", "esel"], "nektonb": ["prithi", "bcomvit"], "nektonel": ["prolyte", "spark", "electromin"], "breedstar": ["nektone", "fertivit", "fetura"], "calcivet": ["calciform", "nektonmsa", "dnutrical"], "spark": ["nektonel", "prolyte", "electromin"], "synbiotic": ["prolyte", "pb71"], "virkon": ["viodin"], "fertivit": ["breedstar", "nektone", "esel", "fetura"], "micronid": ["doxyavet", "zisvet", "moxilincv"], "herbs": [], "acv": ["twoplus", "sixplus"], "nektonmsa": ["dnutrical", "calcivet"], "dnutrical": ["nektonmsa", "calciform"], "soluvited": ["soluvitedb", "nektons", "avigold"], "soluvitedb": ["soluvited", "nektons"], "breedingaid": ["codliver"], "omnivit": ["nektons", "avigold", "soluvited"], "mutavit": ["nektons", "avigold"], "zisvet": ["moxilincv", "doxyavet"], "moxilincv": ["zisvet", "doxyavet"], "dirovet": ["ronivets", "ronivet12", "amodisvet"], "twoplus": ["sixplus", "acv"], "sixplus": ["twoplus", "acv"], "livavit": ["livatone"], "pbade": ["nektons", "calcivet"], "pbferti": ["fertivit", "breedstar"], "esel": ["fertivit", "nektone"], "livatone": ["livavit"], "pb71": ["synbiotic", "prolyte"], "prithi": ["nektonb", "bcomvit"], "bcomvit": ["nektonb", "prithi"], "electromin": ["nektonel", "prolyte", "spark"], "esade": ["nektons", "calcivet"], "nutriplex": ["synbiotic"], "viodin": ["virkon"], "amodisvet": ["dirovet", "ronivet12"], "amodis": ["dirovet", "ronivets"], "ciprovet": ["doxyavet", "micronid"], "doxyavet": ["zisvet", "moxilincv", "ciprovet"], "renaws": ["nektons", "avigold"], "lisovit": ["prolyte", "omnivit"], "ronivets": ["ronivet12", "dirovet"], "ronivet12": ["ronivets", "dirovet"], "supraphen": [], "codliver": ["breedingaid", "nektons"], "oliveoil": []};
+function altFind(id){ for(var i=0;i<P.length;i++){ if(P[i].id===id) return P[i]; } return null; }
+function altHTML(p){
+  var l=ALT[p.id]||[];
+  if(!l.length) return '<span class="altnone">No direct substitute on your shelf</span>';
+  return l.map(function(id){ var q=altFind(id); if(!q) return '';
+    return '<a class="altchip" href="#m-'+q.id+'" data-alt="'+q.id+'"><span class="acdot b-'+q.brand+'"></span>'+esc(q.name)+'</a>'; }).join('');
+}
+function altNames(p){ var l=ALT[p.id]||[]; var o=[]; l.forEach(function(id){ var q=altFind(id); if(q) o.push(q.name); }); return o.length?o.join(', '):'none on the shelf'; }
+
 
 var SUN='M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z';
 var MOON='M12.34 2.02C6.59 1.82 2 6.42 2 12c0 5.52 4.48 10 10 10 3.71 0 6.93-2.02 8.66-5.02-7.51-.25-12.09-8.43-8.32-14.96z';
@@ -91,7 +101,8 @@ function copyText(p){
   L.push('');
   L.push('WHAT IT DOES = ' + p.why);
   L.push('');
-  L.push('ALTERNATIVES = ' + p.alt);
+  L.push('ALTERNATIVES = ' + altNames(p));
+  L.push('WHY = ' + p.alt);
   L.push('');
   L.push(p.v===2 ? 'House formula developed by KinBird Aviary, no manufacturer label exists'
         : p.v ? 'Verified from the manufacturer label'
@@ -286,7 +297,7 @@ function rowHTML(p,i){
     +'<button class="cpy cmpb" data-cmp="'+p.id+'" title="Compare with the alternatives">'+SCALE+'Compare</button></div></div></div>'
     +'<div>'+doses+'</div>'
     +'<div class="mwhen">'+esc(p.when)+'</div>'
-    +'<div class="mwhy">'+esc(p.why)+'<div class="malt"><b>Alternatives</b> '+esc(p.alt)+'</div></div></div>';
+    +'<div class="mwhy">'+esc(p.why)+'<div class="malt"><b>Alternatives</b><div class="altchips">'+altHTML(p)+'</div><div class="altwhy">'+esc(p.alt)+'</div></div></div></div>';
 }
 
 function cardHTML(p,i){
@@ -299,9 +310,10 @@ function cardHTML(p,i){
     +'</div>'
     +'<div class="gbody"><h3>'+esc(p.name)+'</h3>'
       +'<div class="gmeta"><span class="bpill b-'+p.brand+'" style="margin-top:0">'+esc(p.bl)+'</span></div>'
+      +'<div class="gdoses">'+p.doses.map(function(d){ return '<div class="gdl"><span class="gdk">'+d[0]+'</span><span class="gdv">'+d[1]+'</span></div>'; }).join('')+'</div>'
       +'<p>'+esc(p.why)+'</p>'
       +'<div class="gwhen"><b>When</b> · '+esc(p.when)+'</div>'
-      +'<div class="gwhen"><b>Alternatives</b> · '+esc(p.alt)+'</div>'
+      +'<div class="gwhen galt"><b>Alternatives</b><div class="altchips">'+altHTML(p)+'</div><div class="altwhy">'+esc(p.alt)+'</div></div>'
       +'<div class="g2"><button class="cpy gcpy" data-copy="'+p.id+'" title="Copy this dose card">'+COPY+'Copy dose</button>'
       +'<button class="cpy gcpy cmpb" data-cmp="'+p.id+'" title="Compare with the alternatives">'+SCALE+'Compare</button></div>'
     +'</div></div>';
