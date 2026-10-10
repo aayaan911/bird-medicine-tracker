@@ -882,3 +882,5 @@ select:not([multiple]):focus{border-color:var(--green);outline:0;box-shadow:0 0 
 .eyebrow .kbbird{width:auto;height:17px}
 .nmi .kbbird{width:auto;height:21px}
 .fbrand .mark,.fbrand .mark .kbbird{height:36px!important}
+/* the intro text above the compare table must not swipe away with the columns */
+@media(max-width:760px){ .cbd > :not(.cwrap){position:sticky;left:0} }
