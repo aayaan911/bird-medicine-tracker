@@ -394,3 +394,145 @@ document.addEventListener('scroll', function(e){
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
+
+/* ================= MEDICINE SEARCH SHEET — every page, every width =================
+   A search icon in the topbar opens a full screen sheet. Results show the pack
+   image, the name, the brand and the headline dose. Tapping one takes you to that
+   medicine on the Medicine Tracker and highlights it. Works offline: on pages that
+   do not load app.js it reads the product list out of the cached app.js file. */
+(function(){
+  var ICON='<svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>';
+  var DATA=null, loading=null;
+  var onIndex=!!document.getElementById('viewTable');
+
+  function esc(t){ return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function strip(t){ return String(t||'').replace(/<[^>]+>/g,''); }
+
+  function getData(){
+    if(DATA) return Promise.resolve(DATA);
+    if(window.KB_P){ DATA=window.KB_P; return Promise.resolve(DATA); }
+    if(loading) return loading;
+    loading=fetch('app.js').then(function(r){return r.text();}).then(function(src){
+      var a=src.indexOf('var P = ['); var b=src.indexOf('];',a);
+      DATA=new Function('return '+src.slice(a+8,b+1))();
+      return DATA;
+    }).catch(function(){ DATA=[]; return DATA; });
+    return loading;
+  }
+
+  function thumb(p){
+    if(p.img) return '<span class="sr-th t-'+esc(p.brand)+'"><img src="'+esc(p.img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.innerHTML=\'<b>'+esc(p.ab||'')+'</b>\'"></span>';
+    return '<span class="sr-th t-'+esc(p.brand)+'"><b>'+esc(p.ab||p.name.slice(0,3).toUpperCase())+'</b></span>';
+  }
+
+  function score(p,words){
+    var name=p.name.toLowerCase(), brand=(p.bl||'').toLowerCase(), hay=(p.k+' '+name+' '+brand+' '+(p.when||'')+' '+(p.why||'')).toLowerCase();
+    var s=0;
+    for(var i=0;i<words.length;i++){
+      var w=words[i];
+      if(hay.indexOf(w)<0) return -1;
+      if(name.indexOf(w)===0) s+=100; else if(name.indexOf(' '+w)>-1) s+=60; else if(name.indexOf(w)>-1) s+=40;
+      if(brand.indexOf(w)>-1) s+=25;
+      if((' '+p.k+' ').indexOf(' '+w)>-1) s+=10;
+    }
+    return s;
+  }
+
+  var sheet,inp,list,count,current=[];
+  function build(){
+    sheet=document.createElement('div');
+    sheet.className='srsheet'; sheet.setAttribute('role','dialog'); sheet.setAttribute('aria-label','Search medicines');
+    sheet.innerHTML=
+      '<div class="sr-top"><div class="sr-box">'+ICON+
+      '<input id="srq" type="search" placeholder="Search a medicine, brand or use" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go">'+
+      '<button class="sr-x" aria-label="Clear">&times;</button></div>'+
+      '<button class="sr-cancel">Cancel</button></div>'+
+      '<div class="sr-meta" id="srcount"></div>'+
+      '<div class="sr-list" id="srlist"></div>';
+    document.body.appendChild(sheet);
+    inp=sheet.querySelector('#srq'); list=sheet.querySelector('#srlist'); count=sheet.querySelector('#srcount');
+    inp.addEventListener('input',render);
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter'&&current[0]) go(current[0].id); if(e.key==='Escape') close(); });
+    sheet.querySelector('.sr-x').addEventListener('click',function(){ inp.value=''; inp.focus(); render(); });
+    sheet.querySelector('.sr-cancel').addEventListener('click',close);
+    list.addEventListener('click',function(e){ var a=e.target.closest('[data-go]'); if(a){ e.preventDefault(); go(a.dataset.go); } });
+  }
+
+  var SUGG=['Calcivet','Ferti-Vit','Breed Star','Fetura','Dirovet','Synbiotic','Muta-Vit','Doxy'];
+  function render(){
+    var s=inp.value.toLowerCase().trim();
+    if(!s){
+      current=[];
+      count.textContent=(DATA?DATA.length:0)+' medicines. Try one:';
+      list.innerHTML='<div class="sr-sugg">'+SUGG.map(function(x){return '<button data-s="'+x+'">'+x+'</button>';}).join('')+'</div>';
+      Array.prototype.forEach.call(list.querySelectorAll('[data-s]'),function(b){ b.addEventListener('click',function(){ inp.value=b.dataset.s; render(); }); });
+      return;
+    }
+    var words=s.split(/\s+/);
+    current=DATA.map(function(p){return {p:p,s:score(p,words)};}).filter(function(x){return x.s>=0;})
+      .sort(function(a,b){return b.s-a.s;}).map(function(x){return x.p;});
+    count.textContent=current.length?(current.length+(current.length===1?' result':' results')):'';
+    if(!current.length){ list.innerHTML='<div class="sr-empty">Nothing matches <b>'+esc(inp.value)+'</b>. Try the brand, or a use like <b>calcium</b> or <b>canker</b>.</div>'; return; }
+    list.innerHTML=current.slice(0,40).map(function(p){
+      var badge=p.v===1?'<span class="sr-v ok">Verified</span>':(p.v===2?'<span class="sr-v house">House</span>':'<span class="sr-v chk">Check label</span>');
+      return '<a class="sr-item" href="index.html#m-'+esc(p.id)+'" data-go="'+esc(p.id)+'">'+thumb(p)+
+        '<span class="sr-body"><span class="sr-name">'+esc(p.name)+'</span>'+
+        '<span class="sr-row"><span class="bpill b-'+esc(p.brand)+'">'+esc(p.bl)+'</span>'+badge+'</span>'+
+        '<span class="sr-dose"><b>'+esc(strip(p.big))+'</b> '+esc(strip(p.unit))+'</span></span>'+
+        '<svg class="sr-chev" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>';
+    }).join('');
+  }
+
+  var scrollY=0;
+  function open(){
+    if(!sheet) build();
+    scrollY=window.scrollY;
+    document.body.classList.add('sropen');
+    sheet.classList.add('on');
+    getData().then(function(){ render(); });
+    setTimeout(function(){ inp.focus(); },60);
+  }
+  function close(){
+    if(!sheet) return;
+    sheet.classList.remove('on');
+    document.body.classList.remove('sropen');
+    window.scrollTo(0,scrollY);
+  }
+
+  function highlight(id){
+    var el=document.querySelector('.mrow[data-id="'+id+'"]')||document.querySelector('.gcard[data-id="'+id+'"]');
+    var vis=[].filter.call(document.querySelectorAll('[data-id="'+id+'"]'),function(x){return x.offsetParent!==null;});
+    if(vis.length) el=vis[0];
+    if(!el) return;
+    if(el.offsetParent===null){
+      /* hidden by a filter: reset to All and clear the inline search */
+      var all=document.querySelector('.fchip[data-f="all"]'); if(all) all.click();
+      var q=document.getElementById('q'); if(q&&q.value){ q.value=''; q.dispatchEvent(new Event('input')); }
+      vis=[].filter.call(document.querySelectorAll('[data-id="'+id+'"]'),function(x){return x.offsetParent!==null;});
+      if(vis.length) el=vis[0];
+    }
+    var y=el.getBoundingClientRect().top+window.scrollY-130;
+    window.scrollTo({top:y,behavior:'smooth'});
+    el.classList.remove('kbhit'); void el.offsetWidth; el.classList.add('kbhit');
+    setTimeout(function(){ el.classList.remove('kbhit'); },2600);
+  }
+  function go(id){
+    if(onIndex){ close(); setTimeout(function(){ highlight(id); history.replaceState(null,'','#m-'+id); },80); }
+    else location.href='index.html#m-'+id;
+  }
+
+  function init(){
+    var bar=document.querySelector('.topbar .wrap'); if(!bar) return;
+    var nav=document.getElementById('navdd');
+    var b=document.createElement('button');
+    b.className='srchbtn'; b.setAttribute('aria-label','Search medicines'); b.innerHTML=ICON;
+    if(nav) nav.parentNode.insertBefore(b,nav); else bar.appendChild(b);
+    if(!document.querySelector('.topbar .sbox')) document.body.classList.add('nosbox');
+    b.addEventListener('click',open);
+    document.addEventListener('keydown',function(e){
+      if((e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName))||((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k')){ e.preventDefault(); open(); }
+    });
+    if(onIndex && /^#m-/.test(location.hash)){ var id=location.hash.slice(3); setTimeout(function(){ highlight(id); },500); }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
