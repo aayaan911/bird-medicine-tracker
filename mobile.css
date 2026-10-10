@@ -715,3 +715,5 @@ body.sropen{overflow:hidden}
   [data-theme="dark"] .eb-b b{color:#8fe3c4}
 }
 @media(max-width:360px){ .eb-b{font-size:12.5px} .eb-b b{font-size:14px} }
+.eb-short{display:none}
+@media(max-width:760px){ .eb-long{display:none} .eb-short{display:inline} .eb-b{white-space:nowrap} }
