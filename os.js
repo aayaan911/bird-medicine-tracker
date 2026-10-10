@@ -289,6 +289,7 @@ document.addEventListener('scroll', function(e){
   var head = bd.querySelector('.crow.chead');
   if(!head) return;
   var stuck = head.getBoundingClientRect().top <= bd.getBoundingClientRect().top + 0.5;
+  bd.classList.toggle('cscrolled', bd.scrollLeft > 2);
   head.classList.toggle('cstuck', stuck);
 }, true);
 
