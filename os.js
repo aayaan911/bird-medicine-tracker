@@ -74,47 +74,56 @@ function banglaOf(d){
   return {en:BM[best.i][0], bn:BM[best.i][1], day:Math.round((d-best.s)/86400000)+1, year:by, idx:best.i};
 }
 
-/* ---------------- the FINAL supplement plan, by phase ---------------- */
+/* ---------------- the supplement plan, by phase (Fetura 12 -> Ferti-Vit -> Calcivet) ----------------
+   Rebuilt 11 Oct 2026 after a full audit. Every dose here matches the product data in app.js.
+   Calcium never stops: in the water during the Fetura week and the laying window, in the food
+   (Nekton MSA + cuttlebone) during Ferti-Vit days, because Ferti-Vit already carries D3. */
 var PHASES=[
- {id:'p1', name:'Phase 1 · 21 days before box',
-  items:[ {k:'bs',  n:'Nekton Breed Star', d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'herb',n:'Herbs V3',          d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'acv', n:'ACV',               d:'Friday only',             r:'water',every:7},
-          {k:'cav', n:'Calcivet (optional pre-load)', d:'5 ml per 250 ml water, 5 days', r:'water', every:1, d3:true} ]},
- {id:'p2', name:'Phase 2 · box in to FIRST EGG',
-  items:[ {k:'bs',  n:'Nekton Breed Star', d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'msa', n:'Nekton MSA',        d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'herb',n:'Herbs V3',          d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'fv',  n:'Ferti-Vit', d:'1 g per 250 ml water',    r:'water',every:1, d3:true} ]},
- {id:'p3', name:'Phase 3 · first egg to hatch',
-  items:[ {k:'ns',  n:'Nekton S',          d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'msa', n:'Nekton MSA',        d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'herb',n:'Herbs V3',          d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'cf',  n:'Calciform HiD3',    d:'2.5 ml per 1 litre water, Mon to Fri', r:'water', every:1, d3:true} ]},
+ {id:'p1', name:'Phase 1 · Fetura week, days 1 to 7',
+  items:[ {k:'fet', n:'Fetura 12',        d:'2 ml per 1 litre water (0.5 ml per 250 ml), morning, daily', r:'water', every:1},
+          {k:'cav', n:'Calcivet',         d:'20 ml per 1 litre (5 ml per 250 ml), separate afternoon drinker, Mon / Wed / Fri', r:'water', every:1, wd:[1,3,5], d3:true},
+          {k:'msa', n:'Nekton MSA',       d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'herb',n:'Herbs V3',         d:'1 g per 100 g soft food', r:'food', every:1} ]},
+ {id:'p2', name:'Phase 2 · day 8 to FIRST EGG (box goes in day 8 to 10)',
+  items:[ {k:'fv',  n:'Ferti-Vit',        d:'4 g per 1 litre water (1 g per 250 ml), daily. No liquid calcium these days', r:'water', every:1, d3:true},
+          {k:'msa', n:'Nekton MSA',       d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'herb',n:'Herbs V3',         d:'1 g per 100 g soft food', r:'food', every:1} ]},
+ {id:'p3', name:'Phase 3 · first egg to last egg',
+  items:[ {k:'ns',  n:'Nekton S',         d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'msa', n:'Nekton MSA',       d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'herb',n:'Herbs V3',         d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'cav', n:'Calcivet',         d:'20 ml per 1 litre water (5 ml per 250 ml), Mon to Fri', r:'water', every:1, wd:[1,2,3,4,5], d3:true},
+          {k:'cf',  n:'Calciform HiD3',   d:'2.5 ml per 2 litres water, Saturday only', r:'water', every:1, wd:[6], d3:true} ]},
+ {id:'pi', name:'Phase 3b · last egg to hatch (incubation)',
+  items:[ {k:'ns',  n:'Nekton S',         d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'msa', n:'Nekton MSA',       d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'herb',n:'Herbs V3',         d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'acv', n:'ACV',              d:'Plain water. ACV 5 ml per 1 litre once a week. Nothing new, no disturbance', r:'water', every:7} ]},
  {id:'p4', name:'Phase 4 · hatch to chicks out',
-  items:[ {k:'ns',  n:'Nekton S',          d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'msa', n:'Nekton MSA',        d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'herb',n:'Herbs V3',          d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'syn', n:'Synbiotic',         d:'3 g per 1 litre water, hatch +5 days', r:'water', every:1},
-          {k:'cf',  n:'Calciform HiD3',    d:'2.5 ml per 1 litre water, 2 days a week', r:'water', every:3, d3:true} ]},
+  items:[ {k:'ns',  n:'Nekton S',         d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'msa', n:'Nekton MSA',       d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'herb',n:'Herbs V3',         d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'syn', n:'Synbiotic',        d:'3 g per 1 litre water (0.75 g per 250 ml), hatch +5 days', r:'water', every:1},
+          {k:'cav', n:'Calcivet',         d:'20 ml per 1 litre water, twice a week (Tue and Fri)', r:'water', every:1, wd:[2,5], d3:true} ]},
  {id:'p5', name:'Phase 5 · female rest 30 to 40 days',
-  items:[ {k:'ns',  n:'Nekton S',          d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'msa', n:'Nekton MSA',        d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'herb',n:'Herbs V3',          d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'ely', n:'Nekton Elektrolyt', d:'7.5 g per 1 litre water, 3 to 5 days only', r:'water', every:1},
-          {k:'cf',  n:'Calciform HiD3',    d:'2.5 ml per 1 litre water, 2 days a week', r:'water', every:3, d3:true} ]},
+  items:[ {k:'ns',  n:'Nekton S',         d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'msa', n:'Nekton MSA',       d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'herb',n:'Herbs V3',         d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'ely', n:'Nekton Elektrolyt',d:'7.5 g per 1 litre water, 3 to 5 days, never past 5', r:'water', every:1},
+          {k:'cav', n:'Calcivet',         d:'20 ml per 1 litre water, 2 days a week (Tue and Fri)', r:'water', every:1, wd:[2,5], d3:true} ]},
  {id:'pm', name:'Maintenance',
-  items:[ {k:'ns',  n:'Nekton S',          d:'1 g per 100 g soft food, Mon and Thu', r:'food', every:3},
-          {k:'msa', n:'Nekton MSA',        d:'1 g per 100 g soft food, Mon and Thu', r:'food', every:3},
-          {k:'herb',n:'Herbs V3',          d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'acv', n:'ACV',               d:'Friday only',             r:'water',every:7},
-          {k:'syn', n:'Synbiotic',         d:'3 g per 1 litre water, days 1 to 5 monthly', r:'water', every:30} ]}
+  items:[ {k:'ns',  n:'Nekton S',         d:'1 g per 100 g soft food, daily', r:'food', every:1},
+          {k:'msa', n:'Nekton MSA',       d:'1 g per 100 g soft food, daily', r:'food', every:1},
+          {k:'herb',n:'Herbs V3',         d:'1 g per 100 g soft food', r:'food', every:1},
+          {k:'acv', n:'ACV',              d:'5 ml per 1 litre water, Friday only', r:'water',every:1, wd:[5]},
+          {k:'syn', n:'Synbiotic',        d:'3 g per 1 litre water, days 1 to 5 monthly', r:'water', every:1, md:[1,2,3,4,5]} ]}
 ];
 /* never-combine pairs that the log can actually catch */
 var CLASH=[
  {a:'cf', b:'cav', m:'Calciform and Calcivet on the same day. One high-dose D3 product per day.'},
  {a:'cf', b:'fv',  m:'Calciform and Ferti-Vit both carry high-dose D3. Never the same day.'},
  {a:'cav',b:'fv',  m:'Calcivet and Ferti-Vit both carry high-dose D3. Never the same day.'},
+ {a:'fet',b:'fv',  m:'Fetura 12 and Ferti-Vit on the same day. Fetura runs 7 days first, then Ferti-Vit.'},
  {a:'bs', b:'ns',  m:'Breed Star and Nekton S in the same mix. Never. Breed Star stops at the first egg.'},
  {a:'acv',b:'syn', m:'ACV with Synbiotic. Acid kills the live bacteria. Separate the days.'}
 ];
@@ -162,9 +171,11 @@ function renderToday(){
   var lg=log(), t=today(), givenToday=[];
   var rows=ph.items.map(function(it){
     var last=lg[it.k], ago=daysAgo(last), due = ago===null || ago>=it.every;
+    var offDay = (it.wd && it.wd.indexOf(new Date().getDay())<0) || (it.md && it.md.indexOf(new Date().getDate())<0);
+    if(offDay) due=false;
     if(last===t) givenToday.push(it.k);
     var state = last===t ? 'done' : (due?'due':'ok');
-    var when  = last===t ? 'Given today' : (ago===null ? 'Never logged' : ago+' day'+(ago===1?'':'s')+' ago');
+    var when  = last===t ? 'Given today' : (offDay ? 'Not today' : (ago===null ? 'Never logged' : ago+' day'+(ago===1?'':'s')+' ago'));
     return '<div class="kbrow '+state+'" data-k="'+it.k+'">'+
       '<div class="kbi"><div class="kbn">'+it.n+'</div><div class="kbd dose-line">'+it.d+'</div></div>'+
       '<div class="kbs"><span class="kbwhen">'+when+'</span>'+

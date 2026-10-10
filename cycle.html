@@ -120,7 +120,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;margin-top:10px;font-size
 .topbar .navdd{margin-left:auto}
 .topbar .nav .navdd{margin-left:0}
 </style>
-<link rel="stylesheet" href="mobile.css?v54">
+<link rel="stylesheet" href="mobile.css?v55">
 </head>
 <body>
 
@@ -182,12 +182,12 @@ footer{border-top:1px solid var(--line);padding:26px 0;margin-top:10px;font-size
     <thead><tr><th>Route</th><th>Give</th><th>Until</th></tr></thead>
     <tbody id="giveBody"></tbody>
   </table></div>
-  <div class="warnbox">Never Breed Star with Nekton S. Never Ferti-Vit with Fetura. Never two high-dose D3 products the same day (Calciform 2,125 · Ferti-Vit 728 · Calcivet 500 IU/L).</div>
+  <div class="warnbox">Never Breed Star with Nekton S. Never Ferti-Vit with Fetura. Never two high-dose D3 products the same day (Calciform 2,125 · Omni-Vit 800 · Muta-Vit 760 · Ferti-Vit 728 · Calcivet 500 IU/L). Fetura 12 carries no D3. Soluvite D and Soluvite D Breeder (2,500 IU/L) count as high-dose too; PB-ADE and Es-ADE are far above all of them.</div>
 </div></section>
 
 <section class="alt"><div class="wrap">
   <h2>When each thing starts working</h2>
-  <p class="sub">Vitamin E cannot be rushed. It builds <b>new</b> sperm over a 14-day cycle. L-carnitine works on sperm that already exists, so it acts in days. That is why Fetura is the fast lever and Breed Star is the deep one.</p>
+  <p class="sub">Vitamin E cannot be rushed. It builds <b>new</b> sperm over a 14-day cycle. L-carnitine works on sperm that already exists, so it acts in days. That is why the course runs Fetura 12 first for 7 days, the fast lever, then Ferti-Vit daily until the first egg, the deep one with the selenium vitamin E needs.</p>
   <div class="tw"><table>
     <thead><tr><th>Product</th><th>Acts on</th><th>First effect</th><th>Full effect</th></tr></thead>
     <tbody id="tlBody"></tbody>
@@ -253,11 +253,11 @@ function addD(d,n){ var x=new Date(d.getTime()); x.setDate(x.getDate()+n); retur
 
 /* ---- give today ---- */
 var GIVE=[
- ['Soft food 100 g, daily','Breed Star 1 g + Nekton MSA 1 g + Herbs V3 1 g','First egg'],
- ['Water 250 ml','Breed Star 1 g <b>2 days</b> → Ferti-Vit 1 g <b>2 days</b> → repeat','First egg'],
+ ['Soft food 100 g, daily','Nekton MSA 1 g + Herbs V3 1 g','First egg'],
+ ['Water 250 ml, course days 1-7 (before the box)','Fetura 12 0.5 ml, morning · Calcivet 5 ml in a separate afternoon drinker, Mon / Wed / Fri','Day 7'],
+ ['Water 250 ml, course day 8 on (box in day 8-10)','Ferti-Vit 1 g daily · <b>no liquid calcium</b> on Ferti-Vit days','First egg'],
  ['Always','Cuttlebone · sprouts · boiled egg · expert egg food · nesting material','Every day'],
- ['When Fetura arrives','Fetura 12 at 2 ml per litre replaces Ferti-Vit for 15 days','Wave 2 + rescue'],
- ['AT FIRST EGG, switch','Food: <b>Nekton S</b> 1 g + MSA 1 g + Herbs 1 g. Water: Calcivet 20 ml/L Mon-Fri','Hatch']
+ ['AT FIRST EGG, switch','Food: <b>Nekton S</b> 1 g + MSA 1 g + Herbs 1 g. Water: Calcivet 20 ml/L Mon-Fri, Calciform Sat 2.5 ml per 2 L','Last egg']
 ];
 
 /* ---- timeline ---- */
@@ -266,9 +266,8 @@ var TL=[
  ['Herbs V3','b','Gut, appetite','Day 2-3',3,'Day 7',7],
  ['Nekton MSA','f','Female, shell + bone','Day 7-10',10,'Day 14',14],
  ['Ferti-Vit (selenium)','m','Male, makes vitamin E work','Day 7',7,'Day 14-21',21],
- ['Breed Star (vitamin E)','m','Male, builds NEW sperm','Day 10-14',14,'Day 20-60',60],
- ['Fetura 12 (L-carnitine)','m','Male, sperm that already exists','Day 3-7',7,'Day 14',14],
- ['Light 13-14 h','b','Hormones, both','Day 3-5',5,'Day 10-14',14]
+ ['Fetura 12 (L-carnitine)','m','Male, sperm that already exists','Course day 3-7',-1,'By box day 7',7],
+ ['Light 14 to 14.5 h','b','Hormones, both','Day 3-5',5,'Day 10-14',14]
 ];
 
 /* ---- day by day ---- */
@@ -278,7 +277,7 @@ var DAYS=[
  [7,10,'<b>Mating starts.</b> Female shredding nesting material, sitting inside the box.'],
  [10,14,'Vitamin E is now in the sperm being made. <b>Matings become productive.</b>'],
  [14,20,'<b>First eggs from your fastest hens.</b> Start weighing on lay day.'],
- [20,25,'Remaining hens lay. Normal window without Fetura.'],
+ [20,25,'Remaining hens lay.'],
  [25,33,'Incubation. Weigh every 3 days. Target 0.6 to 0.8 % loss per day.'],
  [33,38,'<b>Day 18 to 23: the killing window.</b> Never candle after day 18.'],
  [38,45,'Hatch. Synbiotic in water for 5 days. Watch new fosters closely.']
@@ -292,14 +291,14 @@ function render(){
   var day=Math.round((now-box)/86400000);
 
   document.getElementById('pills').innerHTML=
-    '<span class="pill gr">Today is <b>day '+day+'</b></span>'+
+    '<span class="pill gr">Today is <b>box day '+day+'</b></span>'+
     '<span class="pill">Box in <b>'+fmt(box)+'</b></span>'+
     '<span class="pill">First eggs expected <b>'+fmt(addD(box,14))+' to '+fmt(addD(box,25))+'</b></span>'+
-    '<span class="pill">Phase <b>2 · box to first egg</b></span>';
+    '<span class="pill">Phase <b>'+(day<0?'1 or 2 · go by course day':(day<=25?'2 · Ferti-Vit until each pair lays':'3+ · check each pair'))+'</b></span>';
 
   document.getElementById('phaseNote').innerHTML =
-    'Phase 2, box in to first egg. Day '+day+'. Breed Star continues until a hen lays, not until a date. '+
-    'The day a pair lays, that pair alone switches to Nekton S.';
+    (day<0?'Before the box. Course days 1 to 7 are Fetura 12, day 8 on is Ferti-Vit. ':'Box day '+day+'. ')+'Ferti-Vit continues until a hen lays, not until a date. '+
+    'The day a pair lays, that pair alone stops Ferti-Vit and starts Calcivet Monday to Friday, with Nekton S back in the soft food.';
 
   document.getElementById('giveBody').innerHTML = GIVE.map(function(r){
     return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';
@@ -325,7 +324,7 @@ document.getElementById('boxd').addEventListener('input',function(){
 (function(){ try{var s=localStorage.getItem('kb-boxdate'); if(s) document.getElementById('boxd').value=s;}catch(e){} })();
 render();
 </script>
-<script src="os.js?v54"></script>
+<script src="os.js?v55"></script>
 <script>
 (function(){
   var dd=document.getElementById('navdd'), bt=document.getElementById('navbtn');

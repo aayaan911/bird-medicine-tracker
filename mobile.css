@@ -884,3 +884,20 @@ select:not([multiple]):focus{border-color:var(--green);outline:0;box-shadow:0 0 
 .fbrand .mark,.fbrand .mark .kbbird{height:36px!important}
 /* the intro text above the compare table must not swipe away with the columns */
 @media(max-width:760px){ .cbd > :not(.cwrap){position:sticky;left:0} }
+
+/* ============================================================================
+   33. LIST VIEW DOSES IN THE SAME BOXED STYLE AS THE GALLERY CARDS
+   ========================================================================== */
+.mdoses{border:1px solid var(--edge2);border-radius:12px;overflow:hidden;background:var(--bg2)}
+[data-theme="dark"] .mdoses{background:#121a20}
+.mdoses .dose-line{display:grid;grid-template-columns:1fr;gap:6px;align-items:start;
+  padding:10px 12px!important;border:0!important;font-size:13.5px;line-height:1.5}
+.mdoses .dose-line + .dose-line{border-top:1px solid var(--edge2)!important}
+.mdoses .rtag{justify-self:start;margin:0!important;font-size:10px;font-weight:800;letter-spacing:.6px;
+  text-transform:uppercase;color:var(--ink3);background:var(--card);border:1px solid var(--edge);border-radius:6px;padding:2px 7px}
+.mdoses .dlv{color:var(--ink);font-variant-numeric:tabular-nums;min-width:0;overflow-wrap:anywhere}
+.mdoses .dlv b{color:var(--green);font-weight:800}
+@media(max-width:760px){
+  .mdoses .dose-line{padding:11px 13px!important;font-size:14.5px}
+  .mdoses .rtag{font-size:10.5px}
+}

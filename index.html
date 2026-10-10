@@ -144,7 +144,7 @@ h1 em{font-style:normal;color:var(--green)}
 .crow:last-child{border-bottom:0}
 
 /* while the header is stuck it sits at the top of the scroll box, not at the top of
-   the rounded table, so a curve there looks wrong. os.js?v54 toggles .cstuck on scroll. */
+   the rounded table, so a curve there looks wrong. os.js?v55 toggles .cstuck on scroll. */
 .crow.chead.cstuck,
 .crow.chead.cstuck>div:first-child,
 .crow.chead.cstuck>div:last-child{border-top-left-radius:0;border-top-right-radius:0}
@@ -751,7 +751,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
 .topbar .navdd{margin-left:auto}
 .topbar .nav .navdd{margin-left:0}
 </style>
-<link rel="stylesheet" href="mobile.css?v54">
+<link rel="stylesheet" href="mobile.css?v55">
 </head>
 <body>
 
@@ -852,7 +852,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <div class="kchead">
     <div>
       <div class="kch2">Breeding cycle</div>
-      <p class="kcsub">Reference for the whole season. Day 0 is the day you install the nest box for any pair, in any month.</p>
+      <p class="kcsub">Reference for the whole season. Course day 1 is the first Fetura 12 day. The nest box goes in on course day 8 to 10. The day-by-day rows below count from the day the box goes in (box day 0).</p>
     </div>
   </div>
   <div class="kctabs" id="kcTabs" role="tablist">
@@ -868,11 +868,11 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
       <thead><tr><th>Route</th><th>Give</th><th>Until</th></tr></thead>
       <tbody id="kcGive"></tbody>
     </table></div>
-    <div class="kcwarn">Never Breed Star with Nekton S. Never Ferti-Vit with Fetura. Never two high-dose D3 the same day (Calciform 2,125 &middot; Ferti-Vit 728 &middot; Calcivet 500 IU/L).</div>
+    <div class="kcwarn">Never Breed Star with Nekton S. Never Ferti-Vit with Fetura. Never two high-dose D3 the same day (Calciform 2,125 &middot; Omni-Vit 800 &middot; Muta-Vit 760 &middot; Ferti-Vit 728 &middot; Calcivet 500 IU/L). Fetura 12 carries no D3. Soluvite D and Soluvite D Breeder (2,500 IU/L) count as high-dose too; PB-ADE and Es-ADE are far above all of them.</div>
   </div>
 
   <div class="kcpanel" data-p="tl">
-    <p class="kcsub" style="margin-bottom:12px">Vitamin E builds <b>new</b> sperm over a 14-day cycle. L-carnitine works on sperm that already exists, so it acts in days. Dates move with your box date.</p>
+    <p class="kcsub" style="margin-bottom:12px">Vitamin E builds <b>new</b> sperm over a 14-day cycle. L-carnitine works on sperm that already exists, so it acts in days. Live dates for your own box date are on the <a href="cycle.html">Breeding cycle</a> page.</p>
     <div class="kctw"><table>
       <thead><tr><th>Product</th><th>Acts on</th><th>First effect</th><th>Full effect</th></tr></thead>
       <tbody id="kcTL"></tbody>
@@ -880,7 +880,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   </div>
 
   <div class="kcpanel" data-p="days">
-    <p class="kcsub" style="margin-bottom:12px">Today's row is highlighted, past rows fade. If a stage is more than 3 days late: check perches first, then room temperature, then the male.</p>
+    <p class="kcsub" style="margin-bottom:12px">If a stage is more than 3 days late: check perches first, then room temperature, then the male.</p>
     <div class="kctw"><table>
       <thead><tr><th>Day</th><th>Activities to look for</th></tr></thead>
       <tbody id="kcDays"></tbody>
@@ -911,22 +911,22 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <div class="kctw"><table>
       <thead><tr><th style="width:15%">THE GOAL</th><th style="width:27%">WHAT IS ACTUALLY HAPPENING</th><th style="width:20%">THE NUTRIENT THAT DOES IT</th><th style="width:22%">BEST ON YOUR SHELF</th><th style="width:16%">DOSE</th></tr></thead>
       <tbody>
-        <tr><td><b>Moult &amp; feathers</b></td><td>A feather is <b>90&nbsp;% keratin</b>, a protein built from sulphur amino acids. A moult is a protein event, not a vitamin event</td><td><b>Methionine</b> + cystine, and <b>biotin</b> to make the keratin good quality</td><td><b>Muta-Vit</b><br><span class="kctag">methionine 114 mg/L</span> <span class="kctag">biotin 0.92 mg/L</span><br>7&times; the biotin of Ferti-Vit</td><td>1 g per 250 ml<br>3&times; a week</td></tr>
-        <tr><td><b>Male fertility</b></td><td>Sperm is rebuilt on a <b>14-day cycle</b>. Vitamin E protects the cell membrane while it forms. Above 32 &deg;C the whole batch is damaged</td><td><b>Vitamin E</b>, and <b>arginine</b>, the amino acid sperm is built from</td><td><b>Nekton Breed Star</b><br><span class="kctag">vitamin E 220 mg/L</span> <span class="kctag">arginine 102 mg/L</span><br>the only arginine you own</td><td>1 g per 250 ml<br>21 days minimum</td></tr>
-        <tr><td><b>Fertility cofactor</b></td><td><b>Vitamin E cannot work without selenium.</b> Selenium runs the enzyme that regenerates vitamin E after it does its job</td><td><b>Selenium</b></td><td><b>Ferti-Vit</b><br><span class="kctag">selenium 0.072 mg/L</span><br>Breed Star and Nekton E declare <b>zero</b></td><td>1 g per 250 ml<br>alternate 2 days with Breed Star</td></tr>
+        <tr><td><b>Moult &amp; feathers</b></td><td>A feather is <b>90&nbsp;% keratin</b>, a protein built from sulphur amino acids. A moult is a protein event, not a vitamin event</td><td><b>Methionine</b> + cystine, and <b>biotin</b> to make the keratin good quality</td><td><b>Muta-Vit</b><br><span class="kctag">methionine 114 mg/L</span> <span class="kctag">biotin 0.92 mg/L</span><br>7&times; the biotin of Ferti-Vit</td><td>1 g per 250 ml (4 g/L)<br>through the moult only, never during breeding</td></tr>
+        <tr><td><b>Male fertility</b></td><td>Sperm is rebuilt on a <b>14-day cycle</b>. Vitamin E protects the cell membrane while it forms. Above 32 &deg;C the whole batch is damaged</td><td><b>Vitamin E</b>, and <b>arginine</b>, the amino acid sperm is built from</td><td><b>Nekton Breed Star</b><br><span class="kctag">vitamin E 220 mg/L</span> <span class="kctag">arginine 102 mg/L</span><br>the only arginine you own</td><td>Label: 1 g per 250 ml, start 3 weeks before breeding<br><span style='font-size:12.5px;color:var(--ink3)'>Your current course uses <b>Fetura 12</b> then <b>Ferti-Vit</b> instead. Never stack Breed Star on Ferti-Vit</span></td></tr>
+        <tr><td><b>Fertility cofactor</b></td><td><b>Vitamin E cannot work without selenium.</b> Selenium runs the enzyme that regenerates vitamin E after it does its job</td><td><b>Selenium</b></td><td><b>Ferti-Vit</b><br><span class="kctag">selenium 0.072 mg/L</span><br>Breed Star and Nekton E declare <b>zero</b></td><td>1 g per 250 ml (4 g/L), <b>daily</b><br>after 7 days of Fetura 12, until that pair's first egg</td></tr>
         <tr><td><b>Egg shell</b></td><td>A shell is <b>calcium carbonate</b>. The hen strips it from her own skeleton in 14 hours if the diet is short. Vitamin D3 is what lets the gut absorb it at all</td><td><b>Calcium</b> + <b>vitamin D3</b> together. Calcium without D3 passes straight through</td><td><b>Calcivet</b><br><span class="kctag">calcium 0.66 g/L</span> <span class="kctag">D3 500 IU/L</span><br>plus <b>Nekton MSA</b> in food, 26&nbsp;% calcium</td><td>5 ml per 250 ml<br>Mon to Fri</td></tr>
         <tr><td><b>Weight gain</b></td><td>Weight is <b>calories</b>, nothing else. No bottle contains calories. A bird that picks canary and millet is self-selecting the lowest-fat seeds you offer</td><td><b>Fat.</b> Hemp 30-35&nbsp;%, sunflower 28&nbsp;%, canary 5-6&nbsp;%, millet 4&nbsp;%</td><td><b>Hemp seed, millet spray, mealworms</b><br>Mealworms are ~50&nbsp;% protein and get eaten when nothing else is</td><td>Small pinch daily<br>spray stays in the cage</td></tr>
-        <tr><td><b>Gut &amp; absorption</b></td><td>Stress, transport and antibiotics strip the gut flora. Until it is rebuilt, <b>every supplement after it is wasted</b></td><td><b>Live bacteria</b> (CFU) + a prebiotic to feed them</td><td><b>Synbiotic 180-S</b><br><span class="kctag">180 million CFU/g</span> <span class="kctag">9 strains</span> <span class="kctag">7 enzymes</span></td><td>0.75 g per 250 ml daily<br><b>1.5 g</b> for stress, 5 days</td></tr>
-        <tr><td><b>Immunity</b></td><td>Antibody production runs on vitamin A for the gut and airway lining, and vitamin E for the immune cells themselves</td><td><b>Vitamin A</b> + <b>vitamin E</b> + zinc</td><td><b>Omni-Vit</b><br><span class="kctag">vitamin A 12,120 IU/L</span> <span class="kctag">zinc 17.9 mg/L</span></td><td>1 g per 250 ml<br>2&times; a week</td></tr>
+        <tr><td><b>Gut &amp; absorption</b></td><td>Stress, transport and antibiotics strip the gut flora. Until it is rebuilt, <b>every supplement after it is wasted</b></td><td><b>Live bacteria</b> (CFU) + a prebiotic to feed them</td><td><b>Synbiotic 180-S</b><br><span class="kctag">180 million CFU/g</span> <span class="kctag">9 strains</span> <span class="kctag">7 enzymes</span></td><td>0.75 g per 250 ml, days 1 to 5 monthly and hatch plus 5<br><b>1.5 g</b> for stress, 5 days</td></tr>
+        <tr><td><b>Immunity</b></td><td>Antibody production runs on vitamin A for the gut and airway lining, and vitamin E for the immune cells themselves</td><td><b>Vitamin A</b> + <b>vitamin E</b> + zinc</td><td><b>Omni-Vit</b><br><span class="kctag">vitamin A 12,120 IU/L</span> <span class="kctag">zinc 17.9 mg/L</span></td><td>1 g per 250 ml<br>2&times; a week, <b>outside the breeding course only</b>. Never on a Ferti-Vit, Calcivet or Calciform day</td></tr>
         <tr><td><b>Heat &amp; stress</b></td><td>A panting bird loses <b>sodium, potassium and chloride</b> through the airway. Blood volume falls before the bird looks unwell</td><td><b>Electrolytes</b> + glucose to carry them across the gut wall</td><td><b>Nekton Elektrolyt</b><br><span class="kctag">Na 225 mg/L</span> <span class="kctag">Cl 337 mg/L</span> <span class="kctag">taurine 37.5 mg/L</span><br>or <b>Spark Liquid</b>, 20 ml/L</td><td>1.9 g per 250 ml<br><b>never past 5 days</b></td></tr>
-        <tr><td><b>Chick growth</b></td><td>A chick multiplies its hatch weight roughly <b>10&times; in 30 days</b>. Bone lays down faster than at any other point in its life</td><td><b>Calcium + phosphorus in a 2:1 ratio</b>, plus the full B group for energy metabolism</td><td><b>Nekton MSA</b> in soft food<br><span class="kctag">Ca 26.1&nbsp;%</span> <span class="kctag">P 19.6&nbsp;%</span><br>plus <b>Nekton S</b> for the vitamins</td><td>1 g per 100 g soft food<br>daily</td></tr>
-        <tr><td><b>Liver</b></td><td>A fatty liver is the commonest hidden killer in caged seed-eating birds. Choline is what moves fat back out of the liver cell</td><td><b>Choline</b> + methionine + inositol</td><td><b>Liva-Vit</b><br><span class="kctag">choline 33.3 mg/L</span><br><b>the only choline source you own</b></td><td>1 ml per 1.5 L<br>5 to 7 days</td></tr>
+        <tr><td><b>Chick growth</b></td><td>A chick multiplies its hatch weight roughly <b>10&times; in 30 days</b>. Bone lays down faster than at any other point in its life</td><td><b>Calcium + phosphorus</b>, MSA gives them at 1.33 to 1, plus the full B group for energy metabolism</td><td><b>Nekton MSA</b> in soft food<br><span class="kctag">Ca 26.1&nbsp;%</span> <span class="kctag">P 19.6&nbsp;%</span><br>plus <b>Nekton S</b> for the vitamins</td><td>1 g per 100 g soft food<br>daily</td></tr>
+        <tr><td><b>Liver</b></td><td>A fatty liver is the commonest hidden killer in caged seed-eating birds. Choline is what moves fat back out of the liver cell</td><td><b>Choline</b> + methionine + inositol</td><td><b>Liva-Vit</b><br><span class="kctag">choline 33.3 mg/L</span><br><b>the only choline source you own</b></td><td>1 ml per 1.5 L, 5 to 7 days<br><span style='font-size:12.5px;color:var(--ink3)'>Poultry label range 1 ml per 1 to 2 L</span></td></tr>
         <tr><td><b>Nerve &amp; recovery</b></td><td>B vitamins are water-soluble, so they are not stored. Stress, illness and any antibiotic course empty the tank within days</td><td><b>The B group</b>, especially B1, B2 and B12</td><td><b>Nekton B-Komplex</b><br><span class="kctag">B3 120 mg/L</span> <span class="kctag">B9 24 mg/L</span><br>Nekton: use only when needed, not routinely</td><td>0.5 g per daily ration<br>short course only</td></tr>
         <tr><td><b>Daily base</b></td><td>Nothing dramatic. Just the full vitamin and trace panel a seed diet does not contain, every day, so no deficiency ever gets started</td><td><b>All 12 vitamins</b> + iron, zinc, manganese, copper, iodine</td><td><b>Nekton S</b> in food + <b>Nekton MSA</b><br>Nekton names this pair as the standing daily supply</td><td>1 g each per 100 g<br>daily. Max 5&nbsp;% of ration</td></tr>
       </tbody>
     </table></div>
     <p class="kcnote"><b>How to read column four:</b> every figure is per litre of made-up drinking water at the label dose, converted from the manufacturer declaration. They are directly comparable to each other. <b>Verified 15 September 2026:</b> 243 figures checked against 29 manufacturer pages.</p>
-    <p class="kcwarn"><b>The one that catches people:</b> vitamin E and selenium are a pair, not a sequence. Breed Star carries the vitamin E and no selenium. Ferti-Vit carries both. That is why the breeding rotation is 2 days and 2 days, and why a 7-day block of either one on its own wastes half of it.</p>
+    <p class="kcwarn"><b>The one that catches people:</b> vitamin E and selenium are a pair, not a sequence. Breed Star and Nekton E carry the vitamin E and no selenium. Ferti-Vit carries both. That is why Ferti-Vit is the pre-egg product in your course: Fetura 12 for 7 days, then Ferti-Vit daily until that pair's first egg.</p>
   </div>
 
 </div></div>
@@ -943,7 +943,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <h3>Never combine on the same day</h3>
   <ul>
     <li>Two fertility products, such as Fetura 12 with Ferti-Vit, Nekton E or Nekton Breed Star</li>
-    <li>Two vitamin D3 products. Calciform, Calcivet, Avigold Advance, Breed Star and A21 all carry D3</li>
+    <li>Two high-dose vitamin D3 products on the same day (Calciform 2,125 &middot; Omni-Vit 800 &middot; Muta-Vit 760 &middot; Ferti-Vit 728 &middot; Calcivet 500 IU/L). Food-level D3 in Nekton S, Nekton MSA and Avigold is not in this group. Soluvite D and Soluvite D Breeder (2,500 IU/L) count as high-dose too; PB-ADE and Es-ADE are far above all of them.</li>
     <li>Two electrolyte products, such as Spark Liquid with Nekton Elektrolyt or Prolyte-C</li>
     <li>Any probiotic during a course of medication</li>
   </ul>
@@ -968,7 +968,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <div class="ecard">
       <div class="eico"><svg viewBox="0 0 24 24"><path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42A6.92 6.92 0 0119 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.15.97-4.07 2.5-5.36L6.17 5.17A8.93 8.93 0 003 12a9 9 0 0018 0c0-2.74-1.23-5.19-3.17-6.83z"/></svg></div>
       <h3>Leg paralysis</h3>
-      <p>Quiet cage, perches removed, food and water at floor level. <b>Liquid calcium by syringe into the beak</b>, repeated after two hours. B complex, electrolyte for hydration, warmth and no disturbance. Most laying related cases resolve within two to three days once calcium is restored.</p>
+      <p>Quiet cage, perches removed, food and water at floor level. <b>Calcivet by syringe into the beak, 0.2 ml per 100 g body weight</b> (about 0.1 ml for a 50 g lovebird), repeated after two hours. B complex, electrolyte for hydration, warmth and no disturbance. Most laying related cases resolve within two to three days once calcium is restored.</p>
     </div>
     <div class="ecard">
       <div class="eico"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div>
@@ -988,7 +988,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <div class="ecard">
       <div class="eico"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div>
       <h3>A new bird arrives</h3>
-      <p><b>Four weeks of quarantine, in a separate room, handled last every day.</b> Week one is electrolyte only. Week two adds a daily tonic and light soft food. Weeks three and four cover the quarantine medication course. Never shorten it.</p>
+      <p><b>Four weeks of quarantine, in a separate room, handled last every day.</b> Days 1 to 3 Spark Liquid 20 ml/L, days 4 to 8 Synbiotic 1.5 g per 250 ml, then Nekton S in soft food daily. Treat only what a vet diagnoses. Never shorten it.</p>
     </div>
   </div>
 </div>
@@ -999,21 +999,20 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
   <div class="head-blk">
     <span class="pill-lbl">One pair, one rotation</span>
     <h2>The breeding course</h2>
-    <p class="sub">Timing matters more than the products. A male's sperm cycle runs 10 to 14 days, and Nekton asks for three weeks of preparation, so the fertility window opens well before the box goes in.</p>
+    <p class="sub">Timing matters more than the products. Fetura 12 for 7 days, then Ferti-Vit daily until that pair lays, gives roughly three weeks of conditioning counted to the first egg. Calcium never stops: it moves between the water and the food depending on which product is in the drinker.</p>
   </div>
   <div class="tl">
-    <div class="tlrow"><div class="tlday">Three weeks out<span>Preparation</span></div><div class="tldose"><b>Fertility tonic</b> · daily<em>Nekton E and Breed Star both ask for at least three weeks before breeding</em></div></div>
-    <div class="tlrow"><div class="tlday">Day 1 to 5<span>Before the box</span></div><div class="tldose"><b>Fetura 12</b> · 2 ml per 1 litre water<em>Primes the male. What he takes now shows up in eggs two weeks later</em></div></div>
-    <div class="tlrow"><div class="tlday">Day 6<span>Box day</span></div><div class="tldose"><b>Install the nest box</b> · fertility tonic continues<em>The box goes in with the male already at peak fertility</em></div></div>
-    <div class="tlrow"><div class="tlday">Day 7 to 10<span>Calcium loading</span></div><div class="tldose"><b>Liquid calcium</b> · 20 ml per 1 litre water<em>Fills her stores before the first egg. Never on the same day as the fertility tonic</em></div></div>
-    <div class="tlrow"><div class="tlday">Day 11 to 15<span>Mating window</span></div><div class="tldose"><b>Fetura 12</b> · 2 ml per 1 litre water<em>Mating usually begins around day 9 or 10, so this covers it</em></div></div>
-    <div class="tlrow"><div class="tlday">First egg<span>Hard stop</span></div><div class="tldose"><b>Stop Nekton E and Breed Star</b><em>Nekton warns that continuing past the first egg disrupts incubation</em></div></div>
-    <div class="tlrow"><div class="tlday">First to last egg<span>Laying</span></div><div class="tldose"><b>Liquid calcium</b> · Monday to Friday<em>Shell strength, and prevention of binding and soft shells</em></div></div>
-    <div class="tlrow"><div class="tlday">Incubation<span>Quiet period</span></div><div class="tldose">Plain water, vinegar once weekly<em>Nothing new and no disturbance. Never candle after day 18</em></div></div>
-    <div class="tlrow"><div class="tlday">Hatch day plus 5<span>Chicks</span></div><div class="tldose"><b>Probiotic</b> · 3 g per 1 litre water<em>Parents feed it to the chicks, colonising their gut and preventing crop stasis</em></div></div>
-    <div class="tlrow"><div class="tlday">Chicks in box<span>Growth</span></div><div class="tldose"><b>Calcium with D3</b> · twice weekly<em>Skeletal growth. Bone is built now or never</em></div></div>
-    <div class="tlrow"><div class="tlday">Female to rest<span>Recovery</span></div><div class="tldose"><b>Prolyte-C</b> · up to seven days<em>Rehydrate, reset the gut, vitamin C for stress</em></div></div>
-    <div class="tlrow"><div class="tlday">30 to 40 days<span>Full rest</span></div><div class="tldose"><b>Calcium with D3</b> · once weekly through the whole rest<em>Most breeders stop calcium when the eggs stop, which is exactly backwards</em></div></div>
+    <div class="tlrow"><div class="tlday">Day 1 to 7<span>Pre-breeding</span></div><div class="tldose"><b>Fetura 12</b> · 2 ml per 1 litre water, morning, dump by noon<em>L-carnitine for sperm that already exists. Fetura carries no D3, so this is the week calcium can go in the water too</em></div></div>
+    <div class="tlrow"><div class="tlday">Day 1 to 7<span>Calcium loading</span></div><div class="tldose"><b>Calcivet</b> · 20 ml per 1 litre, afternoon water, Mon / Wed / Fri<em>A separate afternoon drinker, never mixed into the Fetura water. Fills her stores before the first egg</em></div></div>
+    <div class="tlrow"><div class="tlday">Day 8 onward<span>Fertility</span></div><div class="tldose"><b>Ferti-Vit</b> · 4 g per 1 litre water, daily<em>Vitamin E with selenium. Ferti-Vit carries D3, so NO liquid calcium on these days. Calcium comes from Nekton MSA in soft food and cuttlebone</em></div></div>
+    <div class="tlrow"><div class="tlday">Day 8 to 10<span>Box day</span></div><div class="tldose"><b>Install the nest box</b> · Ferti-Vit continues<em>Mating usually begins 9 to 10 days after the box goes in</em></div></div>
+    <div class="tlrow"><div class="tlday">First egg<span>Hard stop</span></div><div class="tldose"><b>Stop Ferti-Vit for that pair</b><em>Per pair, never by date. Write the date on the cage card</em></div></div>
+    <div class="tlrow"><div class="tlday">First to last egg<span>Laying</span></div><div class="tldose"><b>Calcivet</b> · 20 ml per 1 litre, Monday to Friday<em>Shell strength and protection against egg binding. Saturday only: Calciform HiD3 at 2.5 ml per 2 litres. Never both on one day</em></div></div>
+    <div class="tlrow"><div class="tlday">Incubation<span>Quiet period</span></div><div class="tldose">Plain water, vinegar once weekly<em>From the last egg. Nothing new and no disturbance. Never candle after day 18</em></div></div>
+    <div class="tlrow"><div class="tlday">Hatch day plus 5<span>Chicks</span></div><div class="tldose"><b>Synbiotic 180-S</b> · 0.75 g per 250 ml (3 g per litre)<em>Parents feed it to the chicks, colonising their gut and preventing crop stasis</em></div></div>
+    <div class="tlrow"><div class="tlday">Chicks in box<span>Growth</span></div><div class="tldose"><b>Calcivet</b> · 20 ml per 1 litre, twice weekly<em>Skeletal growth. Bone is built now or never</em></div></div>
+    <div class="tlrow"><div class="tlday">Female to rest<span>Recovery</span></div><div class="tldose"><b>Prolyte-C</b> · 10 g per 1 litre, up to seven days<em>Rehydrate, reset the gut, vitamin C for stress</em></div></div>
+    <div class="tlrow"><div class="tlday">30 to 40 days<span>Full rest</span></div><div class="tldose"><b>Calcivet</b> · 20 ml per 1 litre, 2 days a week, through the whole rest<em>Most breeders stop calcium when the eggs stop, which is exactly backwards. Nekton MSA and cuttlebone daily</em></div></div>
   </div>
 </div>
 </section>
@@ -1093,28 +1092,27 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:42px 0 28p
     <div class="cbd" id="cmpBody"></div>
   </div>
 </div>
-<script src="app.js?v54"></script>
-<script src="os.js?v54"></script>
+<script src="app.js?v55"></script>
+<script src="os.js?v55"></script>
 
 <script>
 (function(){
 var GIVE=[
- ['Soft food 100 g, daily','Breed Star 1 g + Nekton MSA 1 g + Herbs V3 1 g','First egg'],
- ['Water 250 ml','Breed Star 1 g <b>2 days</b> &rarr; Ferti-Vit 1 g <b>2 days</b> &rarr; repeat','First egg'],
+ ['Soft food 100 g, daily','Nekton MSA 1 g + Herbs V3 1 g','First egg'],
+ ['Water 250 ml, course days 1-7 (before the box)','Fetura 12 0.5 ml, morning &middot; Calcivet 5 ml in a separate afternoon drinker, Mon / Wed / Fri','Day 7'],
+ ['Water 250 ml, course day 8 on (box in day 8-10)','Ferti-Vit 1 g daily &middot; <b>no liquid calcium</b> on Ferti-Vit days','First egg'],
  ['Always','Cuttlebone &middot; sprouts &middot; boiled egg &middot; expert egg food &middot; nesting','Every day'],
- ['When Fetura 12 is in stock','Fetura 12 at 2 ml per litre replaces Ferti-Vit, 15 days','Wave 2 + rescue'],
- ['AT FIRST EGG, switch that pair','Food: <b>Nekton S</b> 1 g + MSA 1 g + Herbs 1 g &middot; Water: Calcivet 20 ml/L Mon-Fri','Hatch']];
+  ['AT FIRST EGG, switch that pair','Food: <b>Nekton S</b> 1 g + MSA 1 g + Herbs 1 g &middot; Water: Calcivet 20 ml/L Mon-Fri, Calciform Sat 2.5 ml per 2 L','Last egg']];
 var TL=[
  ['Nest box','b','Behaviour, male and female','Same day','Day 3-7'],
  ['Herbs V3','b','Gut and appetite, both','Day 2-3','Day 7'],
  ['Nekton MSA','f','Female: eggshell and bone','Day 7-10','Day 14'],
  ['Ferti-Vit','m','Male: selenium makes vitamin E work','Day 7','Day 14-21'],
- ['Nekton Breed Star','m','Male: vitamin E builds NEW sperm','Day 10-14','Day 20-60'],
- ['Fetura 12','m','Male: L-carnitine, sperm that already exists','Day 3-7','Day 14'],
- ['Light 13-14 hours','b','Hormones, male and female','Day 3-5','Day 10-14']];
+ ['Fetura 12','m','Male: L-carnitine, sperm that already exists','Course day 3-7, before the box','By box day 7'],
+ ['Light 14 to 14.5 hours','b','Hormones, male and female','Day 3-5','Day 10-14']];
 var DAYS=[
  ['0','Nest box goes in. Write the cage number and the date on the cage card. Both birds will put their heads in and chew the entrance within hours. That is curiosity, not breeding.'],
- ['1-3','Nothing from the supplements yet, they are still loading into body tissue. Watch that both birds are <b>eating the soft food</b> and drinking the medicated morning water.'],
+ ['1-3','Nothing from the supplements yet, they are still loading into body tissue. Watch that both birds are <b>eating the soft food</b> and drinking the medicated water.'],
  ['3-7','<b>STRONGEST EARLY SIGN: the male feeds the female</b>, bobbing his head and bringing food up into her beak. A pair that does this is bonded and will breed.<br>Also: male singing and chattering much more, especially at first light &middot; mutual preening around the head and neck &middot; male follows her along the perch everywhere &middot; the two sit pressed tightly together.'],
  ['7-10','<b>The female starts carrying nesting material in her BEAK</b>, single strips at a time, into the box. Fischer\'s lovebirds carry in the beak. (Peach-faced tuck strips into their rump feathers. If yours tucks in the rump, the pair is not what the label says.)<br>Also: she stays inside the box for longer and longer spells &middot; the entrance hole gets chewed wider &middot; <b>she squats low with her tail raised</b>, which is her inviting him.<br><b>MATING:</b> the male steps onto her back, holds both wings out for balance, twists his tail to one side for a few seconds, then repeats. Expect it many times a day, not once.'],
  ['10-14','<b>The nest takes shape:</b> a bulky domed roof with a tunnel leading to an inner chamber. That shape means she is serious.<br>Mating frequency peaks &middot; <b>she begins sleeping inside the box at night</b>, a strong late sign &middot; the male stands guard at the entrance and gets noisy when you approach.<br>Vitamin E is now reaching the sperm being made, so matings from here are the productive ones.'],
@@ -1126,7 +1124,7 @@ var DAYS=[
 ];
 var WARN=[
  ['No courtship feeding by day 10','The pair is not bonded. Check they are a true male and female, and that they are not fighting over the box.'],
- ['She carries material but he never feeds her','The male is not in condition. This is the case for Fetura 12 when it arrives, or a Breed Star extension.'],
+ ['She carries material but he never feeds her','The male is not in condition. This is the case for Fetura 12, now in stock: 7 days at 2 ml per litre.'],
  ['Both in the box but no material carried','Often a hen that will sit but not lay. Give more nesting material and check the box is dark enough inside.'],
  ['Mating seen but eggs come out clear','Mechanical, not nutritional. <b>Grip-test the perch first.</b> The hen must carry his full weight. Then check the vent feathers, then room temperature above 32 &deg;C.'],
  ['She lays on the cage floor, not in the box','Box is too bright, too small, or mounted too low. Move it higher and darken the inside.']
@@ -1139,7 +1137,7 @@ function draw(){
   var who=r[1]==='m'?'Male':(r[1]==='f'?'Female':'Both');
   return '<tr><td><b>'+r[0]+'</b></td><td><span class="kctag '+c+'">'+who+'</span><br><span style="color:var(--ink2)">'+r[2]+'</span></td><td>'+r[3]+'</td><td>'+r[4]+'</td></tr>';}).join('');
  document.getElementById('kcDays').innerHTML=DAYS.map(function(r){
-  return '<tr><td><b>Day '+r[0]+'</b></td><td>'+r[1]+'</td></tr>';}).join('');
+  return '<tr><td><b>Box day '+r[0]+'</b></td><td>'+r[1]+'</td></tr>';}).join('');
  var w=document.getElementById('kcWarn');
  if(w) w.innerHTML=WARN.map(function(r){
   return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td></tr>';}).join('');
