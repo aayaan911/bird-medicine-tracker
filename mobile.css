@@ -694,3 +694,24 @@ body.sropen{overflow:hidden}
 /* the medicine you jumped to */
 @keyframes kbhit{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 55%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
 .kbhit{outline:2px solid var(--green)!important;outline-offset:2px;animation:kbhit 1.2s ease-out 2}
+
+/* ============================================================================
+   24. HERO STAT PILL
+   The pill is inline-flex, so the sentence, both bold numbers and the tail were
+   five separate flex items and wrapped into columns on a phone. The text is now
+   one run; on a phone it splits into two clean, centred lines.
+   ========================================================================== */
+.eb-txt{display:inline}
+.eyebrow b{font-weight:800;font-variant-numeric:tabular-nums}
+@media(max-width:760px){
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;text-align:left;
+    padding:9px 16px 9px 12px;border-radius:16px;max-width:100%;margin-bottom:18px;line-height:1.35}
+  .eyebrow svg{width:15px;height:15px;flex-shrink:0;align-self:center}
+  .eb-txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .eb-sep{display:none}
+  .eb-a{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;opacity:.75}
+  .eb-b{font-size:13.5px;font-weight:600}
+  .eb-b b{font-size:15px;color:var(--gdeep)}
+  [data-theme="dark"] .eb-b b{color:#8fe3c4}
+}
+@media(max-width:360px){ .eb-b{font-size:12.5px} .eb-b b{font-size:14px} }
