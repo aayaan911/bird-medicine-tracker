@@ -115,7 +115,7 @@ var PHASES=[
   items:[ {k:'ns',  n:'Nekton S',         d:'1 g per 100 g soft food, daily', r:'food', every:1},
           {k:'msa', n:'Nekton MSA',       d:'1 g per 100 g soft food, daily', r:'food', every:1},
           {k:'herb',n:'Herbs V3',         d:'1 g per 100 g soft food', r:'food', every:1},
-          {k:'acv', n:'ACV',              d:'5 ml per 1 litre water, Friday only', r:'water',every:1, wd:[5]},
+          {k:'acv', n:'ACV',              d:'5 ml per 1 litre water, Friday only. Skip it if Friday falls on Synbiotic days 1 to 5', r:'water',every:1, wd:[5]},
           {k:'syn', n:'Synbiotic',        d:'3 g per 1 litre water, days 1 to 5 monthly', r:'water', every:1, md:[1,2,3,4,5]} ]}
 ];
 /* never-combine pairs that the log can actually catch */
