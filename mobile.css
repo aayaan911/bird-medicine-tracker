@@ -901,18 +901,3 @@ select:not([multiple]):focus{border-color:var(--green);outline:0;box-shadow:0 0 
   .mdoses .dose-line{padding:11px 13px!important;font-size:14.5px}
   .mdoses .rtag{font-size:10.5px}
 }
-
-/* ---------- 34. NEVER-the-same-day box (list + gallery) ---------- */
-.nvbox{margin-top:10px;border:1px solid rgba(200,40,40,.35);background:rgba(200,40,40,.05);border-radius:12px;padding:10px 12px}
-[data-theme="dark"] .nvbox{background:rgba(255,90,90,.07);border-color:rgba(255,110,110,.35)}
-.nvhead{display:flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:#b42318;margin-bottom:8px}
-[data-theme="dark"] .nvhead{color:#ff8a80}
-.nvhead svg{width:15px;height:15px;fill:currentColor;flex:none}
-.nvrow{padding:7px 0;border-top:1px dashed rgba(200,40,40,.25)}
-.nvrow:first-of-type{border-top:0;padding-top:0}
-.nvrow .altchips{margin-bottom:4px}
-.nvchip{border-color:rgba(200,40,40,.4)!important}
-.nvwhy{font-size:12.5px;line-height:1.45;color:var(--ink2)}
-.nvdrink{margin-top:8px;padding-top:8px;border-top:1px solid rgba(200,40,40,.25);font-size:12.5px;line-height:1.45;color:var(--ink2)}
-.nvdrink b{color:var(--ink)}
-@media(max-width:760px){ .nvwhy,.nvdrink{font-size:13.5px} }
