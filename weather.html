@@ -246,6 +246,34 @@ footer a{color:var(--green);font-weight:600}
   <div class="bmeta" id="bMeta"></div>
 </div></div>
 
+<section class="sealsec"><div class="wrap">
+  <div class="hd"><div>
+    <h2>Seal the room before the AC goes in</h2>
+    <p class="sub">Pinned. 1 to 3 days of work. Tick each item as it is done; ticks stay on this phone. <b id="sealCount">0 of 10</b> done.</p>
+  </div></div>
+  <div class="card sealcard"><label class="sl"><input type="checkbox" data-sk="0"><span><b>Exhaust openings, both rooms</b><em>Fit a back-draft shutter (gravity louvre) on each exhaust. Closes by itself when the fan stops, opens for the night flush.</em></span></label><label class="sl"><input type="checkbox" data-sk="1"><span><b>South window open grille</b><em>Cover the open grille section with clear polycarbonate or glass. Keep it closed in AC hours, open only for the night flush.</em></span></label><label class="sl"><input type="checkbox" data-sk="2"><span><b>False ceiling panel edges</b><em>Foam tape along panel edges so hot air from the roof void cannot drop in.</em></span></label><label class="sl"><input type="checkbox" data-sk="3"><span><b>Leftover foil hole, Room 1 ceiling</b><em>Seal the white circular fitting completely.</em></span></label><label class="sl"><input type="checkbox" data-sk="4"><span><b>Doors</b><em>Brush strip under the door and on any gap in the frame.</em></span></label><label class="sl"><input type="checkbox" data-sk="5"><span><b>Light fittings and switch boxes</b><em>Silicone around fittings that open into the ceiling void.</em></span></label><label class="sl"><input type="checkbox" data-sk="6"><span><b>AC pipe hole</b><em>Seal with putty after the installer runs the pipe.</em></span></label><label class="sl"><input type="checkbox" data-sk="7"><span><b>Tin roof</b><em>White water-based roof paint or lime wash on the tin.</em></span></label><label class="sl"><input type="checkbox" data-sk="8"><span><b>Dedicated AC line</b><em>Own breaker and cable for the AC, not the light circuit.</em></span></label><label class="sl"><input type="checkbox" data-sk="9"><span><b>Wick towel ready</b><em>Towel hanging, bottom end in a balti, centre of Room 1, away from boxes.</em></span></label></div>
+  <p class="note"><b>AC rules once installed.</b> Walton 1.5 ton inverter in Room 1 near the connecting door. Cool mode, 27 °C, 10:00 to 19:00. Louvre at the ceiling, never at cages or boxes. Exhaust OFF while the AC runs, ON 19:00 to 09:00. Never Dry mode. Clean the filter every 2 weeks.</p>
+</div></section>
+<style>
+.sealsec{border-bottom:1px solid var(--line)}
+.sealcard{display:grid;gap:0;padding:4px 0!important}
+.sl{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;border-top:1px solid var(--line);cursor:pointer}
+.sl:first-child{border-top:0}
+.sl input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--green)}
+.sl span{display:flex;flex-direction:column;gap:3px;font-size:14px;line-height:1.45}
+.sl em{font-style:normal;color:var(--ink2);font-size:13px}
+.sl input:checked + span b{text-decoration:line-through;opacity:.6}
+</style>
+<script>
+(function(){
+  var K='kb-seal', st={}; try{st=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+  var boxes=document.querySelectorAll('[data-sk]');
+  function count(){ var n=0; boxes.forEach(function(b){ if(b.checked) n++; }); document.getElementById('sealCount').textContent=n+' of '+boxes.length; }
+  boxes.forEach(function(b){ b.checked=!!st[b.dataset.sk]; b.addEventListener('change',function(){ st[b.dataset.sk]=b.checked; try{localStorage.setItem(K,JSON.stringify(st))}catch(e){} count(); }); });
+  count();
+})();
+</script>
+
 <section><div class="wrap">
   <div class="hd">
     <div>
