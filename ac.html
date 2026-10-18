@@ -249,10 +249,12 @@ section{padding:30px 0;scroll-margin-top:60px}
 .actbl{width:100%;min-width:0!important;table-layout:fixed}
 .actbl th,.actbl td{white-space:normal!important;overflow-wrap:anywhere;vertical-align:top;text-align:left}
 .actbl td small{color:var(--ink2);font-size:12.5px}
-.tbuy th:nth-child(2),.tbuy td:nth-child(2){width:96px}
-.tbuy th:nth-child(3),.tbuy td:nth-child(3){width:56px}
+@media(min-width:761px){
+.tbuy th:nth-child(2),.tbuy td:nth-child(2){width:120px}
+.tbuy th:nth-child(3),.tbuy td:nth-child(3){width:70px}
 .t3 th:first-child,.t3 td:first-child{width:22%}
-.t4 th:first-child,.t4 td:first-child{width:18%}
+.t4 th:first-child,.t4 td:first-child{width:18%}}
+@media(max-width:760px){.actbl td{width:auto!important;white-space:normal!important}.actbl a{white-space:nowrap}}
 .acol,.acul{margin:8px 0 0;padding-left:20px;line-height:1.75;font-size:14px}
 .acsrc{font-size:13px;line-height:1.9}
 .sealcard{display:grid;gap:0;padding:4px 0!important;margin-bottom:14px}
@@ -262,7 +264,7 @@ section{padding:30px 0;scroll-margin-top:60px}
 .sl span{display:flex;flex-direction:column;gap:3px;font-size:14px;line-height:1.45}
 .sl em{font-style:normal;color:var(--ink2);font-size:13px}
 .sl input:checked + span b{text-decoration:line-through;opacity:.6}
-@media(max-width:560px){.t3 th:first-child,.t3 td:first-child{width:30%}.t4 th:first-child,.t4 td:first-child{width:26%}}
+
 </style>
 <div class="hero"><div class="wrap">
   <h1 style="font-size:clamp(26px,4vw,38px);font-weight:700;letter-spacing:-1px;margin-bottom:6px">AC SOP · Room 1 and Room 2</h1>
